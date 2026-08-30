@@ -1,0 +1,1325 @@
+{
+  "login": {
+    "kicker": "Secure access",
+    "title": "Admin sign in",
+    "body": "Sign in with your admin credentials to manage site content.",
+    "visual": {
+      "panelLabel": "{company} staff portal",
+      "badge": "Staff portal",
+      "eyebrow": "Operations desk",
+      "title": "One desk for the whole site.",
+      "body": "Products, enquiries, and company details — kept in sync.",
+      "features": {
+        "products": {
+          "title": "Products",
+          "body": "Catalogue & specs"
+        },
+        "inquiries": {
+          "title": "Enquiries",
+          "body": "Contact & quotes"
+        },
+        "company": {
+          "title": "Company",
+          "body": "Profile & settings"
+        }
+      }
+    },
+    "email": "Email",
+    "password": "Password",
+    "emailPlaceholder": "you@company.com",
+    "passwordPlaceholder": "Enter your password",
+    "submit": "Sign in",
+    "submitting": "Signing in…",
+    "success": {
+      "title": "Signed in successfully",
+      "body": "Opening your admin dashboard."
+    },
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "backToSite": "Back to website",
+    "backToSiteHint": "Return to the public site",
+    "errors": {
+      "emailRequired": "Enter your email address.",
+      "emailInvalid": "Enter a valid email address.",
+      "passwordRequired": "Enter your password.",
+      "passwordShort": "Password must be at least {min} characters.",
+      "invalidCredentials": "Email or password is incorrect.",
+      "generic": "Could not sign in. Try again."
+    }
+  },
+  "loading": {
+    "eyebrow": "Staff portal",
+    "label": "Loading admin panel",
+    "hint": "Preparing your workspace…"
+  },
+  "notFound": {
+    "eyebrow": "Admin · 404",
+    "title": "This admin page does not exist.",
+    "lede": "The route is wrong or has been removed. Open the dashboard or sign in again.",
+    "dashboard": "Open dashboard",
+    "login": "Sign in"
+  },
+  "error": {
+    "eyebrow": "Admin error",
+    "title": "Something went wrong in the panel.",
+    "lede": "Try again. If the problem continues, return to the dashboard.",
+    "retry": "Try again",
+    "dashboard": "Open dashboard"
+  },
+  "nav": {
+    "portal": "Staff portal",
+    "mainMenu": "Main menu",
+    "overview": "Overview",
+    "theme": "Theme",
+    "themeListing": "Themes",
+    "themeLogos": "Logos",
+    "themeColors": "Colors",
+    "themeTypography": "Typography",
+    "hero": "Hero",
+    "banners": "Banners",
+    "industries": "Industries",
+    "sectors": "Sectors",
+    "products": "Products",
+    "productsListing": "Products",
+    "productCategories": "Categories",
+    "productTypes": "Types",
+    "productSizes": "Sizes",
+    "companyDetails": "Company details",
+    "contactDetails": "Contact details",
+    "socialMediaLinks": "Social media links",
+    "companyProfile": "Company profile",
+    "teamMembers": "Team members",
+    "teamRoles": "Roles",
+    "teamMembersListing": "Members",
+    "userManagement": "User management",
+    "users": "Users",
+    "userDetails": "User details",
+    "pageAccess": "Page access",
+    "backToSite": "Back to website",
+    "backToSiteHint": "Return to the public site",
+    "expandMenu": "Expand menu",
+    "collapseMenu": "Collapse menu",
+    "dashboard": "Dashboard",
+    "company": "Company",
+    "services": "Services",
+    "projects": "Projects",
+    "testimonials": "Testimonials",
+    "technologies": "Technologies",
+    "messages": "Messages",
+    "settings": "Settings",
+    "logout": "Sign out"
+  },
+  "header": {
+    "eyebrow": "Staff portal",
+    "pages": {
+      "dashboard": {
+        "title": "Dashboard",
+        "lede": "Admin modules are being prepared."
+      },
+      "theme": {
+        "title": "Theme",
+        "lede": "Logos, colors, and website tokens."
+      },
+      "themeListing": {
+        "title": "Themes",
+        "lede": "Browse and manage saved website themes."
+      },
+      "themeLogos": {
+        "title": "Logos",
+        "lede": "Manage default, light, dark, mobile, and favicon assets."
+      },
+      "themeColors": {
+        "title": "Colors",
+        "lede": "Manage brand, surface, and text color tokens."
+      },
+      "themeTypography": {
+        "title": "Typography",
+        "lede": "Manage fonts and corner radius scale."
+      },
+      "banners": {
+        "title": "Banners",
+        "lede": "Manage homepage hero banner slides, images, and text."
+      },
+      "sectors": {
+        "title": "Sectors",
+        "lede": "Manage industry sectors shown on the website."
+      },
+      "productsListing": {
+        "title": "Products",
+        "lede": "Manage catalogue products, descriptions, images, and status."
+      },
+      "productCategories": {
+        "title": "Categories",
+        "lede": "Manage product lines such as bolts, nuts, screws, and nails."
+      },
+      "productTypes": {
+        "title": "Types",
+        "lede": "Manage subcategories and types within each product line."
+      },
+      "productSizes": {
+        "title": "Sizes",
+        "lede": "Manage stock sizes shown on product detail pages."
+      },
+      "contactDetails": {
+        "title": "Contact details",
+        "lede": "Manage phone numbers, email, address, and office details."
+      },
+      "socialMediaLinks": {
+        "title": "Social media links",
+        "lede": "Manage profile URLs and visibility for the website."
+      },
+      "companyProfile": {
+        "title": "Company profile",
+        "lede": "Manage the about page ticket, company identity, and fact rows."
+      },
+      "teamsListing": {
+        "title": "Team members",
+        "lede": "Manage leadership and team profiles shown on the about page."
+      },
+      "teamRoles": {
+        "title": "Roles",
+        "lede": "Manage role titles and labels used for team members."
+      },
+      "teamRolesCreate": {
+        "title": "Create a role",
+        "lede": "Add a role title and key for team members."
+      },
+      "teamRolesView": {
+        "title": "View role",
+        "lede": "Review the role title and key."
+      },
+      "teamRolesEdit": {
+        "title": "Edit role",
+        "lede": "Update the role title and key."
+      },
+      "teamsListingCreate": {
+        "title": "Create team member",
+        "lede": "Add a profile for the about page."
+      },
+      "teamsListingView": {
+        "title": "View team member",
+        "lede": "Review the team member profile."
+      },
+      "teamsListingEdit": {
+        "title": "Edit team member",
+        "lede": "Update the team member profile."
+      },
+      "users": {
+        "title": "Users",
+        "lede": "Manage staff accounts from one place."
+      },
+      "usersListingView": {
+        "title": "View user",
+        "lede": "Review the staff account profile."
+      },
+      "usersDetails": {
+        "title": "User details",
+        "lede": "View and update your account profile and role."
+      },
+      "usersAccess": {
+        "title": "Page access",
+        "lede": "Control which dashboard pages each user can open."
+      },
+      "usersAccessCreate": {
+        "title": "Assign page access",
+        "lede": "Select a user and enable permissions for each module."
+      },
+      "usersAccessView": {
+        "title": "View page access",
+        "lede": "Review module permissions assigned to this user."
+      },
+      "usersAccessEdit": {
+        "title": "Edit page access",
+        "lede": "Update module permissions for the selected user."
+      }
+    },
+    "role": "Administrator",
+    "roles": {
+      "admin": "Administrator",
+      "editor": "Editor",
+      "viewer": "Viewer"
+    },
+    "rolesShort": {
+      "admin": "Admin",
+      "editor": "Editor",
+      "viewer": "Viewer"
+    },
+    "accountTitle": "Account",
+    "signOut": "Sign out",
+    "signOutHint": "End your admin session",
+    "expandMenu": "Expand menu",
+    "collapseMenu": "Collapse menu"
+  },
+  "comingSoon": {
+    "eyebrow": "In development",
+    "badge": "Coming soon",
+    "title": "This section is under construction",
+    "lede": "We're building out the admin tools. This page will be available in a future update.",
+    "hint": "Thanks for your patience.",
+    "statusLabel": "Development progress",
+    "statusValue": "In progress"
+  },
+  "theme": {
+    "sections": {
+      "logos": "Logos",
+      "logosHint": "Paths match the public site branding assets in /public/logos.",
+      "colors": "Colors",
+      "colorsHint": "Same tokens used on the website via CSS variables in globals.css.",
+      "typography": "Typography",
+      "typographyHint": "Heading and body font families from site theme.",
+      "radius": "Corner radius",
+      "radiusHint": "Border radius scale used across website components."
+    },
+    "logos": {
+      "logo": "Default logo",
+      "logoLight": "Light logo",
+      "logoDark": "Dark logo",
+      "mobileLogo": "Mobile mark",
+      "favicon": "Favicon"
+    },
+    "colorGroups": {
+      "brand": "Brand",
+      "surface": "Surface",
+      "text": "Text"
+    },
+    "colors": {
+      "primary": "Primary",
+      "primaryDark": "Primary dark",
+      "secondary": "Secondary",
+      "accent": "Accent",
+      "background": "Background",
+      "surface": "Surface",
+      "line": "Line",
+      "text": "Text",
+      "muted": "Muted",
+      "steel": "Steel",
+      "graphite": "Graphite"
+    },
+    "fonts": {
+      "heading": "Heading font",
+      "body": "Body font"
+    },
+    "radius": {
+      "sm": "Small",
+      "md": "Medium",
+      "lg": "Large"
+    },
+    "logoPlaceholder": "/logos/nexquanta-logo.svg",
+    "logoEmpty": "No preview",
+    "save": "Save theme",
+    "saving": "Saving…",
+    "resetAction": "Reset to site defaults",
+    "preview": {
+      "kicker": "Website preview",
+      "title": "Fasteners for site and store",
+      "body": "Live sample using your selected colors, logo, and radius.",
+      "primaryBtn": "Browse products",
+      "accentBtn": "Request quote",
+      "radiusLabel": "Radius {value}"
+    },
+    "success": {
+      "title": "Theme saved",
+      "body": "Draft theme stored for this session. API sync will come later."
+    },
+    "reset": {
+      "title": "Theme reset",
+      "body": "Restored defaults from site.config.ts."
+    },
+    "errors": {
+      "title": "Could not save theme",
+      "generic": "Try again in a moment."
+    }
+  },
+  "users": {
+    "listing": {
+      "summary": "{count, plural, =0 {No users yet} one {# user} other {# users}}",
+      "addAction": "Add user",
+      "empty": {
+        "title": "No users yet",
+        "body": "Add your first staff account to get started."
+      },
+      "table": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "designation": "Designation",
+        "role": "Role",
+        "active": "Active",
+        "actions": "Actions"
+      },
+      "roles": {
+        "admin": "Admin",
+        "editor": "Editor",
+        "viewer": "Viewer"
+      },
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "actions": {
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "delete": {
+        "confirm": {
+          "title": "Delete user?",
+          "description": "Remove {name} from the user list for this session.",
+          "confirm": "Delete"
+        },
+        "success": {
+          "title": "User deleted",
+          "body": "The account was removed for this session."
+        },
+        "errors": {
+          "title": "Could not delete user",
+          "generic": "Try again in a moment."
+        }
+      }
+    },
+    "details": {
+      "fallbackName": "Your profile",
+      "fields": {
+        "image": "Profile photo",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "email": "Email",
+        "phone": "Phone number",
+        "designation": "Company designation",
+        "role": "Role",
+        "addressLine1": "Address line 1",
+        "addressLine2": "Address line 2",
+        "village": "Village",
+        "city": "City",
+        "pincode": "Pincode",
+        "state": "State"
+      },
+      "address": {
+        "title": "Home address"
+      },
+      "placeholders": {
+        "firstName": "Enter a first name",
+        "lastName": "Enter a last name",
+        "email": "Enter an email address",
+        "phone": "Enter a phone number",
+        "designation": "Enter a company designation",
+        "addressLine1": "Enter address line 1",
+        "addressLine2": "Enter address line 2 (optional)",
+        "village": "Enter a village",
+        "city": "Enter a city",
+        "pincode": "Enter a pincode",
+        "state": "Enter a state"
+      },
+      "image": {
+        "drop": "Drop a profile photo here",
+        "browse": "Browse files",
+        "change": "Change photo",
+        "remove": "Remove photo",
+        "hint": "JPG or PNG up to 2 MB"
+      },
+      "roles": {
+        "admin": "Admin",
+        "editor": "Editor",
+        "viewer": "Viewer"
+      },
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "notFound": {
+        "title": "Profile not found",
+        "body": "We could not load your account details for this session."
+      },
+      "saving": "Saving…",
+      "success": {
+        "title": "Profile updated",
+        "body": "Your account details were saved for this session."
+      },
+      "errors": {
+        "title": "Could not save profile",
+        "generic": "Try again in a moment.",
+        "validation": "Fix the highlighted fields before saving.",
+        "required": "This field is required.",
+        "invalidEmail": "Enter a valid email address.",
+        "invalidPhone": "Enter a valid phone number."
+      }
+    },
+    "view": {
+      "title": "View user",
+      "cancelAction": "Back to users",
+      "notFound": {
+        "title": "User not found",
+        "body": "This account may have been removed. Return to the users list."
+      }
+    },
+    "create": {
+      "title": "Add user",
+      "fields": {
+        "image": "Profile photo",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "email": "Email",
+        "phone": "Phone number",
+        "designation": "Company designation",
+        "role": "Role",
+        "addressLine1": "Address line 1",
+        "addressLine2": "Address line 2",
+        "village": "Village",
+        "city": "City",
+        "pincode": "Pincode",
+        "state": "State",
+        "password": "Password",
+        "confirmPassword": "Confirm password",
+        "active": "Active account"
+      },
+      "address": {
+        "title": "Home address"
+      },
+      "placeholders": {
+        "firstName": "Enter a first name",
+        "lastName": "Enter a last name",
+        "email": "Enter an email address",
+        "phone": "Enter a phone number",
+        "designation": "Enter a company designation",
+        "role": "Select a role",
+        "addressLine1": "Enter address line 1",
+        "addressLine2": "Enter address line 2 (optional)",
+        "village": "Enter a village",
+        "city": "Enter a city",
+        "pincode": "Enter a pincode",
+        "state": "Enter a state",
+        "password": "Enter a password",
+        "confirmPassword": "Enter the password again"
+      },
+      "image": {
+        "drop": "Drop a profile photo here",
+        "browse": "Browse files",
+        "change": "Change photo",
+        "remove": "Remove photo",
+        "hint": "JPG or PNG up to 2 MB"
+      },
+      "save": "Save",
+      "saving": "Saving…",
+      "cancelAction": "Cancel",
+      "access": {
+        "title": "Page access",
+        "lede": "Set permissions for each main menu module when creating this user."
+      },
+      "roles": {
+        "admin": {
+          "title": "Admin",
+          "body": "Full access to all modules"
+        },
+        "editor": {
+          "title": "Editor",
+          "body": "Can update content modules"
+        },
+        "viewer": {
+          "title": "Viewer",
+          "body": "Read-only access"
+        }
+      },
+      "success": {
+        "title": "User created",
+        "body": "The account was saved locally for this session."
+      },
+      "errors": {
+        "title": "Could not create user",
+        "generic": "Try again in a moment.",
+        "validation": "Fix the highlighted fields before saving.",
+        "required": "This field is required.",
+        "invalidEmail": "Enter a valid email address.",
+        "invalidPhone": "Enter a valid phone number.",
+        "passwordRequired": "Enter a password.",
+        "passwordShort": "Password must be at least {min} characters.",
+        "confirmRequired": "Confirm the password.",
+        "confirmMismatch": "Passwords do not match.",
+        "roleRequired": "Select a role."
+      }
+    },
+    "access": {
+      "columns": {
+        "module": "Module"
+      },
+      "menus": {
+        "dashboard": "Overview",
+        "userManagement": "User management",
+        "theme": "Theme",
+        "hero": "Hero",
+        "industries": "Industries",
+        "products": "Products",
+        "companyDetails": "Company details",
+        "teamMembers": "Team members"
+      },
+      "menusHint": {
+        "dashboard": "Dashboard overview and quick links",
+        "userManagement": "Users, profiles, and page access",
+        "theme": "Logos, colors, typography, and themes",
+        "hero": "Homepage banner slides",
+        "industries": "Industry sectors and listings",
+        "products": "Catalogue, categories, types, and sizes",
+        "companyDetails": "Profile, contact, and social links",
+        "teamMembers": "Roles and team profiles"
+      },
+      "permissions": {
+        "view": "View",
+        "read": "Read",
+        "create": "Create",
+        "edit": "Edit",
+        "delete": "Delete",
+        "write": "Write"
+      },
+      "pages": {
+        "dashboard": "Dashboard",
+        "themeListing": "Themes",
+        "themeLogos": "Logos",
+        "themeColors": "Colors",
+        "themeTypography": "Typography",
+        "banners": "Banners",
+        "sectors": "Sectors",
+        "productsListing": "Products",
+        "productCategories": "Categories",
+        "productTypes": "Types",
+        "productSizes": "Sizes",
+        "contactDetails": "Contact details",
+        "socialMediaLinks": "Social media links",
+        "companyProfile": "Company profile",
+        "teamRoles": "Roles",
+        "teamsListing": "Members",
+        "users": "Users",
+        "usersDetails": "User details",
+        "usersAccess": "Page access"
+      },
+      "pagesHint": {
+        "dashboard": "Overview and coming-soon modules",
+        "themeListing": "Saved website themes",
+        "themeLogos": "Logo assets and variants",
+        "themeColors": "Brand and UI color tokens",
+        "themeTypography": "Fonts and corner radius",
+        "banners": "Homepage hero banner slides",
+        "sectors": "Industry sectors and listings",
+        "productsListing": "Catalogue products",
+        "productCategories": "Product lines and categories",
+        "productTypes": "Subcategories and types",
+        "productSizes": "Stock sizes per product",
+        "contactDetails": "Phone, email, and address",
+        "socialMediaLinks": "Social profile URLs",
+        "companyProfile": "Name, tagline, and about copy",
+        "teamRoles": "Role titles for team profiles",
+        "teamsListing": "Leadership and team profiles",
+        "users": "Manage staff accounts",
+        "usersDetails": "Your account profile and role",
+        "usersAccess": "Manage page permissions"
+      },
+      "listing": {
+        "summary": "{count, plural, =0 {No users yet} one {# user} other {# users}}",
+        "addAction": "Assign access",
+        "empty": {
+          "title": "No users yet",
+          "body": "Add a user first, then assign page access here."
+        },
+        "table": {
+          "name": "Name",
+          "email": "Email",
+          "phone": "Phone",
+          "role": "Role",
+          "actions": "Actions"
+        },
+        "roles": {
+          "admin": "Admin",
+          "editor": "Editor",
+          "viewer": "Viewer"
+        },
+        "permissions": {
+          "view": "View",
+          "read": "Read",
+          "create": "Create",
+          "edit": "Edit",
+          "delete": "Delete",
+          "write": "Write"
+        },
+        "actions": {
+          "view": "View",
+          "edit": "Edit",
+          "delete": "Delete"
+        },
+        "delete": {
+          "confirm": {
+            "title": "Reset page access?",
+            "description": "Remove custom permissions for {name} and restore defaults.",
+            "confirm": "Reset"
+          },
+          "success": {
+            "title": "Access reset",
+            "body": "Custom page permissions were removed for this session."
+          },
+          "errors": {
+            "title": "Could not reset access",
+            "generic": "Try again in a moment."
+          }
+        }
+      },
+      "form": {
+        "selectRole": "Select role",
+        "selectName": "Select user",
+        "selectNamePlaceholder": "Choose a user",
+        "allRoles": "All roles",
+        "noUsersForRole": "No users for this role",
+        "sections": {
+          "user": "User selection",
+          "userLede": "Filter by role, then choose the user to assign access.",
+          "permissions": "Menu permissions",
+          "permissionsLede": "Enable access for each main menu. Changes apply to all pages within that menu."
+        },
+        "details": {
+          "name": "Name",
+          "email": "Email",
+          "phone": "Phone",
+          "role": "Role"
+        },
+        "roles": {
+          "admin": "Admin",
+          "editor": "Editor",
+          "viewer": "Viewer"
+        },
+        "save": "Save access",
+        "saving": "Saving…",
+        "cancelAction": "Back to page access",
+        "empty": {
+          "title": "No users yet",
+          "body": "Create a user first, then assign page access.",
+          "action": "Add user"
+        },
+        "notFound": {
+          "title": "User not found",
+          "body": "This user is no longer available in the current session."
+        },
+        "success": {
+          "title": "Access saved",
+          "body": "Page permissions were saved for this session."
+        },
+        "errors": {
+          "title": "Could not save access",
+          "generic": "Try again in a moment."
+        }
+      },
+      "view": {
+        "details": {
+          "name": "Name",
+          "email": "Email",
+          "phone": "Phone",
+          "role": "Role"
+        },
+        "roles": {
+          "admin": "Admin",
+          "editor": "Editor",
+          "viewer": "Viewer"
+        },
+        "cancelAction": "Back to page access",
+        "editAction": "Edit access",
+        "notFound": {
+          "title": "User not found",
+          "body": "This user is no longer available in the current session."
+        }
+      }
+    }
+  },
+  "dashboard": {
+    "kicker": "Overview",
+    "title": "Operations dashboard",
+    "body": "Track catalogue content, enquiries, and published records while the API layer is being connected.",
+    "snapshot": "Total records",
+    "snapshotHint": "Across all modules",
+    "liveBadge": "Mock data active",
+    "metricsLabel": "Key metrics",
+    "totalLabel": "total",
+    "products": "Products",
+    "projects": "Projects",
+    "testimonials": "Testimonials",
+    "messages": "Messages",
+    "quickLinks": "Quick links",
+    "quickLinksBody": "Jump to the sections you update most often.",
+    "recentMessages": "Recent messages",
+    "recentMessagesBody": "Latest contact and quote enquiries.",
+    "viewAll": "View all",
+    "emptyMessages": "No messages yet.",
+    "hints": {
+      "products": "Catalogue SKUs",
+      "messages": "Inbox items",
+      "testimonials": "Published quotes",
+      "projects": "Case studies"
+    },
+    "links": {
+      "messages": {
+        "title": "Messages",
+        "body": "Read and reply to enquiries"
+      },
+      "company": {
+        "title": "Company",
+        "body": "Profile and leadership"
+      },
+      "services": {
+        "title": "Services",
+        "body": "Manage service lines"
+      },
+      "settings": {
+        "title": "Settings",
+        "body": "Environment defaults"
+      }
+    },
+    "status": {
+      "new": "New",
+      "read": "Read",
+      "archived": "Archived"
+    }
+  },
+  "company": {
+    "title": "Company",
+    "body": "Static company fields come from site configuration. Editable values will persist through the API later.",
+    "name": "Name",
+    "shortName": "Short name",
+    "tagline": "Tagline",
+    "description": "Description",
+    "leadership": "Leadership",
+    "leadershipBody": "CEO and CFO details are loaded from the company API.",
+    "ceoName": "CEO name",
+    "ceoPhone": "CEO phone",
+    "ceoEmail": "CEO email",
+    "cfoName": "CFO name",
+    "cfoPhone": "CFO phone",
+    "cfoEmail": "CFO email",
+    "contact": {
+      "accordion": {
+        "contact": {
+          "title": "Contact details",
+          "body": "Person, email, and phone numbers shown on the contact page."
+        },
+        "office": {
+          "title": "Office details",
+          "body": "Address and map settings for the contact page and directions."
+        }
+      },
+      "fields": {
+        "person": "Contact person",
+        "email": "Email",
+        "mobile": "Mobile",
+        "whatsapp": "WhatsApp",
+        "street": "Street",
+        "city": "City",
+        "state": "State",
+        "country": "Country",
+        "postalCode": "Postal code",
+        "mapQuery": "Map search query"
+      },
+      "placeholders": {
+        "person": "Abbas Officewala",
+        "email": "enquiries@nexquanta.solutions",
+        "mobile": "+91 9727366046",
+        "mobileNumber": "9727366046",
+        "whatsapp": "+91 9727366046",
+        "whatsappNumber": "9727366046",
+        "street": "Aavkar Avenue, Dawoodi Bohra Community Center",
+        "city": "Gandhinagar",
+        "state": "Gujarat",
+        "country": "India",
+        "postalCode": "382421",
+        "mapQuery": "Aavkar Avenue Dawoodi Bohra Community Center Gandhinagar"
+      },
+      "hints": {
+        "mapQuery": "Leave blank to use the formatted office address on the map."
+      },
+      "mapPreview": {
+        "title": "Office location preview",
+        "empty": "Enter an address or map search query to preview the location."
+      },
+      "mapSearch": {
+        "loading": "Searching locations…",
+        "empty": "No matching locations found."
+      },
+      "save": "Save",
+      "saving": "Saving…",
+      "resetAction": "Reset",
+      "confirmReset": {
+        "title": "Reset contact details?",
+        "description": "All contact fields will be cleared across the website.",
+        "confirm": "Reset"
+      },
+      "success": {
+        "title": "Contact details saved",
+        "body": "The contact page and footer details were updated for this session."
+      },
+      "reset": {
+        "title": "Contact details reset",
+        "body": "All contact fields were cleared across the website."
+      },
+      "errors": {
+        "title": "Could not save contact details",
+        "generic": "Try again in a moment.",
+        "validation": "Fix the highlighted fields before saving.",
+        "required": "This field is required.",
+        "invalidEmail": "Enter a valid email address.",
+        "invalidPhone": "Enter a valid phone number."
+      }
+    },
+    "profile": {
+      "accordion": {
+        "ticket": {
+          "title": "On the ticket",
+          "body": "Header copy shown above the company facts ticket on the about page."
+        },
+        "identity": {
+          "title": "Company identity",
+          "body": "Legal name, short name, tagline, description, and founded year."
+        },
+        "facts": {
+          "title": "Ticket rows",
+          "body": "Values shown inside the about page ticket — headquarters, desk, lines, reach, and contact."
+        }
+      },
+      "fields": {
+        "ticketEyebrow": "Ticket eyebrow",
+        "ticketTitle": "Ticket title",
+        "name": "Legal name",
+        "shortName": "Short name",
+        "tagline": "Tagline",
+        "description": "About copy",
+        "foundedYear": "Founded year",
+        "hqCity": "HQ city",
+        "hqState": "HQ state",
+        "hqCountry": "HQ country",
+        "deskAddress": "Desk address",
+        "productLines": "Product lines",
+        "reach": "Lots / reach",
+        "email": "Enquiries email",
+        "phone": "Phone"
+      },
+      "placeholders": {
+        "ticketEyebrow": "On the ticket",
+        "ticketTitle": "Company details. No brochure fog.",
+        "name": "Nexquanta Solutions",
+        "shortName": "Nexquanta",
+        "tagline": "Nuts, bolts, screws, and nails for site and store.",
+        "description": "Describe how the company supplies fasteners for site and store.",
+        "foundedYear": "2026",
+        "hqCity": "Gandhinagar",
+        "hqState": "Gujarat",
+        "hqCountry": "India",
+        "deskAddress": "Aavkar Avenue, Dawoodi Bohra Community Center, Gandhinagar",
+        "productLines": "Bolts, nuts, screws, nails",
+        "reach": "18+ states and export",
+        "email": "enquiries@nexquanta.solutions",
+        "phone": "+91 9727366046",
+        "phoneNumber": "9727366046"
+      },
+      "preview": {
+        "kicker": "About page",
+        "title": "Ticket preview",
+        "body": "Live preview of the company facts ticket visitors see on /about."
+      },
+      "toolbarHint": "Edit ticket copy and company facts, then preview before saving.",
+      "previewAction": "Preview ticket",
+      "previewClose": "Close preview",
+      "save": "Save",
+      "saving": "Saving…",
+      "resetAction": "Reset",
+      "confirmReset": {
+        "title": "Reset company profile?",
+        "description": "All ticket and profile fields will return to site defaults.",
+        "confirm": "Reset"
+      },
+      "success": {
+        "title": "Company profile saved",
+        "body": "The about page ticket was updated for this session."
+      },
+      "reset": {
+        "title": "Company profile reset",
+        "body": "Restored defaults from site configuration."
+      },
+      "errors": {
+        "title": "Could not save company profile",
+        "generic": "Try again in a moment.",
+        "validation": "Fix the highlighted fields before saving.",
+        "required": "This field is required.",
+        "invalidEmail": "Enter a valid email address.",
+        "invalidPhone": "Enter a valid phone number.",
+        "invalidYear": "Enter a valid four-digit year.",
+        "tooShort": "Enter at least a few sentences of about copy."
+      }
+    },
+    "teams": {
+      "summary": "{count, plural, one {# team member} other {# team members}}",
+      "createAction": "Create team member",
+      "table": {
+        "caption": "Team members shown on the about page",
+        "name": "Name",
+        "description": "Description",
+        "role": "Role",
+        "phone": "Phone",
+        "email": "Email",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "actions": {
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "status": {
+        "visible": "Visible",
+        "hidden": "Hidden"
+      },
+      "options": {
+        "yes": "Yes",
+        "no": "No"
+      },
+      "empty": {
+        "title": "No team members yet",
+        "body": "Create a team member to show leadership on the about page."
+      },
+      "create": {
+        "title": "Create team member",
+        "fields": {
+          "memberKey": "Member key",
+          "name": "Full name",
+          "role": "Role",
+          "crunch": "Short tagline",
+          "body": "Profile description",
+          "phone": "Phone",
+          "email": "Email",
+          "image": "Profile photo",
+          "visible": "Show on about page"
+        },
+        "placeholders": {
+          "memberKey": "Enter a member key",
+          "name": "Enter a full name",
+          "role": "Select a role",
+          "crunch": "Enter a short tagline",
+          "body": "Enter a profile description",
+          "phone": "Enter a phone number",
+          "email": "Enter an email address"
+        },
+        "image": {
+          "drop": "Drag and drop an image here",
+          "browse": "Browse files",
+          "change": "Change image",
+          "remove": "Remove",
+          "hint": "JPG or PNG up to 2 MB",
+          "invalidType": "Upload a JPG or PNG image.",
+          "tooLarge": "Image must be 2 MB or smaller."
+        },
+        "save": "Save",
+        "saving": "Saving…",
+        "cancelAction": "Cancel",
+        "success": {
+          "title": "Team member created",
+          "body": "The new team member is available for the about page."
+        },
+        "errors": {
+          "title": "Could not create team member",
+          "generic": "Try again in a moment.",
+          "validation": "Fix the highlighted fields before saving.",
+          "required": "This field is required.",
+          "tooShort": "Enter at least 2 characters.",
+          "invalidValue": "Use lowercase letters, numbers, and hyphens only.",
+          "duplicate": "A member with this key already exists.",
+          "invalidEmail": "Enter a valid email address.",
+          "invalidPhone": "Enter a valid phone number."
+        }
+      },
+      "edit": {
+        "title": "Edit team member",
+        "fields": {
+          "memberKey": "Member key",
+          "name": "Full name",
+          "role": "Role",
+          "crunch": "Short tagline",
+          "body": "Profile description",
+          "phone": "Phone",
+          "email": "Email",
+          "image": "Profile photo",
+          "visible": "Show on about page"
+        },
+        "placeholders": {
+          "memberKey": "Enter a member key",
+          "name": "Enter a full name",
+          "role": "Select a role",
+          "crunch": "Enter a short tagline",
+          "body": "Enter a profile description",
+          "phone": "Enter a phone number",
+          "email": "Enter an email address"
+        },
+        "image": {
+          "drop": "Drag and drop an image here",
+          "browse": "Browse files",
+          "change": "Change image",
+          "remove": "Remove",
+          "hint": "JPG or PNG up to 2 MB",
+          "invalidType": "Upload a JPG or PNG image.",
+          "tooLarge": "Image must be 2 MB or smaller."
+        },
+        "save": "Update",
+        "saving": "Updating…",
+        "cancelAction": "Cancel",
+        "notFound": {
+          "title": "Team member not found",
+          "body": "This team member may have been removed. Return to the members list."
+        },
+        "success": {
+          "title": "Team member updated",
+          "body": "The team member changes were saved for this session."
+        },
+        "errors": {
+          "title": "Could not update team member",
+          "generic": "Try again in a moment.",
+          "validation": "Fix the highlighted fields before saving.",
+          "required": "This field is required.",
+          "tooShort": "Enter at least 2 characters.",
+          "invalidValue": "Use lowercase letters, numbers, and hyphens only.",
+          "duplicate": "A member with this key already exists.",
+          "invalidEmail": "Enter a valid email address.",
+          "invalidPhone": "Enter a valid phone number.",
+          "notFound": "This team member no longer exists."
+        }
+      },
+      "view": {
+        "title": "View team member",
+        "fields": {
+          "memberKey": "Member key",
+          "crunch": "Short tagline",
+          "body": "Profile description",
+          "phone": "Phone",
+          "email": "Email",
+          "visible": "Show on about page"
+        },
+        "status": {
+          "visible": "Visible",
+          "hidden": "Hidden"
+        },
+        "cancelAction": "Cancel",
+        "editAction": "Edit team member",
+        "notFound": {
+          "title": "Team member not found",
+          "body": "This team member may have been removed. Return to the members list."
+        }
+      },
+      "delete": {
+        "confirm": {
+          "title": "Delete team member?",
+          "description": "\"{memberName}\" will be removed from the team members list.",
+          "confirm": "Delete"
+        },
+        "success": {
+          "title": "Team member deleted",
+          "body": "The team member was removed from this session."
+        },
+        "errors": {
+          "title": "Could not delete team member",
+          "generic": "Try again in a moment."
+        }
+      }
+    },
+    "teamMembers": {
+      "roles": {
+        "summary": "{count, plural, one {# role} other {# roles}}",
+        "createAction": "Create role",
+        "table": {
+          "caption": "Team roles used on member profiles",
+          "roleTitle": "Role title",
+          "roleKey": "Role key",
+          "actions": "Actions"
+        },
+        "actions": {
+          "view": "View",
+          "edit": "Edit",
+          "delete": "Delete"
+        },
+        "empty": {
+          "title": "No roles yet",
+          "body": "Create a role to label team members on the about page."
+        },
+        "create": {
+          "title": "Create role",
+          "fields": {
+            "roleTitle": "Role title",
+            "roleKey": "Role key"
+          },
+          "placeholders": {
+            "roleTitle": "Enter a role title",
+            "roleKey": "Enter a role key"
+          },
+          "save": "Save",
+          "saving": "Saving…",
+          "cancelAction": "Cancel",
+          "success": {
+            "title": "Role created",
+            "body": "The new role is available for team members."
+          },
+          "errors": {
+            "title": "Could not create role",
+            "generic": "Try again in a moment.",
+            "validation": "Fix the highlighted fields before saving.",
+            "required": "This field is required.",
+            "tooShort": "Enter at least 2 characters.",
+            "invalidValue": "Use lowercase letters, numbers, and hyphens only.",
+            "duplicate": "A role with this key already exists."
+          }
+        },
+        "view": {
+          "title": "View role",
+          "lede": "Review the role title and key.",
+          "fields": {
+            "roleTitle": "Role title",
+            "roleKey": "Role key"
+          },
+          "cancelAction": "Cancel",
+          "editAction": "Edit role",
+          "notFound": {
+            "title": "Role not found",
+            "body": "This role may have been removed. Return to the roles list."
+          }
+        },
+        "edit": {
+          "title": "Edit role",
+          "fields": {
+            "roleTitle": "Role title",
+            "roleKey": "Role key"
+          },
+          "placeholders": {
+            "roleTitle": "Enter a role title",
+            "roleKey": "Enter a role key"
+          },
+          "save": "Update",
+          "saving": "Updating…",
+          "cancelAction": "Cancel",
+          "backAction": "Back to roles",
+          "success": {
+            "title": "Role updated",
+            "body": "The role changes were saved for this session."
+          },
+          "notFound": {
+            "title": "Role not found",
+            "body": "This role may have been removed. Return to the roles list."
+          },
+          "errors": {
+            "title": "Could not update role",
+            "generic": "Try again in a moment.",
+            "validation": "Fix the highlighted fields before saving.",
+            "required": "This field is required.",
+            "tooShort": "Enter at least 2 characters.",
+            "invalidValue": "Use lowercase letters, numbers, and hyphens only.",
+            "duplicate": "A role with this key already exists.",
+            "notFound": "This role no longer exists."
+          }
+        },
+        "delete": {
+          "confirm": {
+            "title": "Delete role?",
+            "description": "\"{roleTitle}\" will be removed from the roles list.",
+            "confirm": "Delete"
+          },
+          "success": {
+            "title": "Role deleted",
+            "body": "The role was removed from this session."
+          },
+          "errors": {
+            "title": "Could not delete role",
+            "generic": "Try again in a moment."
+          }
+        }
+      }
+    },
+    "social": {
+      "columns": {
+        "platform": "Platform",
+        "url": "Profile URL",
+        "visible": "Visible"
+      },
+      "urlLabel": "Profile URL",
+      "placeholders": {
+        "linkedin": "https://www.linkedin.com/company/nexquanta-solutions",
+        "whatsapp": "https://wa.me/919727366046",
+        "instagram": "https://www.instagram.com/nexquanta",
+        "facebook": "https://www.facebook.com/nexquanta",
+        "youtube": "https://www.youtube.com/@nexquanta",
+        "twitter": "https://x.com/nexquanta"
+      },
+      "visibility": {
+        "label": "Website",
+        "switchLabel": "{platform} on website",
+        "show": "Shown",
+        "hide": "Hidden",
+        "showAction": "Show {platform} on website",
+        "hideAction": "Hide {platform} on website"
+      },
+      "save": "Save",
+      "saving": "Saving…",
+      "resetAction": "Reset",
+      "confirmReset": {
+        "title": "Reset social links?",
+        "description": "All profile URLs will be cleared and every platform will be hidden across the website.",
+        "confirm": "Reset"
+      },
+      "confirmHide": {
+        "title": "Hide {platform}?",
+        "description": "{platform} will no longer appear anywhere on the website until you show it again and save.",
+        "confirm": "Hide"
+      },
+      "hideSuccess": {
+        "title": "{platform} hidden",
+        "body": "Save your changes to apply this across the website."
+      },
+      "showSuccess": {
+        "title": "{platform} shown",
+        "body": "Save your changes to apply this across the website."
+      },
+      "success": {
+        "title": "Social links saved",
+        "body": "Website social icons were updated for this session."
+      },
+      "reset": {
+        "title": "Social links reset",
+        "body": "All profile URLs were cleared and every platform was hidden across the website."
+      },
+      "errors": {
+        "title": "Could not save links",
+        "generic": "Try again in a moment.",
+        "validation": "Fix the highlighted profile URLs before saving.",
+        "required": "This field is required.",
+        "requiredUrl": "Enter a profile URL before showing {platform}.",
+        "invalidUrl": "Enter a valid URL or WhatsApp number."
+      }
+    }
+  },
+  "common": {
+    "modal": {
+      "eyebrow": "Confirm action",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "close": "Close dialog",
+      "working": "Working…"
+    },
+    "imageUpload": {
+      "hintJpgPng2Mb": "JPG or PNG up to 2 MB",
+      "invalidTypeJpgPng": "Upload a JPG or PNG image.",
+      "tooLarge2Mb": "Image must be 2 MB or smaller."
+    }
+  },
+  "tables": {
+    "title": "Title",
+    "client": "Client",
+    "industry": "Industry",
+    "author": "Author",
+    "category": "Category",
+    "status": "Status",
+    "email": "Email",
+    "created": "Received",
+    "empty": "Nothing here yet."
+  },
+  "settings": {
+    "title": "Settings",
+    "body": "Environment and locale defaults. Secrets stay on the backend.",
+    "environment": "Environment",
+    "apiUrl": "API URL",
+    "defaultLocale": "Default locale"
+  }
+}

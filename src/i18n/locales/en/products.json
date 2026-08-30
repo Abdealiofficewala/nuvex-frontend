@@ -1,0 +1,49 @@
+{
+  "title": "Products",
+  "eyebrow": "Catalogue",
+  "lede": "Currently in stock sizes — counted, graded, and ready to quote.",
+  "heroImageAlt": "Assorted hex bolts, nuts, screws, and nails sorted for catalogue packing",
+  "types": [
+    "Hex bolts",
+    "Nuts",
+    "Machine screws",
+    "Self-tappers",
+    "Wire nails",
+    "Concrete nails"
+  ],
+  "all": "All lines",
+  "search": "Search fasteners",
+  "showing": "{count} of {total} products",
+  "emptyEyebrow": "No match",
+  "emptyTitle": "Nothing in this cut of the catalogue.",
+  "emptyLede": "Try another line or type, or clear the filters.",
+  "filters": {
+    "title": "Filters",
+    "line": "Product line",
+    "type": "Type",
+    "typeAll": "All types",
+    "more": "More",
+    "featured": "Featured only",
+    "applied": "Selected",
+    "clear": "Clear all",
+    "close": "Close",
+    "viewResults": "View {count} products"
+  },
+  "detail": {
+    "specifications": "Specifications",
+    "features": "Features",
+    "applications": "Applications",
+    "materials": "Materials",
+    "related": "Related hardware",
+    "relatedEyebrow": "Same range",
+    "relatedLede": "Other fasteners from this line, in current stock sizes.",
+    "relatedBrowse": "Full catalogue",
+    "enquire": "Enquire on this product",
+    "id": "ID",
+    "sizes": "Stock sizes",
+    "back": "All products",
+    "quoteEyebrow": "Specify this part",
+    "quoteTitle": "Request a quotation with this fastener selected.",
+    "quoteBody": "Size, grade, finish, and quantity are enough. We will return a rate and a packing week."
+  }
+}

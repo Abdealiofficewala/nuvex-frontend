@@ -1,0 +1,189 @@
+{
+  "meta": {
+    "title": "Industries we supply",
+    "description": "Fasteners for construction sites, manufacturing floors, automotive shops, electrical panels, infrastructure plant, and machinery stores."
+  },
+  "hero": {
+    "eyebrow": "Industries",
+    "title": "Every sector runs on the same sizes — packed the way stores issue them.",
+    "lede": "From formwork nails to machine-frame bolts, we supply matched lots for contractors, OEMs, and maintenance stores who refill the same bin every month.",
+    "ctaQuote": "Request a lot",
+    "ctaProducts": "Browse catalogue",
+    "imageAlt": "Industrial fasteners used across construction and manufacturing"
+  },
+  "overview": {
+    "eyebrow": "Coverage",
+    "title": "Six sectors. One packing standard.",
+    "lede": "Each industry gets grade-marked fasteners counted and labelled — not a mixed handful from three mills.",
+    "items": [
+      {
+        "title": "Site to plant",
+        "body": "Construction, infrastructure, and machinery stores share the same metric sizes — M8 to M24 bolts, wire nails, anchor sets."
+      },
+      {
+        "title": "Shop-floor ready",
+        "body": "Manufacturing and automotive lines get prevailing-torque nuts and machine screws that still undo after a year of vibration."
+      },
+      {
+        "title": "Panel and plant",
+        "body": "Electrical cabinets and outdoor frames receive pan-head screws and galvanized hex sets sized for the drawing, not leftover tins."
+      }
+    ]
+  },
+  "grid": {
+    "eyebrow": "Sector detail",
+    "title": "Where our fasteners land — and what they hold together.",
+    "lede": "Open a sector for typical uses, what we supply, and what to send for a quote.",
+    "applicationsLabel": "Typical uses",
+    "viewSector": "View sector",
+    "navLabel": "Industry sectors"
+  },
+  "detail": {
+    "back": "All industries",
+    "applicationsLabel": "Typical uses",
+    "highlightsLabel": "What we supply",
+    "requirementsLabel": "What to send for a quote",
+    "quote": "Request quotation",
+    "quoteTitle": "Need fasteners for {sector}?",
+    "quoteBody": "Diameter, length, grade, finish, and quantity are enough. We will return a counted lot — not a mixed handful.",
+    "relatedEyebrow": "Other sectors",
+    "related": "Related industries",
+    "relatedLede": "Other sectors that refill the same metric sizes from our four product lines.",
+    "relatedBrowse": "View all sectors"
+  },
+  "sectors": {
+    "construction": {
+      "body": "Contractors order wire nails by kilogram, concrete nails by length, and foundation bolts by diameter — not by a machine drawing. We pack each lot counted and labelled so a site crate can be issued straight to formwork, masonry, or steel fixers.",
+      "highlights": [
+        "Wire nails in kg bags — 1\", 1.5\", 2\", 2.5\", 3\" and custom lengths",
+        "Concrete nails for masonry battens and shuttering plates",
+        "Foundation anchor bolts M12 to M24 with matching nuts and washers",
+        "Hex bolts for site steel connections — plain or galvanized finish"
+      ],
+      "requirements": [
+        "Nail length or bolt diameter and length",
+        "Finish — plain, zinc, or hot-dip galvanized",
+        "Quantity by count, kg, or set",
+        "Site location if outdoor exposure matters"
+      ]
+    },
+    "industrial-manufacturing": {
+      "body": "Machine builders need grade-marked bolts and prevailing-torque nuts that still undo after a year on the line. We gauge bolts and nuts as matched pairs so a guard rail or conveyor joint does not mix two mills on one connection.",
+      "highlights": [
+        "Hex bolts 8.8 and 10.9 with grade-marked heads",
+        "Nyloc and prevailing-torque lock nuts in matched thread gauges",
+        "M6 to M20 sets for machine frames and guard assemblies",
+        "Stainless sets where wash-down or chemical exposure applies"
+      ],
+      "requirements": [
+        "Diameter, length, and grade (8.8, 10.9, A2, A4)",
+        "Nut type — full, nyloc, or flange",
+        "Quantity per assembly or monthly refill volume",
+        "Drawing reference if a non-standard length applies"
+      ]
+    },
+    "automotive": {
+      "body": "Body shops and fixture builders cannot have a joint walk off under vibration. We supply machine screws and lock nuts in the sizes a service kit or jig already uses — packed so a stores bin can be refilled without a new part number.",
+      "highlights": [
+        "Machine screws M4 to M8 in pan, CSK, and hex head",
+        "Prevailing-torque nuts for fixtures and service kits",
+        "Metric sets for jig plates and body-hold hardware",
+        "Counted bags sized for monthly shop-floor refills"
+      ],
+      "requirements": [
+        "Screw diameter, length, and head type",
+        "Lock-nut specification if vibration-critical",
+        "Kit quantity or monthly usage estimate",
+        "Finish requirement — plain, zinc, or black oxide"
+      ]
+    },
+    "electrical": {
+      "body": "Panel shops should not mix leftover hardware from three tins. We supply M3 to M6 machine screws in pan and CSK so PLC cabinets, junction boxes, and nameplates get a consistent lot every reorder.",
+      "highlights": [
+        "Pan-head and CSK machine screws M3 to M6",
+        "Thread lengths matched to standard panel thicknesses",
+        "Stainless screws for outdoor or humid enclosures",
+        "Counted sets for recurring panel SKUs"
+      ],
+      "requirements": [
+        "Screw size, length, and head style",
+        "Panel material and thickness if unsure on length",
+        "Stainless grade if specified (A2 or A4)",
+        "Monthly volume or per-SKU count"
+      ]
+    },
+    "infrastructure": {
+      "body": "Pump bases, shed columns, and utility frames sit outdoors through monsoon season. Hot-dip or zinc hex sets and anchor bolts leave our bay marked and counted — rust on the first rain is not acceptable on a base plate joint.",
+      "highlights": [
+        "Anchor bolt sets with template-ready lengths",
+        "Hot-dip galvanized hex bolts and nuts M16 to M24",
+        "Full sets — bolt, nut, and washer gauged together",
+        "Foundation and column bases for outdoor plant"
+      ],
+      "requirements": [
+        "Anchor diameter, embedment length, and projection",
+        "Galvanizing specification — zinc or hot-dip",
+        "Base plate thickness and hole pattern if known",
+        "Project quantity and dispatch schedule"
+      ]
+    },
+    "machinery": {
+      "body": "OEM kitting and MRO stores need standard metric sizes held as stock items — not one-off specials every reorder. We pack bolts and nuts in the sizes a drawing already calls out so a sub-assembly bin refills without a new part number.",
+      "highlights": [
+        "Standard metric hex bolts and nuts M6 to M24",
+        "OEM kit sets packed by assembly reference",
+        "MRO refill bins in counted bags or kg lots",
+        "Grade-marked lots for traceable sub-assembly builds"
+      ],
+      "requirements": [
+        "Part list or drawing reference",
+        "Diameter, length, grade, and finish per line item",
+        "Kit quantity or bin refill cycle",
+        "Matched bolt-and-nut pairs where required"
+      ]
+    }
+  },
+  "support": {
+    "eyebrow": "How we serve",
+    "title": "From enquiry to your site",
+    "lede": "Four clear steps — from your size list to a counted lot leaving our Gandhinagar bay.",
+    "stepLabel": "Step",
+    "steps": [
+      {
+        "n": "01",
+        "title": "Send the size list",
+        "body": "Diameter, length, grade, finish, and quantity — or a drawing reference. That is enough to return a rate.",
+        "image": "/images/hero/hero-assembly.jpg",
+        "imageAlt": "Assorted fasteners sorted by size for a packing list enquiry"
+      },
+      {
+        "n": "02",
+        "title": "Matched as pairs",
+        "body": "Bolts and nuts are gauged together. Grade is marked on the head so a store bin does not mix two mills on one joint.",
+        "image": "/images/products/nx-hex-bolt.jpg",
+        "imageAlt": "Hex bolt and matching nut gauged as a pair with grade on the head"
+      },
+      {
+        "n": "03",
+        "title": "Counted before dispatch",
+        "body": "Every bag and crate is counted in Gandhinagar. The packing list must match the lot before it is sealed.",
+        "image": "/images/company/about-workers.jpg",
+        "imageAlt": "Workers counting and labelling fastener bags in the packing bay"
+      },
+      {
+        "n": "04",
+        "title": "Depart from our bay",
+        "body": "Labelled crates leave Gandhinagar for your site, shop, or plant — the same counted lot, ready to issue on arrival.",
+        "image": "/images/infrastructure/workshop.jpg",
+        "imageAlt": "Packed fastener crates leaving the Nexquanta workshop bay"
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Next step",
+    "title": "Tell us the sector and the sizes you refill.",
+    "body": "Name, phone, and a short note are enough. We will call you back with a counted lot — not a catalogue essay.",
+    "quote": "Request quotation",
+    "contact": "Contact desk"
+  }
+}

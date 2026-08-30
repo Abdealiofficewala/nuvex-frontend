@@ -1,0 +1,112 @@
+{
+  "hero": {
+    "eyebrow": "Fasteners",
+    "title": "Nuts, bolts, screws — ready to pack.",
+    "titleLines": [
+      "Nuts, bolts, screws,",
+      "and nails —",
+      "ready to pack."
+    ],
+    "body": "Nuts, bolts, screws, and nails for fabrication, construction, and maintenance stores. Grade, size, and finish on the ticket — not a mixed bag from three mills.",
+    "imageAlt": "Assorted nuts, bolts, screws, and nails sorted for packing",
+    "ctaIndustries": "Browse industries"
+  },
+  "featured": {
+    "eyebrow": "Lead fastener"
+  },
+  "categories": {
+    "eyebrow": "Product lines",
+    "title": "Bolts, nuts, screws, and nails.",
+    "lede": "Grouped the way a store bins them.",
+    "prevLine": "Previous product line",
+    "nextLine": "Next product line"
+  },
+  "products": {
+    "eyebrow": "Catalogue",
+    "title": "Current sizes, ready to count.",
+    "lede": "Lead sizes and featured lines from our four product categories."
+  },
+  "why": {
+    "eyebrow": "Why Nexquanta",
+    "title": "We sell a matched lot, not a mixed handful.",
+    "fit": {
+      "title": "Thread that matches the nut",
+      "body": "Bolts and nuts are gauged as a pair so a site crate does not mix two mills on one joint."
+    },
+    "trace": {
+      "title": "Grade-marked on the head",
+      "body": "8.8, 10.9, and stainless lots stay identified from bag to bin, not lost on a shared pallet."
+    },
+    "floor": {
+      "title": "Packed the way stores issue them",
+      "body": "Count, kilogram, or set packing so a contractor can order like a store, not like a catalogue essay."
+    }
+  },
+  "industries": {
+    "eyebrow": "Where they go",
+    "title": "Six sectors — same sizes, every month.",
+    "viewSector": "View sector",
+    "viewAll": "View all sectors",
+    "prevSector": "Previous sector",
+    "nextSector": "Next sector"
+  },
+  "process": {
+    "eyebrow": "How we serve",
+    "title": "From enquiry to your site",
+    "lede": "Four clear steps — from your size list to a counted lot leaving our Gandhinagar bay.",
+    "stepLabel": "Step",
+    "steps": [
+      {
+        "n": "01",
+        "title": "Send the size list",
+        "body": "Diameter, length, grade, finish, and quantity — or a drawing reference. That is enough to return a rate.",
+        "image": "/images/hero/hero-assembly.jpg",
+        "imageAlt": "Assorted fasteners sorted by size for a packing list enquiry"
+      },
+      {
+        "n": "02",
+        "title": "Matched as pairs",
+        "body": "Bolts and nuts are gauged together. Grade is marked on the head so a store bin does not mix two mills on one joint.",
+        "image": "/images/products/nx-hex-bolt.jpg",
+        "imageAlt": "Hex bolt and matching nut gauged as a pair with grade on the head"
+      },
+      {
+        "n": "03",
+        "title": "Counted before dispatch",
+        "body": "Every bag and crate is counted in Gandhinagar. The packing list must match the lot before it is sealed.",
+        "image": "/images/company/about-workers.jpg",
+        "imageAlt": "Workers counting and labelling fastener bags in the packing bay"
+      },
+      {
+        "n": "04",
+        "title": "Depart from our bay",
+        "body": "Labelled crates leave Gandhinagar for your site, shop, or plant — the same counted lot, ready to issue on arrival.",
+        "image": "/images/infrastructure/workshop.jpg",
+        "imageAlt": "Packed fastener crates leaving the Nexquanta workshop bay"
+      }
+    ]
+  },
+  "infrastructure": {
+    "eyebrow": "Works",
+    "title": "Threading, finishing, and despatch under one roof.",
+    "body": "Bolts are headed and rolled, nuts are tapped, nails are drawn, and orders leave counted."
+  },
+  "testimonials": {
+    "eyebrow": "From the floor",
+    "title": "What arrived, and what it did."
+  },
+  "faq": {
+    "eyebrow": "Before you enquire",
+    "title": "Lead times, drawings & records.",
+    "titleLines": ["Lead times, drawings", "& records."],
+    "lede": "Quick answers before you send a size list.",
+    "contact": "Send your size list"
+  },
+  "cta": {
+    "eyebrow": "Next step",
+    "title": "Tell us the sizes you refill every month.",
+    "body": "Name, phone, and a short note are enough. We will call you back with a counted lot — not a catalogue essay.",
+    "quote": "Request quotation",
+    "contact": "Contact desk"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "eyebrow": "कोटेशन",
+  "title": "फास्टनर चुनें। साइज़ हमारे पास है।",
+  "lede": "कैटलॉग से बोल्ट, नट, स्क्रू या कील चुनें। ग्रेड और साइज़ उत्पाद से आते हैं, फ़ॉर्म से नहीं।",
+  "pickerLabel": "कैटलॉग",
+  "previewEmpty": "आइटम देखने के लिए फास्टनर चुनें।",
+  "customTitle": "कैटलॉग में नहीं",
+  "customBody": "व्यास, लंबाई, ग्रेड और फिनिश बताएँ। नोट में साइज़ लिस्ट काफी है।",
+  "selected": "चयनित",
+  "fromCatalogue": "कैटलॉग से",
+  "preview": {
+    "features": "विशेषताएँ",
+    "applications": "उपयोग",
+    "sizes": "कैटलॉग साइज़",
+    "size": "साइज़"
+  },
+  "ticketEyebrow": "कोट टिकट",
+  "ticketTitle": "यह किसे भेजें?",
+  "ticketLede": "पार्ट चुनें, फिर मात्रा और संपर्क लिखें।",
+  "form": {
+    "name": "नाम",
+    "email": "ईमेल",
+    "phone": "फ़ोन",
+    "company": "कंपनी",
+    "category": "श्रेणी",
+    "categoryPlaceholder": "श्रेणी चुनें",
+    "subcategory": "उपश्रेणी",
+    "subcategoryPlaceholder": "उपश्रेणी चुनें",
+    "subcategoryDisabled": "पहले श्रेणी चुनें",
+    "product": "उत्पाद",
+    "productPlaceholder": "उत्पाद चुनें",
+    "productDisabled": "पहले श्रेणी चुनें",
+    "productCustom": "कैटलॉग में नहीं",
+    "size": "साइज़",
+    "sizePlaceholder": "साइज़ चुनें",
+    "sizeDisabled": "पहले उत्पाद चुनें",
+    "quantity": "मात्रा",
+    "quantityPlaceholder": "जैसे 40",
+    "note": "वैकल्पिक नोट",
+    "noteCustom": "क्या कोट करें?",
+    "notePlaceholder": "लीड टाइम, पैकिंग या ड्रॉइंग नंबर — वैकल्पिक",
+    "submit": "कोटेशन माँगें",
+    "sending": "भेजा जा रहा है…",
+    "success": "मिल गया। चयनित पार्ट पर कोट भेजेंगे।",
+    "error": "अभी भेज नहीं सके। कृपया फिर कोशिश करें।"
+  },
+  "errors": {
+    "nameRequired": "कृपया अपना नाम लिखें।",
+    "emailInvalid": "कृपया सही ईमेल लिखें।",
+    "productRequired": "कृपया एक उत्पाद चुनें।",
+    "sizeRequired": "कृपया साइज़ चुनें।",
+    "quantityRequired": "कृपया मात्रा लिखें।",
+    "noteRequired": "कृपया कस्टम पार्ट बताएँ।"
+  },
+  "successPage": {
+    "eyebrow": "कोटेशन मिल गया",
+    "title": "अनुरोध हमारे पास है।",
+    "lede": "पार्ट और आपका संपर्क मिल गया। स्पेसिफिकेशन आगे भेजा जाएगा।",
+    "home": "होम पर जाएँ",
+    "another": "एक और कोटेशन माँगें"
+  }
+}

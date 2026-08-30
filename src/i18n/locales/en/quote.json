@@ -1,0 +1,62 @@
+{
+  "eyebrow": "Quotation",
+  "title": "Pick the fastener. We already hold the size.",
+  "lede": "Select bolts, nuts, screws, or nails from the catalogue. Grade and size come from the product, not from another form.",
+  "pickerLabel": "Catalogue",
+  "previewEmpty": "Select a fastener to see the item.",
+  "customTitle": "Not in the catalogue",
+  "customBody": "Tell us diameter, length, grade, and finish. A size list in the note is enough.",
+  "selected": "Selected",
+  "fromCatalogue": "From catalogue",
+  "preview": {
+    "features": "Features",
+    "applications": "Applications",
+    "sizes": "Catalogue sizes",
+    "size": "Size"
+  },
+  "ticketEyebrow": "Quote ticket",
+  "ticketTitle": "Who should we send it to?",
+  "ticketLede": "Choose the part, then add quantity and contact.",
+  "form": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "company": "Company",
+    "category": "Category",
+    "categoryPlaceholder": "Select a category",
+    "subcategory": "Subcategory",
+    "subcategoryPlaceholder": "Select a subcategory",
+    "subcategoryDisabled": "Select a category first",
+    "product": "Product",
+    "productPlaceholder": "Select a product",
+    "productDisabled": "Select a category first",
+    "productCustom": "Not in the catalogue",
+    "size": "Size",
+    "sizePlaceholder": "Select a size",
+    "sizeDisabled": "Select a product first",
+    "quantity": "Quantity",
+    "quantityPlaceholder": "e.g. 500",
+    "note": "Optional note",
+    "noteCustom": "What should we quote?",
+    "notePlaceholder": "Lead time, packing, or a drawing number — optional",
+    "submit": "Request quotation",
+    "sending": "Sending…",
+    "success": "Received. We will quote against the selected part.",
+    "error": "We could not send that just now. Please try again."
+  },
+  "errors": {
+    "nameRequired": "Please add your name.",
+    "emailInvalid": "Please add a valid email.",
+    "productRequired": "Please select a product.",
+    "sizeRequired": "Please select a size.",
+    "quantityRequired": "Please add a quantity.",
+    "noteRequired": "Please describe the custom part."
+  },
+  "successPage": {
+    "eyebrow": "Quotation received",
+    "title": "The request is with us.",
+    "lede": "We have the part and your contact. A specification will follow.",
+    "home": "Back to home",
+    "another": "Request another quotation"
+  }
+}

@@ -1,0 +1,52 @@
+---
+description: Admin create/edit/view form UX standards (team roles reference implementation)
+globs: src/components/admin/**/*.tsx,src/app/**/admin/**/*.tsx,src/i18n/locales/**/admin.json
+alwaysApply: false
+---
+
+# Admin form standards
+
+When building or updating admin **create**, **edit**, or **view** flows, follow the team-roles reference (`TeamRoleForm`, `ViewTeamRoleDetail`).
+
+## Page shell
+- Use `AdminPage` with `hideDescription` on create/edit (no lede under title).
+- Register sub-routes in `src/lib/admin-menu.ts` (`ADMIN_HEADER_ROUTE_RULES`) so the header title is dynamic (e.g. "Create a role", "Edit role", "View role") — not "Dashboard".
+- Add matching keys under `admin.header.pages` in EN/HI i18n.
+
+## Create + edit form (one component)
+- Single form component with optional edit prop (e.g. `editValue?: string`); delete separate create/edit files.
+- Form class: `admin-create-form` (+ domain class e.g. `admin-role-form`).
+- Use responsive grids: `admin-form-grid admin-form-grid--2` / `--3` for 2–3 fields per row; full-width fields use `admin-form-grid__full`.
+- Simple forms (e.g. roles) can use a single `--2` row for all fields on one line.
+- Use `AdminFormField` for text inputs — do not hand-roll label/input/error markup.
+- Use `AdminImageUpload` for photos — pass `constraints` (`accept`, `maxSizeBytes`) and `labels` via `buildAdminImageUploadLabels()` (`drop`, `browse`, `change`, `remove`, `hint`).
+- Empty initial values; placeholders like "Enter a role title" (EN/HI i18n).
+- No hint text under fields.
+
+## Labels & buttons
+- Field labels: title case, **not** ALL CAPS (`text-transform: none` on view `dt`; create uses `AdminFieldLabel`).
+- Required fields: red `*` via `AdminFieldLabel`; label color stays navy on error.
+- Actions: **Cancel** + submit only. Normal case (no uppercase buttons).
+- Submit label: **Save** (create), **Update** (edit). Saving: "Saving…" / "Updating…".
+- **Cancel** always returns to the **listing page** (`router.push` + `type="button"`), not view/detail.
+
+## Validation
+- Live validation each render from `validate*` helpers — avoid stale `errors` state.
+- Per-field `touchedFields`: show errors only for fields the user touched (or after submit touches all).
+- Save/Update **disabled** until the form is fully valid.
+- Show red border + error text below field when invalid (including required: "This field is required.").
+- Do not leak errors across fields (typing in field A must not show errors on field B).
+
+## View / detail page
+- Field labels match create/edit styling (title case, not uppercase).
+- Secondary action: **Cancel** (not "Back to …") → listing page.
+- Primary action: **Edit …** (or domain equivalent).
+
+## i18n
+- Separate namespaces for create, edit, view under `admin.company.*` (or domain equivalent).
+- Include: `fields`, `placeholders`, `save`/`saving`, `cancelAction`, `errors.*`, `success.*`.
+
+## Shared components (reuse, do not duplicate)
+- `AdminFormField`, `AdminFormTextarea`, `AdminFieldLabel`, `AdminFieldError`, `AdminImageUpload`, `AdminPhoneField`
+- Validation helpers in `src/lib/validations/`
+- `shouldShowFieldErrorMessage` in `src/lib/validations/common.ts`

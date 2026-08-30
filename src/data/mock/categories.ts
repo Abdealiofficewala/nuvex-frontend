@@ -1,0 +1,32 @@
+import type { ProductCategory } from "@/types/product";
+
+export const mockCategories: ProductCategory[] = [
+  {
+    id: "cat-bolts",
+    slug: "bolts",
+    name: "Bolts",
+    summary: "Hex and anchor bolts in the sizes a drawing actually calls up.",
+    image: "/images/categories/bolts.jpg",
+  },
+  {
+    id: "cat-nuts",
+    slug: "nuts",
+    name: "Nuts",
+    summary: "Hex and lock nuts matched to the bolt thread, not mixed mill leftovers.",
+    image: "/images/categories/nuts.jpg",
+  },
+  {
+    id: "cat-screws",
+    slug: "screws",
+    name: "Screws",
+    summary: "Machine and self-tapping screws for panels, sheet, and light frames.",
+    image: "/images/categories/screws.jpg",
+  },
+  {
+    id: "cat-nails",
+    slug: "nails",
+    name: "Nails",
+    summary: "Wire and concrete nails packed by length, weight, or count.",
+    image: "/images/categories/nails.jpg",
+  },
+];

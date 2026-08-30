@@ -1,0 +1,60 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Company",
+    "products": "Products",
+    "industries": "Industries",
+    "contact": "Contact",
+    "quote": "Request quotation",
+    "menu": "Menu",
+    "closeMenu": "Close menu"
+  },
+  "ticker": [
+    "Grade on the head.",
+    "Count in the crate.",
+    "Four lines. No theatre.",
+    "Thread that turns. Nail that drives.",
+    "If the nut does not fit, it is not a lot.",
+    "Packed like a store issues them."
+  ],
+  "cta": {
+    "enquire": "Send enquiry",
+    "viewProducts": "View products",
+    "viewProduct": "View product",
+    "requestQuote": "Request quotation",
+    "learnMore": "Learn more"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "hi": "हिन्दी"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "company": "Company",
+    "products": "Product lines",
+    "connect": "Contact",
+    "social": "Follow us",
+    "ctaEyebrow": "Need fasteners",
+    "ctaTitle": "Send the size list. We will return a rate.",
+    "ctaBody": "Diameter, length, grade, and quantity are enough to start."
+  },
+  "empty": {
+    "contact": "Contact details will appear here once they are published."
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "title": "This page could not be found.",
+    "lede": "The address is wrong, or the page has moved. Go home, or open the catalogue to continue.",
+    "home": "Back to home",
+    "products": "Open catalogue",
+    "imageAlt": "Empty crate on a workshop bench with loose bolts and nuts"
+  },
+  "error": {
+    "eyebrow": "Something broke",
+    "title": "This page could not finish loading.",
+    "lede": "Try again. If it still fails, go back to the home page.",
+    "retry": "Try again",
+    "home": "Back to home"
+  }
+}

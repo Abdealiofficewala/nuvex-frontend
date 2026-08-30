@@ -1,0 +1,122 @@
+{
+  "eyebrow": "Company",
+  "title": "Grade on the head. Count in the crate.",
+  "lede": "Nexquanta supplies nuts, bolts, screws, and nails the way a store issues them: marked, sized, and counted. No mixed handfuls. No mystery mill.",
+  "ctaQuote": "Request a lot",
+  "ctaProducts": "Open the bins",
+  "heroImageAlt": "Hex bolts and nuts in a packing bay",
+  "story": {
+    "eyebrow": "How we work",
+    "title": "Real people count every bag before it leaves.",
+    "body": "We supply four product lines only — bolts, nuts, screws, and nails. That keeps your drawing, store bin, and packing list aligned.",
+    "points": [
+      "Each size and grade is marked clearly on the head or bag.",
+      "Bolts and nuts are matched as pairs, not mixed from different mills.",
+      "Every crate is counted in Gandhinagar before dispatch."
+    ],
+    "pull": "When you open the bag on site, the next piece should be the same as the last.",
+    "mediaAlt": "Workers counting and packing fasteners in Gandhinagar"
+  },
+  "process": {
+    "eyebrow": "Your order",
+    "title": "How your lot is prepared",
+    "lede": "From raw wire to a labelled bag — four clear checks before anything leaves our bay.",
+    "steps": [
+      {
+        "n": "01",
+        "title": "Pick the right wire",
+        "body": "We know the coil and heat lot before heading or drawing starts. No shared mystery stock."
+      },
+      {
+        "n": "02",
+        "title": "Make the thread",
+        "body": "Bolts are rolled, nuts are tapped, screws are pointed, and nails are drawn to the size on your list."
+      },
+      {
+        "n": "03",
+        "title": "Mark the grade",
+        "body": "8.8, 10.9, stainless — the head shows what is inside the bag. If it is not marked, it is not sold."
+      },
+      {
+        "n": "04",
+        "title": "Count and pack",
+        "body": "Kilograms, pieces, or sets. The packing list must match the bag, or the bag stays on the bay."
+      }
+    ]
+  },
+  "lines": {
+    "eyebrow": "Products",
+    "title": "Four lines. Everything a site store needs.",
+    "lede": "Standard fasteners for fabrication, construction, and maintenance — not a mixed catalogue.",
+    "items": [
+      {
+        "key": "bolts",
+        "name": "Bolts",
+        "line": "For joints that carry load",
+        "body": "Hex bolts and anchor bolts in common grades and sizes. Marked heads, ready for site and steel work."
+      },
+      {
+        "key": "nuts",
+        "name": "Nuts",
+        "line": "Matched to the bolt",
+        "body": "Hex and nylon-lock nuts paired to the bolt size. No leftover mill mix in the same bag."
+      },
+      {
+        "key": "screws",
+        "name": "Screws",
+        "line": "For panels and light frames",
+        "body": "Machine screws and self-tapping screws for sheet metal, panels, and assembly work."
+      },
+      {
+        "key": "nails",
+        "name": "Nails",
+        "line": "By length, kilo, or piece",
+        "body": "Wire nails and concrete nails for timber and masonry — counted and packed for the store."
+      }
+    ]
+  },
+  "promise": {
+    "eyebrow": "How we sell",
+    "title": "A bin you can trust on a Monday morning.",
+    "items": [
+      { "title": "One mill per bag", "body": "We do not top up a short count with another coil." },
+      { "title": "Finish you asked for", "body": "Zinc, black, or galvanized — written on the ticket, not guessed at the gate." },
+      { "title": "Packed for stores", "body": "Issue it like a storekeeper, not like a catalogue essay." }
+    ]
+  },
+  "desk": {
+    "eyebrow": "The team",
+    "title": "Talk to the desk, not a call centre.",
+    "lede": "If a count is short or a thread does not fit, you reach the people who run the house — not a ticket queue.",
+    "prev": "Previous",
+    "next": "Next"
+  },
+  "people": [
+    {
+      "key": "ceo",
+      "role": "Founder & CEO",
+      "crunch": "Sales, standards, and what leaves the gate.",
+      "body": "Leads product selection, customer lots, and quality calls. Your enquiry lands here first."
+    },
+    {
+      "key": "cfo",
+      "role": "Chief Financial Officer",
+      "crunch": "Books, billing, and long-term supply.",
+      "body": "Handles finance, vendor payments, and the numbers behind every crate."
+    }
+  ],
+  "facts": {
+    "eyebrow": "On the ticket",
+    "title": "Company details. No brochure fog.",
+    "legal": "Legal name",
+    "founded": "Founded",
+    "hq": "Headquarters",
+    "desk": "Desk",
+    "lines": "Product lines",
+    "linesValue": "Bolts, nuts, screws, nails",
+    "reach": "Lots",
+    "reachValue": "18+ states and export",
+    "enquiries": "Enquiries",
+    "phone": "Phone"
+  }
+}

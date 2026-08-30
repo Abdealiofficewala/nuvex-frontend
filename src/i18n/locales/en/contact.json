@@ -1,0 +1,36 @@
+{
+  "eyebrow": "Contact",
+  "title": "Get in touch",
+  "lede": "Leave your details. We will get back to you.",
+  "formEyebrow": "Write to us",
+  "formTitle": "Send a message",
+  "formLede": "Fill in the form and we will contact you.",
+  "info": {
+    "person": "Contact",
+    "personBody": "Sales and specification, Gandhinagar.",
+    "mobile": "Mobile",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "address": "Works / office",
+    "social": "Follow"
+  },
+  "map": {
+    "title": "Works / office",
+    "directions": "Get directions"
+  },
+  "form": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "company": "Company",
+    "message": "Message",
+    "submit": "Send message",
+    "success": "Thank you. We will contact you shortly.",
+    "error": "We could not send that just now. Please try again."
+  },
+  "errors": {
+    "nameRequired": "Please add your name.",
+    "emailInvalid": "Please add a valid email.",
+    "messageShort": "Please write a short message."
+  }
+}
