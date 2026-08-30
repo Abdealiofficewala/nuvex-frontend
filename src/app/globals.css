@@ -47,7 +47,7 @@
   --radius-md: 8px;
   --radius-lg: 12px;
   --container: 1180px;
-  --gutter: 20px;
+  --gutter: clamp(20px, 2vw, 48px);
   --inline-pad: var(--gutter);
   --header-height: 80px;
   --measure: 38rem;
