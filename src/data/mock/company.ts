@@ -2,7 +2,7 @@ import { siteConfig } from "@/config/site.config";
 import type { Company, CompanyLeader, CompanyLeadership } from "@/types/company";
 
 export const mockCompany: Company = {
-  id: "company-nexquanta",
+  id: "company-hakimi",
   name: siteConfig.company.name,
   shortName: siteConfig.company.shortName,
   tagline: siteConfig.company.tagline,

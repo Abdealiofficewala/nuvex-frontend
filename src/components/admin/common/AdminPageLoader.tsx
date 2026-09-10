@@ -39,8 +39,8 @@ export function AdminPageLoader({ fullScreen = false }: AdminPageLoaderProps) {
               <Image
                 src={LOADER_MEDIA.adminLogoLight}
                 alt=""
-                width={168}
-                height={31}
+                width={36}
+                height={48}
                 className="admin-loader__visual-logo"
                 priority
               />

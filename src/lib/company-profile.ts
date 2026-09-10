@@ -10,7 +10,7 @@ import { companyTicketSerial } from "@/lib/constants";
 import { formatAddress, phoneHref } from "@/lib/utils";
 import type { CompanyFactRow } from "@/types/content";
 
-export const COMPANY_PROFILE_UPDATED_EVENT = "nexquanta:company-profile-updated";
+export const COMPANY_PROFILE_UPDATED_EVENT = "hakimi:company-profile-updated";
 
 function readJson<T>(key: string, fallback: T): T {
   if (typeof window === "undefined") {

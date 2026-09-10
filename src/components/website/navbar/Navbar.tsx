@@ -98,8 +98,8 @@ export function Navbar() {
     >
       <div className={cn("container", "navbar__inner")}>
         <Link href={ROUTES.home} className={"navbar__brand"} onClick={() => setOpen(false)}>
-          <BrandLogo variant="default" className={"navbar__brand--desktop"} />
-          <BrandLogo variant="mobile" className={"navbar__brand--mobile"} />
+          <BrandLogo variant="default" className={"navbar__brand--desktop"} height={36} />
+          <BrandLogo variant="compact" layout="symbol-only" className={"navbar__brand--mobile"} height={30} />
         </Link>
 
         {activeNav ? (

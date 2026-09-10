@@ -1,7 +1,6 @@
 export const LOADER_MEDIA = {
   adminBanner: "/images/infrastructure/workshop.jpg",
   websiteBanner: "/images/hero/hero-assembly.jpg",
-  adminLogo: "/logos/nexquanta-logo-dark.svg",
-  adminLogoLight: "/logos/nexquanta-logo-light.svg",
-  adminMark: "/logos/favicon.svg",
+  adminLogoLight: "/logos/hakimi-hi-mark.png",
+  adminMark: "/logos/favicon.png",
 } as const;

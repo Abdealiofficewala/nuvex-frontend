@@ -14,7 +14,7 @@ export default async function AdminLoginPage() {
 
       <div className="admin-login__panel">
         <div className="admin-login__topbar">
-          <BrandLogo variant="light" height={32} className="admin-login__mobile-logo" />
+          <BrandLogo variant="light" height={36} className="admin-login__mobile-logo" />
           <LanguageSwitcher className="admin-login__lang" />
         </div>
 

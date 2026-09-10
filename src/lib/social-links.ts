@@ -10,7 +10,7 @@ import {
 } from "@/lib/social-links.config";
 import { hasValue, phoneHref } from "@/lib/utils";
 
-export const SOCIAL_LINKS_UPDATED_EVENT = "nexquanta:social-links-updated";
+export const SOCIAL_LINKS_UPDATED_EVENT = "hakimi:social-links-updated";
 
 function readJson<T>(key: string, fallback: T): T {
   if (typeof window === "undefined") {

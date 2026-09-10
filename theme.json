@@ -1,0 +1,51 @@
+{
+  "colors": {
+    "primary": "#1E3A5F",
+    "primaryDark": "#152A45",
+    "secondary": "#141A22",
+    "accent": "#C17A3A",
+    "background": "#F3F1EC",
+    "surface": "#FFFFFF",
+    "text": "#141A22",
+    "muted": "#5C6570",
+    "steel": "#7B8490",
+    "graphite": "#0D1117",
+    "line": "#D4CFC4",
+    "danger": "#B42318",
+    "success": "#067647"
+  },
+  "typography": {
+    "fonts": {
+      "heading": "Poppins",
+      "body": "Inter",
+      "sans": "Poppins",
+      "hindi": "Noto Sans Devanagari"
+    },
+    "weights": {
+      "heading": [500, 600, 700],
+      "body": 400
+    },
+    "sizes": {
+      "display": "clamp(2.8rem, 6vw, 4.6rem)",
+      "h1": "clamp(2.2rem, 4vw, 3.4rem)",
+      "h2": "clamp(1.7rem, 3vw, 2.4rem)",
+      "h3": "1.25rem",
+      "h4": "1.05rem",
+      "bodyLg": "1.125rem",
+      "body": "1rem",
+      "small": "0.875rem",
+      "caption": "0.75rem",
+      "nav": "0.9375rem",
+      "button": "0.875rem"
+    },
+    "lineHeight": {
+      "display": 1.05,
+      "heading": 1.15,
+      "body": 1.7
+    },
+    "letterSpacing": {
+      "tight": "-0.03em",
+      "wide": "0.12em"
+    }
+  }
+}

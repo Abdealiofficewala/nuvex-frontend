@@ -1,8 +1,26 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-navy: #1e3a5f;
+  --color-navy-dark: #152a45;
+  --color-charcoal: #141a22;
+  --color-bronze: #c17a3a;
+  --color-gold: #cdb176;
+  --color-beige: #f3f1ec;
+  --color-steel: #7b8490;
+  --color-graphite: #0d1117;
+  --font-sans: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+}
+
 :root {
   --color-primary: #1e3a5f;
   --color-primary-dark: #152a45;
   --color-secondary: #141a22;
   --color-accent: #c17a3a;
+  --color-gold: #cdb176;
   --color-background: #f3f1ec;
   --color-surface: #ffffff;
   --color-text: #141a22;
@@ -12,6 +30,7 @@
   --color-line: #d4cfc4;
   --color-danger: #b42318;
   --color-success: #067647;
+  --font-sans: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
 
   --space-1: 4px;
   --space-2: 8px;
@@ -459,3 +478,241 @@ h4 {
   }
 }
 
+.brand-logo {
+  --brand-logo-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--brand-logo-height) * 0.32);
+  height: var(--brand-logo-height);
+  max-width: 100%;
+  overflow: visible;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.brand-logo--light {
+  color: #f3f1ec;
+}
+
+.brand-logo--dark {
+  color: #0d1117;
+}
+
+.brand-logo--mark {
+  gap: 0;
+}
+
+.brand-logo--stacked {
+  height: auto;
+  align-items: center;
+}
+
+html[data-splash="1"],
+html[data-splash="1"] body {
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+.hakimi-splash__vignette {
+  background: radial-gradient(ellipse 72% 62% at 50% 46%, transparent 36%, rgb(0 0 0 / 0.72) 100%);
+}
+
+.hakimi-splash__stage {
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+
+.hakimi-splash__emblem {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 6.1rem;
+  width: calc(6.1rem * 290 / 388);
+  transform-style: preserve-3d;
+}
+
+.hakimi-splash__emblem img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+}
+
+.hakimi-splash__clip-h {
+  clip-path: inset(0 26% 0 0);
+}
+
+.hakimi-splash__clip-i {
+  clip-path: inset(0 0 0 68%);
+}
+
+.hakimi-splash__i-glow {
+  transform: scale(1.05);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  opacity: 0;
+  animation: hakimi-splash-i-glow 2.4s ease-in-out 0.7s infinite;
+}
+
+.hakimi-splash__bloom {
+  position: absolute;
+  width: 13rem;
+  height: 13rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(205 177 118 / 0.38) 0%, rgb(30 58 95 / 0.12) 42%, transparent 70%);
+  pointer-events: none;
+}
+
+.hakimi-splash__ring {
+  position: absolute;
+  width: 7.4rem;
+  height: 7.4rem;
+  border: 1px solid rgb(243 241 236 / 0.45);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hakimi-splash__ring--gold {
+  width: 6.2rem;
+  height: 6.2rem;
+  border-color: rgb(205 177 118 / 0.85);
+  box-shadow: 0 0 18px rgb(205 177 118 / 0.35);
+}
+
+.hakimi-splash__spark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1px;
+  height: 2.4rem;
+  margin-left: -0.5px;
+  transform-origin: 50% 0;
+  background: linear-gradient(180deg, rgb(205 177 118 / 0.95), transparent);
+  pointer-events: none;
+}
+
+.hakimi-splash__flash {
+  position: absolute;
+  inset: -8%;
+  background: radial-gradient(circle, rgb(255 255 255 / 0.55) 0%, rgb(205 177 118 / 0.28) 28%, transparent 68%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.hakimi-splash__shine-mask {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: url("/logos/hakimi-hi-mark.png");
+  mask-image: url("/logos/hakimi-hi-mark.png");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.hakimi-splash__shine {
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  width: 38%;
+  background: linear-gradient(
+    108deg,
+    transparent 0%,
+    rgb(255 255 255 / 0.08) 38%,
+    rgb(255 255 255 / 0.8) 50%,
+    rgb(205 177 118 / 0.5) 58%,
+    transparent 78%
+  );
+  mix-blend-mode: screen;
+  animation: hakimi-splash-shine 1.05s ease-in-out 1.08s 2 both;
+}
+
+@media (min-width: 640px) {
+  .hakimi-splash__emblem {
+    height: 7.4rem;
+    width: calc(7.4rem * 290 / 388);
+  }
+
+  .hakimi-splash__bloom {
+    width: 16rem;
+    height: 16rem;
+  }
+
+  .hakimi-splash__ring {
+    width: 9rem;
+    height: 9rem;
+  }
+
+  .hakimi-splash__ring--gold {
+    width: 7.4rem;
+    height: 7.4rem;
+  }
+
+  .hakimi-splash__spark {
+    height: 3rem;
+  }
+}
+
+.hakimi-splash__grain {
+  opacity: 0.13;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  animation: hakimi-splash-grain 0.42s steps(4) infinite;
+}
+
+@keyframes hakimi-splash-shine {
+  from {
+    transform: translateX(-160%);
+  }
+  to {
+    transform: translateX(240%);
+  }
+}
+
+@keyframes hakimi-splash-i-glow {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes hakimi-splash-grain {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-1.5%, 1%);
+  }
+  50% {
+    transform: translate(1%, -1.2%);
+  }
+  75% {
+    transform: translate(-0.6%, -0.8%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hakimi-splash__grain,
+  .hakimi-splash__shine,
+  .hakimi-splash__i-glow {
+    animation: none;
+  }
+
+  .hakimi-splash__i-glow {
+    opacity: 0.35;
+  }
+}

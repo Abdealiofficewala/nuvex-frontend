@@ -5,7 +5,7 @@ import {
   type TeamMember,
 } from "@/lib/team-members.config";
 
-export const TEAM_MEMBERS_UPDATED_EVENT = "nexquanta:team-members-updated";
+export const TEAM_MEMBERS_UPDATED_EVENT = "hakimi:team-members-updated";
 
 function readJson<T>(key: string, fallback: T): T {
   if (typeof window === "undefined") {

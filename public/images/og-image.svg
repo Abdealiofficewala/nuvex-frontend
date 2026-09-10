@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
-  <rect width="1200" height="630" fill="#1F2937"/>
-  <rect x="72" y="72" width="88" height="88" rx="8" fill="#FAFAF8"/>
-  <path d="M94 140V94h12.6L127 119.4V94h12v46h-12.6L106.6 114.6V140H94Z" fill="#1F2937"/>
-  <rect x="94" y="142" width="39" height="4" fill="#0F766E"/>
-  <text x="72" y="260" fill="#FAFAF8" font-family="Arial, sans-serif" font-size="56" font-weight="700">NEXQUANTA</text>
-  <text x="72" y="320" fill="#D4AF37" font-family="Arial, sans-serif" font-size="28">Precision industrial hardware</text>
-</svg>

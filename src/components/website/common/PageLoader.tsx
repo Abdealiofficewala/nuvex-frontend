@@ -28,7 +28,7 @@ function LoaderBrandHero({ compact = false }: { compact?: boolean }) {
       />
       <span className="page-loader__brand-overlay" aria-hidden="true" />
       <div className="page-loader__brand-content">
-        <BrandLogo variant="light" height={compact ? 28 : 34} className="page-loader__brand-logo" />
+        <BrandLogo variant="light" height={36} className="page-loader__brand-logo" />
         <div className="page-loader__status" aria-hidden="true">
           <LoaderRing />
         </div>

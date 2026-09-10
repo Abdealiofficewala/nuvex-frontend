@@ -80,7 +80,11 @@ export function Sidebar({ expanded }: SidebarProps) {
       <div className="admin-sidebar__glow" aria-hidden="true" />
 
       <header className="admin-sidebar__header">
-        <BrandLogo variant={expanded ? "light" : "mobile"} height={expanded ? 34 : 38} />
+        <BrandLogo
+          variant="light"
+          layout={expanded ? "horizontal" : "symbol-only"}
+          height={expanded ? 36 : 30}
+        />
       </header>
 
       <div className="admin-sidebar__body">

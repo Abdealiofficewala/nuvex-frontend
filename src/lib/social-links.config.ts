@@ -31,7 +31,7 @@ export const SOCIAL_LINK_FIELDS: readonly SocialLinkField[] = [
     icon: "linkedin",
     label: "LinkedIn",
     accent: "#0A66C2",
-    placeholder: "https://www.linkedin.com/company/nexquanta-solutions",
+    placeholder: "https://www.linkedin.com/company/hakimi-fastners",
   },
   {
     key: "whatsapp",
@@ -45,28 +45,28 @@ export const SOCIAL_LINK_FIELDS: readonly SocialLinkField[] = [
     icon: "instagram",
     label: "Instagram",
     accent: "#E4405F",
-    placeholder: "https://www.instagram.com/nexquanta",
+    placeholder: "https://www.instagram.com/hakimifastners",
   },
   {
     key: "facebook",
     icon: "facebook",
     label: "Facebook",
     accent: "#1877F2",
-    placeholder: "https://www.facebook.com/nexquanta",
+    placeholder: "https://www.facebook.com/hakimifastners",
   },
   {
     key: "youtube",
     icon: "youtube",
     label: "YouTube",
     accent: "#FF0000",
-    placeholder: "https://www.youtube.com/@nexquanta",
+    placeholder: "https://www.youtube.com/@hakimifastners",
   },
   {
     key: "twitter",
     icon: "x",
     label: "X",
     accent: "#141A22",
-    placeholder: "https://x.com/nexquanta",
+    placeholder: "https://x.com/hakimifastners",
   },
 ] as const;
 

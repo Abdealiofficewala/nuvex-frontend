@@ -10,12 +10,16 @@ export async function SiteTicker() {
   }
 
   return (
-    <div className={"site-ticker"} aria-hidden="true">
-      <div className={"site-ticker__track"}>
-        {[...lines, ...lines].map((line, index) => (
-          <span key={`${line}-${index}`} className={"site-ticker__item"}>
-            {line}
-          </span>
+    <div className="site-ticker" aria-hidden="true">
+      <div className="site-ticker__track">
+        {[0, 1].map((copy) => (
+          <div key={copy} className="site-ticker__group">
+            {lines.map((line) => (
+              <span key={`${copy}-${line}`} className="site-ticker__item">
+                {line}
+              </span>
+            ))}
+          </div>
         ))}
       </div>
     </div>

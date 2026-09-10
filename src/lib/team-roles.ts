@@ -2,7 +2,7 @@ import { getDefaultTeamRoles } from "@/data/mock/team-roles";
 import { ADMIN_TEAM_ROLES_STORE_KEY } from "@/lib/constants";
 import { TEAM_ROLE_VALUE_PATTERN, type TeamRole } from "@/lib/team-roles.config";
 
-export const TEAM_ROLES_UPDATED_EVENT = "nexquanta:team-roles-updated";
+export const TEAM_ROLES_UPDATED_EVENT = "hakimi:team-roles-updated";
 
 function readJson<T>(key: string, fallback: T): T {
   if (typeof window === "undefined") {

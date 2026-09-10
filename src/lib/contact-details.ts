@@ -10,7 +10,7 @@ import { DEFAULT_PHONE_COUNTRY_CODE } from "@/lib/phone-countries.config";
 import { formatAddress } from "@/lib/utils";
 import { formatPhoneParts, parsePhoneParts } from "@/lib/utils/phone";
 
-export const CONTACT_DETAILS_UPDATED_EVENT = "nexquanta:contact-details-updated";
+export const CONTACT_DETAILS_UPDATED_EVENT = "hakimi:contact-details-updated";
 
 function readJson<T>(key: string, fallback: T): T {
   if (typeof window === "undefined") {

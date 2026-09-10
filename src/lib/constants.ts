@@ -97,20 +97,20 @@ export function quoteHref(productId?: string | null) {
   return key ? `${ROUTES.quote}?product=${encodeURIComponent(key)}` : ROUTES.quote;
 }
 
-export const ADMIN_SESSION_KEY = "nexquanta.admin";
-export const ADMIN_USER_KEY = "nexquanta.admin.user";
-export const ADMIN_USERS_STORE_KEY = "nexquanta.admin.users";
-export const ADMIN_PAGE_ACCESS_KEY = "nexquanta.admin.page-access";
-export const ADMIN_THEME_STORE_KEY = "nexquanta.admin.theme";
-export const ADMIN_SOCIAL_STORE_KEY = "nexquanta.admin.social";
-export const ADMIN_CONTACT_STORE_KEY = "nexquanta.admin.contact";
-export const ADMIN_COMPANY_PROFILE_STORE_KEY = "nexquanta.admin.company-profile";
-export const ADMIN_TEAM_STORE_KEY = "nexquanta.admin.team";
-export const ADMIN_TEAM_ROLES_STORE_KEY = "nexquanta.admin.team-roles";
+export const ADMIN_SESSION_KEY = "hakimi.admin";
+export const ADMIN_USER_KEY = "hakimi.admin.user";
+export const ADMIN_USERS_STORE_KEY = "hakimi.admin.users";
+export const ADMIN_PAGE_ACCESS_KEY = "hakimi.admin.page-access";
+export const ADMIN_THEME_STORE_KEY = "hakimi.admin.theme";
+export const ADMIN_SOCIAL_STORE_KEY = "hakimi.admin.social";
+export const ADMIN_CONTACT_STORE_KEY = "hakimi.admin.contact";
+export const ADMIN_COMPANY_PROFILE_STORE_KEY = "hakimi.admin.company-profile";
+export const ADMIN_TEAM_STORE_KEY = "hakimi.admin.team";
+export const ADMIN_TEAM_ROLES_STORE_KEY = "hakimi.admin.team-roles";
 
 export const ADMIN_AUTH = {
-  demoEmail: "admin@nexquanta.solutions",
-  demoPassword: "nexquanta2026",
+  demoEmail: "admin@hakimifastners.com",
+  demoPassword: "hakimi2026",
   minPasswordLength: 6,
   signInDelayMs: 480,
   mockSignIn: true,
@@ -132,8 +132,8 @@ export const LEADERSHIP_KEYS = {
 } as const;
 
 export const TICKET_SERIAL = {
-  desk: "NX-DESK",
-  team: "NX-TEAM",
+  desk: "HF-DESK",
+  team: "HF-TEAM",
 } as const;
 
 export const MAX_PROCESS_STEPS = 4;
@@ -153,10 +153,10 @@ export const PROCESS_STEP_IMAGES = [
   },
   {
     src: "/images/infrastructure/workshop.jpg",
-    alt: "Packed fastener crates leaving the Nexquanta workshop bay",
+    alt: "Packed fastener crates leaving the Hakimi Fastners workshop bay",
   },
 ] as const;
 
 export function companyTicketSerial(foundedYear: number): string {
-  return `NX-${foundedYear}`;
+  return `HF-${foundedYear}`;
 }

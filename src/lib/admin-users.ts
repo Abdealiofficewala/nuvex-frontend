@@ -27,7 +27,7 @@ export {
   userHasPermission,
 } from "@/lib/admin-page-access.config";
 
-export const ADMIN_USERS_UPDATED_EVENT = "nexquanta:admin-users-updated";
+export const ADMIN_USERS_UPDATED_EVENT = "hakimi:admin-users-updated";
 
 function readJson<T>(key: string, fallback: T): T {
   if (typeof window === "undefined") {

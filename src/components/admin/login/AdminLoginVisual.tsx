@@ -22,7 +22,7 @@ export async function AdminLoginVisual() {
       <div className="admin-login__visual-shade" aria-hidden="true" />
 
       <div className="admin-login__visual-top">
-        <BrandLogo variant="light" height={34} />
+        <BrandLogo variant="light" height={36} />
         <span className="admin-login__badge">{t("badge")}</span>
       </div>
 
