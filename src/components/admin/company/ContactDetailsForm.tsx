@@ -10,7 +10,7 @@ import {
   AdminMapSearchField,
   AdminPhoneField,
 } from "@/components/admin/common";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/buttons";
 import { useToast } from "@/components/ui/toast";
 import {
   CONTACT_ADDRESS_FIELDS,
@@ -20,7 +20,7 @@ import {
 } from "@/lib/contact-details.config";
 import {
   getContactDetailsState,
-  getDefaultContactDetails,
+  getEmptyContactDetailsState,
   resetContactDetailsState,
   resolveContactMapQuery,
   saveContactDetailsState,
@@ -69,7 +69,7 @@ export function ContactDetailsForm() {
   const toast = useToast();
   const personId = useId();
   const emailId = useId();
-  const [state, setState] = useState<ContactDetailsState>(() => getDefaultContactDetails());
+  const [state, setState] = useState<ContactDetailsState>(() => getEmptyContactDetailsState());
   const [touchedFields, setTouchedFields] = useState<Partial<Record<ContactDetailsField, boolean>>>({});
   const [saving, setSaving] = useState(false);
   const [resetOpen, setResetOpen] = useState(false);

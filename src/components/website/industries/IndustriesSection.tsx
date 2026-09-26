@@ -3,10 +3,10 @@ import { Reveal } from "@/components/ui/reveal";
 import { HomeIndustriesRail } from "@/components/website/industries/HomeIndustriesRail";
 import { SectionHead } from "@/components/website/common/SectionHead";
 import { ROUTES } from "@/lib/constants";
-import type { Industry } from "@/types/industry";
+import type { Sector } from "@/types/industry";
 
 type IndustriesSectionProps = {
-  industries?: Industry[];
+  industries?: Sector[];
 };
 
 export async function IndustriesSection({ industries }: IndustriesSectionProps) {

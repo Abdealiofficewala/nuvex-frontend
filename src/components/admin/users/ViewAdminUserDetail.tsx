@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ButtonLink } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/buttons";
 import { AdminUserDetailView } from "@/components/admin/users/AdminUserDetailView";
 import { findAdminUserById, type AdminUserRecord } from "@/lib/admin-users";
 import { ROUTES } from "@/lib/constants";

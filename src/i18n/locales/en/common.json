@@ -9,6 +9,11 @@
     "menu": "Menu",
     "closeMenu": "Close menu"
   },
+  "topBar": {
+    "phone": "Phone",
+    "email": "Email",
+    "location": "Location"
+  },
   "ticker": [
     "Grade on the head.",
     "Count in the crate.",

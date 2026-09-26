@@ -6,7 +6,7 @@ import { SocialIcon } from "@/components/website/common/SocialIcon";
 import {
   buildSocialLinkItems,
   getDefaultSocialLinksState,
-  getSocialLinksState,
+  getWebsiteSocialLinksState,
   SOCIAL_LINKS_UPDATED_EVENT,
 } from "@/lib/social-links";
 
@@ -20,9 +20,9 @@ export function SocialLinks({ className, variant = "default", label }: SocialLin
   const [state, setState] = useState(getDefaultSocialLinksState);
 
   useEffect(() => {
-    setState(getSocialLinksState());
+    setState(getWebsiteSocialLinksState());
 
-    const refresh = () => setState(getSocialLinksState());
+    const refresh = () => setState(getWebsiteSocialLinksState());
     window.addEventListener(SOCIAL_LINKS_UPDATED_EVENT, refresh);
 
     return () => window.removeEventListener(SOCIAL_LINKS_UPDATED_EVENT, refresh);

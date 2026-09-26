@@ -20,6 +20,10 @@
 # production
 /build
 
+# local runtime data
+/data/appearance-store.json
+/data/content-store.json
+
 # misc
 .DS_Store
 *.pem

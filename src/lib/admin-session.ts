@@ -16,17 +16,40 @@ export function getAdminUserEmail(): string | null {
   return window.sessionStorage.getItem(ADMIN_USER_KEY);
 }
 
+export async function syncAdminSessionCookie(email?: string): Promise<void> {
+  if (!email?.trim()) {
+    return;
+  }
+
+  await fetch("/api/admin/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ email: email.trim() }),
+  });
+}
+
+export async function clearAdminSessionCookie(): Promise<void> {
+  await fetch("/api/admin/auth/login", {
+    method: "DELETE",
+    credentials: "include",
+  });
+}
+
 export function setAdminSession(email?: string): void {
   window.sessionStorage.setItem(ADMIN_SESSION_KEY, "1");
 
   if (email?.trim()) {
     window.sessionStorage.setItem(ADMIN_USER_KEY, email.trim());
   }
+
+  void syncAdminSessionCookie(email);
 }
 
 export function clearAdminSession(): void {
   window.sessionStorage.removeItem(ADMIN_SESSION_KEY);
   window.sessionStorage.removeItem(ADMIN_USER_KEY);
+  void clearAdminSessionCookie();
 }
 
 export function getAdminDisplayName(email: string | null): string {

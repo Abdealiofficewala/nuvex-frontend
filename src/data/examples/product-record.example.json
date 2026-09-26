@@ -1,0 +1,50 @@
+{
+  "data": {
+    "id": "prd-hex-bolt",
+    "slug": "nx-hex-bolt",
+    "name": "HF-HB Hex Bolt",
+    "category": "Bolts",
+    "categorySlug": "bolts",
+    "subcategory": "Hex bolts",
+    "subcategorySlug": "hex-bolts",
+    "sizeOptions": [
+      {
+        "label": "M6 × 20 mm",
+        "slug": "m6-20-mm",
+        "image": "/images/products/nx-hex-bolt-m6.jpg",
+        "gallery": ["/images/products/nx-hex-bolt-m6.jpg"],
+        "isDefault": false
+      },
+      {
+        "label": "M8 × 25 mm",
+        "slug": "m8-25-mm",
+        "image": "/images/products/nx-hex-bolt-m8.jpg",
+        "gallery": ["/images/products/nx-hex-bolt-m8.jpg", "/images/products/nx-hex-bolt-m8-detail.jpg"],
+        "isDefault": true
+      },
+      {
+        "label": "M10 × 40 mm",
+        "slug": "m10-40-mm",
+        "image": "/images/products/nx-hex-bolt-m10.jpg",
+        "gallery": ["/images/products/nx-hex-bolt-m10.jpg"],
+        "isDefault": false
+      }
+    ],
+    "shortDescription": "Metric hex head bolts for steel frames, machines, and site work.",
+    "description": "HF-HB is a standard hex bolt for fabricators and maintenance stores.",
+    "image": "/images/products/nx-hex-bolt-m8.jpg",
+    "gallery": ["/images/products/nx-hex-bolt-m8.jpg", "/images/products/nx-hex-bolt-m8-detail.jpg"],
+    "features": ["Grade 8.8 as standard", "Zinc or black oxide finish"],
+    "specifications": [
+      { "label": "Standard", "value": "ISO 4014 / 4017" },
+      { "label": "Grade", "value": "8.8" }
+    ],
+    "applications": ["Steel fabrication", "Plant maintenance"],
+    "materials": ["Medium carbon steel"],
+    "keySpec": "Grade 8.8",
+    "isFeatured": true,
+    "status": "active",
+    "createdAt": "2026-03-21T12:00:00.000Z",
+    "updatedAt": "2026-03-21T12:00:00.000Z"
+  }
+}

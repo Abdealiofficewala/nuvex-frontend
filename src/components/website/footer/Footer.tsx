@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { getTranslations } from "next-intl/server";
-import { ButtonLink } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/buttons";
 import { BrandLogo } from "@/components/website/common/BrandLogo";
 import { ContactDetails } from "@/components/website/common/ContactDetails";
 import { NavList } from "@/components/website/common/NavList";

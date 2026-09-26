@@ -1,5 +1,5 @@
 import "@/components/website/website.css";
-import { SiteTicker } from "@/components/website/common/SiteTicker";
+import { SiteTopBar } from "@/components/website/common/SiteTopBar";
 import { Footer } from "@/components/website/footer/Footer";
 import { Navbar } from "@/components/website/navbar/Navbar";
 
@@ -11,7 +11,7 @@ export default function WebsiteLayout({ children }: WebsiteLayoutProps) {
   return (
     <div className="site-shell">
       <div className="site-chrome">
-        <SiteTicker />
+        <SiteTopBar />
         <Navbar />
       </div>
       <main className="site-main">{children}</main>

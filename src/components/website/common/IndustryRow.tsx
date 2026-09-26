@@ -1,8 +1,8 @@
 import { MediaFill } from "@/components/ui/media-fill";
-import type { Industry } from "@/types/industry";
+import type { Sector } from "@/types/industry";
 
 type IndustryRowProps = {
-  industry: Industry;
+  industry: Sector;
   titleAs?: "h2" | "h3";
   body?: string;
   showApplications?: boolean;

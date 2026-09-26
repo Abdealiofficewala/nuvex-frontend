@@ -4,9 +4,9 @@ import Image from "next/image";
 import { useEffect, useId, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";
-import { AdminFormSelect } from "@/components/admin/common";
+import { AdminEmptyState, AdminFormSelect, formatListingToolbarMeta } from "@/components/admin/common";
 import { UserPageAccessFields } from "@/components/admin/users/UserPageAccessFields";
-import { Button, ButtonLink } from "@/components/ui/button";
+import { Button, ButtonLink } from "@/components/ui/buttons";
 import { useToast } from "@/components/ui/toast";
 import type { AdminUserPageAccess } from "@/lib/admin-page-access.config";
 import {
@@ -145,25 +145,29 @@ export function PageAccessForm({ userId, mode = userId ? "edit" : "create" }: Pa
 
   if (!users.length) {
     return (
-      <div className="admin-page-empty">
-        <p className="admin-page-empty__title">{t("empty.title")}</p>
-        <p className="admin-page-empty__body">{t("empty.body")}</p>
-        <ButtonLink href={ROUTES.admin.users.create} variant="accent">
-          {t("empty.action")}
-        </ButtonLink>
+      <div className="admin-table-root">
+        <div className="admin-table-panel admin-table-panel--empty">
+          <div className="admin-table-panel__toolbar">
+            <div className="admin-table-panel__toolbar-start">
+              <p className="admin-page-toolbar__meta">
+                {formatListingToolbarMeta({ count: 0, title: sharedT("listing.toolbarTitle") })}
+              </p>
+            </div>
+            <div className="admin-table-panel__toolbar-end">
+              <ButtonLink href={ROUTES.admin.users.create} variant="accent" className="admin-page-toolbar__action">
+                {t("empty.action")}
+              </ButtonLink>
+            </div>
+          </div>
+          <AdminEmptyState />
+        </div>
       </div>
     );
   }
 
   if (mode === "edit" && userId && !selectedUser) {
     return (
-      <div className="admin-page-empty">
-        <p className="admin-page-empty__title">{t("notFound.title")}</p>
-        <p className="admin-page-empty__body">{t("notFound.body")}</p>
-        <ButtonLink href={ROUTES.admin.users.access} variant="secondary">
-          {t("cancelAction")}
-        </ButtonLink>
-      </div>
+      <AdminEmptyState title={t("notFound.title")} description={t("notFound.body")} />
     );
   }
 

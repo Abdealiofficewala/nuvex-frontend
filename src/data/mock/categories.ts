@@ -7,6 +7,10 @@ export const mockCategories: ProductCategory[] = [
     name: "Bolts",
     summary: "Hex and anchor bolts in the sizes a drawing actually calls up.",
     image: "/images/categories/bolts.jpg",
+    isVisible: true,
+    isNew: false,
+    typeSlugs: [],
+    typeNames: [],
   },
   {
     id: "cat-nuts",
@@ -14,6 +18,10 @@ export const mockCategories: ProductCategory[] = [
     name: "Nuts",
     summary: "Hex and lock nuts matched to the bolt thread, not mixed mill leftovers.",
     image: "/images/categories/nuts.jpg",
+    isVisible: true,
+    isNew: false,
+    typeSlugs: [],
+    typeNames: [],
   },
   {
     id: "cat-screws",
@@ -21,6 +29,10 @@ export const mockCategories: ProductCategory[] = [
     name: "Screws",
     summary: "Machine and self-tapping screws for panels, sheet, and light frames.",
     image: "/images/categories/screws.jpg",
+    isVisible: true,
+    isNew: true,
+    typeSlugs: [],
+    typeNames: [],
   },
   {
     id: "cat-nails",
@@ -28,5 +40,9 @@ export const mockCategories: ProductCategory[] = [
     name: "Nails",
     summary: "Wire and concrete nails packed by length, weight, or count.",
     image: "/images/categories/nails.jpg",
+    isVisible: true,
+    isNew: false,
+    typeSlugs: [],
+    typeNames: [],
   },
 ];

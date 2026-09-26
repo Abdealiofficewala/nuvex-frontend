@@ -4,14 +4,20 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/buttons";
 import { buildQuoteMessage, isQuoteFormValid, validateQuoteForm } from "@/lib/validations/quote";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { messagesActions } from "@/store/modules/messages/slice";
 import { selectEnquiryError, selectEnquiryStatus } from "@/store/modules/messages/selectors";
 import { Link, useRouter } from "@/i18n/routing";
 import { productHref, ROUTES } from "@/lib/constants";
+import {
+  findSizeOptionByLabel,
+  getDefaultSizeOption,
+  getProductSizeLabels,
+} from "@/lib/product-size-options";
 import type { QuoteFormErrors } from "@/lib/validations/quote";
+import type { ProductSizeOption } from "@/types/product";
 
 export type QuoteProductOption = {
   id: string;
@@ -22,7 +28,7 @@ export type QuoteProductOption = {
   categorySlug: string;
   subcategory: string;
   subcategorySlug: string;
-  sizes: string[];
+  sizeOptions: ProductSizeOption[];
   keySpec: string;
   shortDescription: string;
   description: string;
@@ -95,7 +101,9 @@ export function QuoteForm({ products, defaultProductId }: QuoteFormProps) {
     [products, productSlug],
   );
   const isCustom = productSlug === CUSTOM_SLUG;
-  const sizes = selected?.sizes ?? [];
+  const sizes = selected ? getProductSizeLabels(selected) : [];
+  const selectedSizeOption = findSizeOptionByLabel(selected ?? { sizeOptions: [] }, size);
+  const previewImage = selectedSizeOption?.image || selected?.image || "";
 
   useEffect(() => {
     if (!defaultProduct) {
@@ -135,8 +143,15 @@ export function QuoteForm({ products, defaultProductId }: QuoteFormProps) {
     if (!selected || isCustom) {
       return;
     }
-    if (selected.sizes?.length === 1) {
-      setSize(selected.sizes[0] ?? "");
+    const labels = getProductSizeLabels(selected);
+    if (labels.length === 1) {
+      setSize(labels[0] ?? "");
+      return;
+    }
+
+    const defaultSize = getDefaultSizeOption(selected);
+    if (defaultSize?.label) {
+      setSize(defaultSize.label);
     }
   }, [selected, isCustom]);
 
@@ -328,9 +343,9 @@ export function QuoteForm({ products, defaultProductId }: QuoteFormProps) {
           </div>
         ) : selected ? (
           <div className={"quote-preview__card"}>
-            {selected.image ? (
+            {previewImage ? (
               <Link href={productHref(selected.id)} className={"quote-preview__media"}>
-                <Image src={selected.image} alt={selected.name} width={360} height={270} sizes="340px" quality={75} />
+                <Image src={previewImage} alt={selected.name} width={360} height={270} sizes="340px" quality={75} />
               </Link>
             ) : null}
             <div className={"quote-preview__meta"}>

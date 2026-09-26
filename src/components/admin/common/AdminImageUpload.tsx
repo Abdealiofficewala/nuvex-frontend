@@ -26,6 +26,10 @@ export type AdminImageUploadLabels = {
   types?: string;
 };
 
+export type AdminImageUploadVariant = "default" | "logo" | "icon" | "banner";
+
+export type AdminImageUploadSize = "default" | "compact";
+
 export type AdminImageUploadProps = {
   id?: string;
   label: ReactNode;
@@ -39,6 +43,8 @@ export type AdminImageUploadProps = {
   constraints?: Partial<ImageUploadConstraints>;
   labels?: AdminImageUploadLabels;
   uploadErrorMessages?: Partial<Record<ImageUploadValidationError, string>>;
+  variant?: AdminImageUploadVariant;
+  size?: AdminImageUploadSize;
   className?: string;
 };
 
@@ -46,27 +52,22 @@ const DEFAULT_LABELS: Required<Pick<AdminImageUploadLabels, "drop" | "browse" | 
   {
     drop: "Drag and drop an image here",
     browse: "Browse files",
-    change: "Change image",
+    change: "Change",
     remove: "Remove",
   };
 
-function UploadHint({ text }: { text: string }) {
-  return (
-    <p className="admin-image-upload__hint">
-      <span>{text}</span>
-    </p>
-  );
-}
 function UploadIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="4" y="5" width="16" height="14" rx="2" stroke="currentColor" strokeWidth="1.6" />
       <path
-        d="M12 16V6m0 0 4 4m-4-4-4 4M5 20h14"
+        d="M8 14l2.5-2.5a1.2 1.2 0 0 1 1.7 0L15 14M12 11V17"
         stroke="currentColor"
-        strokeWidth="1.8"
+        strokeWidth="1.6"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
+      <path d="M9 8.5h.01M15 8.5h.01" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
     </svg>
   );
 }
@@ -84,6 +85,8 @@ export function AdminImageUpload({
   constraints,
   labels,
   uploadErrorMessages,
+  variant = "default",
+  size = "default",
   className,
 }: AdminImageUploadProps) {
   const generatedId = useId();
@@ -101,8 +104,8 @@ export function AdminImageUpload({
   const errorId = `${fieldId}-error`;
   const resolvedFieldMessage = fieldError ? getErrorMessage?.(fieldError) ?? null : null;
   const resolvedMessage = uploadError ?? resolvedFieldMessage;
-  const showError = Boolean(resolvedMessage?.trim());
   const hasImage = hasValue(value);
+  const objectFit = variant === "default" || variant === "banner" ? "cover" : "contain";
 
   function openPicker() {
     if (!disabled) {
@@ -169,15 +172,140 @@ export function AdminImageUpload({
     void processFile(file);
   }
 
-  function handleRemove() {
+  function handleRemove(event: React.MouseEvent) {
+    event.stopPropagation();
     setUploadError(null);
     onChange("");
+  }
+
+  const fileInput = (
+    <input
+      ref={inputRef}
+      id={fieldId}
+      type="file"
+      accept={resolvedConstraints.accept}
+      className="admin-image-upload__input"
+      disabled={disabled}
+      onChange={handleFileChange}
+      onBlur={onBlur}
+      aria-invalid={Boolean(fieldError || uploadError) || undefined}
+      aria-describedby={errorId}
+    />
+  );
+
+  if (size === "compact") {
+    return (
+      <div
+        className={cn(
+          "admin-contact-form__field admin-image-upload admin-image-upload--compact",
+          `admin-image-upload--${variant}`,
+          (fieldError || uploadError) && "is-invalid",
+          className,
+        )}
+      >
+        <AdminFieldLabel htmlFor={fieldId} required={required}>
+          {label}
+        </AdminFieldLabel>
+
+        <div
+          className={cn(
+            "admin-image-upload__compact",
+            isDragging && "is-dragging",
+            hasImage && "has-image",
+            disabled && "is-disabled",
+          )}
+          onDragEnter={handleDragEnter}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+        >
+          <button
+            type="button"
+            className="admin-image-upload__compact-thumb"
+            onClick={openPicker}
+            disabled={disabled}
+            aria-label={hasImage ? resolvedLabels.change : resolvedLabels.browse}
+          >
+            {hasImage ? (
+              value.startsWith("data:") ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={value}
+                  alt=""
+                  className={cn(
+                    "admin-image-upload__compact-image admin-image-upload__compact-image--native",
+                    objectFit === "contain" && "is-contain",
+                  )}
+                  style={{ objectFit }}
+                />
+              ) : (
+                <Image
+                  src={value}
+                  alt=""
+                  fill
+                  sizes="72px"
+                  className={cn("admin-image-upload__compact-image", objectFit === "contain" && "is-contain")}
+                  style={{ objectFit }}
+                />
+              )
+            ) : (
+              <span className="admin-image-upload__compact-placeholder">
+                <UploadIcon />
+              </span>
+            )}
+          </button>
+
+          <div className="admin-image-upload__compact-body">
+            {!hasImage ? (
+              <>
+                <p className="admin-image-upload__compact-title">{resolvedLabels.drop}</p>
+                <p className="admin-image-upload__compact-hint">{hintText}</p>
+                <button
+                  type="button"
+                  className="admin-image-upload__compact-action"
+                  onClick={openPicker}
+                  disabled={disabled}
+                >
+                  {resolvedLabels.browse}
+                </button>
+              </>
+            ) : (
+              <>
+                <p className="admin-image-upload__compact-hint">{hintText}</p>
+                <div className="admin-image-upload__compact-actions">
+                  <button
+                    type="button"
+                    className="admin-image-upload__compact-action"
+                    onClick={openPicker}
+                    disabled={disabled}
+                  >
+                    {resolvedLabels.change}
+                  </button>
+                  <button
+                    type="button"
+                    className="admin-image-upload__compact-action admin-image-upload__compact-action--danger"
+                    onClick={handleRemove}
+                    disabled={disabled}
+                  >
+                    {resolvedLabels.remove}
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+
+        {fileInput}
+        <AdminFieldError id={errorId} message={resolvedMessage} />
+      </div>
+    );
   }
 
   return (
     <div
       className={cn(
         "admin-contact-form__field admin-image-upload",
+        `admin-image-upload--${variant}`,
         (fieldError || uploadError) && "is-invalid",
         className,
       )}
@@ -188,7 +316,7 @@ export function AdminImageUpload({
 
       <div
         className={cn(
-          "admin-image-upload__dropzone",
+          "admin-image-upload__surface",
           isDragging && "is-dragging",
           hasImage && "has-image",
           disabled && "is-disabled",
@@ -197,9 +325,9 @@ export function AdminImageUpload({
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        onClick={!hasImage ? openPicker : undefined}
+        onClick={!hasImage && !disabled ? openPicker : undefined}
         onKeyDown={(event) => {
-          if (!hasImage && (event.key === "Enter" || event.key === " ")) {
+          if (!hasImage && !disabled && (event.key === "Enter" || event.key === " ")) {
             event.preventDefault();
             openPicker();
           }
@@ -213,23 +341,42 @@ export function AdminImageUpload({
             <div className="admin-image-upload__preview">
               {value.startsWith("data:") ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={value} alt="" className="admin-image-upload__image admin-image-upload__image--native" />
+                <img
+                  src={value}
+                  alt=""
+                  className={cn(
+                    "admin-image-upload__image admin-image-upload__image--native",
+                    objectFit === "contain" && "is-contain",
+                  )}
+                  style={{ objectFit }}
+                />
               ) : (
-                <Image src={value} alt="" fill sizes="280px" className="admin-image-upload__image" />
+                <Image
+                  src={value}
+                  alt=""
+                  fill
+                  sizes={variant === "icon" ? "120px" : variant === "banner" ? "360px" : "320px"}
+                  className={cn("admin-image-upload__image", objectFit === "contain" && "is-contain")}
+                  style={{ objectFit }}
+                />
               )}
             </div>
-            <div className="admin-image-upload__overlay">
+            <div className="admin-image-upload__footer">
               <button
                 type="button"
-                className="admin-image-upload__btn"
-                onClick={openPicker}
+                className="admin-image-upload__footer-btn"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  openPicker();
+                }}
                 disabled={disabled}
               >
                 {resolvedLabels.change}
               </button>
+              <span className="admin-image-upload__footer-divider" aria-hidden="true" />
               <button
                 type="button"
-                className="admin-image-upload__btn admin-image-upload__btn--ghost"
+                className="admin-image-upload__footer-btn admin-image-upload__footer-btn--danger"
                 onClick={handleRemove}
                 disabled={disabled}
               >
@@ -242,8 +389,10 @@ export function AdminImageUpload({
             <span className="admin-image-upload__icon">
               <UploadIcon />
             </span>
-            <p className="admin-image-upload__drop-label">{resolvedLabels.drop}</p>
-            <UploadHint text={hintText} />
+            <div className="admin-image-upload__copy">
+              <p className="admin-image-upload__drop-label">{resolvedLabels.drop}</p>
+              <p className="admin-image-upload__hint">{hintText}</p>
+            </div>
             <button
               type="button"
               className="admin-image-upload__browse"
@@ -259,18 +408,7 @@ export function AdminImageUpload({
         )}
       </div>
 
-      <input
-        ref={inputRef}
-        id={fieldId}
-        type="file"
-        accept={resolvedConstraints.accept}
-        className="admin-image-upload__input"
-        disabled={disabled}
-        onChange={handleFileChange}
-        onBlur={onBlur}
-        aria-invalid={Boolean(fieldError || uploadError) || undefined}
-        aria-describedby={errorId}
-      />
+      {fileInput}
 
       <AdminFieldError id={errorId} message={resolvedMessage} />
     </div>

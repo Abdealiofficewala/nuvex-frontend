@@ -4,10 +4,9 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AdminConfirmModal } from "@/components/admin/common/AdminConfirmModal";
-import { AdminTable, AdminTableCheckbox, type AdminTableColumn } from "@/components/admin/common";
+import { AdminListingTable, AdminTableCheckbox, type AdminTableColumn } from "@/components/admin/common";
 import { AdminTableActions } from "@/components/admin/common/AdminTableActions";
 import { AdminTooltip } from "@/components/admin/common/AdminTooltip";
-import { ButtonLink } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import {
   ADMIN_PAGE_PERMISSIONS,
@@ -33,14 +32,6 @@ import { cn, hasValue, initials } from "@/lib/utils";
 type AccessListingRow = AdminUserRecord & {
   access: AdminUserPageAccess;
 };
-
-function PlusIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </svg>
-  );
-}
 
 export function PageAccessListing() {
   const t = useTranslations("admin.users.access.listing");
@@ -192,24 +183,13 @@ export function PageAccessListing() {
 
   return (
     <section className="admin-access-listing">
-      <div className="admin-page-toolbar">
-        <p className="admin-page-toolbar__meta">{t("summary", { count: users.length })}</p>
-        <ButtonLink
-          href={ROUTES.admin.users.accessCreate}
-          variant="accent"
-          className="admin-page-toolbar__action"
-        >
-          <PlusIcon />
-          {t("addAction")}
-        </ButtonLink>
-      </div>
-
-      <AdminTable
+      <AdminListingTable
         columns={columns}
         rows={rows}
         rowKey={(row) => row.id}
-        emptyTitle={t("empty.title")}
-        emptyDescription={t("empty.body")}
+        toolbarTitle={t("toolbarTitle")}
+        createHref={ROUTES.admin.users.accessCreate}
+        createLabel={t("addAction")}
       />
 
       <AdminConfirmModal

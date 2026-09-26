@@ -59,8 +59,6 @@ function validateDescription(value: string): CompanyProfileErrorKey | undefined 
 export function validateCompanyProfileForm(state: CompanyProfileState): CompanyProfileFormErrors {
   const errors: CompanyProfileFormErrors = {};
 
-  assignFieldError(errors, "ticketEyebrow", validateRequiredText(state.ticketEyebrow));
-  assignFieldError(errors, "ticketTitle", validateRequiredText(state.ticketTitle));
   assignFieldError(errors, "name", validateRequiredText(state.name));
   assignFieldError(errors, "shortName", validateRequiredText(state.shortName));
   assignFieldError(errors, "tagline", validateRequiredText(state.tagline));

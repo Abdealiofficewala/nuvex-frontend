@@ -2,7 +2,7 @@ import { siteConfig } from "@/config/site.config";
 import { ADMIN_COMPANY_PROFILE_STORE_KEY } from "@/lib/constants";
 import {
   COMPANY_PROFILE_FIELDS,
-  DEFAULT_TICKET_COPY,
+  DEFAULT_COMPANY_FACT_DEFAULTS,
   type CompanyProfileField,
   type CompanyProfileState,
 } from "@/lib/company-profile.config";
@@ -37,9 +37,34 @@ function writeJson(key: string, value: unknown) {
   window.sessionStorage.setItem(key, JSON.stringify(value));
 }
 
-function sanitizeProfile(input: Partial<CompanyProfileState> | null | undefined): CompanyProfileState {
-  const defaults = getDefaultCompanyProfile();
+export function getEmptyCompanyProfileState(): CompanyProfileState {
+  return COMPANY_PROFILE_FIELDS.reduce((acc, field) => {
+    acc[field] = "";
+    return acc;
+  }, {} as CompanyProfileState);
+}
 
+function readStoredProfileRaw(): unknown | undefined {
+  if (typeof window === "undefined") {
+    return undefined;
+  }
+
+  try {
+    const raw = window.sessionStorage.getItem(ADMIN_COMPANY_PROFILE_STORE_KEY);
+    if (raw === null) {
+      return undefined;
+    }
+
+    return JSON.parse(raw) as unknown;
+  } catch {
+    return undefined;
+  }
+}
+
+function sanitizeProfile(
+  input: Partial<CompanyProfileState> | null | undefined,
+  defaults = getEmptyCompanyProfileState(),
+): CompanyProfileState {
   return COMPANY_PROFILE_FIELDS.reduce((acc, field) => {
     acc[field] = input?.[field]?.trim() ?? defaults[field];
     return acc;
@@ -50,8 +75,6 @@ export function getDefaultCompanyProfile(): CompanyProfileState {
   const { company, contact } = siteConfig;
 
   return {
-    ticketEyebrow: DEFAULT_TICKET_COPY.ticketEyebrow,
-    ticketTitle: DEFAULT_TICKET_COPY.ticketTitle,
     name: company.name,
     shortName: company.shortName,
     tagline: company.tagline,
@@ -61,15 +84,29 @@ export function getDefaultCompanyProfile(): CompanyProfileState {
     hqState: contact.address.state,
     hqCountry: contact.address.country,
     deskAddress: formatAddress(contact.address),
-    productLines: DEFAULT_TICKET_COPY.productLines,
-    reach: DEFAULT_TICKET_COPY.reach,
+    productLines: DEFAULT_COMPANY_FACT_DEFAULTS.productLines,
+    reach: DEFAULT_COMPANY_FACT_DEFAULTS.reach,
     email: contact.email,
     phone: contact.phone,
   };
 }
 
 export function getCompanyProfileState(): CompanyProfileState {
-  return sanitizeProfile(readJson<Partial<CompanyProfileState> | null>(ADMIN_COMPANY_PROFILE_STORE_KEY, null));
+  const stored = readStoredProfileRaw();
+  if (stored === undefined) {
+    return getEmptyCompanyProfileState();
+  }
+
+  return sanitizeProfile(stored as Partial<CompanyProfileState>);
+}
+
+export function getWebsiteCompanyProfileState(): CompanyProfileState {
+  const stored = readStoredProfileRaw();
+  if (stored === undefined) {
+    return getDefaultCompanyProfile();
+  }
+
+  return sanitizeProfile(stored as Partial<CompanyProfileState>);
 }
 
 export function saveCompanyProfileState(state: CompanyProfileState) {
@@ -79,9 +116,9 @@ export function saveCompanyProfileState(state: CompanyProfileState) {
 }
 
 export function resetCompanyProfileState(): CompanyProfileState {
-  const defaults = getDefaultCompanyProfile();
-  saveCompanyProfileState(defaults);
-  return defaults;
+  const cleared = getEmptyCompanyProfileState();
+  saveCompanyProfileState(cleared);
+  return cleared;
 }
 
 export function resolveFoundedYear(profile: CompanyProfileState): number {
@@ -98,6 +135,8 @@ export function resolveHqLine(profile: CompanyProfileState): string {
 }
 
 export type CompanyProfileFactLabels = {
+  eyebrow: string;
+  title: string;
   legal: string;
   founded: string;
   hq: string;

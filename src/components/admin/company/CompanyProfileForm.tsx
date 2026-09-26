@@ -9,7 +9,7 @@ import {
   AdminModal,
   AdminPhoneField,
 } from "@/components/admin/common";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/buttons";
 import { useToast } from "@/components/ui/toast";
 import { CompanyFactsTicket } from "@/components/website/about/CompanyFactsTicket";
 import {
@@ -18,7 +18,7 @@ import {
 } from "@/lib/company-profile.config";
 import {
   getCompanyProfileState,
-  getDefaultCompanyProfile,
+  getEmptyCompanyProfileState,
   resetCompanyProfileState,
   saveCompanyProfileState,
   touchAllCompanyProfileFields,
@@ -29,20 +29,6 @@ import {
   type CompanyProfileErrorKey,
 } from "@/lib/validations/company-profile";
 import { formatPhoneParts, parsePhoneParts } from "@/lib/utils/phone";
-
-function TicketIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M6.5 8.5h11M6.5 12h7M6.5 15.5h9"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-      />
-      <rect x="4.5" y="5.5" width="15" height="13" rx="2.2" stroke="currentColor" strokeWidth="1.7" />
-    </svg>
-  );
-}
 
 function IdentityIcon() {
   return (
@@ -106,7 +92,7 @@ export function CompanyProfileForm() {
   const tAbout = useTranslations("about");
   const tModal = useTranslations("admin.common.modal");
   const toast = useToast();
-  const [state, setState] = useState<CompanyProfileState>(() => getDefaultCompanyProfile());
+  const [state, setState] = useState<CompanyProfileState>(() => getEmptyCompanyProfileState());
   const [touchedFields, setTouchedFields] = useState<Partial<Record<CompanyProfileField, boolean>>>({});
   const [saving, setSaving] = useState(false);
   const [previewOpen, setPreviewOpen] = useState(false);
@@ -122,6 +108,8 @@ export function CompanyProfileForm() {
 
   const factLabels = useMemo(
     () => ({
+      eyebrow: tAbout("facts.eyebrow"),
+      title: tAbout("facts.title"),
       legal: tAbout("facts.legal"),
       founded: tAbout("facts.founded"),
       hq: tAbout("facts.hq"),
@@ -219,34 +207,6 @@ export function CompanyProfileForm() {
       <form className="admin-contact-form admin-create-form admin-company-profile-form" onSubmit={onSubmit} noValidate>
         <div className="admin-panel admin-contact-form__panel">
           <div className="admin-company-profile__sections">
-            <FormSection icon={<TicketIcon />} title={t("accordion.ticket.title")}>
-              <div className="admin-form-grid admin-form-grid--3 admin-company-profile__grid">
-                <AdminFormField
-                  id="company-profile-ticket-eyebrow"
-                  label={t("fields.ticketEyebrow")}
-                  required
-                  value={state.ticketEyebrow}
-                  placeholder={t("placeholders.ticketEyebrow")}
-                  fieldError={getVisibleFieldError("ticketEyebrow")}
-                  getErrorMessage={getFieldErrorMessage}
-                  onChange={(event) => updateField("ticketEyebrow", event.target.value)}
-                  onBlur={() => touchField("ticketEyebrow")}
-                />
-                <AdminFormField
-                  id="company-profile-ticket-title"
-                  className="admin-form-grid__span-2"
-                  label={t("fields.ticketTitle")}
-                  required
-                  value={state.ticketTitle}
-                  placeholder={t("placeholders.ticketTitle")}
-                  fieldError={getVisibleFieldError("ticketTitle")}
-                  getErrorMessage={getFieldErrorMessage}
-                  onChange={(event) => updateField("ticketTitle", event.target.value)}
-                  onBlur={() => touchField("ticketTitle")}
-                />
-              </div>
-            </FormSection>
-
             <FormSection icon={<IdentityIcon />} title={t("accordion.identity.title")}>
               <div className="admin-form-grid admin-form-grid--3 admin-company-profile__grid">
                 <AdminFormField

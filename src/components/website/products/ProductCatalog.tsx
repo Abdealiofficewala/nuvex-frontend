@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/buttons";
 import { cn } from "@/lib/utils";
 import { ProductFilter } from "@/components/website/products/ProductFilter";
 import { ProductGrid } from "@/components/website/products/ProductGrid";

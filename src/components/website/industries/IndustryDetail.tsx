@@ -6,7 +6,7 @@ import { HeroActions } from "@/components/website/common/HeroActions";
 import { IndustryCard } from "@/components/website/industries/IndustryCard";
 import { Link } from "@/i18n/routing";
 import { industryHref, ROUTES } from "@/lib/constants";
-import type { Industry } from "@/types/industry";
+import type { Industry, Sector } from "@/types/industry";
 
 type SectorDetail = {
   body?: string;
@@ -15,12 +15,13 @@ type SectorDetail = {
 };
 
 type IndustryDetailProps = {
-  industry: Industry;
-  related?: Industry[];
+  industry: Sector;
+  related?: Sector[];
   sector?: SectorDetail;
+  parentIndustry?: Industry;
 };
 
-export async function IndustryDetail({ industry, related, sector }: IndustryDetailProps) {
+export async function IndustryDetail({ industry, related, sector, parentIndustry }: IndustryDetailProps) {
   const t = await getTranslations("industries");
   const cta = await getTranslations("common");
   const body = sector?.body ?? industry?.description;
@@ -32,6 +33,12 @@ export async function IndustryDetail({ industry, related, sector }: IndustryDeta
       <div className="container">
         <Reveal className={"industry-view__nav"}>
           <Link href={ROUTES.industries}>{t("detail.back")}</Link>
+          {parentIndustry ? (
+            <>
+              <span aria-hidden="true">/</span>
+              <Link href={`${ROUTES.industries}/${parentIndustry.slug}`}>{parentIndustry.name}</Link>
+            </>
+          ) : null}
           <span aria-hidden="true">/</span>
           <span>{industry?.name}</span>
         </Reveal>

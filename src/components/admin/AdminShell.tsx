@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { PanelToggleIcon } from "@/components/admin/header/AdminMenuIcons";
 import { cn } from "@/lib/utils";
+import { ActiveThemeProvider } from "@/components/admin/appearance/ActiveThemeProvider";
 import { Header } from "@/components/admin/header/Header";
 import { Sidebar } from "@/components/admin/sidebar/Sidebar";
 
@@ -19,6 +20,7 @@ export function AdminShell({ children }: AdminShellProps) {
   const collapse = () => setExpanded(false);
 
   return (
+    <ActiveThemeProvider>
     <div className={cn("admin-shell", expanded && "is-sidebar-expanded")}>
       {expanded ? (
         <button
@@ -46,5 +48,6 @@ export function AdminShell({ children }: AdminShellProps) {
         <div className="admin-content">{children}</div>
       </div>
     </div>
+    </ActiveThemeProvider>
   );
 }

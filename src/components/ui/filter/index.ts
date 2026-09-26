@@ -1,1 +1,1 @@
-export { FilterSelect } from "./FilterSelect";
+export { FilterSelect } from "../forms/FilterSelect";

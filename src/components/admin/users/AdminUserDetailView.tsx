@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { ButtonLink } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/buttons";
 import { getAdminUserFullName, type AdminUserRecord } from "@/lib/admin-users";
 import { formatPhoneParts } from "@/lib/utils/phone";
 import { cn, hasValue } from "@/lib/utils";

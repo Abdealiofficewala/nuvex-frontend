@@ -1,10 +1,10 @@
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { AdminComingSoon } from "@/components/admin/common/AdminComingSoon";
+import { ColorPalettesListing } from "@/components/admin/appearance/ColorPalettesListing";
 
-export default function AdminThemeColorsPage() {
+export default function AdminColorPalettesListingPage() {
   return (
-    <AdminPage pageKey="themeColors">
-      <AdminComingSoon />
+    <AdminPage pageKey="themeColors" wide>
+      <ColorPalettesListing />
     </AdminPage>
   );
 }

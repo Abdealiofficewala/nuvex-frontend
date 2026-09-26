@@ -1,10 +1,10 @@
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
 import { IndustryCard } from "@/components/website/industries/IndustryCard";
-import type { Industry } from "@/types/industry";
+import type { Sector } from "@/types/industry";
 
 type HomeIndustriesRailProps = {
-  industries: Industry[];
+  industries: Sector[];
   viewLabel: string;
 };
 

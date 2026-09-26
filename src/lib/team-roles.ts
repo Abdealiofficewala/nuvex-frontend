@@ -1,4 +1,3 @@
-import { getDefaultTeamRoles } from "@/data/mock/team-roles";
 import { ADMIN_TEAM_ROLES_STORE_KEY } from "@/lib/constants";
 import { TEAM_ROLE_VALUE_PATTERN, type TeamRole } from "@/lib/team-roles.config";
 
@@ -52,8 +51,8 @@ function sanitizeTeamRole(input: Partial<TeamRole>, fallback?: TeamRole): TeamRo
 }
 
 function parseStoredTeamRoles(raw: unknown): TeamRole[] {
-  if (!Array.isArray(raw) || !raw.length) {
-    return getDefaultTeamRoles();
+  if (!Array.isArray(raw)) {
+    return [];
   }
 
   return raw
@@ -75,7 +74,7 @@ export function saveTeamRolesState(roles: TeamRole[]) {
     .map((item) => sanitizeTeamRole(item))
     .filter((item): item is TeamRole => Boolean(item));
 
-  persistTeamRoles(nextState.length ? nextState : getDefaultTeamRoles());
+  persistTeamRoles(nextState);
 }
 
 export function addTeamRole(role: Pick<TeamRole, "label" | "value">): TeamRole[] {

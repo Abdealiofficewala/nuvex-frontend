@@ -1,0 +1,68 @@
+@theme {
+  --color-navy: #1e3a5f;
+  --color-navy-dark: #152a45;
+  --color-charcoal: #141a22;
+  --color-bronze: #c17a3a;
+  --color-gold: #cdb176;
+  --color-beige: #f3f1ec;
+  --color-steel: #7b8490;
+  --color-graphite: #0d1117;
+  --font-sans: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --color-primary: #1e3a5f;
+  --color-primary-dark: #152a45;
+  --color-secondary: #141a22;
+  --color-accent: #c17a3a;
+  --color-gold: #cdb176;
+  --color-background: #f3f1ec;
+  --color-surface: #ffffff;
+  --color-text: #141a22;
+  --color-muted: #5c6570;
+  --color-steel: #7b8490;
+  --color-graphite: #0d1117;
+  --color-line: #d4cfc4;
+  --color-danger: #b42318;
+  --color-success: #067647;
+  --font-sans: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 80px;
+  --space-10: 96px;
+  --space-11: 120px;
+
+  --text-display: clamp(2.8rem, 6vw, 4.6rem);
+  --text-h1: clamp(2.2rem, 4vw, 3.4rem);
+  --text-h2: clamp(1.7rem, 3vw, 2.4rem);
+  --text-h3: 1.25rem;
+  --text-h4: 1.05rem;
+  --text-body-lg: 1.125rem;
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-caption: 0.75rem;
+  --text-nav: 0.9375rem;
+  --text-button: 0.875rem;
+
+  --leading-display: 1.05;
+  --leading-heading: 1.15;
+  --leading-body: 1.7;
+  --tracking-tight: -0.03em;
+  --tracking-wide: 0.12em;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --container: 1180px;
+  --gutter: clamp(20px, 2vw, 48px);
+  --inline-pad: var(--gutter);
+  --header-height: 80px;
+  --measure: 38rem;
+}

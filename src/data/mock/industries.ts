@@ -1,6 +1,8 @@
-import type { Industry } from "@/types/industry";
+import type { Sector } from "@/types/industry";
 
-export const mockIndustries: Industry[] = [
+type MockSector = Omit<Sector, "industryId" | "status" | "sortOrder">;
+
+export const mockIndustries: MockSector[] = [
   {
     id: "ind-construction",
     slug: "construction",

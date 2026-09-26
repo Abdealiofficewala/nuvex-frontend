@@ -92,8 +92,25 @@ export function getDefaultContactDetails(): ContactDetailsState {
   };
 }
 
+function readStoredContactRaw(): unknown | undefined {
+  if (typeof window === "undefined") {
+    return undefined;
+  }
+
+  try {
+    const raw = window.sessionStorage.getItem(ADMIN_CONTACT_STORE_KEY);
+    if (raw === null) {
+      return undefined;
+    }
+
+    return JSON.parse(raw) as unknown;
+  } catch {
+    return undefined;
+  }
+}
+
 function sanitizePhones(input: ContactPhone[] | undefined): ContactPhone[] {
-  const defaults = buildDefaultPhones();
+  const defaults = getEmptyContactDetailsState().phones;
 
   return CONTACT_PHONE_KEYS.map((key, index) => {
     const match = input?.find((item) => item.key === key);
@@ -103,11 +120,11 @@ function sanitizePhones(input: ContactPhone[] | undefined): ContactPhone[] {
 
 function parseStoredContactDetails(raw: unknown): ContactDetailsState {
   if (!raw || typeof raw !== "object") {
-    return getDefaultContactDetails();
+    return getEmptyContactDetailsState();
   }
 
   const record = raw as Partial<ContactDetailsState>;
-  const defaults = getDefaultContactDetails();
+  const defaults = getEmptyContactDetailsState();
 
   return {
     person: record.person?.trim() ?? defaults.person,
@@ -126,7 +143,21 @@ function parseStoredContactDetails(raw: unknown): ContactDetailsState {
 }
 
 export function getContactDetailsState(): ContactDetailsState {
-  return parseStoredContactDetails(readJson(ADMIN_CONTACT_STORE_KEY, null));
+  const stored = readStoredContactRaw();
+  if (stored === undefined) {
+    return getEmptyContactDetailsState();
+  }
+
+  return parseStoredContactDetails(stored);
+}
+
+export function getWebsiteContactDetailsState(): ContactDetailsState {
+  const stored = readStoredContactRaw();
+  if (stored === undefined) {
+    return getDefaultContactDetails();
+  }
+
+  return parseStoredContactDetails(stored);
 }
 
 export function getContactPhoneValue(state: ContactDetailsState, key: ContactPhoneKey): string {

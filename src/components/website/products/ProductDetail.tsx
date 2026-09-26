@@ -1,10 +1,10 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { ButtonLink } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/buttons";
 import { Reveal } from "@/components/ui/reveal";
 import { HeroActions } from "@/components/website/common/HeroActions";
-import { ProductGallery } from "./ProductGallery";
+import { ProductDetailGallery } from "./ProductDetailGallery";
 import { ProductGrid } from "./ProductGrid";
 import { ProductSpecifications } from "./ProductSpecifications";
 import { Link } from "@/i18n/routing";
@@ -36,7 +36,7 @@ export async function ProductDetail({ product, related }: ProductDetailProps) {
 
         <div className={"product-view__hero"}>
           <Reveal>
-            <ProductGallery product={product} />
+            <ProductDetailGallery product={product} />
           </Reveal>
           <Reveal className={"product-view__copy"} delay={80}>
             <div className={"product-view__head"}>
@@ -54,16 +54,6 @@ export async function ProductDetail({ product, related }: ProductDetailProps) {
               {product.status ? <span className={"is-muted"}>{product.status}</span> : null}
             </div>
             {product.description ? <p className={"product-view__lede"}>{product.description}</p> : null}
-            {product.sizes?.length ? (
-              <div className={"product-view__sizes"}>
-                <p className={"t-caption"}>{t("detail.sizes")}</p>
-                <ul>
-                  {product.sizes.map((size) => (
-                    <li key={size}>{size}</li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
             <HeroActions
               className={"product-detail__actions"}
               actions={[

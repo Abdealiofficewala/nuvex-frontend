@@ -1,1 +1,1 @@
-export { Reveal } from "./reveal";
+export { Reveal } from "../feedback/Reveal";

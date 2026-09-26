@@ -5,6 +5,14 @@ export type ProductSpecification = {
   value: string;
 };
 
+export type ProductSizeOption = {
+  label: string;
+  slug: string;
+  image: string;
+  gallery: string[];
+  isDefault?: boolean;
+};
+
 export type Product = {
   id: string;
   name: string;
@@ -13,7 +21,7 @@ export type Product = {
   categorySlug: string;
   subcategory: string;
   subcategorySlug: string;
-  sizes: string[];
+  sizeOptions: ProductSizeOption[];
   shortDescription: string;
   description: string;
   image: string;
@@ -33,4 +41,19 @@ export type ProductCategory = {
   name: string;
   summary: string;
   image: string;
+  isVisible: boolean;
+  isNew: boolean;
+  /** Linked catalogue types (from Types admin). */
+  typeSlugs: string[];
+  /** Denormalized type names aligned with typeSlugs. */
+  typeNames: string[];
+};
+
+/** Standalone catalogue type (linked from categories). */
+export type ProductType = {
+  slug: string;
+  name: string;
+  summary: string;
+  image: string;
+  isVisible: boolean;
 };

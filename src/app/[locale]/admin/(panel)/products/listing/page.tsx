@@ -1,10 +1,14 @@
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { AdminComingSoon } from "@/components/admin/common/AdminComingSoon";
+import { ProductJsonGuide } from "@/components/admin/products/ProductJsonGuide";
+import { ProductsListing } from "@/components/admin/products/ProductsListing";
 
 export default function AdminProductsListingPage() {
   return (
     <AdminPage pageKey="productsListing" wide>
-      <AdminComingSoon />
+      <div className="admin-products-listing-page">
+        <ProductsListing />
+        <ProductJsonGuide />
+      </div>
     </AdminPage>
   );
 }

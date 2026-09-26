@@ -1,1 +1,1 @@
-export { MediaFill } from "./media-fill";
+export { MediaFill } from "../data-display/MediaFill";

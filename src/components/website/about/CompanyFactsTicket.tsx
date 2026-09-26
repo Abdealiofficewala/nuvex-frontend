@@ -22,8 +22,8 @@ export function CompanyFactsTicket({ profile, factLabels, className }: CompanyFa
     <article className={cn("about-facts__ticket", className)}>
       <header className="about-facts__head">
         <div className="about-facts__head-copy">
-          <p className={cn("t-caption", "about-facts__eyebrow")}>{profile.ticketEyebrow}</p>
-          <h3 className={cn("t-h3", "about-facts__title")}>{profile.ticketTitle}</h3>
+          <p className={cn("t-caption", "about-facts__eyebrow")}>{factLabels.eyebrow}</p>
+          <h3 className={cn("t-h3", "about-facts__title")}>{factLabels.title}</h3>
         </div>
         <p className="about-facts__serial" aria-hidden="true">
           {getCompanyProfileTicketSerial(profile)}

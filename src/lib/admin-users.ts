@@ -1,6 +1,5 @@
-import type { AdminAccessPageId } from "@/lib/admin-menu";
 import {
-  getDefaultPageAccess,
+  getNewUserPageAccess,
   normalizePageAccessMap,
   normalizeUserPageAccess,
   type AdminPageAccessMap,
@@ -13,7 +12,7 @@ import {
   type AdminUserRecord,
   type AdminUserRole,
 } from "@/lib/admin-users.config";
-import { ADMIN_AUTH, ADMIN_PAGE_ACCESS_KEY, ADMIN_USERS_STORE_KEY } from "@/lib/constants";
+import { ADMIN_PAGE_ACCESS_KEY, ADMIN_USERS_STORE_KEY } from "@/lib/constants";
 import { DEFAULT_PHONE_COUNTRY_CODE } from "@/lib/phone-countries.config";
 import { formatPhoneParts } from "@/lib/utils/phone";
 
@@ -22,6 +21,7 @@ export { ADMIN_USER_ROLES, getAdminUserFullName } from "@/lib/admin-users.config
 export type { AdminPageAccessMap, AdminPagePermission, AdminUserPageAccess, AdminModulePermissions } from "@/lib/admin-page-access.config";
 export {
   getDefaultPageAccess,
+  getNewUserPageAccess,
   getModulePermission,
   setModulePermission,
   userHasPermission,
@@ -60,28 +60,6 @@ function notifyUsersUpdated() {
   }
 
   window.dispatchEvent(new CustomEvent(ADMIN_USERS_UPDATED_EVENT));
-}
-
-function createDefaultAdminUser(): AdminUserRecord {
-  return {
-    id: "demo-admin",
-    firstName: "Abbas",
-    lastName: "Officewala",
-    email: ADMIN_AUTH.demoEmail,
-    phoneCountryCode: DEFAULT_PHONE_COUNTRY_CODE,
-    phoneNumber: "9727366046",
-    image: "",
-    designation: "Managing Director",
-    addressLine1: "Aavkar Avenue, Dawoodi Bohra Community Center",
-    addressLine2: "",
-    village: "Gandhinagar",
-    city: "Gandhinagar",
-    pincode: "382421",
-    state: "Gujarat",
-    role: "admin",
-    active: true,
-    createdAt: new Date().toISOString(),
-  };
 }
 
 function normalizeLegacyUser(raw: Record<string, unknown>): AdminUserRecord | null {
@@ -157,26 +135,12 @@ function normalizeLegacyUser(raw: Record<string, unknown>): AdminUserRecord | nu
 
 function sanitizeUsers(input: unknown): AdminUserRecord[] {
   if (!Array.isArray(input)) {
-    return [createDefaultAdminUser()];
+    return [];
   }
 
-  const users = input
+  return input
     .map((item) => (item && typeof item === "object" ? normalizeLegacyUser(item as Record<string, unknown>) : null))
     .filter((item): item is AdminUserRecord => Boolean(item));
-
-  if (!users.length) {
-    return [createDefaultAdminUser()];
-  }
-
-  const hasDemoAdmin = users.some(
-    (user) => user.email.toLowerCase() === ADMIN_AUTH.demoEmail.toLowerCase(),
-  );
-
-  if (!hasDemoAdmin) {
-    users.unshift(createDefaultAdminUser());
-  }
-
-  return users;
 }
 
 export function getAdminUsers(): AdminUserRecord[] {
@@ -209,7 +173,7 @@ export function saveAdminUser(input: AdminUserInput, pageAccess?: AdminUserPageA
   writeJson(ADMIN_USERS_STORE_KEY, users);
 
   const access = getAdminPageAccessMap();
-  access[record.id] = pageAccess ?? getDefaultPageAccess();
+  access[record.id] = pageAccess ?? getNewUserPageAccess();
   writeJson(ADMIN_PAGE_ACCESS_KEY, access);
 
   notifyUsersUpdated();

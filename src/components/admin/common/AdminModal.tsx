@@ -7,7 +7,9 @@ import { cn } from "@/lib/utils";
 
 export type AdminModalTone = "default" | "caution";
 
-export type AdminModalIcon = "reset" | "hide" | "info" | "preview";
+export type AdminModalIcon = "reset" | "hide" | "info" | "preview" | "filter";
+
+export type AdminModalSize = "default" | "wide" | "xl";
 
 type AdminModalProps = {
   open: boolean;
@@ -17,6 +19,8 @@ type AdminModalProps = {
   tone?: AdminModalTone;
   icon?: AdminModalIcon | "none";
   simple?: boolean;
+  size?: AdminModalSize;
+  dialogClassName?: string;
   cancelLabel?: string;
   loading?: boolean;
   onClose: () => void;
@@ -88,11 +92,25 @@ function PreviewIcon() {
   );
 }
 
+function FilterIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M4 6h16M7 12h10M10 18h4"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 const MODAL_ICONS = {
   reset: ResetIcon,
   hide: HideIcon,
   info: InfoIcon,
   preview: PreviewIcon,
+  filter: FilterIcon,
 } as const;
 
 export function AdminModal({
@@ -103,6 +121,8 @@ export function AdminModal({
   tone = "default",
   icon = "info",
   simple = false,
+  size = "default",
+  dialogClassName,
   cancelLabel,
   loading = false,
   onClose,
@@ -175,6 +195,9 @@ export function AdminModal({
           "admin-modal__dialog",
           tone === "caution" && "is-caution",
           simple && "is-simple",
+          size === "wide" && "is-wide",
+          size === "xl" && "is-xl",
+          dialogClassName,
         )}
         role={role}
         aria-modal="true"

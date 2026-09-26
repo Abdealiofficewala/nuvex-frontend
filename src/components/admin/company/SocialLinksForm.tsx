@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AdminConfirmModal, AdminFieldLabel, AdminFormField } from "@/components/admin/common";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/buttons";
 import { useToast } from "@/components/ui/toast";
 import { SocialIcon } from "@/components/website/common/SocialIcon";
 import { SOCIAL_LINK_FIELDS, type SocialLinkKey, type SocialLinksState } from "@/lib/social-links.config";
 import {
-  getDefaultSocialLinksState,
+  getEmptySocialLinksState,
   getSocialLinksState,
   resetSocialLinksState,
   saveSocialLinksState,
@@ -29,7 +29,7 @@ type ConfirmState =
 export function SocialLinksForm() {
   const t = useTranslations("admin.company.social");
   const toast = useToast();
-  const [state, setState] = useState<SocialLinksState>(() => getDefaultSocialLinksState());
+  const [state, setState] = useState<SocialLinksState>(() => getEmptySocialLinksState());
   const [touchedFields, setTouchedFields] = useState<Partial<Record<SocialLinkKey, boolean>>>({});
   const [saving, setSaving] = useState(false);
   const [confirm, setConfirm] = useState<ConfirmState | null>(null);

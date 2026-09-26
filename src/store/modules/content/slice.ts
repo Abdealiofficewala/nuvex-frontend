@@ -2,14 +2,14 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { RequestStatus } from "@/store/modules/status";
 import type { Company } from "@/types/company";
 import type { FaqItem } from "@/types/faq";
-import type { Industry } from "@/types/industry";
+import type { Sector } from "@/types/industry";
 import type { Testimonial } from "@/types/testimonial";
 import type { ThemeTokens } from "@/types/theme";
 
 type ContentState = {
   company: Company | null;
   theme: ThemeTokens | null;
-  industries: Industry[];
+  industries: Sector[];
   testimonials: Testimonial[];
   faqs: FaqItem[];
   status: RequestStatus;
@@ -47,7 +47,7 @@ const contentSlice = createSlice({
     fetchIndustriesRequested(state) {
       state.status = "loading";
     },
-    fetchIndustriesSucceeded(state, action: PayloadAction<Industry[]>) {
+    fetchIndustriesSucceeded(state, action: PayloadAction<Sector[]>) {
       state.status = "succeeded";
       state.industries = action.payload;
     },

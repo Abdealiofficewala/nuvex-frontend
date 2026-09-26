@@ -1,0 +1,26 @@
+{
+  "data": [
+    {
+      "id": "prd-hex-bolt",
+      "slug": "nx-hex-bolt",
+      "name": "HF-HB Hex Bolt",
+      "categorySlug": "bolts",
+      "subcategorySlug": "hex-bolts",
+      "image": "/images/products/nx-hex-bolt.jpg",
+      "sizeOptions": [
+        {
+          "label": "M8 × 25 mm",
+          "slug": "m8-25-mm",
+          "image": "/images/products/nx-hex-bolt.jpg",
+          "gallery": ["/images/products/nx-hex-bolt.jpg"],
+          "isDefault": true
+        }
+      ],
+      "shortDescription": "Metric hex head bolts for steel frames, machines, and site work.",
+      "status": "active",
+      "isFeatured": true,
+      "createdAt": "2026-03-21T12:00:00.000Z",
+      "updatedAt": "2026-03-21T12:00:00.000Z"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+.ui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--text-button);
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  transition: 0.2s ease;
+}
+
+.ui-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ui-button--primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.ui-button--primary:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+}
+
+.ui-button--accent {
+  border-color: #a8662e;
+  background: #c17a3a;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 8px 18px rgba(193, 122, 58, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+a.ui-button--accent,
+button.ui-button--accent {
+  background: #c17a3a;
+  color: #fff;
+}
+
+.ui-button--accent:hover:not(:disabled),
+.ui-button--accent:focus-visible,
+a.ui-button--accent:hover,
+button.ui-button--accent:hover {
+  background: #5c3214;
+  border-color: #5c3214;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 12px 24px rgba(92, 50, 20, 0.35);
+}
+
+.ui-button--arrow {
+  gap: 10px;
+  padding-right: 14px;
+}
+
+.ui-button--arrow::after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' d='M3 8h9M8.5 4.5 12.5 8 8.5 11.5'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' d='M3 8h9M8.5 4.5 12.5 8 8.5 11.5'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform 0.2s ease;
+}
+
+.ui-button--arrow:hover:not(:disabled)::after {
+  transform: translateX(3px);
+}
+
+.ui-button--secondary {
+  background: transparent;
+  color: var(--color-secondary);
+  border-color: var(--color-line);
+}
+
+.ui-button--secondary:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.ui-button--light {
+  background: #f5f1e8;
+  color: var(--color-graphite);
+}
+
+.ui-button--ghost {
+  background: transparent;
+  color: #f5f1e8;
+  border-color: rgba(245, 241, 232, 0.35);
+}
+
+.ui-button--ghost:hover:not(:disabled),
+a.ui-button--ghost:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+.ui-button--danger {
+  background: var(--color-danger);
+  color: #fff;
+}
+
+.ui-button--icon {
+  min-width: 44px;
+  width: 44px;
+  padding: 0;
+}
+
+.ui-button-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}

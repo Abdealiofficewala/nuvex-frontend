@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import {
   CONTACT_DETAILS_UPDATED_EVENT,
-  getContactDetailsState,
   getDefaultContactDetails,
+  getWebsiteContactDetailsState,
 } from "@/lib/contact-details";
 import { formatPhoneParts } from "@/lib/utils/phone";
 import { formatAddress, hasValue, phoneHref } from "@/lib/utils";
@@ -25,9 +25,9 @@ export function ContactDetails({
   const [state, setState] = useState(getDefaultContactDetails);
 
   useEffect(() => {
-    setState(getContactDetailsState());
+    setState(getWebsiteContactDetailsState());
 
-    const refresh = () => setState(getContactDetailsState());
+    const refresh = () => setState(getWebsiteContactDetailsState());
     window.addEventListener(CONTACT_DETAILS_UPDATED_EVENT, refresh);
 
     return () => window.removeEventListener(CONTACT_DETAILS_UPDATED_EVENT, refresh);

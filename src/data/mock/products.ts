@@ -1,4 +1,23 @@
-import type { Product } from "@/types/product";
+import { normalizeSizeOptions } from "@/lib/product-size-options";
+import type { Product, ProductSizeOption } from "@/types/product";
+
+function buildSizeOptions(
+  labels: string[],
+  image: string,
+  gallery: string[] = [],
+): ProductSizeOption[] {
+  return normalizeSizeOptions(
+    labels.map((label, index) => ({
+      label,
+      slug: "",
+      image,
+      gallery: index === 0 ? gallery : [],
+      isDefault: index === 0,
+    })),
+    image,
+    gallery,
+  );
+}
 
 export const mockProducts: Product[] = [
   {
@@ -9,7 +28,11 @@ export const mockProducts: Product[] = [
     categorySlug: "bolts",
     subcategory: "Hex bolts",
     subcategorySlug: "hex-bolts",
-    sizes: ["M6 × 20 mm", "M8 × 25 mm", "M10 × 40 mm", "M12 × 50 mm", "M16 × 70 mm", "M20 × 90 mm"],
+    sizeOptions: buildSizeOptions(
+      ["M6 × 20 mm", "M8 × 25 mm", "M10 × 40 mm", "M12 × 50 mm", "M16 × 70 mm", "M20 × 90 mm"],
+      "/images/products/nx-hex-bolt.jpg",
+      ["/images/products/nx-hex-bolt.jpg", "/images/products/nx-hex-bolt-detail.jpg"],
+    ),
     shortDescription: "Metric hex head bolts for steel frames, machines, and site work.",
     description:
       "HF-HB is a standard hex bolt for fabricators and maintenance stores that need a known grade, a clean thread, and sizes that match everyday drawings. Heads are marked, threads are rolled, and packing is counted so a site order does not arrive short.",
@@ -42,7 +65,10 @@ export const mockProducts: Product[] = [
     categorySlug: "bolts",
     subcategory: "Anchor bolts",
     subcategorySlug: "anchor-bolts",
-    sizes: ["M12 × 150 mm", "M16 × 200 mm", "M20 × 250 mm", "M24 × 300 mm"],
+    sizeOptions: buildSizeOptions(
+      ["M12 × 150 mm", "M16 × 200 mm", "M20 × 250 mm", "M24 × 300 mm"],
+      "/images/products/nx-anchor-bolt.jpg",
+    ),
     shortDescription: "Bent and straight anchor bolts for bases, columns, and civil inserts.",
     description:
       "HF-AB holds equipment bases and steel columns into concrete. Shank length, bend, and thread are cut to the pour drawing so the civil team is not guessing on site.",
@@ -74,7 +100,10 @@ export const mockProducts: Product[] = [
     categorySlug: "nuts",
     subcategory: "Hex nuts",
     subcategorySlug: "hex-nuts",
-    sizes: ["M6", "M8", "M10", "M12", "M16", "M20", "M24"],
+    sizeOptions: buildSizeOptions(
+      ["M6", "M8", "M10", "M12", "M16", "M20", "M24"],
+      "/images/products/nx-hex-nut.jpg",
+    ),
     shortDescription: "Hex nuts matched to our bolt threads so the pair actually tightens.",
     description:
       "HF-HN is the nut that belongs with the bolt, not a mixed leftover from another mill. Threads are gauged, height is to ISO, and the same finish as the bolt can be packed together.",
@@ -106,7 +135,7 @@ export const mockProducts: Product[] = [
     categorySlug: "nuts",
     subcategory: "Lock nuts",
     subcategorySlug: "lock-nuts",
-    sizes: ["M6", "M8", "M10", "M12", "M16"],
+    sizeOptions: buildSizeOptions(["M6", "M8", "M10", "M12", "M16"], "/images/products/nx-lock-nut.jpg"),
     shortDescription: "Nyloc nuts for joints that see vibration and should not walk off.",
     description:
       "HF-LN uses a nylon insert to hold torque on fans, conveyors, and vehicle fittings. The insert is seated so the first tightening is usable, not crushed in the bag.",
@@ -138,7 +167,10 @@ export const mockProducts: Product[] = [
     categorySlug: "screws",
     subcategory: "Machine screws",
     subcategorySlug: "machine-screws",
-    sizes: ["M3 × 10 mm", "M4 × 12 mm", "M5 × 16 mm", "M6 × 20 mm", "M8 × 25 mm"],
+    sizeOptions: buildSizeOptions(
+      ["M3 × 10 mm", "M4 × 12 mm", "M5 × 16 mm", "M6 × 20 mm", "M8 × 25 mm"],
+      "/images/products/nx-machine-screw.jpg",
+    ),
     shortDescription: "Pan and countersunk machine screws for panels, covers, and fittings.",
     description:
       "HF-MS is for the small joints: junction box lids, nameplates, and sheet-metal covers. Heads are pan or CSK, drives are Phillips or hex socket, and lengths stay in the sizes electricians actually use.",
@@ -170,7 +202,10 @@ export const mockProducts: Product[] = [
     categorySlug: "screws",
     subcategory: "Self-tapping screws",
     subcategorySlug: "self-tapping-screws",
-    sizes: ["No.6 × 12 mm", "No.8 × 20 mm", "No.10 × 25 mm", "No.12 × 40 mm"],
+    sizeOptions: buildSizeOptions(
+      ["No.6 × 12 mm", "No.8 × 20 mm", "No.10 × 25 mm", "No.12 × 40 mm"],
+      "/images/products/nx-self-tapping-screw.jpg",
+    ),
     shortDescription: "Sharp-point screws for sheet, wood battens, and light fabrication.",
     description:
       "HF-ST cuts its own thread in thin steel and timber. Points are sharp, threads are coarse, and the head does not cam out on the first gun pass if the bit is the right size.",
@@ -202,7 +237,10 @@ export const mockProducts: Product[] = [
     categorySlug: "nails",
     subcategory: "Wire nails",
     subcategorySlug: "wire-nails",
-    sizes: ["25 mm", "40 mm", "50 mm", "75 mm", "100 mm", "125 mm"],
+    sizeOptions: buildSizeOptions(
+      ["25 mm", "40 mm", "50 mm", "75 mm", "100 mm", "125 mm"],
+      "/images/products/nx-wire-nail.jpg",
+    ),
     shortDescription: "Common wire nails for carpentry, packing crates, and site timber.",
     description:
       "HF-WN is a bright wire nail with a round head and a diamond point. Lengths are the ones carpenters call for, packed by kilogram so a contractor can order by weight or by count.",
@@ -234,7 +272,7 @@ export const mockProducts: Product[] = [
     categorySlug: "nails",
     subcategory: "Concrete nails",
     subcategorySlug: "concrete-nails",
-    sizes: ["25 mm", "40 mm", "50 mm", "65 mm"],
+    sizeOptions: buildSizeOptions(["25 mm", "40 mm", "50 mm", "65 mm"], "/images/products/nx-concrete-nail.jpg"),
     shortDescription: "Hardened nails for fixing into concrete, brick, and hard block.",
     description:
       "HF-CN is a fluted, hardened nail for chasing into masonry when a gun or hammer is what the crew has. The point and heat treat are set for block, not for soft timber.",

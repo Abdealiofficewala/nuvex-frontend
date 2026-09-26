@@ -3,10 +3,10 @@ import { MediaFill } from "@/components/ui/media-fill";
 import { BrowseLink } from "@/components/website/common/BrowseLink";
 import { Link } from "@/i18n/routing";
 import { industryHref } from "@/lib/constants";
-import type { Industry } from "@/types/industry";
+import type { Sector } from "@/types/industry";
 
 type IndustryCardProps = {
-  industry: Industry;
+  industry: Sector;
   index?: number;
   viewLabel: string;
   applicationsLabel?: string;

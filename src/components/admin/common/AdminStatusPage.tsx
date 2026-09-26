@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { ButtonLink } from "@/components/ui/button/button-link";
+import { Button, ButtonLink } from "@/components/ui/buttons";
 import type { ButtonVariant } from "@/types/ui";
 
 type AdminStatusAction = {

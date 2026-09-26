@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useMemo } from "react";
 import { useTranslations } from "next-intl";
-import { ButtonLink } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/buttons";
 import { ROUTES, teamMemberEditHref } from "@/lib/constants";
 import { findTeamMemberById } from "@/lib/team-members";
 import { cn, hasValue } from "@/lib/utils";

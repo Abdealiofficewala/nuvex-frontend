@@ -1,4 +1,4 @@
-import { ButtonLink } from "@/components/ui/button/button-link";
+import { ButtonLink } from "@/components/ui/buttons";
 import type { HeroAction } from "@/types/ui";
 
 type HeroActionsProps = {

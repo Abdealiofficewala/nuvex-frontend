@@ -6,6 +6,7 @@ type AdminCheckboxProps = {
   label: string;
   disabled?: boolean;
   readOnly?: boolean;
+  showLabel?: boolean;
   className?: string;
   onChange?: (checked: boolean) => void;
 };
@@ -32,6 +33,7 @@ export function AdminCheckbox({
   label,
   disabled = false,
   readOnly = false,
+  showLabel = false,
   className,
   onChange,
 }: AdminCheckboxProps) {
@@ -42,6 +44,7 @@ export function AdminCheckbox({
       <label
         className={cn(
           "admin-checkbox",
+          showLabel && "admin-checkbox--labeled",
           checked && "is-checked",
           readOnly && "is-readonly",
           disabled && "is-disabled",
@@ -54,10 +57,11 @@ export function AdminCheckbox({
           type="checkbox"
           checked={checked}
           disabled={disabled}
-          aria-label={label}
+          aria-label={showLabel ? undefined : label}
           onChange={(event) => onChange?.(event.target.checked)}
         />
         <CheckboxControl />
+        {showLabel ? <span className="admin-checkbox__label">{label}</span> : null}
       </label>
     );
   }
@@ -66,16 +70,18 @@ export function AdminCheckbox({
     <span
       className={cn(
         "admin-checkbox",
+        showLabel && "admin-checkbox--labeled",
         "is-readonly",
         checked && "is-checked",
         disabled && "is-disabled",
         className,
       )}
-      aria-label={label}
-      role="img"
+      aria-label={showLabel ? undefined : label}
+      role={showLabel ? undefined : "img"}
     >
       <input type="checkbox" checked={checked} readOnly disabled tabIndex={-1} aria-hidden="true" />
       <CheckboxControl />
+      {showLabel ? <span className="admin-checkbox__label">{label}</span> : null}
     </span>
   );
 }

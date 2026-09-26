@@ -7,6 +7,8 @@ import { env } from "@/config/env";
 import { siteConfig } from "@/config/site.config";
 import { routing } from "@/i18n/routing";
 import { SiteSplash } from "@/components/website/common/SiteSplash";
+import { resolvedThemeToCssVars, resolvedThemeToLegacyTokens } from "@/lib/appearance/css-vars";
+import { getActiveResolvedTheme } from "@/lib/server/appearance-store";
 import { themeToCssVars } from "@/lib/theme";
 import { themeService } from "@/services/theme.service";
 import { StoreProvider } from "@/store/provider";
@@ -89,7 +91,13 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     notFound();
   }
 
-  const theme = await themeService.getTheme();
+  const activeResolved = await getActiveResolvedTheme();
+  const theme = activeResolved
+    ? resolvedThemeToLegacyTokens(activeResolved)
+    : await themeService.getTheme();
+  const bodyThemeStyle = activeResolved
+    ? resolvedThemeToCssVars(activeResolved)
+    : themeToCssVars(theme);
   const messages = await getMessages();
 
   return (
@@ -97,7 +105,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       lang={locale}
       className={`${inter.variable} ${poppins.variable} ${notoDevanagari.variable}`}
     >
-      <body style={themeToCssVars(theme)}>
+      <body style={bodyThemeStyle}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <StoreProvider>
             <SiteSplash />

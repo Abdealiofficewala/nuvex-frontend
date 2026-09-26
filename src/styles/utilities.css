@@ -1,0 +1,62 @@
+.t-display {
+  font-family: var(--font-heading), sans-serif;
+  font-size: var(--text-display);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-tight);
+}
+
+.t-h1 {
+  font-size: var(--text-h1);
+}
+.t-h2 {
+  font-size: var(--text-h2);
+}
+.t-h3 {
+  font-size: var(--text-h3);
+}
+.t-h4 {
+  font-size: var(--text-h4);
+}
+.t-body-lg {
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-body);
+}
+.t-small {
+  font-size: var(--text-small);
+}
+.t-caption {
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-background);
+}
+
+.t-muted {
+  color: var(--color-muted);
+}
+
+.measure {
+  max-width: var(--measure);
+}
+
+.mt-3 {
+  margin-top: var(--space-3);
+}
+.mt-4 {
+  margin-top: var(--space-4);
+}
+.mt-5 {
+  margin-top: var(--space-5);
+}
+.mt-6 {
+  margin-top: var(--space-6);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}

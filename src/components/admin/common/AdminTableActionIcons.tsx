@@ -46,3 +46,23 @@ export function AdminTableDeleteIcon({ className }: AdminTableActionIconProps) {
     </svg>
   );
 }
+
+export function AdminTableDuplicateIcon({ className }: AdminTableActionIconProps) {
+  return (
+    <svg className={className} {...svgProps}>
+      <rect x="9" y="9" width="11" height="11" rx="2" {...strokeProps} />
+      <path
+        d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+        {...strokeProps}
+      />
+    </svg>
+  );
+}
+
+export function AdminTableActivateIcon({ className }: AdminTableActionIconProps) {
+  return (
+    <svg className={className} {...svgProps}>
+      <path d="m5 12 4 4L19 6" {...strokeProps} />
+    </svg>
+  );
+}

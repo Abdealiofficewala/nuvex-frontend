@@ -4,7 +4,7 @@ import { useEffect, useId, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";
 import { AdminFormField } from "@/components/admin/common/AdminFormField";
-import { Button, ButtonLink } from "@/components/ui/button";
+import { Button, ButtonLink } from "@/components/ui/buttons";
 import { useToast } from "@/components/ui/toast";
 import { ROUTES, teamRoleViewHref } from "@/lib/constants";
 import {

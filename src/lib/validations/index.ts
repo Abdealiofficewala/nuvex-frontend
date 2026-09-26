@@ -52,4 +52,10 @@ export {
   type CompanyProfileFormErrors,
   type CompanyProfileErrorKey,
 } from "./company-profile";
+export {
+  validateSiteTopBarForm,
+  isSiteTopBarFormValid,
+  type SiteTopBarFormErrors,
+  type SiteTopBarErrorKey,
+} from "./site-top-bar";
 export { validateQuoteForm, isQuoteFormValid, buildQuoteMessage, type QuoteFormErrors, type QuoteErrorKey } from "./quote";

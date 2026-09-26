@@ -1,10 +1,10 @@
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { AdminComingSoon } from "@/components/admin/common/AdminComingSoon";
+import { ThemesListing } from "@/components/admin/appearance/ThemesListing";
 
 export default function AdminThemeListingPage() {
   return (
     <AdminPage pageKey="themeListing" wide>
-      <AdminComingSoon />
+      <ThemesListing />
     </AdminPage>
   );
 }

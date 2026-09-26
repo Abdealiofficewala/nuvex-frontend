@@ -1,10 +1,10 @@
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { AdminComingSoon } from "@/components/admin/common/AdminComingSoon";
+import { BannersListing } from "@/components/admin/banners/BannersListing";
 
 export default function AdminBannersListingPage() {
   return (
-    <AdminPage pageKey="banners">
-      <AdminComingSoon />
+    <AdminPage pageKey="banners" wide>
+      <BannersListing />
     </AdminPage>
   );
 }

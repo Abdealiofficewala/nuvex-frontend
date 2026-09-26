@@ -1,10 +1,10 @@
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { AdminComingSoon } from "@/components/admin/common/AdminComingSoon";
+import { ProductSizesPanel } from "@/components/admin/products/ProductSizesPanel";
 
 export default function AdminProductSizesPage() {
   return (
-    <AdminPage pageKey="productSizes">
-      <AdminComingSoon />
+    <AdminPage pageKey="productSizes" wide>
+      <ProductSizesPanel />
     </AdminPage>
   );
 }

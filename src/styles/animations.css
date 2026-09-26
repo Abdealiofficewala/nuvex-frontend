@@ -1,0 +1,74 @@
+@keyframes skel-pulse {
+  0% {
+    background-position: 120% 0;
+  }
+
+  100% {
+    background-position: -120% 0;
+  }
+}
+
+@keyframes page-loader-beam {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(320%);
+  }
+}
+
+@keyframes page-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hakimi-splash-shine {
+  from {
+    transform: translateX(-160%);
+  }
+  to {
+    transform: translateX(240%);
+  }
+}
+
+@keyframes hakimi-splash-i-glow {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes hakimi-splash-grain {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-1.5%, 1%);
+  }
+  50% {
+    transform: translate(1%, -1.2%);
+  }
+  75% {
+    transform: translate(-0.6%, -0.8%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hakimi-splash__grain,
+  .hakimi-splash__shine,
+  .hakimi-splash__i-glow {
+    animation: none;
+  }
+
+  .hakimi-splash__i-glow {
+    opacity: 0.35;
+  }
+}

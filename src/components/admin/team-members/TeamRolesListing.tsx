@@ -3,10 +3,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AdminConfirmModal } from "@/components/admin/common/AdminConfirmModal";
-import { AdminTable, type AdminTableColumn } from "@/components/admin/common/AdminTable";
+import { AdminListingTable } from "@/components/admin/common/AdminListingTable";
+import type { AdminTableColumn } from "@/components/admin/common/AdminTable";
 import { AdminTableActions } from "@/components/admin/common/AdminTableActions";
 import { AdminTooltip } from "@/components/admin/common/AdminTooltip";
-import { ButtonLink } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { ROUTES, teamRoleEditHref, teamRoleViewHref } from "@/lib/constants";
 import {
@@ -15,14 +15,6 @@ import {
   TEAM_ROLES_UPDATED_EVENT,
 } from "@/lib/team-roles";
 import type { TeamRole } from "@/lib/team-roles.config";
-
-function PlusIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </svg>
-  );
-}
 
 export function TeamRolesListing() {
   const t = useTranslations("admin.company.teamMembers.roles");
@@ -99,25 +91,14 @@ export function TeamRolesListing() {
 
   return (
     <section className="admin-team-roles">
-      <div className="admin-page-toolbar">
-        <p className="admin-page-toolbar__meta">{t("summary", { count: roles.length })}</p>
-        <ButtonLink
-          href={ROUTES.admin.teamMembers.rolesCreate}
-          variant="accent"
-          className="admin-page-toolbar__action"
-        >
-          <PlusIcon />
-          {t("createAction")}
-        </ButtonLink>
-      </div>
-
-      <AdminTable
+      <AdminListingTable
         columns={columns}
         rows={roles}
         rowKey={(row) => row.id}
         caption={t("table.caption")}
-        emptyTitle={t("empty.title")}
-        emptyDescription={t("empty.body")}
+        toolbarTitle={t("toolbarTitle")}
+        createHref={ROUTES.admin.teamMembers.rolesCreate}
+        createLabel={t("createAction")}
       />
 
       <AdminConfirmModal

@@ -1,10 +1,10 @@
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { AdminComingSoon } from "@/components/admin/common/AdminComingSoon";
+import { SectorsListing } from "@/components/admin/industries/SectorsListing";
 
 export default function AdminIndustriesSectorsPage() {
   return (
-    <AdminPage pageKey="sectors">
-      <AdminComingSoon />
+    <AdminPage pageKey="sectors" wide>
+      <SectorsListing />
     </AdminPage>
   );
 }

@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
-import { buttonClassName } from "@/components/ui/button/class-names";
+import { buttonClassName } from "@/components/ui/buttons";
 import {
   CONTACT_DETAILS_UPDATED_EVENT,
-  getContactDetailsState,
   getDefaultContactDetails,
+  getWebsiteContactDetailsState,
 } from "@/lib/contact-details";
 import { formatAddress, hasValue } from "@/lib/utils";
 
@@ -16,9 +16,9 @@ export function ContactMap() {
   const [state, setState] = useState(getDefaultContactDetails);
 
   useEffect(() => {
-    setState(getContactDetailsState());
+    setState(getWebsiteContactDetailsState());
 
-    const refresh = () => setState(getContactDetailsState());
+    const refresh = () => setState(getWebsiteContactDetailsState());
     window.addEventListener(CONTACT_DETAILS_UPDATED_EVENT, refresh);
 
     return () => window.removeEventListener(CONTACT_DETAILS_UPDATED_EVENT, refresh);

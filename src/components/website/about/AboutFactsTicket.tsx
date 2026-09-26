@@ -7,8 +7,8 @@ import { CompanyFactsTicket } from "@/components/website/about/CompanyFactsTicke
 import type { CompanyProfileState } from "@/lib/company-profile.config";
 import {
   COMPANY_PROFILE_UPDATED_EVENT,
-  getCompanyProfileState,
   getDefaultCompanyProfile,
+  getWebsiteCompanyProfileState,
 } from "@/lib/company-profile";
 
 export function AboutFactsTicket() {
@@ -16,9 +16,9 @@ export function AboutFactsTicket() {
   const [profile, setProfile] = useState<CompanyProfileState>(() => getDefaultCompanyProfile());
 
   useEffect(() => {
-    setProfile(getCompanyProfileState());
+    setProfile(getWebsiteCompanyProfileState());
 
-    const refresh = () => setProfile(getCompanyProfileState());
+    const refresh = () => setProfile(getWebsiteCompanyProfileState());
     window.addEventListener(COMPANY_PROFILE_UPDATED_EVENT, refresh);
 
     return () => window.removeEventListener(COMPANY_PROFILE_UPDATED_EVENT, refresh);
@@ -26,6 +26,8 @@ export function AboutFactsTicket() {
 
   const factLabels = useMemo(
     () => ({
+      eyebrow: t("facts.eyebrow"),
+      title: t("facts.title"),
       legal: t("facts.legal"),
       founded: t("facts.founded"),
       hq: t("facts.hq"),

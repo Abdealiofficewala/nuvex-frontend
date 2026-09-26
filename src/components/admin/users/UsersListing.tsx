@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AdminConfirmModal } from "@/components/admin/common/AdminConfirmModal";
-import { AdminTable, type AdminTableColumn } from "@/components/admin/common/AdminTable";
+import { AdminListingTable } from "@/components/admin/common/AdminListingTable";
+import type { AdminTableColumn } from "@/components/admin/common/AdminTable";
 import { AdminTableActions } from "@/components/admin/common/AdminTableActions";
 import { AdminTooltip } from "@/components/admin/common/AdminTooltip";
-import { ButtonLink } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import {
   ADMIN_USERS_UPDATED_EVENT,
@@ -19,14 +19,6 @@ import {
 } from "@/lib/admin-users";
 import { ROUTES, adminUserViewHref } from "@/lib/constants";
 import { cn, hasValue, initials } from "@/lib/utils";
-
-function PlusIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </svg>
-  );
-}
 
 export function UsersListing() {
   const t = useTranslations("admin.users.listing");
@@ -178,24 +170,13 @@ export function UsersListing() {
 
   return (
     <section className="admin-users-listing">
-      <div className="admin-page-toolbar">
-        <p className="admin-page-toolbar__meta">{t("summary", { count: users.length })}</p>
-        <ButtonLink
-          href={ROUTES.admin.users.create}
-          variant="accent"
-          className="admin-page-toolbar__action"
-        >
-          <PlusIcon />
-          {t("addAction")}
-        </ButtonLink>
-      </div>
-
-      <AdminTable
+      <AdminListingTable
         columns={columns}
         rows={users}
         rowKey={(row) => row.id}
-        emptyTitle={t("empty.title")}
-        emptyDescription={t("empty.body")}
+        toolbarTitle={t("toolbarTitle")}
+        createHref={ROUTES.admin.users.create}
+        createLabel={t("addAction")}
       />
 
       <AdminConfirmModal

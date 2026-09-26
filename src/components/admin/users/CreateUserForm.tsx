@@ -6,17 +6,16 @@ import { useRouter } from "@/i18n/routing";
 import {
   AdminFormField,
   AdminFormSelect,
-  AdminImageUpload,
   AdminPhoneField,
+  AdminFormImageUpload,
 } from "@/components/admin/common";
-import { Button, ButtonLink } from "@/components/ui/button";
+import { ADMIN_USER_IMAGE_UPLOAD_CONSTRAINTS } from "@/lib/image-upload.config";
+import { Button, ButtonLink } from "@/components/ui/buttons";
 import { useToast } from "@/components/ui/toast";
 import { UserAddressFields } from "@/components/admin/users/UserAddressFields";
 import { UserPageAccessFields } from "@/components/admin/users/UserPageAccessFields";
 import { ADMIN_AUTH, ROUTES } from "@/lib/constants";
-import { getDefaultPageAccess, ADMIN_USER_ROLES, saveAdminUser, type AdminUserPageAccess } from "@/lib/admin-users";
-import { ADMIN_USER_IMAGE_UPLOAD_CONSTRAINTS } from "@/lib/image-upload.config";
-import { buildAdminImageUploadLabels } from "@/lib/admin-image-upload-labels";
+import { getNewUserPageAccess, ADMIN_USER_ROLES, saveAdminUser, type AdminUserPageAccess } from "@/lib/admin-users";
 import { DEFAULT_PHONE_COUNTRY_CODE } from "@/lib/phone-countries.config";
 import {
   ADMIN_USER_PROFILE_TOUCH_FIELDS,
@@ -61,7 +60,7 @@ export function CreateUserForm() {
   const confirmPasswordId = useId();
   const imageId = useId();
   const [values, setValues] = useState<CreateUserValues>(initialValues);
-  const [pageAccess, setPageAccess] = useState<AdminUserPageAccess>(() => getDefaultPageAccess());
+  const [pageAccess, setPageAccess] = useState<AdminUserPageAccess>(() => getNewUserPageAccess());
   const [touchedFields, setTouchedFields] = useState<Partial<Record<CreateUserField, boolean>>>({});
   const [saving, setSaving] = useState(false);
 
@@ -173,13 +172,13 @@ export function CreateUserForm() {
           <section className="admin-member-form__section admin-member-form__section--profile">
             <div className="admin-member-form__profile">
               <div className="admin-member-form__media">
-                <AdminImageUpload
+                <AdminFormImageUpload
                   id={imageId}
                   label={t("fields.image")}
+                  variant="icon"
+                  constraints={ADMIN_USER_IMAGE_UPLOAD_CONSTRAINTS}
                   value={values.image}
                   disabled={saving}
-                  constraints={ADMIN_USER_IMAGE_UPLOAD_CONSTRAINTS}
-                  labels={buildAdminImageUploadLabels((key) => t(`image.${key}`))}
                   onChange={(image) => updateField("image", image)}
                 />
               </div>

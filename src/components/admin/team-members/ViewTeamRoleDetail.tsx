@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { useTranslations } from "next-intl";
-import { ButtonLink } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/buttons";
 import { ROUTES, teamRoleEditHref } from "@/lib/constants";
 import { findTeamRoleByValue } from "@/lib/team-roles";
 

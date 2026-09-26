@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/buttons";
 import { isContactFormValid, validateContactForm } from "@/lib/validations/contact";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { messagesActions } from "@/store/modules/messages/slice";

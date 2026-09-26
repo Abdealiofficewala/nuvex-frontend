@@ -198,6 +198,15 @@ export function ContactDetailsIcon({ className }: IconProps) {
   );
 }
 
+export function TopBarIcon({ className }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="4" y="6" width="16" height="4" rx="1.2" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M7 14h10M7 17h6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export function CompanyProfileIcon({ className }: IconProps) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -399,6 +408,7 @@ const navIcons = {
   themeColors: ThemeColorsIcon,
   themeTypography: ThemeTypographyIcon,
   companyDetails: CompanyIcon,
+  topBar: TopBarIcon,
   contactDetails: ContactDetailsIcon,
   socialMediaLinks: SocialMediaLinksIcon,
   companyProfile: CompanyProfileIcon,
@@ -408,6 +418,7 @@ const navIcons = {
   hero: HeroSlidesIcon,
   banners: HeroSlidesIcon,
   industries: IndustriesIcon,
+  industriesListing: IndustriesIcon,
   sectors: SectorsIcon,
   products: ProductsIcon,
   productsListing: ProductsListingIcon,

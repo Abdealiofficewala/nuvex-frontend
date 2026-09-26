@@ -7,14 +7,13 @@ import {
   AdminFormField,
   AdminFormSelect,
   AdminFormTextarea,
-  AdminImageUpload,
   AdminPhoneField,
+  AdminFormImageUpload,
 } from "@/components/admin/common";
-import { Button, ButtonLink } from "@/components/ui/button";
+import { TEAM_MEMBER_IMAGE_UPLOAD_CONSTRAINTS } from "@/lib/image-upload.config";
+import { Button, ButtonLink } from "@/components/ui/buttons";
 import { useToast } from "@/components/ui/toast";
 import { ROUTES, teamMemberViewHref } from "@/lib/constants";
-import { TEAM_MEMBER_IMAGE_UPLOAD_CONSTRAINTS } from "@/lib/image-upload.config";
-import { buildAdminImageUploadErrors, buildAdminImageUploadLabels } from "@/lib/admin-image-upload-labels";
 import { DEFAULT_PHONE_COUNTRY_CODE } from "@/lib/phone-countries.config";
 import {
   addTeamMember,
@@ -254,19 +253,18 @@ export function TeamMemberForm({ editId }: TeamMemberFormProps) {
           <section className="admin-member-form__section admin-member-form__section--profile">
             <div className="admin-member-form__profile">
               <div className="admin-member-form__media">
-                <AdminImageUpload
+                <AdminFormImageUpload
                   id={imageId}
                   label={t("fields.image")}
                   required
-                  value={values.image}
+                  variant="icon"
                   constraints={TEAM_MEMBER_IMAGE_UPLOAD_CONSTRAINTS}
+                  value={values.image}
                   onChange={(nextImage) => updateField("image", nextImage, "image")}
                   onBlur={() => touchField("image")}
                   disabled={disabled}
                   fieldError={getVisibleFieldError("image")}
                   getErrorMessage={getFieldErrorMessage}
-                  labels={buildAdminImageUploadLabels((key) => t(`image.${key}`))}
-                  uploadErrorMessages={buildAdminImageUploadErrors((key) => t(`image.${key}`))}
                 />
               </div>
 

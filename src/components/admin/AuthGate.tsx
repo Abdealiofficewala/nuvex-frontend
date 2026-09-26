@@ -4,7 +4,7 @@ import { useEffect, useSyncExternalStore } from "react";
 import { useRouter } from "@/i18n/routing";
 import { AdminPageLoader } from "@/components/admin/common/AdminPageLoader";
 import { ROUTES } from "@/lib/constants";
-import { getAdminSession } from "@/lib/admin-session";
+import { getAdminSession, getAdminUserEmail, syncAdminSessionCookie } from "@/lib/admin-session";
 
 function subscribe() {
   return () => undefined;
@@ -21,7 +21,10 @@ export function AuthGate({ children }: AuthGateProps) {
   useEffect(() => {
     if (!isAuthed) {
       router.replace(ROUTES.admin.login);
+      return;
     }
+
+    void syncAdminSessionCookie(getAdminUserEmail() ?? undefined);
   }, [isAuthed, router]);
 
   if (!isAuthed) {

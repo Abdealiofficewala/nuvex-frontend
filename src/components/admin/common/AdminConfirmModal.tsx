@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { AdminModal, type AdminModalIcon, type AdminModalTone } from "@/components/admin/common/AdminModal";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/buttons";
 import { cn } from "@/lib/utils";
 
 type AdminConfirmModalProps = {

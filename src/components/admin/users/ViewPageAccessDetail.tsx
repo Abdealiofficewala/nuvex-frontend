@@ -2,8 +2,9 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
+import { AdminEmptyState } from "@/components/admin/common";
 import { UserPageAccessFields } from "@/components/admin/users/UserPageAccessFields";
-import { ButtonLink } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/buttons";
 import {
   ADMIN_USERS_UPDATED_EVENT,
   findAdminUserById,
@@ -32,15 +33,7 @@ export function ViewPageAccessDetail({ userId }: ViewPageAccessDetailProps) {
   const access = useMemo(() => getAdminUserPageAccess(userId), [userId, refreshKey]);
 
   if (!user) {
-    return (
-      <div className="admin-page-empty">
-        <p className="admin-page-empty__title">{t("notFound.title")}</p>
-        <p className="admin-page-empty__body">{t("notFound.body")}</p>
-        <ButtonLink href={ROUTES.admin.users.access} variant="secondary">
-          {t("cancelAction")}
-        </ButtonLink>
-      </div>
-    );
+    return <AdminEmptyState title={t("notFound.title")} description={t("notFound.body")} />;
   }
 
   const name = getAdminUserFullName(user);

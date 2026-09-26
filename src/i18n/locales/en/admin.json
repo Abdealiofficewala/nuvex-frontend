@@ -78,13 +78,15 @@
     "hero": "Hero",
     "banners": "Banners",
     "industries": "Industries",
+    "industriesListing": "All industries",
     "sectors": "Sectors",
     "products": "Products",
-    "productsListing": "Products",
+    "productsListing": "All products",
     "productCategories": "Categories",
     "productTypes": "Types",
     "productSizes": "Sizes",
     "companyDetails": "Company details",
+    "topBar": "Top bar",
     "contactDetails": "Contact details",
     "socialMediaLinks": "Social media links",
     "companyProfile": "Company profile",
@@ -140,25 +142,109 @@
         "title": "Banners",
         "lede": "Manage homepage hero banner slides, images, and text."
       },
+      "bannersCreate": {
+        "title": "Create banner",
+        "lede": "Add a homepage hero slide with image and links."
+      },
+      "bannersView": {
+        "title": "View banner",
+        "lede": "Review the banner slide details."
+      },
+      "bannersEdit": {
+        "title": "Edit banner",
+        "lede": "Update the banner slide content."
+      },
+      "industriesListing": {
+        "title": "Industries",
+        "lede": "Manage parent industry groups and their website content."
+      },
+      "industriesListingCreate": {
+        "title": "Create industry",
+        "lede": "Add a parent industry group for the website."
+      },
+      "industriesListingView": {
+        "title": "View industry",
+        "lede": "Review the industry group and its sectors."
+      },
+      "industriesListingEdit": {
+        "title": "Edit industry",
+        "lede": "Update the industry group content."
+      },
+      "industriesListingSectors": {
+        "title": "Manage sectors",
+        "lede": "Review and manage sectors for this industry."
+      },
       "sectors": {
         "title": "Sectors",
         "lede": "Manage industry sectors shown on the website."
       },
+      "sectorsCreate": {
+        "title": "Create sector",
+        "lede": "Add an industry sector for the website."
+      },
+      "sectorsView": {
+        "title": "View sector",
+        "lede": "Review the industry sector details."
+      },
+      "sectorsEdit": {
+        "title": "Edit sector",
+        "lede": "Update the industry sector content."
+      },
       "productsListing": {
-        "title": "Products",
-        "lede": "Manage catalogue products, descriptions, images, and status."
+        "title": "All products",
+        "lede": "Manage catalogue products, sizes, images, and status. JSON examples are at the bottom of this page."
+      },
+      "productsListingCreate": {
+        "title": "Create product",
+        "lede": "Add a catalogue product with images and details."
+      },
+      "productsListingView": {
+        "title": "View product",
+        "lede": "Review the product details."
+      },
+      "productsListingEdit": {
+        "title": "Edit product",
+        "lede": "Update the product content."
       },
       "productCategories": {
         "title": "Categories",
         "lede": "Manage product lines such as bolts, nuts, screws, and nails."
       },
+      "productCategoriesCreate": {
+        "title": "Create category",
+        "lede": "Add a product line category."
+      },
+      "productCategoriesView": {
+        "title": "View category",
+        "lede": "Review the category details."
+      },
+      "productCategoriesEdit": {
+        "title": "Edit category",
+        "lede": "Update the category content."
+      },
       "productTypes": {
         "title": "Types",
-        "lede": "Manage subcategories and types within each product line."
+        "lede": "Create catalogue types first, then link them from categories."
+      },
+      "productTypesCreate": {
+        "title": "Create type",
+        "lede": "Add a standalone catalogue type."
+      },
+      "productTypesView": {
+        "title": "View type",
+        "lede": "Review the type details."
+      },
+      "productTypesEdit": {
+        "title": "Edit type",
+        "lede": "Update the type content."
       },
       "productSizes": {
         "title": "Sizes",
-        "lede": "Manage stock sizes shown on product detail pages."
+        "lede": "Reference size labels and presets. Add sizes with images on each product in All products."
+      },
+      "topBar": {
+        "title": "Top bar",
+        "lede": "Manage contact details and ticker copy shown above the website header."
       },
       "contactDetails": {
         "title": "Contact details",
@@ -231,6 +317,46 @@
       "usersAccessEdit": {
         "title": "Edit page access",
         "lede": "Update module permissions for the selected user."
+      },
+      "themeCreate": {
+        "title": "Create theme",
+        "lede": "Configure brand, colors, and design tokens."
+      },
+      "themeEdit": {
+        "title": "Edit theme",
+        "lede": "Update theme settings with live admin preview."
+      },
+      "themeView": {
+        "title": "View theme",
+        "lede": "Review theme configuration and preview."
+      },
+      "themePreview": {
+        "title": "Preview theme",
+        "lede": "Preview the full admin appearance before activation."
+      },
+      "themeLogosCreate": {
+        "title": "Create brand",
+        "lede": "Upload logos and set application brand."
+      },
+      "themeLogosView": {
+        "title": "View brand",
+        "lede": "Review brand assets and names."
+      },
+      "themeLogosEdit": {
+        "title": "Edit brand",
+        "lede": "Update logos and brand names."
+      },
+      "themeColorsCreate": {
+        "title": "Create color",
+        "lede": "Define reusable color tokens."
+      },
+      "themeColorsView": {
+        "title": "View color",
+        "lede": "Review color tokens."
+      },
+      "themeColorsEdit": {
+        "title": "Edit color",
+        "lede": "Update color tokens."
       }
     },
     "role": "Administrator",
@@ -375,7 +501,8 @@
           "title": "Could not delete user",
           "generic": "Try again in a moment."
         }
-      }
+      },
+      "toolbarTitle": "Users"
     },
     "details": {
       "fallbackName": "Your profile",
@@ -558,7 +685,7 @@
         "hero": "Homepage banner slides",
         "industries": "Industry sectors and listings",
         "products": "Catalogue, categories, types, and sizes",
-        "companyDetails": "Profile, contact, and social links",
+        "companyDetails": "Top bar, profile, contact, and social links",
         "teamMembers": "Roles and team profiles"
       },
       "permissions": {
@@ -576,11 +703,13 @@
         "themeColors": "Colors",
         "themeTypography": "Typography",
         "banners": "Banners",
+        "industriesListing": "Industries",
         "sectors": "Sectors",
-        "productsListing": "Products",
+        "productsListing": "All products",
         "productCategories": "Categories",
         "productTypes": "Types",
         "productSizes": "Sizes",
+        "topBar": "Top bar",
         "contactDetails": "Contact details",
         "socialMediaLinks": "Social media links",
         "companyProfile": "Company profile",
@@ -597,11 +726,13 @@
         "themeColors": "Brand and UI color tokens",
         "themeTypography": "Fonts and corner radius",
         "banners": "Homepage hero banner slides",
+        "industriesListing": "Parent industry groups",
         "sectors": "Industry sectors and listings",
-        "productsListing": "Catalogue products",
+        "productsListing": "All products — full catalogue CRUD and JSON",
         "productCategories": "Product lines and categories",
-        "productTypes": "Subcategories and types",
-        "productSizes": "Stock sizes per product",
+        "productTypes": "Standalone catalogue types",
+        "productSizes": "Size preset reference (read-only guide)",
+        "topBar": "Header strip above the navbar",
         "contactDetails": "Phone, email, and address",
         "socialMediaLinks": "Social profile URLs",
         "companyProfile": "Name, tagline, and about copy",
@@ -657,7 +788,8 @@
             "title": "Could not reset access",
             "generic": "Try again in a moment."
           }
-        }
+        },
+        "toolbarTitle": "Page access"
       },
       "form": {
         "selectRole": "Select role",
@@ -788,6 +920,76 @@
     "cfoName": "CFO name",
     "cfoPhone": "CFO phone",
     "cfoEmail": "CFO email",
+    "topBar": {
+      "intro": {
+        "title": "Website top bar",
+        "body": "Manage the strip above the header — phone, email, location, and scrolling messages."
+      },
+      "sections": {
+        "visibility": {
+          "title": "Visibility",
+          "body": "Show or hide the strip above the website header.",
+          "requirement": "When the top bar is shown, turn on at least one contact field below or add a ticker message — otherwise nothing appears above the header.",
+          "hiddenNote": "The top bar is hidden on the website. Turn it on and save when you are ready to publish it again."
+        },
+        "contact": {
+          "title": "Contact strip",
+          "body": "Phone, email, and location shown on the left side of the top bar."
+        },
+        "messages": {
+          "title": "Ticker messages",
+          "body": "Short lines that scroll across the top bar."
+        }
+      },
+      "fields": {
+        "visible": "Show top bar on the website",
+        "showMessages": "Show ticker messages",
+        "showPhone": "Show phone",
+        "showEmail": "Show email",
+        "showLocation": "Show location",
+        "phone": "Phone number",
+        "email": "Email address",
+        "location": "Office location",
+        "messageLine": "Message {index}"
+      },
+      "placeholders": {
+        "phone": "+91 9727366046",
+        "email": "enquiries@hakimifastners.com",
+        "location": "Gandhinagar, Gujarat",
+        "messageLine": "Grade on the head."
+      },
+      "addMessage": "Add message",
+      "removeMessage": "Remove",
+      "save": "Save",
+      "saving": "Saving…",
+      "resetAction": "Reset",
+      "previewAction": "Preview",
+      "preview": {
+        "title": "Top bar preview"
+      },
+      "confirmReset": {
+        "title": "Reset top bar settings?",
+        "description": "Top bar fields and messages will be cleared. Visibility returns to the default on setting.",
+        "confirm": "Reset"
+      },
+      "success": {
+        "title": "Top bar saved",
+        "body": "The website header strip was updated for this session."
+      },
+      "reset": {
+        "title": "Top bar reset",
+        "body": "Top bar settings were cleared for this session."
+      },
+      "errors": {
+        "title": "Could not save top bar",
+        "generic": "Try again in a moment.",
+        "validation": "Fix the highlighted fields before saving.",
+        "required": "This field is required.",
+        "tooLong": "Keep this message shorter.",
+        "noContent": "Turn on at least one contact field or add a ticker message before showing the top bar.",
+        "invalidEmail": "Enter a valid email address."
+      }
+    },
     "contact": {
       "accordion": {
         "contact": {
@@ -863,10 +1065,6 @@
     },
     "profile": {
       "accordion": {
-        "ticket": {
-          "title": "On the ticket",
-          "body": "Header copy shown above the company facts ticket on the about page."
-        },
         "identity": {
           "title": "Company identity",
           "body": "Legal name, short name, tagline, description, and founded year."
@@ -877,8 +1075,6 @@
         }
       },
       "fields": {
-        "ticketEyebrow": "Ticket eyebrow",
-        "ticketTitle": "Ticket title",
         "name": "Legal name",
         "shortName": "Short name",
         "tagline": "Tagline",
@@ -894,8 +1090,6 @@
         "phone": "Phone"
       },
       "placeholders": {
-        "ticketEyebrow": "On the ticket",
-        "ticketTitle": "Company details. No brochure fog.",
         "name": "Hakimi Fastners",
         "shortName": "Hakimi",
         "tagline": "Nuts, bolts, screws, and nails for site and store.",
@@ -1116,7 +1310,8 @@
           "title": "Could not delete team member",
           "generic": "Try again in a moment."
         }
-      }
+      },
+      "toolbarTitle": "Team members"
     },
     "teamMembers": {
       "roles": {
@@ -1225,7 +1420,8 @@
             "title": "Could not delete role",
             "generic": "Try again in a moment."
           }
-        }
+        },
+        "toolbarTitle": "Roles"
       }
     },
     "social": {
@@ -1301,7 +1497,35 @@
     "imageUpload": {
       "hintJpgPng2Mb": "JPG or PNG up to 2 MB",
       "invalidTypeJpgPng": "Upload a JPG or PNG image.",
-      "tooLarge2Mb": "Image must be 2 MB or smaller."
+      "tooLarge2Mb": "Image must be 2 MB or smaller.",
+      "invalidType": "Upload a supported image file.",
+      "tooLarge": "Image is too large.",
+      "drop": "Drag and drop an image here",
+      "browse": "Browse files",
+      "change": "Change",
+      "remove": "Remove"
+    },
+    "empty": {
+      "title": "No items found",
+      "body": "There is no data to display yet."
+    },
+    "pagination": {
+      "empty": "No rows to show",
+      "summary": "Showing {start}–{end} of {total}",
+      "summarySingle": "Showing {total} items",
+      "page": "Page {page} of {totalPages}",
+      "navLabel": "Table pages",
+      "goToPage": "Go to page {page}",
+      "previous": "Previous page",
+      "next": "Next page",
+      "pageSize": "Rows per page"
+    },
+    "filters": {
+      "open": "Filter",
+      "activeCount": "Filter ({count})",
+      "clear": "Clear all",
+      "cancel": "Cancel",
+      "apply": "Apply"
     }
   },
   "tables": {
@@ -1321,5 +1545,1426 @@
     "environment": "Environment",
     "apiUrl": "API URL",
     "defaultLocale": "Default locale"
+  },
+  "appearance": {
+    "themes": {
+      "toolbarTitle": "Themes",
+      "createAction": "Create theme",
+      "table": {
+        "caption": "Saved website themes",
+        "logo": "Logo",
+        "name": "Name",
+        "slug": "Slug",
+        "palette": "Colors",
+        "status": "Status",
+        "updated": "Updated",
+        "actions": "Actions",
+        "actionsViewTheme": "View theme",
+        "actionsUpdateTheme": "Update theme"
+      },
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "actions": {
+        "view": "View",
+        "activate": "Activate",
+        "duplicate": "Duplicate",
+        "delete": "Delete",
+        "deleteActiveHint": "Active theme cannot be deleted"
+      },
+      "errors": {
+        "title": "Theme action failed",
+        "load": "Could not load themes.",
+        "generic": "Try again in a moment.",
+        "duplicate": "Could not duplicate theme.",
+        "activate": "Could not activate theme."
+      },
+      "delete": {
+        "success": {
+          "title": "Theme deleted",
+          "body": "The theme was removed."
+        },
+        "confirm": {
+          "title": "Delete theme?",
+          "description": "\"{name}\" will be removed.",
+          "confirm": "Delete"
+        }
+      },
+      "activate": {
+        "success": {
+          "title": "Theme activated",
+          "body": "The theme is now active."
+        },
+        "confirm": {
+          "title": "Activate theme?",
+          "description": "\"{name}\" will become the active theme.",
+          "confirm": "Activate"
+        }
+      },
+      "duplicate": {
+        "success": {
+          "title": "Theme duplicated",
+          "body": "A copy was created."
+        },
+        "defaultName": "Copy of {name}",
+        "modal": {
+          "title": "Duplicate theme",
+          "description": "Create a copy of \"{name}\".",
+          "nameLabel": "Name",
+          "slugLabel": "Slug",
+          "cancel": "Cancel",
+          "confirm": "Duplicate",
+          "saving": "Duplicating…"
+        }
+      }
+    },
+    "branding": {
+      "toolbarTitle": "Brands",
+      "createAction": "Create brand",
+      "table": {
+        "caption": "Brand logo sets",
+        "logo": "Logo",
+        "favicon": "Favicon",
+        "name": "Name",
+        "slug": "Slug",
+        "actions": "Actions"
+      },
+      "actions": {
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "errors": {
+        "title": "Brand action failed",
+        "load": "Could not load brands.",
+        "generic": "Try again in a moment."
+      },
+      "delete": {
+        "success": {
+          "title": "Brand deleted",
+          "body": "The brand was removed."
+        },
+        "confirm": {
+          "title": "Delete brand?",
+          "description": "\"{name}\" will be removed.",
+          "confirm": "Delete"
+        }
+      }
+    },
+    "brandingForm": {
+      "fields": {
+        "name": "Name",
+        "slug": "Slug",
+        "logo": "Default logo",
+        "logoDark": "Dark logo",
+        "logoLight": "Light logo",
+        "mobileLogo": "Mobile logo",
+        "favicon": "Favicon"
+      },
+      "image": {
+        "drop": "Drag and drop an image here",
+        "browse": "Browse files",
+        "change": "Change",
+        "remove": "Remove",
+        "hint": "SVG, PNG, or JPG up to 2 MB"
+      },
+      "sections": {
+        "assets": "Logo assets"
+      },
+      "save": "Save",
+      "update": "Update",
+      "saving": "Saving…",
+      "cancel": "Cancel",
+      "success": {
+        "createTitle": "Brand created",
+        "createBody": "The brand was saved.",
+        "updateTitle": "Brand updated",
+        "updateBody": "Changes were saved."
+      },
+      "errors": {
+        "title": "Could not save brand",
+        "generic": "Try again in a moment."
+      }
+    },
+    "brandingView": {
+      "fields": {
+        "name": "Name",
+        "slug": "Slug",
+        "logo": "Default logo",
+        "logoDark": "Dark logo",
+        "logoLight": "Light logo",
+        "mobileLogo": "Mobile logo",
+        "favicon": "Favicon"
+      },
+      "sections": {
+        "assets": "Logo assets"
+      },
+      "noImage": "No image",
+      "back": "Back",
+      "edit": "Edit"
+    },
+    "colors": {
+      "toolbarTitle": "Colors",
+      "createAction": "Create color",
+      "table": {
+        "caption": "Color palettes",
+        "name": "Name",
+        "slug": "Slug",
+        "palette": "Preview",
+        "actions": "Actions"
+      },
+      "actions": {
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "errors": {
+        "title": "Color action failed",
+        "load": "Could not load color palettes.",
+        "generic": "Try again in a moment."
+      },
+      "delete": {
+        "success": {
+          "title": "Color deleted",
+          "body": "The palette was removed."
+        },
+        "confirm": {
+          "title": "Delete color?",
+          "description": "\"{name}\" will be removed.",
+          "confirm": "Delete"
+        }
+      }
+    },
+    "colorForm": {
+      "fields": {
+        "name": "Name",
+        "slug": "Slug"
+      },
+      "sections": {
+        "brand": {
+          "title": "Brand",
+          "description": "Primary brand colors."
+        },
+        "surfaces": {
+          "title": "Surfaces",
+          "description": "Background, text, and borders."
+        },
+        "admin": {
+          "title": "Admin",
+          "description": "Admin shell colors."
+        },
+        "status": {
+          "title": "Status",
+          "description": "Feedback and state colors."
+        }
+      },
+      "colors": {
+        "primary": "Primary",
+        "primaryDark": "Primary dark",
+        "secondary": "Secondary",
+        "accent": "Accent",
+        "background": "Background",
+        "surface": "Surface",
+        "card": "Card",
+        "text": "Text",
+        "muted": "Muted",
+        "border": "Border",
+        "sidebar": "Sidebar",
+        "header": "Header",
+        "success": "Success",
+        "warning": "Warning",
+        "error": "Error",
+        "info": "Info"
+      },
+      "colorsExamples": {
+        "primary": "Buttons and links",
+        "primaryDark": "Hover states",
+        "secondary": "Secondary actions",
+        "accent": "Highlights",
+        "background": "Page background",
+        "surface": "Panels",
+        "card": "Cards",
+        "text": "Body text",
+        "muted": "Secondary text",
+        "border": "Dividers",
+        "sidebar": "Navigation",
+        "header": "Top bar",
+        "success": "Success states",
+        "warning": "Warnings",
+        "error": "Errors",
+        "info": "Information"
+      },
+      "save": "Save",
+      "update": "Update",
+      "saving": "Saving…",
+      "cancel": "Cancel",
+      "success": {
+        "createTitle": "Color created",
+        "createBody": "The palette was saved.",
+        "updateTitle": "Color updated",
+        "updateBody": "Changes were saved."
+      },
+      "errors": {
+        "title": "Could not save color",
+        "generic": "Try again in a moment."
+      }
+    },
+    "colorView": {
+      "fields": {
+        "name": "Name",
+        "slug": "Slug"
+      },
+      "extraTokensTitle": "All tokens",
+      "extraTokensDescription": "Full palette token list.",
+      "back": "Back",
+      "edit": "Edit"
+    },
+    "themeForm": {
+      "draftName": "Draft theme",
+      "fields": {
+        "name": "Name",
+        "branding": "Brand",
+        "colors": "Colors"
+      },
+      "schedule": {
+        "modeLabel": "Schedule",
+        "modes": {
+          "manual": "Manual",
+          "interval": "Date range",
+          "from_date": "From date"
+        },
+        "startDate": "Start date",
+        "endDate": "End date",
+        "fallbackTheme": "Fallback theme",
+        "noFallbackThemes": "Add another theme to use as fallback."
+      },
+      "missingResources": "Create at least one brand and color palette first.",
+      "previewAction": "Preview",
+      "save": "Save",
+      "update": "Update",
+      "saving": "Saving…",
+      "cancel": "Cancel",
+      "previewModalTitle": "Theme preview",
+      "previewClose": "Close preview",
+      "success": {
+        "createTitle": "Theme created",
+        "createBody": "The theme was saved.",
+        "updateTitle": "Theme updated",
+        "updateBody": "Changes were saved."
+      },
+      "errors": {
+        "title": "Could not save theme",
+        "generic": "Try again in a moment."
+      }
+    },
+    "themeView": {
+      "fields": {
+        "name": "Name",
+        "slug": "Slug",
+        "status": "Status",
+        "updated": "Updated",
+        "branding": "Brand",
+        "colors": "Colors"
+      },
+      "active": "Active",
+      "inactive": "Inactive",
+      "back": "Back",
+      "preview": "Preview",
+      "edit": "Edit"
+    },
+    "previewPage": {
+      "loading": "Loading preview…",
+      "back": "Back",
+      "edit": "Edit",
+      "activateAction": "Activate",
+      "active": "Active",
+      "activate": {
+        "success": {
+          "title": "Theme activated",
+          "body": "The theme is now active."
+        },
+        "errors": {
+          "title": "Activation failed",
+          "generic": "Try again in a moment."
+        },
+        "confirm": {
+          "title": "Activate theme?",
+          "description": "\"{name}\" will become the active theme.",
+          "confirm": "Activate"
+        }
+      }
+    },
+    "preview": {
+      "viewportLabel": "Preview size",
+      "viewports": {
+        "desktop": "Desktop",
+        "tablet": "Tablet",
+        "mobile": "Mobile"
+      },
+      "site": {
+        "nav": {
+          "home": "Home",
+          "products": "Products",
+          "industries": "Industries",
+          "about": "About"
+        },
+        "product1": "Hex bolts",
+        "product2": "Nuts",
+        "product3": "Screws",
+        "quote": "Request quote",
+        "eyebrow": "Industrial supply",
+        "heroTitle": "Fasteners for site and store",
+        "heroBody": "Preview how your theme looks on the public site.",
+        "ctaPrimary": "Browse products",
+        "ctaSecondary": "Contact us",
+        "productsTitle": "Featured products",
+        "viewProduct": "View",
+        "statsYears": "Years",
+        "statsClients": "Clients",
+        "statsQuality": "Quality",
+        "footer": "Preview only"
+      }
+    }
+  },
+  "hero": {
+    "banners": {
+      "toolbarTitle": "Banners",
+      "createAction": "Create banner",
+      "modules": {
+        "home": "Home",
+        "about": "About",
+        "products": "Products",
+        "industries": "Industries",
+        "contact": "Contact",
+        "quote": "Request quote"
+      },
+      "table": {
+        "caption": "Website page banners",
+        "banner": "Banner",
+        "slug": "Slug",
+        "description": "Description",
+        "page": "Page",
+        "path": "Path",
+        "status": "Status",
+        "updated": "Updated",
+        "actions": "Actions",
+        "noImage": "No image",
+        "noEyebrow": "No eyebrow"
+      },
+      "actions": {
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "status": {
+        "active": "Active",
+        "draft": "Draft"
+      },
+      "errors": {
+        "title": "Could not load banners",
+        "load": "Try again in a moment.",
+        "generic": "Something went wrong."
+      },
+      "delete": {
+        "confirm": {
+          "title": "Delete banner?",
+          "description": "\"{name}\" will be removed from the selected page.",
+          "confirm": "Delete"
+        },
+        "success": {
+          "title": "Banner deleted",
+          "body": "The banner slide was removed."
+        }
+      },
+      "create": {
+        "fields": {
+          "pageRoute": "Website page",
+          "title": "Title",
+          "slug": "Slug",
+          "eyebrow": "Eyebrow",
+          "body": "Body",
+          "image": "Banner image",
+          "status": "Status",
+          "statusActive": "Active",
+          "statusDraft": "Draft"
+        },
+        "placeholders": {
+          "pageRoute": "Select a page",
+          "title": "Enter a banner title",
+          "slug": "auto-generated-from-title",
+          "eyebrow": "Short label above the title",
+          "body": "Supporting text for the slide"
+        },
+        "image": {
+          "drop": "Drop image here",
+          "browse": "Browse",
+          "change": "Change image",
+          "remove": "Remove",
+          "hint": "JPG or PNG, up to 2 MB"
+        },
+        "save": "Save",
+        "saving": "Saving…",
+        "cancelAction": "Cancel",
+        "success": {
+          "title": "Banner created",
+          "body": "The banner slide was saved."
+        },
+        "errors": {
+          "title": "Could not save banner",
+          "generic": "Try again in a moment.",
+          "validation": "Fix the highlighted fields before saving.",
+          "required": "This field is required.",
+          "tooShort": "Enter at least 2 characters.",
+          "invalidSlug": "Use lowercase letters, numbers, and hyphens only.",
+          "invalidPageRoute": "Select a valid website page.",
+          "duplicatePageRoute": "A banner already exists for this page."
+        }
+      },
+      "edit": {
+        "fields": {
+          "pageRoute": "Website page",
+          "title": "Title",
+          "slug": "Slug",
+          "eyebrow": "Eyebrow",
+          "body": "Body",
+          "image": "Banner image",
+          "status": "Status",
+          "statusActive": "Active",
+          "statusDraft": "Draft"
+        },
+        "placeholders": {
+          "pageRoute": "Select a page",
+          "title": "Enter a banner title",
+          "slug": "banner-slug",
+          "eyebrow": "Short label above the title",
+          "body": "Supporting text for the slide"
+        },
+        "image": {
+          "drop": "Drop image here",
+          "browse": "Browse",
+          "change": "Change image",
+          "remove": "Remove",
+          "hint": "JPG or PNG, up to 2 MB"
+        },
+        "save": "Update",
+        "saving": "Updating…",
+        "cancelAction": "Cancel",
+        "success": {
+          "title": "Banner updated",
+          "body": "The banner slide was saved."
+        },
+        "notFound": {
+          "title": "Banner not found",
+          "body": "This banner may have been removed."
+        },
+        "errors": {
+          "title": "Could not update banner",
+          "generic": "Try again in a moment.",
+          "validation": "Fix the highlighted fields before saving.",
+          "required": "This field is required.",
+          "tooShort": "Enter at least 2 characters.",
+          "invalidSlug": "Use lowercase letters, numbers, and hyphens only.",
+          "invalidPageRoute": "Select a valid website page.",
+          "duplicatePageRoute": "A banner already exists for this page."
+        }
+      },
+      "view": {
+        "fields": {
+          "page": "Page",
+          "path": "Path",
+          "slug": "Slug",
+          "body": "Body",
+          "created": "Created",
+          "updated": "Updated"
+        },
+        "status": {
+          "active": "Active",
+          "draft": "Draft"
+        },
+        "noImage": "No image uploaded",
+        "cancelAction": "Cancel",
+        "editAction": "Edit banner",
+        "notFound": {
+          "title": "Banner not found",
+          "body": "This banner may have been removed."
+        }
+      }
+    }
+  },
+  "products": {
+    "listing": {
+      "toolbarTitle": "All products",
+      "createAction": "Create product",
+      "table": {
+        "caption": "Catalogue products",
+        "image": "Image",
+        "name": "Name",
+        "category": "Category",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "actions": {
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "status": {
+        "active": "Active",
+        "limited": "Limited",
+        "archived": "Archived"
+      },
+      "errors": {
+        "title": "Could not load products",
+        "load": "Try again in a moment.",
+        "generic": "Something went wrong."
+      },
+      "delete": {
+        "confirm": {
+          "title": "Delete product?",
+          "description": "\"{name}\" will be removed from the catalogue.",
+          "confirm": "Delete"
+        },
+        "success": {
+          "title": "Product deleted",
+          "body": "The product was removed."
+        }
+      },
+      "create": {
+        "fields": {
+          "name": "Name",
+          "slug": "Slug",
+          "category": "Category",
+          "subcategory": "Subcategory",
+          "shortDescription": "Short description",
+          "description": "Description",
+          "sizeOptions": "Sizes & images",
+          "features": "Features",
+          "applications": "Applications",
+          "materials": "Materials",
+          "keySpec": "Key spec",
+          "image": "Catalog thumbnail",
+          "imageHint": "Used on product cards. Defaults from the primary size image when saved.",
+          "status": "Status",
+          "statusActive": "Active",
+          "statusLimited": "Limited stock",
+          "statusArchived": "Archived",
+          "isFeatured": "Featured on homepage"
+        },
+        "placeholders": {
+          "name": "Enter a product name",
+          "slug": "product-slug",
+          "category": "Select a category",
+          "subcategory": "Select a type",
+          "shortDescription": "One-line summary",
+          "description": "Full product description",
+          "keySpec": "Grade 8.8",
+          "listLines": "One item per line"
+        },
+        "image": {
+          "drop": "Drop image here",
+          "browse": "Browse",
+          "change": "Change image",
+          "remove": "Remove",
+          "hint": "JPG or PNG, up to 2 MB"
+        },
+        "save": "Save",
+        "saving": "Saving…",
+        "cancelAction": "Cancel",
+        "success": {
+          "title": "Product created",
+          "body": "The product was saved."
+        },
+        "errors": {
+          "title": "Could not save product",
+          "generic": "Try again in a moment.",
+          "validation": "Fix the highlighted fields before saving.",
+          "required": "This field is required.",
+          "tooShort": "Enter at least 2 characters.",
+          "invalidSlug": "Use lowercase letters, numbers, and hyphens only.",
+          "invalidCategory": "Select a valid category.",
+          "invalidType": "Select a valid type for this category.",
+          "invalidSizeOptions": "Add at least one size with a label and image."
+        },
+        "sizeOptions": {
+          "add": "Add size",
+          "remove": "Remove",
+          "default": "Primary size",
+          "label": "Size label",
+          "placeholder": "M8 × 25 mm",
+          "image": "Size image"
+        }
+      },
+      "edit": {
+        "fields": {
+          "name": "Name",
+          "slug": "Slug",
+          "category": "Category",
+          "subcategory": "Subcategory",
+          "shortDescription": "Short description",
+          "description": "Description",
+          "sizeOptions": "Sizes & images",
+          "features": "Features",
+          "applications": "Applications",
+          "materials": "Materials",
+          "keySpec": "Key spec",
+          "image": "Catalog thumbnail",
+          "imageHint": "Used on product cards. Defaults from the primary size image when saved.",
+          "status": "Status",
+          "statusActive": "Active",
+          "statusLimited": "Limited stock",
+          "statusArchived": "Archived",
+          "isFeatured": "Featured on homepage"
+        },
+        "placeholders": {
+          "name": "Enter a product name",
+          "slug": "product-slug",
+          "category": "Select a category",
+          "subcategory": "Select a type",
+          "shortDescription": "One-line summary",
+          "description": "Full product description",
+          "keySpec": "Grade 8.8",
+          "listLines": "One item per line"
+        },
+        "image": {
+          "drop": "Drop image here",
+          "browse": "Browse",
+          "change": "Change image",
+          "remove": "Remove",
+          "hint": "JPG or PNG, up to 2 MB"
+        },
+        "save": "Update",
+        "saving": "Updating…",
+        "cancelAction": "Cancel",
+        "success": {
+          "title": "Product updated",
+          "body": "The product was saved."
+        },
+        "notFound": {
+          "title": "Product not found",
+          "body": "This product may have been removed."
+        },
+        "errors": {
+          "title": "Could not update product",
+          "generic": "Try again in a moment.",
+          "validation": "Fix the highlighted fields before saving.",
+          "required": "This field is required.",
+          "tooShort": "Enter at least 2 characters.",
+          "invalidSlug": "Use lowercase letters, numbers, and hyphens only.",
+          "invalidCategory": "Select a valid category.",
+          "invalidType": "Select a valid type for this category.",
+          "invalidSizeOptions": "Add at least one size with a label and image."
+        },
+        "sizeOptions": {
+          "add": "Add size",
+          "remove": "Remove",
+          "default": "Primary size",
+          "label": "Size label",
+          "placeholder": "M8 × 25 mm",
+          "image": "Size image"
+        }
+      },
+      "view": {
+        "fields": {
+          "slug": "Slug",
+          "category": "Category",
+          "description": "Description",
+          "sizeOptions": "Sizes & images",
+          "created": "Created",
+          "updated": "Updated"
+        },
+        "status": {
+          "active": "Active",
+          "limited": "Limited",
+          "archived": "Archived"
+        },
+        "noImage": "No image uploaded",
+        "sizeDefault": "Primary",
+        "cancelAction": "Cancel",
+        "editAction": "Edit product",
+        "notFound": {
+          "title": "Product not found",
+          "body": "This product may have been removed."
+        }
+      }
+    },
+    "types": {
+      "toolbarTitle": "Types",
+      "createAction": "Create type",
+      "filters": {
+        "modalTitle": "Filter types",
+        "modalDescription": "Narrow the listing by visibility on the public website.",
+        "visible": "Visible on website",
+        "visibleHint": "Control whether types appear on the public website.",
+        "allVisible": "All",
+        "visibleOnly": "Visible",
+        "hiddenOnly": "Hidden"
+      },
+      "options": {
+        "yes": "Yes",
+        "no": "No"
+      },
+      "table": {
+        "caption": "Catalogue types",
+        "image": "Image",
+        "name": "Name",
+        "slug": "Slug",
+        "summary": "Summary",
+        "visible": "Visible",
+        "actions": "Actions"
+      },
+      "actions": {
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "errors": {
+        "title": "Could not load types",
+        "load": "Try again in a moment.",
+        "generic": "Something went wrong."
+      },
+      "delete": {
+        "confirm": {
+          "title": "Delete type?",
+          "description": "\"{name}\" will be removed. Products using this type must be updated first.",
+          "confirm": "Delete"
+        },
+        "success": {
+          "title": "Type deleted",
+          "body": "The type was removed."
+        }
+      },
+      "create": {
+        "fields": {
+          "name": "Name",
+          "slug": "Slug",
+          "summary": "Summary",
+          "image": "Type image",
+          "isVisible": "Visible on website"
+        },
+        "placeholders": {
+          "name": "Enter a type name",
+          "slug": "type-slug",
+          "summary": "Short description for filters and product cards"
+        },
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        },
+        "hints": {
+          "isVisible": "Show this type on the public website."
+        },
+        "save": "Save",
+        "saving": "Saving…",
+        "cancelAction": "Cancel",
+        "success": {
+          "title": "Type created",
+          "body": "The type was saved."
+        },
+        "errors": {
+          "title": "Could not save type",
+          "generic": "Try again in a moment.",
+          "validation": "Fix the highlighted fields before saving.",
+          "required": "This field is required.",
+          "tooShort": "Enter at least 2 characters.",
+          "invalidSlug": "Use lowercase letters, numbers, and hyphens only.",
+          "invalidCategory": "Select a valid category."
+        }
+      },
+      "edit": {
+        "fields": {
+          "name": "Name",
+          "slug": "Slug",
+          "summary": "Summary",
+          "image": "Type image",
+          "isVisible": "Visible on website"
+        },
+        "placeholders": {
+          "name": "Enter a type name",
+          "slug": "type-slug",
+          "summary": "Short description for filters and product cards"
+        },
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        },
+        "hints": {
+          "isVisible": "Show this type on the public website."
+        },
+        "save": "Update",
+        "saving": "Updating…",
+        "cancelAction": "Cancel",
+        "success": {
+          "title": "Type updated",
+          "body": "The type was saved."
+        },
+        "notFound": {
+          "title": "Type not found",
+          "body": "This type may have been removed."
+        },
+        "errors": {
+          "title": "Could not update type",
+          "generic": "Try again in a moment.",
+          "validation": "Fix the highlighted fields before saving.",
+          "required": "This field is required.",
+          "tooShort": "Enter at least 2 characters.",
+          "invalidSlug": "Use lowercase letters, numbers, and hyphens only.",
+          "invalidCategory": "Select a valid category."
+        }
+      },
+      "view": {
+        "fields": {
+          "slug": "Slug",
+          "isVisible": "Visible on website",
+          "summary": "Summary",
+          "created": "Created",
+          "updated": "Updated"
+        },
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        },
+        "noImage": "No image uploaded",
+        "cancelAction": "Cancel",
+        "editAction": "Edit type",
+        "notFound": {
+          "title": "Type not found",
+          "body": "This type may have been removed."
+        }
+      }
+    },
+    "sizes": {
+      "intro": "Sizes are managed on each product under Sizes & images in All products. Every size row needs its own label and image.",
+      "hint": "Use the presets below as copy references. The last table lists size rows already saved in your catalogue.",
+      "listingAction": "All products",
+      "createAction": "Create product",
+      "staticTitle": "Size presets",
+      "staticDescription": "Common size label sets — copy labels when editing a product.",
+      "staticCaption": "Static size label presets",
+      "catalogTitle": "Sizes in catalogue",
+      "catalogDescription": "Size rows saved on products (read-only). Edit sizes on the product form.",
+      "catalogCaption": "Saved size rows across products",
+      "table": {
+        "preset": "Preset",
+        "category": "Category",
+        "labels": "Size labels",
+        "note": "Note",
+        "product": "Product",
+        "size": "Size",
+        "slug": "Slug",
+        "primary": "Primary",
+        "yes": "Yes"
+      },
+      "errors": {
+        "title": "Could not load products",
+        "load": "Try again in a moment."
+      }
+    },
+    "guide": {
+      "title": "Products JSON",
+      "lede": "All product APIs return JSON wrapped in a data property.",
+      "endpointsTitle": "Endpoints",
+      "fetchTitle": "Fetch example",
+      "listExampleTitle": "List response example",
+      "recordExampleTitle": "Single product example",
+      "responseHint": "Admin routes require a signed-in admin session cookie. Public routes return active products only.",
+      "sizeOptionsHint": "Each sizeOptions row should include label, slug, image, and gallery. isDefault marks the primary size for cards and the detail page.",
+      "endpoints": {
+        "publicList": "Public list",
+        "publicOne": "Public one product",
+        "publicFeatured": "Public featured only",
+        "adminList": "Admin list",
+        "adminOne": "Admin one product",
+        "storeFile": "On-disk store"
+      }
+    },
+    "categories": {
+      "toolbarTitle": "Categories",
+      "createAction": "Create category",
+      "table": {
+        "caption": "Product line categories",
+        "image": "Image",
+        "name": "Name",
+        "slug": "Slug",
+        "visible": "Visible",
+        "isNew": "New",
+        "actions": "Actions"
+      },
+      "actions": {
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "errors": {
+        "title": "Could not load categories",
+        "load": "Try again in a moment.",
+        "generic": "Something went wrong."
+      },
+      "delete": {
+        "confirm": {
+          "title": "Delete category?",
+          "description": "\"{name}\" will be removed. Products using this category must be updated first.",
+          "confirm": "Delete"
+        },
+        "success": {
+          "title": "Category deleted",
+          "body": "The category was removed."
+        }
+      },
+      "options": {
+        "yes": "Yes",
+        "no": "No"
+      },
+      "create": {
+        "fields": {
+          "name": "Name",
+          "slug": "Category slug",
+          "summary": "Summary",
+          "image": "Category image",
+          "isVisible": "Visible on website",
+          "isNew": "Mark as new",
+          "dependencies": "{typeLabel} dependencies"
+        },
+        "placeholders": {
+          "name": "Enter a category name",
+          "slug": "category-slug",
+          "summary": "Short description for the category rail"
+        },
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        },
+        "hints": {
+          "isVisible": "Show this category on the public website.",
+          "isNew": "Highlight this category as newly added.",
+          "dependencies": "Select which {typeLabel} belong to this category."
+        },
+        "emptyTypes": "Create {typeLabel} before linking dependencies.",
+        "image": {
+          "drop": "Drop image here",
+          "browse": "Browse",
+          "change": "Change image",
+          "remove": "Remove",
+          "hint": "JPG or PNG, up to 2 MB"
+        },
+        "save": "Save",
+        "saving": "Saving…",
+        "cancelAction": "Cancel",
+        "success": {
+          "title": "Category created",
+          "body": "The category was saved."
+        },
+        "errors": {
+          "title": "Could not save category",
+          "generic": "Try again in a moment.",
+          "validation": "Fix the highlighted fields before saving.",
+          "required": "This field is required.",
+          "tooShort": "Enter at least 2 characters.",
+          "invalidSlug": "Use lowercase letters, numbers, and hyphens only.",
+          "invalidType": "Select valid types from the list."
+        }
+      },
+      "edit": {
+        "fields": {
+          "name": "Name",
+          "slug": "Category slug",
+          "summary": "Summary",
+          "image": "Category image",
+          "isVisible": "Visible on website",
+          "isNew": "Mark as new",
+          "dependencies": "{typeLabel} dependencies"
+        },
+        "placeholders": {
+          "name": "Enter a category name",
+          "slug": "category-slug",
+          "summary": "Short description for the category rail"
+        },
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        },
+        "hints": {
+          "isVisible": "Show this category on the public website.",
+          "isNew": "Highlight this category as newly added.",
+          "dependencies": "Select which {typeLabel} belong to this category."
+        },
+        "emptyTypes": "Create {typeLabel} before linking dependencies.",
+        "image": {
+          "drop": "Drop image here",
+          "browse": "Browse",
+          "change": "Change image",
+          "remove": "Remove",
+          "hint": "JPG or PNG, up to 2 MB"
+        },
+        "save": "Update",
+        "saving": "Updating…",
+        "cancelAction": "Cancel",
+        "success": {
+          "title": "Category updated",
+          "body": "The category was saved."
+        },
+        "notFound": {
+          "title": "Category not found",
+          "body": "This category may have been removed."
+        },
+        "errors": {
+          "title": "Could not update category",
+          "generic": "Try again in a moment.",
+          "validation": "Fix the highlighted fields before saving.",
+          "required": "This field is required.",
+          "tooShort": "Enter at least 2 characters.",
+          "invalidSlug": "Use lowercase letters, numbers, and hyphens only.",
+          "invalidType": "Select valid types from the list."
+        }
+      },
+      "view": {
+        "fields": {
+          "slug": "Category slug",
+          "summary": "Summary",
+          "dependencies": "{typeLabel} dependencies",
+          "isVisible": "Visible on website",
+          "isNew": "Mark as new",
+          "created": "Created",
+          "updated": "Updated"
+        },
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        },
+        "noImage": "No image uploaded",
+        "cancelAction": "Cancel",
+        "editAction": "Edit category",
+        "notFound": {
+          "title": "Category not found",
+          "body": "This category may have been removed."
+        }
+      }
+    }
+  },
+  "industries": {
+    "listing": {
+      "toolbarTitle": "Industries",
+      "createAction": "Create industry",
+      "table": {
+        "caption": "Industry groups",
+        "industry": "Industry",
+        "slug": "Slug",
+        "sectors": "Sectors",
+        "status": "Status",
+        "updated": "Updated",
+        "actions": "Actions",
+        "noImage": "No image",
+        "noSummary": "No summary"
+      },
+      "status": {
+        "active": "Active",
+        "draft": "Draft"
+      },
+      "actions": {
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete",
+        "manageSectors": "Manage sectors"
+      },
+      "errors": {
+        "title": "Could not load industries",
+        "load": "Try again in a moment.",
+        "generic": "Something went wrong.",
+        "inUse": "Remove or reassign sectors before deleting this industry."
+      },
+      "delete": {
+        "confirm": {
+          "title": "Delete industry?",
+          "description": "\"{name}\" will be removed from the admin panel.",
+          "confirm": "Delete"
+        },
+        "success": {
+          "title": "Industry deleted",
+          "body": "The industry was removed."
+        }
+      },
+      "create": {
+        "fields": {
+          "name": "Name",
+          "slug": "Slug",
+          "summary": "Summary",
+          "description": "Description",
+          "image": "Industry image",
+          "status": "Status",
+          "sortOrder": "Sort order"
+        },
+        "placeholders": {
+          "name": "Enter an industry name",
+          "slug": "industry-slug",
+          "summary": "Short summary for cards",
+          "description": "Full industry description"
+        },
+        "status": {
+          "active": "Active",
+          "draft": "Draft"
+        },
+        "image": {
+          "drop": "Drop image here",
+          "browse": "Browse",
+          "change": "Change image",
+          "remove": "Remove",
+          "hint": "JPG or PNG, up to 2 MB"
+        },
+        "save": "Save",
+        "saving": "Saving…",
+        "cancelAction": "Cancel",
+        "success": {
+          "title": "Industry created",
+          "body": "The industry was saved."
+        },
+        "errors": {
+          "title": "Could not save industry",
+          "generic": "Try again in a moment.",
+          "validation": "Fix the highlighted fields before saving.",
+          "required": "This field is required.",
+          "tooShort": "Enter at least 2 characters.",
+          "invalidSlug": "Use lowercase letters, numbers, and hyphens only."
+        }
+      },
+      "edit": {
+        "fields": {
+          "name": "Name",
+          "slug": "Slug",
+          "summary": "Summary",
+          "description": "Description",
+          "image": "Industry image",
+          "status": "Status",
+          "sortOrder": "Sort order"
+        },
+        "placeholders": {
+          "name": "Enter an industry name",
+          "slug": "industry-slug",
+          "summary": "Short summary for cards",
+          "description": "Full industry description"
+        },
+        "status": {
+          "active": "Active",
+          "draft": "Draft"
+        },
+        "image": {
+          "drop": "Drop image here",
+          "browse": "Browse",
+          "change": "Change image",
+          "remove": "Remove",
+          "hint": "JPG or PNG, up to 2 MB"
+        },
+        "save": "Update",
+        "saving": "Updating…",
+        "cancelAction": "Cancel",
+        "success": {
+          "title": "Industry updated",
+          "body": "The industry was saved."
+        },
+        "notFound": {
+          "title": "Industry not found",
+          "body": "This industry may have been removed."
+        },
+        "errors": {
+          "title": "Could not update industry",
+          "generic": "Try again in a moment.",
+          "validation": "Fix the highlighted fields before saving.",
+          "required": "This field is required.",
+          "tooShort": "Enter at least 2 characters.",
+          "invalidSlug": "Use lowercase letters, numbers, and hyphens only."
+        }
+      },
+      "view": {
+        "fields": {
+          "slug": "Slug",
+          "sectors": "Sectors",
+          "description": "Description",
+          "created": "Created",
+          "updated": "Updated"
+        },
+        "status": {
+          "active": "Active",
+          "draft": "Draft"
+        },
+        "noImage": "No image uploaded",
+        "cancelAction": "Cancel",
+        "editAction": "Edit industry",
+        "manageSectorsAction": "Manage sectors",
+        "addSectorAction": "Add sector",
+        "sectorsTitle": "Sectors",
+        "notFound": {
+          "title": "Industry not found",
+          "body": "This industry may have been removed."
+        }
+      }
+    },
+    "sectors": {
+      "toolbarTitle": "Sectors",
+      "createAction": "Create sector",
+      "filters": {
+        "modalTitle": "Filter sectors",
+        "modalDescription": "Show sectors from a selected industry.",
+        "industry": "Industry",
+        "allIndustries": "All industries"
+      },
+      "embedded": {
+        "toolbarTitle": "Sectors"
+      },
+      "status": {
+        "active": "Active",
+        "draft": "Draft"
+      },
+      "table": {
+        "caption": "Industry sectors",
+        "sector": "Sector",
+        "industry": "Industry",
+        "slug": "Slug",
+        "status": "Status",
+        "updated": "Updated",
+        "actions": "Actions",
+        "noImage": "No image"
+      },
+      "actions": {
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "errors": {
+        "title": "Could not load sectors",
+        "load": "Try again in a moment.",
+        "generic": "Something went wrong."
+      },
+      "delete": {
+        "confirm": {
+          "title": "Delete sector?",
+          "description": "\"{name}\" will be removed from the industries pages.",
+          "confirm": "Delete"
+        },
+        "success": {
+          "title": "Sector deleted",
+          "body": "The sector was removed."
+        }
+      },
+      "create": {
+        "fields": {
+          "industry": "Parent industry",
+          "name": "Name",
+          "slug": "Slug",
+          "summary": "Summary",
+          "description": "Description",
+          "applications": "Applications",
+          "image": "Sector image",
+          "status": "Status",
+          "sortOrder": "Sort order"
+        },
+        "placeholders": {
+          "industry": "Select an industry",
+          "name": "Enter a sector name",
+          "slug": "sector-slug",
+          "summary": "Short summary for cards",
+          "description": "Full sector description",
+          "listLines": "One application per line"
+        },
+        "status": {
+          "active": "Active",
+          "draft": "Draft"
+        },
+        "image": {
+          "drop": "Drop image here",
+          "browse": "Browse",
+          "change": "Change image",
+          "remove": "Remove",
+          "hint": "JPG or PNG, up to 2 MB"
+        },
+        "save": "Save",
+        "saving": "Saving…",
+        "cancelAction": "Cancel",
+        "success": {
+          "title": "Sector created",
+          "body": "The sector was saved."
+        },
+        "errors": {
+          "title": "Could not save sector",
+          "generic": "Try again in a moment.",
+          "validation": "Fix the highlighted fields before saving.",
+          "required": "This field is required.",
+          "tooShort": "Enter at least 2 characters.",
+          "invalidSlug": "Use lowercase letters, numbers, and hyphens only.",
+          "invalidIndustry": "Select a valid industry."
+        }
+      },
+      "edit": {
+        "fields": {
+          "industry": "Parent industry",
+          "name": "Name",
+          "slug": "Slug",
+          "summary": "Summary",
+          "description": "Description",
+          "applications": "Applications",
+          "image": "Sector image",
+          "status": "Status",
+          "sortOrder": "Sort order"
+        },
+        "placeholders": {
+          "industry": "Select an industry",
+          "name": "Enter a sector name",
+          "slug": "sector-slug",
+          "summary": "Short summary for cards",
+          "description": "Full sector description",
+          "listLines": "One application per line"
+        },
+        "status": {
+          "active": "Active",
+          "draft": "Draft"
+        },
+        "image": {
+          "drop": "Drop image here",
+          "browse": "Browse",
+          "change": "Change image",
+          "remove": "Remove",
+          "hint": "JPG or PNG, up to 2 MB"
+        },
+        "save": "Update",
+        "saving": "Updating…",
+        "cancelAction": "Cancel",
+        "success": {
+          "title": "Sector updated",
+          "body": "The sector was saved."
+        },
+        "notFound": {
+          "title": "Sector not found",
+          "body": "This sector may have been removed."
+        },
+        "errors": {
+          "title": "Could not update sector",
+          "generic": "Try again in a moment.",
+          "validation": "Fix the highlighted fields before saving.",
+          "required": "This field is required.",
+          "tooShort": "Enter at least 2 characters.",
+          "invalidSlug": "Use lowercase letters, numbers, and hyphens only.",
+          "invalidIndustry": "Select a valid industry."
+        }
+      },
+      "view": {
+        "fields": {
+          "slug": "Slug",
+          "industry": "Industry",
+          "description": "Description",
+          "applications": "Applications",
+          "created": "Created",
+          "updated": "Updated"
+        },
+        "status": {
+          "active": "Active",
+          "draft": "Draft"
+        },
+        "noImage": "No image uploaded",
+        "cancelAction": "Cancel",
+        "editAction": "Edit sector",
+        "notFound": {
+          "title": "Sector not found",
+          "body": "This sector may have been removed."
+        }
+      }
+    }
   }
 }

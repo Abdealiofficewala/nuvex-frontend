@@ -3,11 +3,10 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/buttons";
 import { useToast } from "@/components/ui/toast";
 import {
   ADMIN_THEME_COLOR_GROUPS,
-  ADMIN_THEME_FONT_FIELDS,
   ADMIN_THEME_LOGO_FIELDS,
   ADMIN_THEME_RADIUS_FIELDS,
   getThemeColorLabelKey,
@@ -64,13 +63,6 @@ export function ThemeSettingsPanel() {
     setDraft((current) => ({
       ...current,
       colors: { ...current.colors, [key]: normalizeHex(value) },
-    }));
-  }
-
-  function updateFont(key: "heading" | "body", value: string) {
-    setDraft((current) => ({
-      ...current,
-      fonts: { ...current.fonts, [key]: value },
     }));
   }
 
@@ -195,27 +187,6 @@ export function ThemeSettingsPanel() {
                 </div>
               </div>
             ))}
-          </section>
-
-          <section className="admin-theme__section">
-            <header className="admin-theme__section-head">
-              <h2>{t("sections.typography")}</h2>
-              <p>{t("sections.typographyHint")}</p>
-            </header>
-
-            <div className="admin-theme__field-grid">
-              {ADMIN_THEME_FONT_FIELDS.map((field) => (
-                <label key={field.key} className="admin-theme__field">
-                  <span>{t(field.labelKey)}</span>
-                  <input
-                    type="text"
-                    value={draft.fonts[field.key]}
-                    onChange={(event) => updateFont(field.key, event.target.value)}
-                    disabled={saving}
-                  />
-                </label>
-              ))}
-            </div>
           </section>
 
           <section className="admin-theme__section">

@@ -78,13 +78,15 @@
     "hero": "हीरो",
     "banners": "बैनर",
     "industries": "उद्योग",
+    "industriesListing": "सभी उद्योग",
     "sectors": "क्षेत्र",
     "products": "उत्पाद",
-    "productsListing": "उत्पाद",
+    "productsListing": "सभी उत्पाद",
     "productCategories": "श्रेणियाँ",
     "productTypes": "प्रकार",
     "productSizes": "साइज़",
     "companyDetails": "कंपनी विवरण",
+    "topBar": "टॉप बार",
     "contactDetails": "संपर्क विवरण",
     "socialMediaLinks": "सोशल मीडिया लिंक",
     "companyProfile": "कंपनी प्रोफ़ाइल",
@@ -140,9 +142,53 @@
         "title": "बैनर",
         "lede": "होमपेज हीरो बैनर स्लाइड, छवियाँ और टेक्स्ट प्रबंधित करें।"
       },
+      "bannersCreate": {
+        "title": "बैनर बनाएँ",
+        "lede": "छवि और लिंक के साथ होमपेज हीरो स्लाइड जोड़ें।"
+      },
+      "bannersView": {
+        "title": "बैनर देखें",
+        "lede": "बैनर स्लाइड विवरण देखें।"
+      },
+      "bannersEdit": {
+        "title": "बैनर संपादित करें",
+        "lede": "बैनर स्लाइड सामग्री अपडेट करें।"
+      },
+      "industriesListing": {
+        "title": "उद्योग",
+        "lede": "मुख्य उद्योग समूह और उनकी वेबसाइट सामग्री प्रबंधित करें।"
+      },
+      "industriesListingCreate": {
+        "title": "उद्योग बनाएँ",
+        "lede": "वेबसाइट के लिए मुख्य उद्योग समूह जोड़ें।"
+      },
+      "industriesListingView": {
+        "title": "उद्योग देखें",
+        "lede": "उद्योग समूह और उसके क्षेत्रों की समीक्षा करें।"
+      },
+      "industriesListingEdit": {
+        "title": "उद्योग संपादित करें",
+        "lede": "उद्योग समूह की सामग्री अपडेट करें।"
+      },
+      "industriesListingSectors": {
+        "title": "क्षेत्र प्रबंधित करें",
+        "lede": "इस उद्योग के क्षेत्रों की समीक्षा और प्रबंधन करें।"
+      },
       "sectors": {
         "title": "क्षेत्र",
         "lede": "वेबसाइट पर दिखने वाले उद्योग क्षेत्र प्रबंधित करें।"
+      },
+      "sectorsCreate": {
+        "title": "क्षेत्र बनाएँ",
+        "lede": "वेबसाइट के लिए उद्योग क्षेत्र जोड़ें।"
+      },
+      "sectorsView": {
+        "title": "क्षेत्र देखें",
+        "lede": "उद्योग क्षेत्र विवरण की समीक्षा करें।"
+      },
+      "sectorsEdit": {
+        "title": "क्षेत्र संपादित करें",
+        "lede": "उद्योग क्षेत्र सामग्री अपडेट करें।"
       },
       "productsListing": {
         "title": "उत्पाद",
@@ -154,11 +200,27 @@
       },
       "productTypes": {
         "title": "प्रकार",
-        "lede": "प्रत्येक उत्पाद लाइन के उप-श्रेणी और प्रकार प्रबंधित करें।"
+        "lede": "प्रत्येक उत्पाद लाइन के उप-श्रेणी प्रबंधित करें। सभी उत्पादों में प्रकार असाइन करें।"
+      },
+      "productTypesCreate": {
+        "title": "प्रकार बनाएँ",
+        "lede": "उत्पाद लाइन के अंतर्गत उप-श्रेणी जोड़ें।"
+      },
+      "productTypesView": {
+        "title": "प्रकार देखें",
+        "lede": "प्रकार विवरण की समीक्षा करें।"
+      },
+      "productTypesEdit": {
+        "title": "प्रकार संपादित करें",
+        "lede": "प्रकार सामग्री अपडेट करें।"
       },
       "productSizes": {
         "title": "साइज़",
         "lede": "उत्पाद विवरण पेज पर दिखने वाले स्टॉक साइज़ प्रबंधित करें।"
+      },
+      "topBar": {
+        "title": "टॉप बार",
+        "lede": "वेबसाइट हेडर के ऊपर दिखने वाले संपर्क विवरण और टिकर कॉपी प्रबंधित करें।"
       },
       "contactDetails": {
         "title": "संपर्क विवरण",
@@ -558,7 +620,7 @@
         "hero": "होमपेज बैनर स्लाइड",
         "industries": "उद्योग क्षेत्र और सूची",
         "products": "कैटलॉग, श्रेणियाँ, प्रकार और साइज़",
-        "companyDetails": "प्रोफ़ाइल, संपर्क और सोशल लिंक",
+        "companyDetails": "टॉप बार, प्रोफ़ाइल, संपर्क और सोशल लिंक",
         "teamMembers": "भूमिकाएँ और टीम प्रोफ़ाइल"
       },
       "permissions": {
@@ -576,11 +638,13 @@
         "themeColors": "रंग",
         "themeTypography": "टाइपोग्राफी",
         "banners": "बैनर",
+        "industriesListing": "उद्योग",
         "sectors": "क्षेत्र",
-        "productsListing": "उत्पाद",
+        "productsListing": "सभी उत्पाद",
         "productCategories": "श्रेणियाँ",
         "productTypes": "प्रकार",
         "productSizes": "साइज़",
+        "topBar": "टॉप बार",
         "contactDetails": "संपर्क विवरण",
         "socialMediaLinks": "सोशल मीडिया लिंक",
         "companyProfile": "कंपनी प्रोफ़ाइल",
@@ -597,11 +661,13 @@
         "themeColors": "ब्रांड और UI रंग टोकन",
         "themeTypography": "फ़ॉन्ट और corner radius",
         "banners": "होमपेज हीरो बैनर स्लाइड",
+        "industriesListing": "मुख्य उद्योग समूह",
         "sectors": "उद्योग क्षेत्र और सूची",
         "productsListing": "कैटलॉग उत्पाद",
         "productCategories": "उत्पाद लाइन और श्रेणियाँ",
         "productTypes": "उप-श्रेणी और प्रकार",
         "productSizes": "प्रति उत्पाद स्टॉक साइज़",
+        "topBar": "नेवबार के ऊपर हेडर स्ट्रिप",
         "contactDetails": "फ़ोन, ईमेल और पता",
         "socialMediaLinks": "सोशल प्रोफ़ाइल URL",
         "companyProfile": "नाम, टैगलाइन और about कॉपी",
@@ -788,6 +854,76 @@
     "cfoName": "सीएफओ नाम",
     "cfoPhone": "सीएफओ फ़ोन",
     "cfoEmail": "सीएफओ ईमेल",
+    "topBar": {
+      "intro": {
+        "title": "वेबसाइट टॉप बार",
+        "body": "हेडर के ऊपर स्ट्रिप — फ़ोन, ईमेल, स्थान और स्क्रॉल संदेश प्रबंधित करें।"
+      },
+      "sections": {
+        "visibility": {
+          "title": "दृश्यता",
+          "body": "वेबसाइट हेडर के ऊपर की स्ट्रिप दिखाएँ या छिपाएँ।",
+          "requirement": "जब टॉप बार दिखे, नीचे कम से कम एक संपर्क फ़ील्ड चालू करें या टिकर संदेश जोड़ें — नहीं तो हेडर के ऊपर कुछ नहीं दिखेगा।",
+          "hiddenNote": "टॉप बार वेबसाइट पर छिपा है। जब प्रकाशित करना हो, इसे चालू करके सहेजें।"
+        },
+        "contact": {
+          "title": "संपर्क स्ट्रिप",
+          "body": "टॉप बार के बाएँ दिखने वाला फ़ोन, ईमेल और स्थान।"
+        },
+        "messages": {
+          "title": "टिकर संदेश",
+          "body": "टॉप बार में स्क्रॉल होने वाली छोटी पंक्तियाँ।"
+        }
+      },
+      "fields": {
+        "visible": "वेबसाइट पर टॉप बार दिखाएँ",
+        "showMessages": "टिकर संदेश दिखाएँ",
+        "showPhone": "फ़ोन दिखाएँ",
+        "showEmail": "ईमेल दिखाएँ",
+        "showLocation": "स्थान दिखाएँ",
+        "phone": "फ़ोन नंबर",
+        "email": "ईमेल पता",
+        "location": "कार्यालय स्थान",
+        "messageLine": "संदेश {index}"
+      },
+      "placeholders": {
+        "phone": "+91 9727366046",
+        "email": "enquiries@hakimifastners.com",
+        "location": "गांधीनगर, गुजरात",
+        "messageLine": "सिर पर ग्रेड।"
+      },
+      "addMessage": "संदेश जोड़ें",
+      "removeMessage": "हटाएँ",
+      "save": "सहेजें",
+      "saving": "सहेजा जा रहा है…",
+      "resetAction": "रीसेट",
+      "previewAction": "पूर्वावलोकन",
+      "preview": {
+        "title": "टॉप बार पूर्वावलोकन"
+      },
+      "confirmReset": {
+        "title": "टॉप बार सेटिंग्स रीसेट करें?",
+        "description": "आप दोबारा कॉन्फ़िगर न करें तो टॉप बार छिपा रहेगा।",
+        "confirm": "रीसेट"
+      },
+      "success": {
+        "title": "टॉप बार सहेजा गया",
+        "body": "इस सत्र के लिए वेबसाइट हेडर स्ट्रिप अपडेट की गई।"
+      },
+      "reset": {
+        "title": "टॉप बार रीसेट",
+        "body": "इस सत्र के लिए टॉप बार सेटिंग्स साफ़ की गईं।"
+      },
+      "errors": {
+        "title": "टॉप बार सहेज नहीं सका",
+        "generic": "थोड़ी देर बाद फिर कोशिश करें।",
+        "validation": "सहेजने से पहले हाइलाइट किए फ़ील्ड ठीक करें।",
+        "required": "यह फ़ील्ड आवश्यक है।",
+        "tooLong": "यह संदेश छोटा रखें।",
+        "noContent": "टॉप बार दिखाने से पहले कम से कम एक संपर्क फ़ील्ड चालू करें या टिकर संदेश जोड़ें।",
+        "invalidEmail": "मान्य ईमेल पता दर्ज करें।"
+      }
+    },
     "contact": {
       "accordion": {
         "contact": {
@@ -863,10 +999,6 @@
     },
     "profile": {
       "accordion": {
-        "ticket": {
-          "title": "टिकट पर",
-          "body": "अबाउट पेज पर कंपनी तथ्य टिकट के ऊपर दिखने वाला हेडर कॉपी।"
-        },
         "identity": {
           "title": "कंपनी पहचान",
           "body": "कानूनी नाम, छोटा नाम, टैगलाइन, विवरण और स्थापना वर्ष।"
@@ -877,8 +1009,6 @@
         }
       },
       "fields": {
-        "ticketEyebrow": "टिकट आइब्रो",
-        "ticketTitle": "टिकट शीर्षक",
         "name": "कानूनी नाम",
         "shortName": "छोटा नाम",
         "tagline": "टैगलाइन",
@@ -894,8 +1024,6 @@
         "phone": "फ़ोन"
       },
       "placeholders": {
-        "ticketEyebrow": "टिकट पर",
-        "ticketTitle": "कंपनी विवरण। कोई ब्रोशर धुंध नहीं।",
         "name": "Hakimi Fastners",
         "shortName": "Hakimi",
         "tagline": "साइट और स्टोर के लिए नट, बोल्ट, स्क्रू और कीलें।",
@@ -1290,6 +1418,458 @@
       }
     }
   },
+  "products": {
+    "types": {
+      "toolbarTitle": "प्रकार",
+      "createAction": "प्रकार बनाएँ",
+      "filters": {
+        "modalTitle": "प्रकार फ़िल्टर करें",
+        "modalDescription": "सार्वजनिक वेबसाइट पर दृश्यता के अनुसार सूची संकीर्ण करें।",
+        "visible": "वेबसाइट पर दिखाएँ",
+        "visibleHint": "नियंत्रित करें कि प्रकार सार्वजनिक वेबसाइट पर दिखें या नहीं।",
+        "allVisible": "सभी",
+        "visibleOnly": "दिखाई दे रहे",
+        "hiddenOnly": "छिपे हुए"
+      },
+      "options": {
+        "yes": "हाँ",
+        "no": "नहीं"
+      },
+      "table": {
+        "caption": "कैटलॉग प्रकार",
+        "image": "छवि",
+        "name": "नाम",
+        "slug": "स्लग",
+        "summary": "सारांश",
+        "visible": "दृश्य",
+        "actions": "कार्रवाई"
+      },
+      "actions": {
+        "view": "देखें",
+        "edit": "संपादित करें",
+        "delete": "हटाएँ"
+      },
+      "errors": {
+        "title": "प्रकार लोड नहीं हो सके",
+        "load": "कुछ देर बाद फिर कोशिश करें।",
+        "generic": "कुछ गलत हो गया।"
+      },
+      "delete": {
+        "confirm": {
+          "title": "प्रकार हटाएँ?",
+          "description": "\"{name}\" हटा दिया जाएगा। पहले इस प्रकार वाले उत्पाद अपडेट करें।",
+          "confirm": "हटाएँ"
+        },
+        "success": {
+          "title": "प्रकार हटाया गया",
+          "body": "प्रकार हटा दिया गया।"
+        }
+      },
+      "create": {
+        "fields": {
+          "name": "नाम",
+          "slug": "स्लग",
+          "category": "श्रेणी",
+          "summary": "सारांश"
+        },
+        "placeholders": {
+          "name": "प्रकार का नाम दर्ज करें",
+          "slug": "type-slug",
+          "category": "श्रेणी चुनें",
+          "summary": "फ़िल्टर और कार्ड के लिए संक्षिप्त विवरण"
+        },
+        "save": "सहेजें",
+        "saving": "सहेजा जा रहा है…",
+        "cancelAction": "रद्द करें",
+        "success": {
+          "title": "प्रकार बनाया गया",
+          "body": "प्रकार सहेजा गया।"
+        },
+        "errors": {
+          "title": "प्रकार सहेज नहीं पाए",
+          "generic": "कुछ देर बाद फिर कोशिश करें।",
+          "validation": "सहेजने से पहले हाइलाइट किए गए फ़ील्ड ठीक करें।",
+          "required": "यह फ़ील्ड आवश्यक है।",
+          "tooShort": "कम से कम 2 अक्षर दर्ज करें।",
+          "invalidSlug": "केवल lowercase अक्षर, संख्या और hyphen उपयोग करें।",
+          "invalidCategory": "मान्य श्रेणी चुनें।"
+        }
+      },
+      "edit": {
+        "fields": {
+          "name": "नाम",
+          "slug": "स्लग",
+          "category": "श्रेणी",
+          "summary": "सारांश"
+        },
+        "placeholders": {
+          "name": "प्रकार का नाम दर्ज करें",
+          "slug": "type-slug",
+          "category": "श्रेणी चुनें",
+          "summary": "फ़िल्टर और कार्ड के लिए संक्षिप्त विवरण"
+        },
+        "save": "अपडेट करें",
+        "saving": "अपडेट हो रहा है…",
+        "cancelAction": "रद्द करें",
+        "success": {
+          "title": "प्रकार अपडेट हुआ",
+          "body": "प्रकार सहेजा गया।"
+        },
+        "notFound": {
+          "title": "प्रकार नहीं मिला",
+          "body": "यह प्रकार हटाया जा चुका हो सकता है।"
+        },
+        "errors": {
+          "title": "प्रकार अपडेट नहीं हो सका",
+          "generic": "कुछ देर बाद फिर कोशिश करें।",
+          "validation": "सहेजने से पहले हाइलाइट किए गए फ़ील्ड ठीक करें।",
+          "required": "यह फ़ील्ड आवश्यक है।",
+          "tooShort": "कम से कम 2 अक्षर दर्ज करें।",
+          "invalidSlug": "केवल lowercase अक्षर, संख्या और hyphen उपयोग करें।",
+          "invalidCategory": "मान्य श्रेणी चुनें।"
+        }
+      },
+      "view": {
+        "fields": {
+          "slug": "स्लग",
+          "category": "श्रेणी",
+          "summary": "सारांश",
+          "created": "बनाया गया",
+          "updated": "अपडेट"
+        },
+        "cancelAction": "रद्द करें",
+        "editAction": "प्रकार संपादित करें",
+        "notFound": {
+          "title": "प्रकार नहीं मिला",
+          "body": "यह प्रकार हटाया जा चुका हो सकता है।"
+        }
+      }
+    }
+  },
+  "industries": {
+    "listing": {
+      "toolbarTitle": "उद्योग",
+      "createAction": "उद्योग बनाएँ",
+      "table": {
+        "caption": "उद्योग समूह",
+        "industry": "उद्योग",
+        "slug": "स्लग",
+        "sectors": "क्षेत्र",
+        "status": "स्थिति",
+        "updated": "अपडेट",
+        "actions": "कार्रवाई",
+        "noImage": "कोई छवि नहीं",
+        "noSummary": "कोई सारांश नहीं"
+      },
+      "status": {
+        "active": "सक्रिय",
+        "draft": "ड्राफ्ट"
+      },
+      "actions": {
+        "view": "देखें",
+        "edit": "संपादित करें",
+        "delete": "हटाएँ",
+        "manageSectors": "क्षेत्र प्रबंधित करें"
+      },
+      "errors": {
+        "title": "उद्योग लोड नहीं हो सके",
+        "load": "कुछ देर बाद फिर कोशिश करें।",
+        "generic": "कुछ गलत हो गया।",
+        "inUse": "इस उद्योग को हटाने से पहले क्षेत्र हटाएँ या पुनः असाइन करें।"
+      },
+      "delete": {
+        "confirm": {
+          "title": "उद्योग हटाएँ?",
+          "description": "\"{name}\" एडमिन पैनल से हटा दिया जाएगा।",
+          "confirm": "हटाएँ"
+        },
+        "success": {
+          "title": "उद्योग हटाया गया",
+          "body": "उद्योग हटा दिया गया।"
+        }
+      },
+      "create": {
+        "fields": {
+          "name": "नाम",
+          "slug": "स्लग",
+          "summary": "सारांश",
+          "description": "विवरण",
+          "image": "उद्योग छवि",
+          "status": "स्थिति",
+          "sortOrder": "क्रम"
+        },
+        "placeholders": {
+          "name": "उद्योग का नाम दर्ज करें",
+          "slug": "industry-slug",
+          "summary": "कार्ड के लिए संक्षिप्त सारांश",
+          "description": "पूर्ण उद्योग विवरण"
+        },
+        "status": {
+          "active": "सक्रिय",
+          "draft": "ड्राफ्ट"
+        },
+        "image": {
+          "drop": "छवि यहाँ छोड़ें",
+          "browse": "ब्राउज़ करें",
+          "change": "छवि बदलें",
+          "remove": "हटाएँ",
+          "hint": "JPG या PNG, अधिकतम 2 MB"
+        },
+        "save": "सहेजें",
+        "saving": "सहेजा जा रहा है…",
+        "cancelAction": "रद्द करें",
+        "success": {
+          "title": "उद्योग बनाया गया",
+          "body": "उद्योग सहेजा गया।"
+        },
+        "errors": {
+          "title": "उद्योग सहेज नहीं पाए",
+          "generic": "कुछ देर बाद फिर कोशिश करें।",
+          "validation": "सहेजने से पहले हाइलाइट किए गए फ़ील्ड ठीक करें।",
+          "required": "यह फ़ील्ड आवश्यक है।",
+          "tooShort": "कम से कम 2 अक्षर दर्ज करें।",
+          "invalidSlug": "केवल lowercase अक्षर, संख्या और hyphen उपयोग करें।"
+        }
+      },
+      "edit": {
+        "fields": {
+          "name": "नाम",
+          "slug": "स्लग",
+          "summary": "सारांश",
+          "description": "विवरण",
+          "image": "उद्योग छवि",
+          "status": "स्थिति",
+          "sortOrder": "क्रम"
+        },
+        "placeholders": {
+          "name": "उद्योग का नाम दर्ज करें",
+          "slug": "industry-slug",
+          "summary": "कार्ड के लिए संक्षिप्त सारांश",
+          "description": "पूर्ण उद्योग विवरण"
+        },
+        "status": {
+          "active": "सक्रिय",
+          "draft": "ड्राफ्ट"
+        },
+        "image": {
+          "drop": "छवि यहाँ छोड़ें",
+          "browse": "ब्राउज़ करें",
+          "change": "छवि बदलें",
+          "remove": "हटाएँ",
+          "hint": "JPG या PNG, अधिकतम 2 MB"
+        },
+        "save": "अपडेट करें",
+        "saving": "अपडेट हो रहा है…",
+        "cancelAction": "रद्द करें",
+        "success": {
+          "title": "उद्योग अपडेट हुआ",
+          "body": "उद्योग सहेजा गया।"
+        },
+        "notFound": {
+          "title": "उद्योग नहीं मिला",
+          "body": "यह उद्योग हटाया जा चुका हो सकता है।"
+        },
+        "errors": {
+          "title": "उद्योग अपडेट नहीं हो सका",
+          "generic": "कुछ देर बाद फिर कोशिश करें।",
+          "validation": "सहेजने से पहले हाइलाइट किए गए फ़ील्ड ठीक करें।",
+          "required": "यह फ़ील्ड आवश्यक है।",
+          "tooShort": "कम से कम 2 अक्षर दर्ज करें।",
+          "invalidSlug": "केवल lowercase अक्षर, संख्या और hyphen उपयोग करें।"
+        }
+      },
+      "view": {
+        "fields": {
+          "slug": "स्लग",
+          "sectors": "क्षेत्र",
+          "description": "विवरण",
+          "created": "बनाया गया",
+          "updated": "अपडेट"
+        },
+        "status": {
+          "active": "सक्रिय",
+          "draft": "ड्राफ्ट"
+        },
+        "noImage": "कोई छवि अपलोड नहीं",
+        "cancelAction": "रद्द करें",
+        "editAction": "उद्योग संपादित करें",
+        "manageSectorsAction": "क्षेत्र प्रबंधित करें",
+        "addSectorAction": "क्षेत्र जोड़ें",
+        "sectorsTitle": "क्षेत्र",
+        "notFound": {
+          "title": "उद्योग नहीं मिला",
+          "body": "यह उद्योग हटाया जा चुका हो सकता है।"
+        }
+      }
+    },
+    "sectors": {
+      "toolbarTitle": "क्षेत्र",
+      "createAction": "क्षेत्र बनाएँ",
+      "filters": {
+        "industry": "उद्योग",
+        "allIndustries": "सभी उद्योग"
+      },
+      "embedded": {
+        "toolbarTitle": "क्षेत्र"
+      },
+      "status": {
+        "active": "सक्रिय",
+        "draft": "ड्राफ्ट"
+      },
+      "table": {
+        "caption": "उद्योग क्षेत्र",
+        "sector": "क्षेत्र",
+        "industry": "उद्योग",
+        "slug": "स्लग",
+        "status": "स्थिति",
+        "updated": "अपडेट",
+        "actions": "कार्रवाई",
+        "noImage": "कोई छवि नहीं"
+      },
+      "actions": {
+        "view": "देखें",
+        "edit": "संपादित करें",
+        "delete": "हटाएँ"
+      },
+      "errors": {
+        "title": "क्षेत्र लोड नहीं हो सके",
+        "load": "कुछ देर बाद फिर कोशिश करें।",
+        "generic": "कुछ गलत हो गया।"
+      },
+      "delete": {
+        "confirm": {
+          "title": "क्षेत्र हटाएँ?",
+          "description": "\"{name}\" उद्योग पेज से हटा दिया जाएगा।",
+          "confirm": "हटाएँ"
+        },
+        "success": {
+          "title": "क्षेत्र हटाया गया",
+          "body": "क्षेत्र हटा दिया गया।"
+        }
+      },
+      "create": {
+        "fields": {
+          "industry": "मुख्य उद्योग",
+          "name": "नाम",
+          "slug": "स्लग",
+          "summary": "सारांश",
+          "description": "विवरण",
+          "applications": "अनुप्रयोग",
+          "image": "क्षेत्र छवि",
+          "status": "स्थिति",
+          "sortOrder": "क्रम"
+        },
+        "placeholders": {
+          "industry": "उद्योग चुनें",
+          "name": "क्षेत्र का नाम दर्ज करें",
+          "slug": "sector-slug",
+          "summary": "कार्ड के लिए संक्षिप्त सारांश",
+          "description": "पूर्ण क्षेत्र विवरण",
+          "listLines": "प्रति पंक्ति एक अनुप्रयोग"
+        },
+        "status": {
+          "active": "सक्रिय",
+          "draft": "ड्राफ्ट"
+        },
+        "image": {
+          "drop": "छवि यहाँ छोड़ें",
+          "browse": "ब्राउज़ करें",
+          "change": "छवि बदलें",
+          "remove": "हटाएँ",
+          "hint": "JPG या PNG, अधिकतम 2 MB"
+        },
+        "save": "सहेजें",
+        "saving": "सहेजा जा रहा है…",
+        "cancelAction": "रद्द करें",
+        "success": {
+          "title": "क्षेत्र बनाया गया",
+          "body": "क्षेत्र सहेजा गया।"
+        },
+        "errors": {
+          "title": "क्षेत्र सहेज नहीं पाए",
+          "generic": "कुछ देर बाद फिर कोशिश करें।",
+          "validation": "सहेजने से पहले हाइलाइट किए गए फ़ील्ड ठीक करें।",
+          "required": "यह फ़ील्ड आवश्यक है।",
+          "tooShort": "कम से कम 2 अक्षर दर्ज करें।",
+          "invalidSlug": "केवल lowercase अक्षर, संख्या और hyphen उपयोग करें।",
+          "invalidIndustry": "मान्य उद्योग चुनें।"
+        }
+      },
+      "edit": {
+        "fields": {
+          "industry": "मुख्य उद्योग",
+          "name": "नाम",
+          "slug": "स्लग",
+          "summary": "सारांश",
+          "description": "विवरण",
+          "applications": "अनुप्रयोग",
+          "image": "क्षेत्र छवि",
+          "status": "स्थिति",
+          "sortOrder": "क्रम"
+        },
+        "placeholders": {
+          "industry": "उद्योग चुनें",
+          "name": "क्षेत्र का नाम दर्ज करें",
+          "slug": "sector-slug",
+          "summary": "कार्ड के लिए संक्षिप्त सारांश",
+          "description": "पूर्ण क्षेत्र विवरण",
+          "listLines": "प्रति पंक्ति एक अनुप्रयोग"
+        },
+        "status": {
+          "active": "सक्रिय",
+          "draft": "ड्राफ्ट"
+        },
+        "image": {
+          "drop": "छवि यहाँ छोड़ें",
+          "browse": "ब्राउज़ करें",
+          "change": "छवि बदलें",
+          "remove": "हटाएँ",
+          "hint": "JPG या PNG, अधिकतम 2 MB"
+        },
+        "save": "अपडेट करें",
+        "saving": "अपडेट हो रहा है…",
+        "cancelAction": "रद्द करें",
+        "success": {
+          "title": "क्षेत्र अपडेट हुआ",
+          "body": "क्षेत्र सहेजा गया।"
+        },
+        "notFound": {
+          "title": "क्षेत्र नहीं मिला",
+          "body": "यह क्षेत्र हटाया जा चुका हो सकता है।"
+        },
+        "errors": {
+          "title": "क्षेत्र अपडेट नहीं हो सका",
+          "generic": "कुछ देर बाद फिर कोशिश करें।",
+          "validation": "सहेजने से पहले हाइलाइट किए गए फ़ील्ड ठीक करें।",
+          "required": "यह फ़ील्ड आवश्यक है।",
+          "tooShort": "कम से कम 2 अक्षर दर्ज करें।",
+          "invalidSlug": "केवल lowercase अक्षर, संख्या और hyphen उपयोग करें।",
+          "invalidIndustry": "मान्य उद्योग चुनें।"
+        }
+      },
+      "view": {
+        "fields": {
+          "slug": "स्लग",
+          "industry": "उद्योग",
+          "description": "विवरण",
+          "applications": "अनुप्रयोग",
+          "created": "बनाया गया",
+          "updated": "अपडेट"
+        },
+        "status": {
+          "active": "सक्रिय",
+          "draft": "ड्राफ्ट"
+        },
+        "noImage": "कोई छवि अपलोड नहीं",
+        "cancelAction": "रद्द करें",
+        "editAction": "क्षेत्र संपादित करें",
+        "notFound": {
+          "title": "क्षेत्र नहीं मिला",
+          "body": "यह क्षेत्र हटाया जा चुका हो सकता है।"
+        }
+      }
+    }
+  },
   "common": {
     "modal": {
       "eyebrow": "कार्रवाई की पुष्टि",
@@ -1301,7 +1881,31 @@
     "imageUpload": {
       "hintJpgPng2Mb": "JPG या PNG, अधिकतम 2 MB",
       "invalidTypeJpgPng": "JPG या PNG छवि अपलोड करें।",
-      "tooLarge2Mb": "छवि 2 MB या उससे छोटी होनी चाहिए।"
+      "tooLarge2Mb": "छवि 2 MB या उससे छोटी होनी चाहिए।",
+      "invalidType": "समर्थित छवि फ़ाइल अपलोड करें।",
+      "tooLarge": "छवि बहुत बड़ी है।",
+      "drop": "छवि यहाँ खींचकर छोड़ें",
+      "browse": "फ़ाइलें ब्राउज़ करें",
+      "change": "बदलें",
+      "remove": "हटाएँ"
+    },
+    "pagination": {
+      "empty": "दिखाने के लिए कोई पंक्ति नहीं",
+      "summary": "{total} में से {start}–{end} दिखाए जा रहे हैं",
+      "summarySingle": "{total} आइटम दिखाए जा रहे हैं",
+      "page": "पृष्ठ {page} / {totalPages}",
+      "navLabel": "टेबल पृष्ठ",
+      "goToPage": "पृष्ठ {page} पर जाएँ",
+      "previous": "पिछला पृष्ठ",
+      "next": "अगला पृष्ठ",
+      "pageSize": "प्रति पृष्ठ पंक्तियाँ"
+    },
+    "filters": {
+      "open": "फ़िल्टर",
+      "activeCount": "फ़िल्टर ({count})",
+      "clear": "सभी साफ़ करें",
+      "cancel": "रद्द करें",
+      "apply": "लागू करें"
     }
   },
   "tables": {

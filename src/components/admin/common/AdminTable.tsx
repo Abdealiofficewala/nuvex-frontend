@@ -1,8 +1,14 @@
+"use client";
+
 import type { ReactNode } from "react";
+import { AdminEmptyState } from "@/components/admin/common/AdminEmptyState";
+import { AdminTablePagination } from "@/components/admin/common/AdminTablePagination";
 import {
   resolveAdminTableColumn,
   type AdminTableColumnVariant,
 } from "@/components/admin/common/admin-table.config";
+import { ADMIN_TABLE_DEFAULT_PAGE_SIZE, ADMIN_TABLE_PAGE_SIZE_OPTIONS } from "@/lib/admin/admin-pagination";
+import { useAdminPagination } from "@/lib/admin/use-admin-pagination";
 import { cn } from "@/lib/utils";
 
 export type AdminTableColumn<T> = {
@@ -16,16 +22,43 @@ export type AdminTableColumn<T> = {
   render: (row: T, index: number) => ReactNode;
 };
 
+export type AdminTablePaginationConfig = {
+  enabled?: boolean;
+  pageSize?: number;
+  pageSizeOptions?: readonly number[];
+};
+
 export type AdminTableProps<T> = {
   columns: AdminTableColumn<T>[];
   rows: T[];
   rowKey: (row: T, index: number) => string;
-  emptyTitle?: string;
-  emptyDescription?: string;
+  loading?: boolean;
+  toolbarMeta?: ReactNode;
+  toolbarAction?: ReactNode;
   className?: string;
   tableClassName?: string;
   caption?: string;
+  pagination?: boolean | AdminTablePaginationConfig;
 };
+
+function AdminTableToolbar({
+  meta,
+  action,
+}: {
+  meta?: ReactNode;
+  action?: ReactNode;
+}) {
+  if (!meta && !action) {
+    return null;
+  }
+
+  return (
+    <div className="admin-table-panel__toolbar">
+      {meta ? <div className="admin-table-panel__toolbar-start">{meta}</div> : null}
+      {action ? <div className="admin-table-panel__toolbar-end">{action}</div> : null}
+    </div>
+  );
+}
 
 function getHeaderClassName<T>(column: AdminTableColumn<T>) {
   return cn(
@@ -50,23 +83,76 @@ export function AdminTable<T>({
   columns,
   rows,
   rowKey,
-  emptyTitle,
-  emptyDescription,
+  loading = false,
+  toolbarMeta,
+  toolbarAction,
   className,
   tableClassName,
   caption,
+  pagination = true,
 }: AdminTableProps<T>) {
   const resolvedColumns = columns.map(resolveAdminTableColumn);
+  const paginationConfig =
+    pagination === false
+      ? { enabled: false as const }
+      : {
+          enabled: true as const,
+          pageSize:
+            typeof pagination === "object" ? pagination.pageSize : ADMIN_TABLE_DEFAULT_PAGE_SIZE,
+          pageSizeOptions:
+            typeof pagination === "object" && pagination.pageSizeOptions
+              ? pagination.pageSizeOptions
+              : ADMIN_TABLE_PAGE_SIZE_OPTIONS,
+        };
+  const {
+    rows: paginatedRows,
+    page,
+    pageSize,
+    totalCount,
+    totalPages,
+    rangeStart,
+    rangeEnd,
+    pageSizeOptions,
+    enabled: paginationEnabled,
+    setPage,
+    setPageSize,
+  } = useAdminPagination(rows, paginationConfig);
+  const displayRows = paginationEnabled ? paginatedRows : rows;
+  const toolbar = <AdminTableToolbar meta={toolbarMeta} action={toolbarAction} />;
+  const paginationFooter =
+    paginationEnabled && totalCount > 0 ? (
+      <AdminTablePagination
+        page={page}
+        pageSize={pageSize}
+        totalCount={totalCount}
+        totalPages={totalPages}
+        rangeStart={rangeStart}
+        rangeEnd={rangeEnd}
+        pageSizeOptions={pageSizeOptions}
+        onPageChange={setPage}
+        onPageSizeChange={setPageSize}
+      />
+    ) : null;
+
+  if (loading) {
+    return (
+      <div className={cn("admin-table-root", className)}>
+        <div className="admin-table-panel admin-table-panel--empty">
+          {toolbar}
+          <div className="admin-table-loading" aria-busy="true" aria-live="polite">
+            <span className="admin-table-loading__spinner" aria-hidden="true" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!rows.length) {
     return (
       <div className={cn("admin-table-root", className)}>
         <div className="admin-table-panel admin-table-panel--empty">
-          <div className="admin-table-empty">
-            <span className="admin-table-empty__icon" aria-hidden="true" />
-            {emptyTitle ? <h3 className="admin-table-empty__title">{emptyTitle}</h3> : null}
-            {emptyDescription ? <p className="admin-table-empty__body">{emptyDescription}</p> : null}
-          </div>
+          {toolbar}
+          <AdminEmptyState />
         </div>
       </div>
     );
@@ -74,30 +160,34 @@ export function AdminTable<T>({
 
   return (
     <div className={cn("admin-table-root", className)}>
-      <div className="admin-table-panel admin-table-panel--scroll" tabIndex={0}>
-        <table className={cn("admin-table admin-table--scrollable", tableClassName)}>
-          {caption ? <caption className="sr-only">{caption}</caption> : null}
-          <thead>
-            <tr>
-              {resolvedColumns.map((column) => (
-                <th key={column.key} className={getHeaderClassName(column)} scope="col">
-                  {column.header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row, index) => (
-              <tr key={rowKey(row, index)}>
+      <div className="admin-table-panel">
+        {toolbar}
+        <div className="admin-table-panel__scroll" tabIndex={0}>
+          <table className={cn("admin-table admin-table--scrollable", tableClassName)}>
+            {caption ? <caption className="sr-only">{caption}</caption> : null}
+            <thead>
+              <tr>
                 {resolvedColumns.map((column) => (
-                  <td key={column.key} className={getCellClassName(column)}>
-                    {column.render(row, index)}
-                  </td>
+                  <th key={column.key} className={getHeaderClassName(column)} scope="col">
+                    {column.header}
+                  </th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {displayRows.map((row, index) => (
+                <tr key={rowKey(row, index)}>
+                  {resolvedColumns.map((column) => (
+                    <td key={column.key} className={getCellClassName(column)}>
+                      {column.render(row, index)}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {paginationFooter}
       </div>
     </div>
   );

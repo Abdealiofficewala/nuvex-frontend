@@ -1,1 +1,1 @@
-export { ToastProvider, useToast } from "./toast-provider";
+export { ToastProvider, useToast } from "../feedback/Toast";

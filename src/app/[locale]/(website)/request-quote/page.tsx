@@ -29,7 +29,7 @@ export default async function RequestQuotePage({ searchParams }: RequestQuotePag
       categorySlug: item.categorySlug,
       subcategory: item.subcategory,
       subcategorySlug: item.subcategorySlug,
-      sizes: item.sizes ?? [],
+      sizeOptions: item.sizeOptions ?? [],
       keySpec: item.keySpec,
       shortDescription: item.shortDescription,
       description: item.description,

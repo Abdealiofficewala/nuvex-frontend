@@ -7,7 +7,7 @@ import { themeService } from "@/services/theme.service";
 import { contentActions } from "@/store/modules/content/slice";
 import type { Company } from "@/types/company";
 import type { FaqItem } from "@/types/faq";
-import type { Industry } from "@/types/industry";
+import type { Sector } from "@/types/industry";
 import type { Testimonial } from "@/types/testimonial";
 import type { ThemeTokens } from "@/types/theme";
 
@@ -35,7 +35,7 @@ function* fetchThemeWorker() {
 
 function* fetchIndustriesWorker() {
   try {
-    const industries: Industry[] = yield call(industriesService.getIndustries);
+    const industries: Sector[] = yield call(industriesService.getIndustries);
     yield put(contentActions.fetchIndustriesSucceeded(industries));
   } catch (error) {
     yield put(fail(error));

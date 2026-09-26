@@ -7,8 +7,8 @@ import { Icon } from "@/components/website/common/Icons";
 import { TICKET_SERIAL } from "@/lib/constants";
 import {
   CONTACT_DETAILS_UPDATED_EVENT,
-  getContactDetailsState,
   getDefaultContactDetails,
+  getWebsiteContactDetailsState,
 } from "@/lib/contact-details";
 import { formatPhoneParts } from "@/lib/utils/phone";
 import { formatAddress, hasValue, initials, phoneHref } from "@/lib/utils";
@@ -23,9 +23,9 @@ export function ContactInfo({ nested }: ContactInfoProps) {
   const [state, setState] = useState(getDefaultContactDetails);
 
   useEffect(() => {
-    setState(getContactDetailsState());
+    setState(getWebsiteContactDetailsState());
 
-    const refresh = () => setState(getContactDetailsState());
+    const refresh = () => setState(getWebsiteContactDetailsState());
     window.addEventListener(CONTACT_DETAILS_UPDATED_EVENT, refresh);
 
     return () => window.removeEventListener(CONTACT_DETAILS_UPDATED_EVENT, refresh);

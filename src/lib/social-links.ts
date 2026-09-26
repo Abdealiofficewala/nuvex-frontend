@@ -70,6 +70,23 @@ function isSocialLinksMap(value: unknown): value is Partial<SocialLinksMap> {
   return Boolean(value && typeof value === "object" && !("links" in value));
 }
 
+function readStoredSocialRaw(): unknown | undefined {
+  if (typeof window === "undefined") {
+    return undefined;
+  }
+
+  try {
+    const raw = window.sessionStorage.getItem(ADMIN_SOCIAL_STORE_KEY);
+    if (raw === null) {
+      return undefined;
+    }
+
+    return JSON.parse(raw) as unknown;
+  } catch {
+    return undefined;
+  }
+}
+
 function parseStoredSocialState(raw: unknown): SocialLinksState {
   if (raw && typeof raw === "object" && "links" in raw) {
     const record = raw as Partial<SocialLinksState>;
@@ -90,15 +107,29 @@ function parseStoredSocialState(raw: unknown): SocialLinksState {
     };
   }
 
-  return getDefaultSocialLinksState();
+  return getEmptySocialLinksState();
 }
 
 export function getSocialLinksState(): SocialLinksState {
-  return parseStoredSocialState(readJson(ADMIN_SOCIAL_STORE_KEY, null));
+  const stored = readStoredSocialRaw();
+  if (stored === undefined) {
+    return getEmptySocialLinksState();
+  }
+
+  return parseStoredSocialState(stored);
+}
+
+export function getWebsiteSocialLinksState(): SocialLinksState {
+  const stored = readStoredSocialRaw();
+  if (stored === undefined) {
+    return getDefaultSocialLinksState();
+  }
+
+  return parseStoredSocialState(stored);
 }
 
 export function getSocialLinks(): SocialLinksMap {
-  return getSocialLinksState().links;
+  return getWebsiteSocialLinksState().links;
 }
 
 export function saveSocialLinksState(state: SocialLinksState) {

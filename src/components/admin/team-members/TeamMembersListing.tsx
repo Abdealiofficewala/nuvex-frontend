@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AdminConfirmModal } from "@/components/admin/common/AdminConfirmModal";
-import { AdminTable, type AdminTableColumn } from "@/components/admin/common/AdminTable";
+import { AdminListingTable } from "@/components/admin/common/AdminListingTable";
+import type { AdminTableColumn } from "@/components/admin/common/AdminTable";
 import { AdminTableActions } from "@/components/admin/common/AdminTableActions";
 import { AdminTooltip } from "@/components/admin/common/AdminTooltip";
-import { ButtonLink } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { ROUTES, teamMemberEditHref, teamMemberViewHref } from "@/lib/constants";
 import {
@@ -17,14 +17,6 @@ import {
 } from "@/lib/team-members";
 import type { TeamMember } from "@/lib/team-members.config";
 import { cn, hasValue, initials } from "@/lib/utils";
-
-function PlusIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </svg>
-  );
-}
 
 export function TeamMembersListing() {
   const t = useTranslations("admin.company.teams");
@@ -166,25 +158,14 @@ export function TeamMembersListing() {
 
   return (
     <section className="admin-team-members">
-      <div className="admin-page-toolbar">
-        <p className="admin-page-toolbar__meta">{t("summary", { count: members.length })}</p>
-        <ButtonLink
-          href={ROUTES.admin.teamMembers.membersCreate}
-          variant="accent"
-          className="admin-page-toolbar__action"
-        >
-          <PlusIcon />
-          {t("createAction")}
-        </ButtonLink>
-      </div>
-
-      <AdminTable
+      <AdminListingTable
         columns={columns}
         rows={members}
         rowKey={(row) => row.id}
         caption={t("table.caption")}
-        emptyTitle={t("empty.title")}
-        emptyDescription={t("empty.body")}
+        toolbarTitle={t("toolbarTitle")}
+        createHref={ROUTES.admin.teamMembers.membersCreate}
+        createLabel={t("createAction")}
       />
 
       <AdminConfirmModal

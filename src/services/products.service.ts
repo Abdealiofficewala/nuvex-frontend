@@ -5,6 +5,45 @@ import { endpoints } from "@/services/api/endpoints";
 import { unwrapApiData, unwrapApiList } from "@/services/api/unwrap";
 import type { Product, ProductCategory } from "@/types/product";
 
+async function getProductsFromContentStore() {
+  if (typeof window !== "undefined") {
+    return null;
+  }
+
+  try {
+    const { listProducts } = await import("@/lib/server/content-store");
+    return listProducts({ activeOnly: true });
+  } catch {
+    return null;
+  }
+}
+
+async function getCategoriesFromContentStore() {
+  if (typeof window !== "undefined") {
+    return null;
+  }
+
+  try {
+    const { listCategories } = await import("@/lib/server/content-store");
+    return listCategories({ visibleOnly: true });
+  } catch {
+    return null;
+  }
+}
+
+async function getProductFromContentStore(id: string) {
+  if (typeof window !== "undefined") {
+    return null;
+  }
+
+  try {
+    const { getProductById } = await import("@/lib/server/content-store");
+    return getProductById(id);
+  } catch {
+    return null;
+  }
+}
+
 function findProduct(id: string) {
   return mockProducts.find((product) => product.id === id) ?? mockProducts.find((product) => product.slug === id);
 }
@@ -18,44 +57,49 @@ export function matchProduct<T extends { id?: string; slug?: string }>(items: T[
 }
 
 export const productsService = {
-  getProducts() {
+  async getProducts() {
+    const fromStore = await getProductsFromContentStore();
+    if (fromStore) {
+      return fromStore;
+    }
+
     return withMockFallback(async () => {
       const { data } = await axiosClient.get(endpoints.products);
       return unwrapApiList<Product>(data);
     }, mockProducts);
   },
 
-  getFeaturedProducts() {
-    return withMockFallback(async () => {
-      const { data } = await axiosClient.get(endpoints.products, {
-        params: { featured: true },
-      });
-      return unwrapApiList<Product>(data);
-    }, mockProducts.filter((product) => product.isFeatured));
+  async getFeaturedProducts() {
+    const products = await productsService.getProducts();
+    return products.filter((product) => product.isFeatured);
   },
 
-  getProductById(id: string) {
+  async getProductById(id: string) {
+    const fromStore = await getProductFromContentStore(id);
+    if (fromStore) {
+      return fromStore;
+    }
+
     return withMockFallback(async () => {
       const { data } = await axiosClient.get(endpoints.product(id));
       return unwrapApiData<Product>(data);
     }, findProduct(id));
   },
 
-  getRelatedProducts(id: string) {
-    const current = findProduct(id);
-    const related = mockProducts
+  async getRelatedProducts(id: string) {
+    const current = (await productsService.getProductById(id)) ?? findProduct(id);
+    const products = await productsService.getProducts();
+    return products
       .filter((product) => product.id !== current?.id && product.categorySlug === current?.categorySlug)
       .slice(0, 3);
-
-    return withMockFallback(async () => {
-      const { data } = await axiosClient.get(endpoints.products, {
-        params: { relatedTo: id },
-      });
-      return unwrapApiList<Product>(data);
-    }, related);
   },
 
-  getCategories() {
+  async getCategories() {
+    const fromStore = await getCategoriesFromContentStore();
+    if (fromStore) {
+      return fromStore;
+    }
+
     return withMockFallback(async () => {
       const { data } = await axiosClient.get(endpoints.categories);
       return unwrapApiList<ProductCategory>(data);
