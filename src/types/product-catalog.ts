@@ -19,7 +19,6 @@ export type ProductCategory = CatalogMeta & {
   summary: string;
   image: string;
   status: CatalogStatus;
-  sortOrder: number;
 };
 
 export type ProductCategoryInput = Omit<ProductCategory, keyof CatalogMeta>;
@@ -66,7 +65,6 @@ export type ProductType = CatalogMeta & {
   summary: string;
   image: string;
   status: CatalogStatus;
-  sortOrder: number;
   configuration: ProductTypeConfiguration;
 };
 
@@ -79,7 +77,6 @@ export type ProductSize = CatalogMeta & {
   dimension: string;
   unit: string;
   status: CatalogStatus;
-  sortOrder: number;
 };
 
 export type ProductSizeInput = Omit<ProductSize, keyof CatalogMeta>;
@@ -89,7 +86,6 @@ export type ProductMaterial = CatalogMeta & {
   slug: string;
   code: string;
   status: CatalogStatus;
-  sortOrder: number;
   allowedGradeIds: string[];
 };
 
@@ -100,7 +96,6 @@ export type ProductGrade = CatalogMeta & {
   slug: string;
   code: string;
   status: CatalogStatus;
-  sortOrder: number;
 };
 
 export type ProductGradeInput = Omit<ProductGrade, keyof CatalogMeta>;
@@ -110,7 +105,6 @@ export type ProductStandard = CatalogMeta & {
   slug: string;
   code: string;
   status: CatalogStatus;
-  sortOrder: number;
 };
 
 export type ProductStandardInput = Omit<ProductStandard, keyof CatalogMeta>;
@@ -120,7 +114,6 @@ export type ProductFinish = CatalogMeta & {
   slug: string;
   code: string;
   status: CatalogStatus;
-  sortOrder: number;
 };
 
 export type ProductFinishInput = Omit<ProductFinish, keyof CatalogMeta>;
@@ -130,7 +123,6 @@ export type ProductThread = CatalogMeta & {
   slug: string;
   code: string;
   status: CatalogStatus;
-  sortOrder: number;
 };
 
 export type ProductThreadInput = Omit<ProductThread, keyof CatalogMeta>;
@@ -140,7 +132,6 @@ export type ProductHeadType = CatalogMeta & {
   slug: string;
   code: string;
   status: CatalogStatus;
-  sortOrder: number;
 };
 
 export type ProductHeadTypeInput = Omit<ProductHeadType, keyof CatalogMeta>;
@@ -150,7 +141,6 @@ export type ProductDriveType = CatalogMeta & {
   slug: string;
   code: string;
   status: CatalogStatus;
-  sortOrder: number;
 };
 
 export type ProductDriveTypeInput = Omit<ProductDriveType, keyof CatalogMeta>;
@@ -161,7 +151,6 @@ export type ProductIndustry = CatalogMeta & {
   code: string;
   summary: string;
   status: CatalogStatus;
-  sortOrder: number;
 };
 
 export type ProductIndustryInput = Omit<ProductIndustry, keyof CatalogMeta>;
@@ -172,7 +161,6 @@ export type ProductApplication = CatalogMeta & {
   code: string;
   summary: string;
   status: CatalogStatus;
-  sortOrder: number;
 };
 
 export type ProductApplicationInput = Omit<ProductApplication, keyof CatalogMeta>;
@@ -182,7 +170,6 @@ export type ProductPackaging = CatalogMeta & {
   slug: string;
   code: string;
   status: CatalogStatus;
-  sortOrder: number;
 };
 
 export type ProductPackagingInput = Omit<ProductPackaging, keyof CatalogMeta>;
@@ -202,7 +189,6 @@ export type ProductAttribute = CatalogMeta & {
   valueType: ProductAttributeValueType;
   options: string[];
   status: CatalogStatus;
-  sortOrder: number;
 };
 
 export type ProductAttributeInput = Omit<ProductAttribute, keyof CatalogMeta>;
@@ -217,7 +203,6 @@ export type ProductDocumentType =
 export type ProductMediaAsset = {
   url: string;
   alt: string;
-  sortOrder: number;
 };
 
 export type ProductMedia = {
@@ -231,7 +216,6 @@ export type ProductDocument = {
   type: ProductDocumentType;
   title: string;
   url: string;
-  sortOrder: number;
 };
 
 export type ProductDimensionValue = {
@@ -271,7 +255,6 @@ export type ProductVariant = {
   packagingName: string;
   availability: ProductVariantAvailability;
   status: CatalogStatus;
-  sortOrder: number;
 };
 
 export type ProductRelationship = {
@@ -296,7 +279,7 @@ export type CatalogProduct = CatalogMeta & {
   category: CatalogRef;
   type: CatalogRef;
   status: CatalogProductStatus;
-  featured: boolean;
+  isNew: boolean;
   shortDescription: string;
   description: string;
   features: string[];
@@ -308,7 +291,6 @@ export type CatalogProduct = CatalogMeta & {
   documents: ProductDocument[];
   relationships: ProductRelationship;
   seo: ProductSEO;
-  sortOrder: number;
 };
 
 export type CatalogProductInput = Omit<CatalogProduct, keyof CatalogMeta>;

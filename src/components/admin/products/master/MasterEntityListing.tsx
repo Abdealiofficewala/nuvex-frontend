@@ -13,14 +13,12 @@ import { useAdminResourceListing } from "@/lib/admin/use-admin-resource-listing"
 import { productCatalogData } from "@/lib/products/catalog-data";
 import { getMasterConfig, masterEditHref, masterViewHref } from "@/lib/products/master-registry";
 import type { CatalogMeta, ProductMasterKey } from "@/types/product-catalog";
-import { AdminFormField } from "@/components/admin/common/AdminFormField";
 
 type MasterRow = CatalogMeta & {
   name: string;
   slug: string;
   code?: string;
   status?: string;
-  sortOrder?: number;
   display?: string;
   valueType?: string;
 };
@@ -28,6 +26,15 @@ type MasterRow = CatalogMeta & {
 type MasterEntityListingProps = {
   masterKey: ProductMasterKey;
 };
+
+function SearchIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M16 16l4.5 4.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  );
+}
 
 export function MasterEntityListing({ masterKey }: MasterEntityListingProps) {
   const config = getMasterConfig(masterKey);
@@ -59,7 +66,6 @@ export function MasterEntityListing({ masterKey }: MasterEntityListingProps) {
       return haystack.includes(query);
     });
   }, [items, search]);
-
 
   async function handleDeleteConfirm() {
     if (!deleteTarget) {
@@ -153,11 +159,6 @@ export function MasterEntityListing({ masterKey }: MasterEntityListingProps) {
         ),
       },
       {
-        key: "sortOrder",
-        header: t("table.sortOrder"),
-        render: (row) => row.sortOrder ?? 0,
-      },
-      {
         key: "updatedAt",
         header: t("table.updated"),
         render: (row) => new Date(row.updatedAt).toLocaleDateString(),
@@ -183,15 +184,32 @@ export function MasterEntityListing({ masterKey }: MasterEntityListingProps) {
   }, [config, masterKey, t]);
 
   return (
-    <section className="admin-master-listing">
-      <div className="admin-form-grid admin-form-grid--2 admin-master-listing__search">
-        <AdminFormField
-          id={`${masterKey}-search`}
-          label={t("searchLabel")}
-          value={search}
-          onChange={(event) => setSearch(event.target.value)}
-          placeholder={t("searchPlaceholder")}
-        />
+    <section className="admin-master-listing admin-um-listing">
+      <div className="admin-um-toolbar admin-um-toolbar--users">
+        <div className="admin-um-toolbar__row">
+          <label className="admin-um-toolbar__search">
+            <span className="admin-um-toolbar__search-icon">
+              <SearchIcon />
+            </span>
+            <span className="sr-only">{t("searchLabel")}</span>
+            <input
+              type="search"
+              className="admin-um-toolbar__search-input"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder={t("searchPlaceholder")}
+            />
+            {search.trim() ? (
+              <button
+                type="button"
+                className="admin-um-toolbar__search-clear"
+                onClick={() => setSearch("")}
+              >
+                {t("searchClear")}
+              </button>
+            ) : null}
+          </label>
+        </div>
       </div>
 
       <AdminListingTable

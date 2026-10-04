@@ -67,10 +67,6 @@ export function validateMasterForm(
     errors.status = "required";
   }
 
-  if (!isEdit && !values.sortOrder && values.sortOrder !== 0) {
-    errors.sortOrder = "required";
-  }
-
   return errors;
 }
 

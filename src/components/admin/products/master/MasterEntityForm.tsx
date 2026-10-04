@@ -3,12 +3,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";
-import { AdminCheckbox } from "@/components/admin/common/AdminCheckbox";
 import { AdminFormField } from "@/components/admin/common/AdminFormField";
 import { AdminFormSelect } from "@/components/admin/common/AdminFormSelect";
 import { AdminFormTextarea } from "@/components/admin/common/AdminFormTextarea";
-import { AdminFormImageUpload } from "@/components/admin/common";
-import { Button, ButtonLink } from "@/components/ui/buttons";
+import {
+  AdminFormImageUpload,
+  AdminFormMultiSelectDropdown,
+  AdminFormPageActions,
+} from "@/components/admin/common";
 import { useToast } from "@/components/ui/toast";
 import { normalizeSlug } from "@/lib/appearance/slug";
 import { productCatalogData } from "@/lib/products/catalog-data";
@@ -43,7 +45,6 @@ function defaultForm(config: ReturnType<typeof getMasterConfig>): FormState {
     valueType: config.hasAttributeType ? "select" : undefined,
     options: config.hasAttributeType ? "" : undefined,
     status: "active" as CatalogStatus,
-    sortOrder: 1,
   };
 }
 
@@ -51,6 +52,7 @@ export function MasterEntityForm({ masterKey, editId }: MasterEntityFormProps) {
   const config = getMasterConfig(masterKey);
   const isEdit = Boolean(editId);
   const t = useTranslations(isEdit ? "admin.products.masters.common.edit" : "admin.products.masters.common.create");
+  const tSelection = useTranslations("admin.products.masters.common.selection");
   const toast = useToast();
   const router = useRouter();
   const [form, setForm] = useState<FormState>(() => defaultForm(config));
@@ -114,7 +116,6 @@ export function MasterEntityForm({ masterKey, editId }: MasterEntityFormProps) {
       dimension: true,
       unit: true,
       status: true,
-      sortOrder: true,
       valueType: true,
     });
 
@@ -129,7 +130,6 @@ export function MasterEntityForm({ masterKey, editId }: MasterEntityFormProps) {
         name: String(form.name).trim(),
         slug: normalizeSlug(String(form.slug)),
         status: form.status,
-        sortOrder: Number(form.sortOrder) || 0,
       };
 
       if (config.hasCode) {
@@ -180,6 +180,7 @@ export function MasterEntityForm({ masterKey, editId }: MasterEntityFormProps) {
 
   return (
     <form className="admin-create-form admin-master-form" onSubmit={(event) => void handleSubmit(event)}>
+      <div className="admin-panel admin-master-form__panel">
       <div className="admin-form-grid admin-form-grid--2">
         <AdminFormField
           id="master-name"
@@ -213,13 +214,6 @@ export function MasterEntityForm({ masterKey, editId }: MasterEntityFormProps) {
             errorMessage={errors.code ? t("errors.required") : null}
           />
         ) : null}
-        <AdminFormField
-          id="master-sort"
-          label={t("fields.sortOrder")}
-          type="number"
-          value={String(form.sortOrder ?? 1)}
-          onChange={(event) => updateField("sortOrder", Number(event.target.value))}
-        />
         <AdminFormSelect
           id="master-status"
           label={t("fields.status")}
@@ -307,40 +301,26 @@ export function MasterEntityForm({ masterKey, editId }: MasterEntityFormProps) {
       ) : null}
 
       {masterKey === "materials" ? (
-        <div className="admin-form-section">
-          <h2 className="admin-form-section__title">{t("fields.allowedGrades")}</h2>
-          <div className="admin-form-grid admin-form-grid--3">
-            {gradeOptions.map((grade) => {
-              const selected = Array.isArray(form.allowedGradeIds)
-                ? (form.allowedGradeIds as string[]).includes(grade.id)
-                : false;
-              return (
-                <AdminCheckbox
-                  key={grade.id}
-                  id={`material-grade-${grade.id}`}
-                  label={grade.name}
-                  checked={selected}
-                  onChange={(checked) => {
-                    const current = Array.isArray(form.allowedGradeIds) ? [...(form.allowedGradeIds as string[])] : [];
-                    const next = checked
-                      ? [...current, grade.id]
-                      : current.filter((id) => id !== grade.id);
-                    updateField("allowedGradeIds", next);
-                  }}
-                />
-              );
-            })}
-          </div>
-        </div>
+        <AdminFormMultiSelectDropdown
+          id="material-allowed-grades"
+          label={t("fields.allowedGrades")}
+          values={Array.isArray(form.allowedGradeIds) ? (form.allowedGradeIds as string[]) : []}
+          placeholder={tSelection("placeholder")}
+          emptyMessage={tSelection("empty")}
+          selectedLabel={(count) => tSelection("selectedCount", { count })}
+          options={gradeOptions.map((grade) => ({ value: grade.id, label: grade.name }))}
+          onChange={(values) => updateField("allowedGradeIds", values)}
+        />
       ) : null}
 
-      <div className="admin-form-actions">
-        <ButtonLink href={config.route} variant="secondary" type="button">
-          {t("cancelAction")}
-        </ButtonLink>
-        <Button type="submit" variant="accent" disabled={!valid || saving}>
-          {saving ? t("saving") : t("save")}
-        </Button>
+      <AdminFormPageActions
+        cancelHref={config.route}
+        cancelLabel={t("cancelAction")}
+        submitLabel={t("save")}
+        savingLabel={t("saving")}
+        saving={saving}
+        submitDisabled={!valid}
+      />
       </div>
     </form>
   );

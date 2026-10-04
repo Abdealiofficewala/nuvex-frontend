@@ -64,7 +64,7 @@ export function ProductCatalogView({ id }: ProductCatalogViewProps) {
         <AdminResourceViewField label={t("fields.category")}>{product.category.name}</AdminResourceViewField>
         <AdminResourceViewField label={t("fields.type")}>{product.type.name}</AdminResourceViewField>
         <AdminResourceViewField label={t("fields.status")}>{product.status}</AdminResourceViewField>
-        <AdminResourceViewField label={t("fields.featured")}>{product.featured ? t("options.yes") : t("options.no")}</AdminResourceViewField>
+        <AdminResourceViewField label={t("fields.isNew")}>{product.isNew ? t("options.yes") : t("options.no")}</AdminResourceViewField>
         <AdminResourceViewField label={t("fields.variants")}>{product.variants.length}</AdminResourceViewField>
         <AdminResourceViewField label={t("fields.description")}>{product.description}</AdminResourceViewField>
         <AdminResourceViewField label={t("fields.created")}>

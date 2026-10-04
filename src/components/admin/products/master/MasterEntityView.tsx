@@ -83,7 +83,6 @@ export function MasterEntityView({ masterKey, id }: MasterEntityViewProps) {
           </>
         ) : null}
         <AdminResourceViewField label={t("fields.status")}>{String(record.status ?? "")}</AdminResourceViewField>
-        <AdminResourceViewField label={t("fields.sortOrder")}>{String(record.sortOrder ?? "")}</AdminResourceViewField>
         <AdminResourceViewField label={t("fields.created")}>
           <time dateTime={record.createdAt}>{formatDate(record.createdAt, locale)}</time>
         </AdminResourceViewField>

@@ -16,7 +16,7 @@ function delay<T>(value: T): Promise<T> {
   return Promise.resolve(value);
 }
 
-type SlugRecord = { id: string; slug: string; name: string; sortOrder: number };
+type SlugRecord = { id: string; slug: string; name: string };
 
 function asSlugRecords(items: unknown[]): SlugRecord[] {
   return items as SlugRecord[];
@@ -62,7 +62,7 @@ export function listMasterRecords<T extends CatalogMeta>(key: ProductMasterKey):
     [...items].sort((a, b) => {
       const left = a as unknown as SlugRecord;
       const right = b as unknown as SlugRecord;
-      return left.sortOrder - right.sortOrder || left.name.localeCompare(right.name);
+      return left.name.localeCompare(right.name);
     }),
   );
 }
@@ -161,7 +161,7 @@ export function deleteMasterRecord(key: ProductMasterKey, id: string): Promise<v
 
 export function listProducts(): Promise<CatalogProduct[]> {
   const items = [...getCatalogStore().products].sort(
-    (a, b) => a.sortOrder - b.sortOrder || a.name.localeCompare(b.name),
+    (a, b) => a.name.localeCompare(b.name),
   );
   return delay(items);
 }

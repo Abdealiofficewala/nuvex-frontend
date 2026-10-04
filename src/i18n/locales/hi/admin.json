@@ -209,7 +209,7 @@
       },
       "productsListing": {
         "title": "उत्पाद",
-        "lede": "कैटलॉग उत्पाद, विवरण, छवियाँ और स्थिति प्रबंधित करें।"
+        "lede": "अपने फास्टनर कैटलॉग, वेरिएंट और विनिर्देश प्रबंधित करें।"
       },
       "productCategories": {
         "title": "श्रेणियाँ",
@@ -1867,6 +1867,7 @@
       "common": {
         "searchLabel": "खोजें",
         "searchPlaceholder": "नाम, स्लग या कोड से खोजें",
+        "searchClear": "साफ करें",
         "createAction": "बनाएँ",
         "table": {
           "caption": "मास्टर रिकॉर्ड",
@@ -1893,6 +1894,11 @@
         "empty": {
           "title": "अभी कोई रिकॉर्ड नहीं",
           "body": "पहला रिकॉर्ड बनाएँ।"
+        },
+        "selection": {
+          "placeholder": "चुनें…",
+          "selectedCount": "{count} चयनित",
+          "empty": "कोई विकल्प उपलब्ध नहीं।"
         },
         "errors": {
           "title": "अनुरोध पूरा नहीं हो सका",
@@ -2123,7 +2129,9 @@
           },
           "configuration": {
             "specificationsTitle": "विनिर्देश फ़ील्ड",
+            "specificationsSelectLabel": "विनिर्देश फ़ील्ड",
             "variantTitle": "वेरिएंट विशेषताएँ",
+            "variantSelectLabel": "वेरिएंट विशेषताएँ",
             "allowedTitle": "अनुमत मास्टर डेटा",
             "specFields": {
               "headType": "हेड प्रकार",
@@ -2221,7 +2229,9 @@
           },
           "configuration": {
             "specificationsTitle": "विनिर्देश फ़ील्ड",
+            "specificationsSelectLabel": "विनिर्देश फ़ील्ड",
             "variantTitle": "वेरिएंट विशेषताएँ",
+            "variantSelectLabel": "वेरिएंट विशेषताएँ",
             "allowedTitle": "अनुमत मास्टर डेटा",
             "specFields": {
               "headType": "हेड प्रकार",
@@ -2263,14 +2273,32 @@
       "listing": {
         "toolbarTitle": "सभी उत्पाद",
         "createAction": "उत्पाद बनाएँ",
+        "search": {
+          "label": "उत्पाद खोजें",
+          "placeholder": "उत्पाद खोजें…",
+          "clear": "साफ करें"
+        },
         "filters": {
+          "modalTitle": "उत्पाद फ़िल्टर",
+          "apply": "फ़िल्टर लागू करें",
+          "clearAll": "सभी साफ करें",
           "search": "खोजें",
           "searchPlaceholder": "नाम, कोड, SKU, श्रेणी…",
           "category": "श्रेणी",
           "type": "उत्पाद प्रकार",
           "status": "स्थिति",
           "featured": "विशेष",
-          "all": "सभी"
+          "size": "आकार",
+          "material": "सामग्री",
+          "grade": "ग्रेड",
+          "standard": "मानक",
+          "finish": "फिनिश",
+          "thread": "थ्रेड",
+          "industry": "उद्योग",
+          "application": "अनुप्रयोग",
+          "packaging": "पैकेजिंग",
+          "all": "सभी",
+          "open": "फ़िल्टर"
         },
         "table": {
           "caption": "कैटलॉग उत्पाद",
@@ -2327,7 +2355,18 @@
           "media": "मीडिया",
           "documents": "दस्तावेज़",
           "relationships": "संबंध",
+          "newTag": "नया टैग",
+          "newTagDescription": "कैटलॉग और वेबसाइट पर इस उत्पाद पर “नया” बैज दिखाएँ।",
           "seo": "SEO"
+        },
+        "relationships": {
+          "lede": "प्रत्येक सूची से एक या अधिक उत्पाद चुनें। ड्रॉपडाउन खोलें और कई आइटम चुनें।",
+          "empty": "अभी लिंक करने के लिए अन्य उत्पाद उपलब्ध नहीं हैं।",
+          "selectedCount": "{count} चयनित"
+        },
+        "industriesApplications": {
+          "emptyIndustries": "कोई उद्योग उपलब्ध नहीं।",
+          "emptyApplications": "कोई अनुप्रयोग उपलब्ध नहीं।"
         },
         "fields": {
           "name": "उत्पाद नाम",
@@ -2337,6 +2376,8 @@
           "type": "उत्पाद प्रकार",
           "status": "स्थिति",
           "featured": "विशेष",
+          "isNew": "नया उत्पाद",
+          "isNewTag": "इस उत्पाद पर “नया” टैग दिखाएँ",
           "sortOrder": "क्रम",
           "shortDescription": "संक्षिप्त विवरण",
           "description": "विवरण",
@@ -2405,6 +2446,7 @@
         },
         "actions": {
           "addVariant": "वेरिएंट जोड़ें",
+          "duplicateVariant": "वेरिएंट डुप्लिकेट करें",
           "removeVariant": "वेरिएंट हटाएँ",
           "addImage": "छवि जोड़ें",
           "removeImage": "छवि हटाएँ",
@@ -2444,7 +2486,18 @@
           "media": "मीडिया",
           "documents": "दस्तावेज़",
           "relationships": "संबंध",
+          "newTag": "नया टैग",
+          "newTagDescription": "कैटलॉग और वेबसाइट पर इस उत्पाद पर “नया” बैज दिखाएँ।",
           "seo": "SEO"
+        },
+        "relationships": {
+          "lede": "प्रत्येक सूची से एक या अधिक उत्पाद चुनें। ड्रॉपडाउन खोलें और कई आइटम चुनें।",
+          "empty": "अभी लिंक करने के लिए अन्य उत्पाद उपलब्ध नहीं हैं।",
+          "selectedCount": "{count} चयनित"
+        },
+        "industriesApplications": {
+          "emptyIndustries": "कोई उद्योग उपलब्ध नहीं।",
+          "emptyApplications": "कोई अनुप्रयोग उपलब्ध नहीं।"
         },
         "fields": {
           "name": "उत्पाद नाम",
@@ -2454,6 +2507,8 @@
           "type": "उत्पाद प्रकार",
           "status": "स्थिति",
           "featured": "विशेष",
+          "isNew": "नया उत्पाद",
+          "isNewTag": "इस उत्पाद पर “नया” टैग दिखाएँ",
           "sortOrder": "क्रम",
           "shortDescription": "संक्षिप्त विवरण",
           "description": "विवरण",
@@ -2522,6 +2577,7 @@
         },
         "actions": {
           "addVariant": "वेरिएंट जोड़ें",
+          "duplicateVariant": "वेरिएंट डुप्लिकेट करें",
           "removeVariant": "वेरिएंट हटाएँ",
           "addImage": "छवि जोड़ें",
           "removeImage": "छवि हटाएँ",
@@ -2565,6 +2621,7 @@
           "type": "प्रकार",
           "status": "स्थिति",
           "featured": "विशेष",
+          "isNew": "नया टैग",
           "variants": "वेरिएंट",
           "description": "विवरण",
           "created": "बनाया",

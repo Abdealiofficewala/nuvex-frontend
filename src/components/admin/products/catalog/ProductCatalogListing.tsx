@@ -1,21 +1,54 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
-import { AdminConfirmModal } from "@/components/admin/common/AdminConfirmModal";
-import { AdminFormField } from "@/components/admin/common/AdminFormField";
-import { AdminFormSelect } from "@/components/admin/common/AdminFormSelect";
-import { AdminListingTable } from "@/components/admin/common/AdminListingTable";
-import { AdminStatusBadge } from "@/components/admin/common/AdminStatusBadge";
+import {
+  AdminConfirmModal,
+  AdminListingTable,
+  AdminStatusBadge,
+} from "@/components/admin/common";
 import type { AdminTableColumn } from "@/components/admin/common/AdminTable";
 import { AdminTableActions } from "@/components/admin/common/AdminTableActions";
 import { AdminTooltip } from "@/components/admin/common/AdminTooltip";
+import { ProductFilterModal } from "@/components/admin/products/ProductFilterModal";
 import { useToast } from "@/components/ui/toast";
 import { useAdminResourceListing } from "@/lib/admin/use-admin-resource-listing";
 import { ROUTES, productCatalogEditHref, productCatalogViewHref } from "@/lib/constants";
 import { productCatalogData } from "@/lib/products/catalog-data";
+import {
+  countActiveProductFilters,
+  EMPTY_PRODUCT_LISTING_FILTERS,
+  filterCatalogProducts,
+  type ProductListingFilters,
+  sanitizeProductListingFilters,
+  sortCatalogProducts,
+} from "@/lib/products/product-listing-filters";
+import { getCatalogStore } from "@/lib/products/store";
+import { cn, hasValue, initials } from "@/lib/utils";
 import type { CatalogProduct, CatalogProductStatus } from "@/types/product-catalog";
+
+function SearchIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M16 16l4.5 4.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function FilterIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M4 6h16M7 12h10M10 18h4"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
 
 export function ProductCatalogListing() {
   const t = useTranslations("admin.products.catalog.listing");
@@ -23,10 +56,9 @@ export function ProductCatalogListing() {
   const [deleteTarget, setDeleteTarget] = useState<CatalogProduct | null>(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [search, setSearch] = useState("");
-  const [categoryFilter, setCategoryFilter] = useState("");
-  const [typeFilter, setTypeFilter] = useState("");
-  const [statusFilter, setStatusFilter] = useState("");
-  const [featuredFilter, setFeaturedFilter] = useState("");
+  const [filters, setFilters] = useState<ProductListingFilters>(EMPTY_PRODUCT_LISTING_FILTERS);
+  const [draftFilters, setDraftFilters] = useState<ProductListingFilters>(EMPTY_PRODUCT_LISTING_FILTERS);
+  const [filterOpen, setFilterOpen] = useState(false);
 
   const onLoadError = useCallback(() => {
     toast.error(t("errors.title"), t("errors.load"));
@@ -37,45 +69,19 @@ export function ProductCatalogListing() {
     onLoadError,
   });
 
-  const categories = useMemo(
-    () => [...new Map(items.map((item) => [item.category.id, item.category])).values()],
-    [items],
-  );
-  const types = useMemo(
-    () => [...new Map(items.map((item) => [item.type.id, item.type])).values()],
-    [items],
-  );
+  useEffect(() => {
+    if (filterOpen) {
+      setDraftFilters(filters);
+    }
+  }, [filterOpen, filters]);
+
+  const activeFilterCount = useMemo(() => countActiveProductFilters(filters), [filters]);
+  const draftFilterCount = useMemo(() => countActiveProductFilters(draftFilters), [draftFilters]);
 
   const filtered = useMemo(() => {
-    const query = search.trim().toLowerCase();
-
-    return [...items]
-      .filter((row) => {
-        if (categoryFilter && row.category.id !== categoryFilter) {
-          return false;
-        }
-        if (typeFilter && row.type.id !== typeFilter) {
-          return false;
-        }
-        if (statusFilter && row.status !== statusFilter) {
-          return false;
-        }
-        if (featuredFilter === "yes" && !row.featured) {
-          return false;
-        }
-        if (featuredFilter === "no" && row.featured) {
-          return false;
-        }
-        if (!query) {
-          return true;
-        }
-
-        const skuHaystack = row.variants.map((v) => `${v.sku} ${v.partNumber}`).join(" ");
-        const haystack = `${row.name} ${row.productCode} ${row.category.name} ${row.type.name} ${skuHaystack}`.toLowerCase();
-        return haystack.includes(query);
-      })
-      .sort((a, b) => a.sortOrder - b.sortOrder || a.name.localeCompare(b.name));
-  }, [categoryFilter, featuredFilter, items, search, statusFilter, typeFilter]);
+    const matched = filterCatalogProducts(items, search, filters);
+    return sortCatalogProducts(matched, "name");
+  }, [filters, items, search]);
 
   async function handleDeleteConfirm() {
     if (!deleteTarget) {
@@ -98,25 +104,31 @@ export function ProductCatalogListing() {
   const columns = useMemo<AdminTableColumn<CatalogProduct>[]>(
     () => [
       {
-        key: "image",
-        header: t("table.image"),
-        align: "center",
-        render: (row) => (
-          <div className="appearance-branding-thumb">
-            {row.media.thumbnail?.url ? (
-              <Image src={row.media.thumbnail.url} alt="" width={40} height={40} unoptimized className="appearance-branding-thumb__image" />
-            ) : null}
-          </div>
-        ),
-      },
-      {
-        key: "name",
+        key: "product",
         header: t("table.name"),
         variant: "member",
         render: (row) => (
-          <AdminTooltip label={row.name} className="admin-tooltip-trigger--fit">
-            <strong className="admin-table__label admin-table__cell-text">{row.name}</strong>
-          </AdminTooltip>
+          <div className="admin-table-member">
+            <span className="admin-table-member__avatar" aria-hidden="true">
+              {hasValue(row.media.thumbnail?.url) ? (
+                row.media.thumbnail!.url.startsWith("data:") ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={row.media.thumbnail!.url}
+                    alt=""
+                    className="admin-table-member__native-image"
+                  />
+                ) : (
+                  <Image src={row.media.thumbnail!.url} alt="" fill sizes="40px" unoptimized />
+                )
+              ) : (
+                <span className="admin-table-member__initials">{initials(row.name)}</span>
+              )}
+            </span>
+            <AdminTooltip label={row.name} className="admin-tooltip-trigger--fit">
+              <strong className="admin-table__label admin-table__cell-text">{row.name}</strong>
+            </AdminTooltip>
+          </div>
         ),
       },
       {
@@ -152,11 +164,6 @@ export function ProductCatalogListing() {
         ),
       },
       {
-        key: "featured",
-        header: t("table.featured"),
-        render: (row) => (row.featured ? t("options.yes") : t("options.no")),
-      },
-      {
         key: "updatedAt",
         header: t("table.updated"),
         render: (row) => new Date(row.updatedAt).toLocaleDateString(),
@@ -181,58 +188,44 @@ export function ProductCatalogListing() {
   );
 
   return (
-    <section className="admin-product-catalog-listing">
-      <div className="admin-form-grid admin-form-grid--2 admin-product-catalog-listing__filters">
-        <AdminFormField
-          id="product-search"
-          label={t("filters.search")}
-          value={search}
-          onChange={(event) => setSearch(event.target.value)}
-          placeholder={t("filters.searchPlaceholder")}
-        />
-        <AdminFormSelect
-          id="product-category-filter"
-          label={t("filters.category")}
-          value={categoryFilter}
-          onChange={(value) => setCategoryFilter(value)}
-          options={[
-            { value: "", label: t("filters.all") },
-            ...categories.map((category) => ({ value: category.id, label: category.name })),
-          ]}
-        />
-        <AdminFormSelect
-          id="product-type-filter"
-          label={t("filters.type")}
-          value={typeFilter}
-          onChange={(value) => setTypeFilter(value)}
-          options={[
-            { value: "", label: t("filters.all") },
-            ...types.map((type) => ({ value: type.id, label: type.name })),
-          ]}
-        />
-        <AdminFormSelect
-          id="product-status-filter"
-          label={t("filters.status")}
-          value={statusFilter}
-          onChange={(value) => setStatusFilter(value)}
-          options={[
-            { value: "", label: t("filters.all") },
-            { value: "active", label: t("status.active") },
-            { value: "draft", label: t("status.draft") },
-            { value: "archived", label: t("status.archived") },
-          ]}
-        />
-        <AdminFormSelect
-          id="product-featured-filter"
-          label={t("filters.featured")}
-          value={featuredFilter}
-          onChange={(value) => setFeaturedFilter(value)}
-          options={[
-            { value: "", label: t("filters.all") },
-            { value: "yes", label: t("options.yes") },
-            { value: "no", label: t("options.no") },
-          ]}
-        />
+    <section className="admin-product-catalog-listing admin-um-listing">
+      <div className="admin-um-toolbar admin-um-toolbar--users">
+        <div className="admin-um-toolbar__row">
+          <label className="admin-um-toolbar__search">
+            <span className="admin-um-toolbar__search-icon">
+              <SearchIcon />
+            </span>
+            <span className="sr-only">{t("search.label")}</span>
+            <input
+              type="search"
+              className="admin-um-toolbar__search-input"
+              value={search}
+              placeholder={t("search.placeholder")}
+              onChange={(event) => setSearch(event.target.value)}
+            />
+            {search.trim() ? (
+              <button
+                type="button"
+                className="admin-um-toolbar__search-clear"
+                onClick={() => setSearch("")}
+              >
+                {t("search.clear")}
+              </button>
+            ) : null}
+          </label>
+
+          <button
+            type="button"
+            className={cn("admin-um-toolbar__filter", activeFilterCount > 0 && "is-active")}
+            aria-label={t("filters.open")}
+            onClick={() => setFilterOpen(true)}
+          >
+            <FilterIcon />
+            {activeFilterCount > 0 ? (
+              <span className="admin-um-toolbar__filter-badge">{activeFilterCount}</span>
+            ) : null}
+          </button>
+        </div>
       </div>
 
       <AdminListingTable
@@ -244,6 +237,26 @@ export function ProductCatalogListing() {
         toolbarTitle={t("toolbarTitle")}
         createHref={ROUTES.admin.products.create}
         createLabel={t("createAction")}
+      />
+
+      <ProductFilterModal
+        open={filterOpen}
+        draft={draftFilters}
+        draftFilterCount={draftFilterCount}
+        activeFilterCount={activeFilterCount}
+        onDraftChange={setDraftFilters}
+        onClose={() => setFilterOpen(false)}
+        onClearAll={() => {
+          setDraftFilters(EMPTY_PRODUCT_LISTING_FILTERS);
+          setFilters(EMPTY_PRODUCT_LISTING_FILTERS);
+          setFilterOpen(false);
+        }}
+        onApply={() => {
+          const sanitized = sanitizeProductListingFilters(getCatalogStore(), draftFilters);
+          setDraftFilters(sanitized);
+          setFilters(sanitized);
+          setFilterOpen(false);
+        }}
       />
 
       <AdminConfirmModal

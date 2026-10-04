@@ -208,8 +208,8 @@
         "lede": "Update the industry sector content."
       },
       "productsListing": {
-        "title": "All products",
-        "lede": "Manage catalogue products, sizes, images, and status. JSON examples are at the bottom of this page."
+        "title": "Products",
+        "lede": "Manage your fastener catalogue, variants and specifications."
       },
       "productsListingCreate": {
         "title": "Create product",
@@ -3283,6 +3283,7 @@
       "common": {
         "searchLabel": "Search",
         "searchPlaceholder": "Search by name, slug, or code",
+        "searchClear": "Clear",
         "createAction": "Create",
         "table": {
           "caption": "Master records",
@@ -3309,6 +3310,11 @@
         "empty": {
           "title": "No records yet",
           "body": "Create the first record."
+        },
+        "selection": {
+          "placeholder": "Select…",
+          "selectedCount": "{count} selected",
+          "empty": "No options available."
         },
         "errors": {
           "title": "Could not complete request",
@@ -3539,7 +3545,9 @@
           },
           "configuration": {
             "specificationsTitle": "Specification fields",
+            "specificationsSelectLabel": "Specification fields",
             "variantTitle": "Variant attributes",
+            "variantSelectLabel": "Variant attributes",
             "allowedTitle": "Allowed master data",
             "specFields": {
               "headType": "Head type",
@@ -3637,7 +3645,9 @@
           },
           "configuration": {
             "specificationsTitle": "Specification fields",
+            "specificationsSelectLabel": "Specification fields",
             "variantTitle": "Variant attributes",
+            "variantSelectLabel": "Variant attributes",
             "allowedTitle": "Allowed master data",
             "specFields": {
               "headType": "Head type",
@@ -3679,14 +3689,32 @@
       "listing": {
         "toolbarTitle": "All products",
         "createAction": "Create product",
+        "search": {
+          "label": "Search products",
+          "placeholder": "Search products…",
+          "clear": "Clear"
+        },
         "filters": {
+          "modalTitle": "Filter products",
+          "apply": "Apply filters",
+          "clearAll": "Clear all",
           "search": "Search",
           "searchPlaceholder": "Name, code, SKU, category…",
           "category": "Category",
           "type": "Product type",
           "status": "Status",
           "featured": "Featured",
-          "all": "All"
+          "size": "Size",
+          "material": "Material",
+          "grade": "Grade",
+          "standard": "Standard",
+          "finish": "Finish",
+          "thread": "Thread",
+          "industry": "Industry",
+          "application": "Application",
+          "packaging": "Packaging",
+          "all": "All",
+          "open": "Filters"
         },
         "table": {
           "caption": "Catalogue products",
@@ -3743,7 +3771,18 @@
           "media": "Media",
           "documents": "Documents",
           "relationships": "Relationships",
+          "newTag": "New tag",
+          "newTagDescription": "Show a “New” badge on this product in the catalogue and on the website.",
           "seo": "SEO"
+        },
+        "relationships": {
+          "lede": "Choose one or more products from each list. Open a dropdown and select multiple items.",
+          "empty": "No other products available to link yet.",
+          "selectedCount": "{count} selected"
+        },
+        "industriesApplications": {
+          "emptyIndustries": "No industries available.",
+          "emptyApplications": "No applications available."
         },
         "fields": {
           "name": "Product name",
@@ -3753,6 +3792,8 @@
           "type": "Product type",
           "status": "Status",
           "featured": "Featured",
+          "isNew": "New product",
+          "isNewTag": "Show “New” tag on this product",
           "sortOrder": "Sort order",
           "shortDescription": "Short description",
           "description": "Description",
@@ -3821,6 +3862,7 @@
         },
         "actions": {
           "addVariant": "Add variant",
+          "duplicateVariant": "Duplicate variant",
           "removeVariant": "Remove variant",
           "addImage": "Add image",
           "removeImage": "Remove image",
@@ -3860,7 +3902,18 @@
           "media": "Media",
           "documents": "Documents",
           "relationships": "Relationships",
+          "newTag": "New tag",
+          "newTagDescription": "Show a “New” badge on this product in the catalogue and on the website.",
           "seo": "SEO"
+        },
+        "relationships": {
+          "lede": "Choose one or more products from each list. Open a dropdown and select multiple items.",
+          "empty": "No other products available to link yet.",
+          "selectedCount": "{count} selected"
+        },
+        "industriesApplications": {
+          "emptyIndustries": "No industries available.",
+          "emptyApplications": "No applications available."
         },
         "fields": {
           "name": "Product name",
@@ -3870,6 +3923,8 @@
           "type": "Product type",
           "status": "Status",
           "featured": "Featured",
+          "isNew": "New product",
+          "isNewTag": "Show “New” tag on this product",
           "sortOrder": "Sort order",
           "shortDescription": "Short description",
           "description": "Description",
@@ -3938,6 +3993,7 @@
         },
         "actions": {
           "addVariant": "Add variant",
+          "duplicateVariant": "Duplicate variant",
           "removeVariant": "Remove variant",
           "addImage": "Add image",
           "removeImage": "Remove image",
@@ -3981,6 +4037,7 @@
           "type": "Type",
           "status": "Status",
           "featured": "Featured",
+          "isNew": "New tag",
           "variants": "Variants",
           "description": "Description",
           "created": "Created",

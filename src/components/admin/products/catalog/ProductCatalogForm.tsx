@@ -5,10 +5,14 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";
 import { AdminCheckbox } from "@/components/admin/common/AdminCheckbox";
 import { AdminFormField } from "@/components/admin/common/AdminFormField";
-import { AdminFormImageUpload } from "@/components/admin/common";
+import {
+  AdminFormImageUpload,
+  AdminFormMultiSelectDropdown,
+  AdminFormPageActions,
+} from "@/components/admin/common";
 import { AdminFormSelect } from "@/components/admin/common/AdminFormSelect";
 import { AdminFormTextarea } from "@/components/admin/common/AdminFormTextarea";
-import { Button, ButtonLink } from "@/components/ui/buttons";
+import { Button } from "@/components/ui/buttons";
 import { useToast } from "@/components/ui/toast";
 import { normalizeSlug } from "@/lib/appearance/slug";
 import { ROUTES, productCatalogViewHref } from "@/lib/constants";
@@ -40,7 +44,7 @@ const EMPTY_PRODUCT: CatalogProductInput = {
   category: { id: "", name: "", slug: "" },
   type: { id: "", name: "", slug: "" },
   status: "active",
-  featured: false,
+  isNew: false,
   shortDescription: "",
   description: "",
   features: [],
@@ -52,7 +56,6 @@ const EMPTY_PRODUCT: CatalogProductInput = {
   documents: [],
   relationships: { relatedProducts: [], compatibleProducts: [], accessories: [] },
   seo: { metaTitle: "", metaDescription: "", keywords: [], canonical: "" },
-  sortOrder: 1,
 };
 
 function createEmptyDocument(): ProductDocument {
@@ -61,7 +64,6 @@ function createEmptyDocument(): ProductDocument {
     type: "datasheet",
     title: "",
     url: "",
-    sortOrder: 1,
   };
 }
 
@@ -94,7 +96,6 @@ function createEmptyVariant(): ProductVariant {
     packagingName: "",
     availability: "in-stock",
     status: "active",
-    sortOrder: 1,
   };
 }
 
@@ -183,7 +184,7 @@ export function ProductCatalogForm({ editId }: ProductCatalogFormProps) {
         return;
       }
 
-      setForm(product);
+      setForm({ ...product, isNew: product.isNew ?? false });
       setFeaturesText(product.features.join("\n"));
       setKeywordsText(product.seo.keywords.join("\n"));
       setLoaded(true);
@@ -359,9 +360,15 @@ export function ProductCatalogForm({ editId }: ProductCatalogFormProps) {
 
   const relationshipOptions = allProducts.filter((product) => product.id !== editId);
 
+  const relationshipSelectOptions = relationshipOptions.map((product) => ({
+    value: product.id,
+    label: product.name,
+  }));
+
   return (
     <form className="admin-create-form admin-product-catalog-form" onSubmit={(event) => void handleSubmit(event)}>
-      <section className="admin-form-section">
+      <div className="admin-panel admin-product-catalog-form__panel">
+      <section className="admin-form-section admin-product-catalog-form__section">
         <h2 className="admin-form-section__title">{t("sections.basic")}</h2>
         <div className="admin-form-grid admin-form-grid--2">
           <AdminFormField
@@ -381,7 +388,6 @@ export function ProductCatalogForm({ editId }: ProductCatalogFormProps) {
             onChange={(event) => setForm((c) => ({ ...c, productCode: event.target.value }))}
           />
           <AdminFormField id="product-slug" label={t("fields.slug")} required value={form.slug} onChange={(event) => setForm((c) => ({ ...c, slug: event.target.value }))} />
-          <AdminFormField id="product-sort" label={t("fields.sortOrder")} type="number" value={String(form.sortOrder)} onChange={(event) => setForm((c) => ({ ...c, sortOrder: Number(event.target.value) }))} />
           <AdminFormSelect
             id="product-category"
             label={t("fields.category")}
@@ -423,16 +429,22 @@ export function ProductCatalogForm({ editId }: ProductCatalogFormProps) {
               { value: "archived", label: t("status.archived") },
             ]}
           />
-          <AdminCheckbox
-            id="product-featured"
-            label={t("fields.featured")}
-            checked={form.featured}
-            onChange={(checked) => setForm((c) => ({ ...c, featured: checked }))}
-          />
+        </div>
+        <div className="admin-product-form-options admin-product-form-options--single">
+          <div className="admin-product-form-option admin-product-form-option--stacked">
+            <AdminCheckbox
+              id="product-is-new"
+              label={t("fields.isNewTag")}
+              showLabel
+              checked={form.isNew}
+              onChange={(checked) => setForm((c) => ({ ...c, isNew: checked }))}
+            />
+            <p className="admin-product-form-option__hint">{t("sections.newTagDescription")}</p>
+          </div>
         </div>
       </section>
 
-      <section className="admin-form-section">
+      <section className="admin-form-section admin-product-catalog-form__section">
         <h2 className="admin-form-section__title">{t("sections.content")}</h2>
         <AdminFormField id="product-short" label={t("fields.shortDescription")} value={form.shortDescription} onChange={(event) => setForm((c) => ({ ...c, shortDescription: event.target.value }))} />
         <AdminFormTextarea id="product-description" label={t("fields.description")} value={form.description} onChange={(event) => setForm((c) => ({ ...c, description: event.target.value }))} />
@@ -440,7 +452,7 @@ export function ProductCatalogForm({ editId }: ProductCatalogFormProps) {
       </section>
 
       {typeConfig ? (
-        <section className="admin-form-section">
+        <section className="admin-form-section admin-product-catalog-form__section">
           <h2 className="admin-form-section__title">{t("sections.specifications")}</h2>
           <div className="admin-form-grid admin-form-grid--2">
             {typeConfig.specificationFields.map((field) => renderSpecificationField(field))}
@@ -540,7 +552,7 @@ export function ProductCatalogForm({ editId }: ProductCatalogFormProps) {
         </section>
       ) : null}
 
-      <section className="admin-form-section">
+      <section className="admin-form-section admin-product-catalog-form__section">
         <h2 className="admin-form-section__title">{t("sections.variants")}</h2>
         {form.variants.map((variant, index) => (
           <div key={variant.id} className="admin-form-section__group admin-variant-row">
@@ -633,9 +645,30 @@ export function ProductCatalogForm({ editId }: ProductCatalogFormProps) {
                 />
               ) : null}
             </div>
-            <Button type="button" variant="secondary" onClick={() => setForm((c) => ({ ...c, variants: c.variants.filter((_, i) => i !== index) }))}>
-              {t("actions.removeVariant")}
-            </Button>
+            <div className="admin-variant-row__actions">
+              <Button
+                type="button"
+                variant="secondary"
+                onClick={() => {
+                  const duplicate = {
+                    ...variant,
+                    id: `var-${crypto.randomUUID().slice(0, 8)}`,
+                    sku: "",
+                    partNumber: "",
+                  };
+                  setForm((c) => {
+                    const variants = [...c.variants];
+                    variants.splice(index + 1, 0, duplicate);
+                    return { ...c, variants };
+                  });
+                }}
+              >
+                {t("actions.duplicateVariant")}
+              </Button>
+              <Button type="button" variant="secondary" onClick={() => setForm((c) => ({ ...c, variants: c.variants.filter((_, i) => i !== index) }))}>
+                {t("actions.removeVariant")}
+              </Button>
+            </div>
           </div>
         ))}
         <Button type="button" variant="secondary" onClick={() => setForm((c) => ({ ...c, variants: [...c.variants, createEmptyVariant()] }))}>
@@ -643,41 +676,43 @@ export function ProductCatalogForm({ editId }: ProductCatalogFormProps) {
         </Button>
       </section>
 
-      <section className="admin-form-section">
+      <section className="admin-form-section admin-product-catalog-form__section">
         <h2 className="admin-form-section__title">{t("sections.industriesApplications")}</h2>
         <div className="admin-form-grid admin-form-grid--2">
-          <AdminFormSelect
+          <AdminFormMultiSelectDropdown
             id="product-industries"
             label={t("fields.industries")}
-            value=""
-            onChange={(value) => {
-              const ref = resolveRef(masters.industries, value);
-              if (form.industries.some((item) => item.id === ref.id)) {
-                return;
-              }
-              setForm((c) => ({ ...c, industries: [...c.industries, ref] }));
-            }}
-            options={[{ value: "", label: t("placeholders.select") }, ...masters.industries.map((item) => ({ value: item.id, label: item.name }))]}
+            values={form.industries.map((item) => item.id)}
+            placeholder={t("placeholders.select")}
+            emptyMessage={t("industriesApplications.emptyIndustries")}
+            selectedLabel={(count) => t("relationships.selectedCount", { count })}
+            options={masters.industries.map((item) => ({ value: item.id, label: item.name }))}
+            onChange={(values) =>
+              setForm((current) => ({
+                ...current,
+                industries: values.map((id) => resolveRef(masters.industries, id)),
+              }))
+            }
           />
-          <AdminFormSelect
+          <AdminFormMultiSelectDropdown
             id="product-applications"
             label={t("fields.applications")}
-            value=""
-            onChange={(value) => {
-              const ref = resolveRef(masters.applications, value);
-              if (form.applications.some((item) => item.id === ref.id)) {
-                return;
-              }
-              setForm((c) => ({ ...c, applications: [...c.applications, ref] }));
-            }}
-            options={[{ value: "", label: t("placeholders.select") }, ...masters.applications.map((item) => ({ value: item.id, label: item.name }))]}
+            values={form.applications.map((item) => item.id)}
+            placeholder={t("placeholders.select")}
+            emptyMessage={t("industriesApplications.emptyApplications")}
+            selectedLabel={(count) => t("relationships.selectedCount", { count })}
+            options={masters.applications.map((item) => ({ value: item.id, label: item.name }))}
+            onChange={(values) =>
+              setForm((current) => ({
+                ...current,
+                applications: values.map((id) => resolveRef(masters.applications, id)),
+              }))
+            }
           />
         </div>
-        <p>{form.industries.map((item) => item.name).join(", ")}</p>
-        <p>{form.applications.map((item) => item.name).join(", ")}</p>
       </section>
 
-      <section className="admin-form-section">
+      <section className="admin-form-section admin-product-catalog-form__section">
         <h2 className="admin-form-section__title">{t("sections.media")}</h2>
         <AdminFormImageUpload
           id="product-thumbnail"
@@ -688,7 +723,7 @@ export function ProductCatalogForm({ editId }: ProductCatalogFormProps) {
               ...c,
               media: {
                 ...c.media,
-                thumbnail: value ? { url: value, alt: c.name, sortOrder: 0 } : null,
+                thumbnail: value ? { url: value, alt: c.name } : null,
               },
             }))
           }
@@ -731,7 +766,7 @@ export function ProductCatalogForm({ editId }: ProductCatalogFormProps) {
               ...c,
               media: {
                 ...c.media,
-                images: [...c.media.images, { url: "", alt: c.name, sortOrder: c.media.images.length + 1 }],
+                images: [...c.media.images, { url: "", alt: c.name }],
               },
             }))
           }
@@ -780,7 +815,7 @@ export function ProductCatalogForm({ editId }: ProductCatalogFormProps) {
                 ...c.media,
                 technicalDrawings: [
                   ...c.media.technicalDrawings,
-                  { url: "", alt: `${c.name} drawing`, sortOrder: c.media.technicalDrawings.length + 1 },
+                  { url: "", alt: `${c.name} drawing` },
                 ],
               },
             }))
@@ -790,7 +825,7 @@ export function ProductCatalogForm({ editId }: ProductCatalogFormProps) {
         </Button>
       </section>
 
-      <section className="admin-form-section">
+      <section className="admin-form-section admin-product-catalog-form__section">
         <h2 className="admin-form-section__title">{t("sections.documents")}</h2>
         {form.documents.map((document, index) => (
           <div key={document.id} className="admin-form-section__group admin-variant-row">
@@ -847,33 +882,35 @@ export function ProductCatalogForm({ editId }: ProductCatalogFormProps) {
         </Button>
       </section>
 
-      <section className="admin-form-section">
+      <section className="admin-form-section admin-product-catalog-form__section">
         <h2 className="admin-form-section__title">{t("sections.relationships")}</h2>
-        {(["relatedProducts", "compatibleProducts", "accessories"] as const).map((key) => (
-          <AdminFormSelect
-            key={key}
-            id={`rel-${key}`}
-            label={t(`fields.${key}`)}
-            value=""
-            onChange={(value) => {
-              const id = value;
-              if (!id || id === editId || form.relationships[key].includes(id)) {
-                return;
+        <p className="admin-form-section__body">{t("relationships.lede")}</p>
+        <div className="admin-form-grid admin-form-grid--2 admin-product-relationships">
+          {(["relatedProducts", "compatibleProducts", "accessories"] as const).map((key) => (
+            <AdminFormMultiSelectDropdown
+              key={key}
+              id={`rel-${key}`}
+              label={t(`fields.${key}`)}
+              values={form.relationships[key]}
+              placeholder={t("placeholders.select")}
+              emptyMessage={t("relationships.empty")}
+              selectedLabel={(count) => t("relationships.selectedCount", { count })}
+              options={relationshipSelectOptions}
+              onChange={(values) =>
+                setForm((current) => ({
+                  ...current,
+                  relationships: {
+                    ...current.relationships,
+                    [key]: values.filter((id) => id !== editId),
+                  },
+                }))
               }
-              setForm((c) => ({
-                ...c,
-                relationships: { ...c.relationships, [key]: [...c.relationships[key], id] },
-              }));
-            }}
-            options={[
-              { value: "", label: t("placeholders.select") },
-              ...relationshipOptions.map((product) => ({ value: product.id, label: product.name })),
-            ]}
-          />
-        ))}
+            />
+          ))}
+        </div>
       </section>
 
-      <section className="admin-form-section">
+      <section className="admin-form-section admin-product-catalog-form__section">
         <h2 className="admin-form-section__title">{t("sections.seo")}</h2>
         <AdminFormField id="seo-title" label={t("fields.metaTitle")} value={form.seo.metaTitle} onChange={(event) => setForm((c) => ({ ...c, seo: { ...c.seo, metaTitle: event.target.value } }))} />
         <AdminFormTextarea id="seo-description" label={t("fields.metaDescription")} value={form.seo.metaDescription} onChange={(event) => setForm((c) => ({ ...c, seo: { ...c.seo, metaDescription: event.target.value } }))} />
@@ -881,9 +918,14 @@ export function ProductCatalogForm({ editId }: ProductCatalogFormProps) {
         <AdminFormField id="seo-canonical" label={t("fields.canonical")} value={form.seo.canonical} onChange={(event) => setForm((c) => ({ ...c, seo: { ...c.seo, canonical: event.target.value } }))} />
       </section>
 
-      <div className="admin-form-actions">
-        <ButtonLink href={ROUTES.admin.products.root} variant="secondary" type="button">{t("cancelAction")}</ButtonLink>
-        <Button type="submit" variant="accent" disabled={!valid || saving}>{saving ? t("saving") : t("save")}</Button>
+      <AdminFormPageActions
+        cancelHref={ROUTES.admin.products.root}
+        cancelLabel={t("cancelAction")}
+        submitLabel={t("save")}
+        savingLabel={t("saving")}
+        saving={saving}
+        submitDisabled={!valid}
+      />
       </div>
     </form>
   );

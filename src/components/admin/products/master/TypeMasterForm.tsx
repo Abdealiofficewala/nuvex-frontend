@@ -3,12 +3,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";
-import { AdminCheckbox } from "@/components/admin/common/AdminCheckbox";
 import { AdminFormField } from "@/components/admin/common/AdminFormField";
-import { AdminFormImageUpload } from "@/components/admin/common";
+import { AdminFormImageUpload, AdminFormMultiSelectDropdown, AdminFormPageActions } from "@/components/admin/common";
 import { AdminFormSelect } from "@/components/admin/common/AdminFormSelect";
 import { AdminFormTextarea } from "@/components/admin/common/AdminFormTextarea";
-import { Button, ButtonLink } from "@/components/ui/buttons";
 import { useToast } from "@/components/ui/toast";
 import { normalizeSlug } from "@/lib/appearance/slug";
 import { productCatalogData } from "@/lib/products/catalog-data";
@@ -68,6 +66,7 @@ export function TypeMasterForm({ editId }: TypeMasterFormProps) {
   const config = getMasterConfig("types");
   const isEdit = Boolean(editId);
   const t = useTranslations(`admin.products.masters.types.${isEdit ? "edit" : "create"}`);
+  const tSelection = useTranslations("admin.products.masters.common.selection");
   const toast = useToast();
   const router = useRouter();
   const [form, setForm] = useState({
@@ -77,7 +76,6 @@ export function TypeMasterForm({ editId }: TypeMasterFormProps) {
     summary: "",
     image: "",
     status: "active" as CatalogStatus,
-    sortOrder: 1,
     configuration: EMPTY_CONFIG,
   });
   const [masters, setMasters] = useState({
@@ -137,8 +135,7 @@ export function TypeMasterForm({ editId }: TypeMasterFormProps) {
         summary: record.summary,
         image: record.image,
         status: record.status,
-        sortOrder: record.sortOrder,
-        configuration: record.configuration,
+        configuration: { ...EMPTY_CONFIG, ...record.configuration },
       });
       setLoaded(true);
     });
@@ -147,35 +144,14 @@ export function TypeMasterForm({ editId }: TypeMasterFormProps) {
   const errors = useMemo(() => validateMasterForm("types", form, isEdit), [form, isEdit]);
   const valid = isMasterFormValid(errors);
 
-  function toggleConfigList(
-    key: keyof ProductTypeConfiguration,
-    value: string,
-    checked: boolean,
+  function updateConfiguration<K extends keyof ProductTypeConfiguration>(
+    key: K,
+    value: ProductTypeConfiguration[K],
   ) {
-    setForm((current) => {
-      const list = [...(current.configuration[key] as string[])];
-      const next = checked ? [...list, value] : list.filter((entry) => entry !== value);
-      return {
-        ...current,
-        configuration: { ...current.configuration, [key]: next },
-      };
-    });
-  }
-
-  function toggleSpecField(field: SpecificationFieldKey, checked: boolean) {
-    setForm((current) => {
-      const list = [...current.configuration.specificationFields];
-      const next = checked ? [...list, field] : list.filter((entry) => entry !== field);
-      return { ...current, configuration: { ...current.configuration, specificationFields: next } };
-    });
-  }
-
-  function toggleVariantAttr(field: VariantAttributeKey, checked: boolean) {
-    setForm((current) => {
-      const list = [...current.configuration.variantAttributes];
-      const next = checked ? [...list, field] : list.filter((entry) => entry !== field);
-      return { ...current, configuration: { ...current.configuration, variantAttributes: next } };
-    });
+    setForm((current) => ({
+      ...current,
+      configuration: { ...current.configuration, [key]: value },
+    }));
   }
 
   async function handleSubmit(event: React.FormEvent) {
@@ -194,7 +170,6 @@ export function TypeMasterForm({ editId }: TypeMasterFormProps) {
         summary: form.summary.trim(),
         image: form.image,
         status: form.status,
-        sortOrder: form.sortOrder,
         configuration: form.configuration,
       };
 
@@ -218,7 +193,8 @@ export function TypeMasterForm({ editId }: TypeMasterFormProps) {
   }
 
   return (
-    <form className="admin-create-form" onSubmit={(event) => void handleSubmit(event)}>
+    <form className="admin-create-form admin-master-form admin-master-form--types" onSubmit={(event) => void handleSubmit(event)}>
+      <div className="admin-panel admin-master-form__panel">
       <div className="admin-form-grid admin-form-grid--2">
         <AdminFormField
           id="type-name"
@@ -237,13 +213,6 @@ export function TypeMasterForm({ editId }: TypeMasterFormProps) {
           onChange={(event) => setForm((c) => ({ ...c, slug: event.target.value }))}
         />
         <AdminFormField id="type-code" label={t("fields.code")} required value={form.code} onChange={(event) => setForm((c) => ({ ...c, code: event.target.value }))} />
-        <AdminFormField
-          id="type-sort"
-          label={t("fields.sortOrder")}
-          type="number"
-          value={String(form.sortOrder)}
-          onChange={(event) => setForm((c) => ({ ...c, sortOrder: Number(event.target.value) }))}
-        />
         <AdminFormSelect
           id="type-status"
           label={t("fields.status")}
@@ -259,70 +228,82 @@ export function TypeMasterForm({ editId }: TypeMasterFormProps) {
       <AdminFormTextarea id="type-summary" label={t("fields.summary")} value={form.summary} onChange={(event) => setForm((c) => ({ ...c, summary: event.target.value }))} />
       <AdminFormImageUpload id="type-image" label={t("fields.image")} value={form.image} onChange={(value) => setForm((c) => ({ ...c, image: value }))} constraints={{ accept: "image/*", maxSizeBytes: 2 * 1024 * 1024 }} />
 
-      <section className="admin-form-section">
+      <section className="admin-form-section admin-master-form__section">
         <h2 className="admin-form-section__title">{t("configuration.specificationsTitle")}</h2>
-        <div className="admin-form-grid admin-form-grid--3">
-          {SPEC_FIELDS.map((field) => (
-            <AdminCheckbox
-              key={field}
-              id={`spec-${field}`}
-              label={t(`configuration.specFields.${field}`)}
-              checked={form.configuration.specificationFields.includes(field)}
-              onChange={(checked) => toggleSpecField(field, checked)}
-            />
-          ))}
-        </div>
+        <AdminFormMultiSelectDropdown
+          id="type-specification-fields"
+          label={t("configuration.specificationsSelectLabel")}
+          values={form.configuration.specificationFields ?? []}
+          placeholder={tSelection("placeholder")}
+          emptyMessage={tSelection("empty")}
+          selectedLabel={(count) => tSelection("selectedCount", { count })}
+          options={SPEC_FIELDS.map((field) => ({
+            value: field,
+            label: t(`configuration.specFields.${field}`),
+          }))}
+          onChange={(values) =>
+            updateConfiguration("specificationFields", values as SpecificationFieldKey[])
+          }
+        />
       </section>
 
-      <section className="admin-form-section">
+      <section className="admin-form-section admin-master-form__section">
         <h2 className="admin-form-section__title">{t("configuration.variantTitle")}</h2>
-        <div className="admin-form-grid admin-form-grid--3">
-          {VARIANT_ATTRS.map((field) => (
-            <AdminCheckbox
-              key={field}
-              id={`variant-${field}`}
-              label={t(`configuration.variantFields.${field}`)}
-              checked={form.configuration.variantAttributes.includes(field)}
-              onChange={(checked) => toggleVariantAttr(field, checked)}
+        <AdminFormMultiSelectDropdown
+          id="type-variant-attributes"
+          label={t("configuration.variantSelectLabel")}
+          values={form.configuration.variantAttributes ?? []}
+          placeholder={tSelection("placeholder")}
+          emptyMessage={tSelection("empty")}
+          selectedLabel={(count) => tSelection("selectedCount", { count })}
+          options={VARIANT_ATTRS.map((field) => ({
+            value: field,
+            label: t(`configuration.variantFields.${field}`),
+          }))}
+          onChange={(values) =>
+            updateConfiguration("variantAttributes", values as VariantAttributeKey[])
+          }
+        />
+      </section>
+
+      <section className="admin-form-section admin-master-form__section">
+        <h2 className="admin-form-section__title">{t("configuration.allowedTitle")}</h2>
+        <div className="admin-form-grid admin-form-grid--2 admin-master-form__allowed">
+          {(
+            [
+              ["allowedSizeIds", masters.sizes],
+              ["allowedMaterialIds", masters.materials],
+              ["allowedGradeIds", masters.grades],
+              ["allowedStandardIds", masters.standards],
+              ["allowedFinishIds", masters.finishes],
+              ["allowedThreadIds", masters.threads],
+              ["allowedHeadTypeIds", masters.headTypes],
+              ["allowedDriveTypeIds", masters.driveTypes],
+            ] as const
+          ).map(([key, options]) => (
+            <AdminFormMultiSelectDropdown
+              key={key}
+              id={`type-${key}`}
+              label={t(`configuration.allowed.${key}`)}
+              values={(form.configuration[key] as string[]) ?? []}
+              placeholder={tSelection("placeholder")}
+              emptyMessage={tSelection("empty")}
+              selectedLabel={(count) => tSelection("selectedCount", { count })}
+              options={options.map((option) => ({ value: option.id, label: option.name }))}
+              onChange={(values) => updateConfiguration(key, values)}
             />
           ))}
         </div>
       </section>
 
-      <section className="admin-form-section">
-        <h2 className="admin-form-section__title">{t("configuration.allowedTitle")}</h2>
-        {(
-          [
-            ["allowedSizeIds", masters.sizes],
-            ["allowedMaterialIds", masters.materials],
-            ["allowedGradeIds", masters.grades],
-            ["allowedStandardIds", masters.standards],
-            ["allowedFinishIds", masters.finishes],
-            ["allowedThreadIds", masters.threads],
-            ["allowedHeadTypeIds", masters.headTypes],
-            ["allowedDriveTypeIds", masters.driveTypes],
-          ] as const
-        ).map(([key, options]) => (
-          <div key={key} className="admin-form-section__group">
-            <h3>{t(`configuration.allowed.${key}`)}</h3>
-            <div className="admin-form-grid admin-form-grid--3">
-              {options.map((option) => (
-                <AdminCheckbox
-                  key={option.id}
-                  id={`${key}-${option.id}`}
-                  label={option.name}
-                  checked={(form.configuration[key] as string[]).includes(option.id)}
-                  onChange={(checked) => toggleConfigList(key, option.id, checked)}
-                />
-              ))}
-            </div>
-          </div>
-        ))}
-      </section>
-
-      <div className="admin-form-actions">
-        <ButtonLink href={config.route} variant="secondary" type="button">{t("cancelAction")}</ButtonLink>
-        <Button type="submit" variant="accent" disabled={!valid || saving}>{saving ? t("saving") : t("save")}</Button>
+      <AdminFormPageActions
+        cancelHref={config.route}
+        cancelLabel={t("cancelAction")}
+        submitLabel={t("save")}
+        savingLabel={t("saving")}
+        saving={saving}
+        submitDisabled={!valid}
+      />
       </div>
     </form>
   );
