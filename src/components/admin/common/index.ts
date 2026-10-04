@@ -16,6 +16,7 @@ export { AdminTablePagination } from "./AdminTablePagination";
 export { AdminListingTable, formatListingToolbarMeta, resolveListingToolbarMeta } from "./AdminListingTable";
 export { AdminListingFilterModal } from "./AdminListingFilterModal";
 export type { AdminListingFilterField } from "./AdminListingFilterModal";
+export { AdminListingFilterModalFooter } from "./AdminListingFilterModalFooter";
 export { AdminListingFilterTrigger } from "./AdminListingFilterTrigger";
 export { ADMIN_TABLE_COLUMN_VARIANTS, resolveAdminTableColumn } from "./admin-table.config";
 export type { AdminTableColumnVariant } from "./admin-table.config";
@@ -42,6 +43,14 @@ export type {
 } from "./AdminImageUpload";
 export { AdminFormImageUpload } from "./AdminFormImageUpload";
 export type { AdminFormImageUploadProps } from "./AdminFormImageUpload";
+export { AdminProfilePhotoUpload } from "./AdminProfilePhotoUpload";
+export type { AdminProfilePhotoUploadProps } from "./AdminProfilePhotoUpload";
+export { AdminUmFormLayout, AdminUmFormSection } from "./AdminUmFormLayout";
+export type { AdminUmFormLayoutMode } from "./AdminUmFormLayout";
+export { AdminUmStatCard, AdminUmStatsGrid } from "./AdminUmStatCard";
+export type { AdminUmStatTone } from "./AdminUmStatCard";
+export { AdminUserProfileLayout } from "./AdminUserProfileLayout";
+export type { AdminUserProfileLayoutProps } from "./AdminUserProfileLayout";
 export { AdminEmptyState } from "./AdminEmptyState";
 export { AdminStatusBadge } from "./AdminStatusBadge";
 export {

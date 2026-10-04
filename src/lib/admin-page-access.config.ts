@@ -56,6 +56,18 @@ const NEW_USER_PAGE_ACCESS_IDS = new Set<AdminAccessPageId>([
   "productCategories",
   "productTypes",
   "productSizes",
+  "productMaterials",
+  "productGrades",
+  "productStandards",
+  "productFinishes",
+  "productThreads",
+  "productHeadTypes",
+  "productDriveTypes",
+  "productIndustries",
+  "productApplications",
+  "productPackaging",
+  "productAttributes",
+  "usersProfile",
 ]);
 
 export function getNewUserPageAccess(): AdminUserPageAccess {

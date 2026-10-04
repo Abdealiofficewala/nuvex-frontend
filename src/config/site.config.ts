@@ -125,10 +125,30 @@ export const siteConfig = {
 
   business: {
     stats: [
-      { key: "years", value: "15+", label: "Years supplying fasteners" },
-      { key: "products", value: "400+", label: "Bolt, nut, screw, nail SKUs" },
-      { key: "applications", value: "4", label: "Product lines" },
-      { key: "countries", value: "18+", label: "States and export lots" },
+      {
+        key: "years",
+        value: "15+",
+        title: "Years",
+        description: "Supplying Fasteners",
+      },
+      {
+        key: "products",
+        value: "400+",
+        title: "SKUs",
+        description: "Bolts, Nuts, Screws & Nails",
+      },
+      {
+        key: "applications",
+        value: "4",
+        title: "Product Lines",
+        description: "Industrial catalogue families",
+      },
+      {
+        key: "countries",
+        value: "18+",
+        title: "States & Export Markets",
+        description: "Pan-India and overseas supply",
+      },
     ],
   },
 } as const;

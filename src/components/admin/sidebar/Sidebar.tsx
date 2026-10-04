@@ -6,11 +6,13 @@ import { BackToWebsiteIcon } from "@/components/admin/header/AdminMenuIcons";
 import { AdminNavIcon } from "@/components/admin/dashboard/DashboardIcons";
 import { BrandLogo } from "@/components/website/common/BrandLogo";
 import { Link, usePathname, useRouter } from "@/i18n/routing";
+import { useAdminAccess } from "@/components/admin/access/AdminAccessProvider";
 import {
   ADMIN_MENU,
   isAdminMenuGroupActive,
   isAdminMenuPageActive,
   type AdminMenuGroup,
+  type AdminMenuPage,
 } from "@/lib/admin-menu";
 import { ROUTES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -48,6 +50,7 @@ export function Sidebar({ expanded }: SidebarProps) {
   const t = useTranslations("admin.nav");
   const pathname = usePathname();
   const router = useRouter();
+  const { canViewMenuPage } = useAdminAccess();
   const [openGroupKey, setOpenGroupKey] = useState<string | null>(() => resolveActiveGroupKey(pathname) ?? null);
 
   useEffect(() => {
@@ -67,13 +70,18 @@ export function Sidebar({ expanded }: SidebarProps) {
 
     setOpenGroupKey(entry.key);
 
-    const onGroupPage = entry.children.some((child) => child.route === pathname);
-    const firstRoute = entry.children[0]?.route;
+    const visibleChildren = entry.children.filter((child) => canViewMenuPage(child));
+    const onGroupPage = visibleChildren.some((child) => child.route === pathname);
+    const firstRoute = visibleChildren[0]?.route;
 
     if (firstRoute && !onGroupPage) {
       router.push(firstRoute);
     }
   };
+
+  function getVisibleChildren(children: readonly AdminMenuPage[]) {
+    return children.filter((child) => canViewMenuPage(child));
+  }
 
   return (
     <aside className={cn("admin-sidebar", expanded && "is-expanded")}>
@@ -94,8 +102,13 @@ export function Sidebar({ expanded }: SidebarProps) {
           <nav className="admin-sidebar__nav" aria-label={t("mainMenu")}>
             {ADMIN_MENU.map((entry) => {
               if (entry.kind === "group") {
+                const visibleChildren = getVisibleChildren(entry.children);
+                if (!visibleChildren.length) {
+                  return null;
+                }
+
                 const groupActive = isAdminMenuGroupActive(pathname, entry);
-                const groupHref = entry.children[0]?.route ?? ROUTES.admin.dashboard;
+                const groupHref = visibleChildren[0]?.route ?? ROUTES.admin.dashboard;
                 const isOpen = expanded && openGroupKey === entry.key;
 
                 return (
@@ -139,8 +152,8 @@ export function Sidebar({ expanded }: SidebarProps) {
                         className="admin-sidebar__subnav"
                         aria-label={t(entry.navLabelKey)}
                       >
-                        {entry.children.map((child) => {
-                          const siblingRoutes = entry.children.map((item) => item.route);
+                        {visibleChildren.map((child) => {
+                          const siblingRoutes = visibleChildren.map((item) => item.route);
                           const active = isAdminMenuPageActive(pathname, child.route, siblingRoutes);
 
                           return (
@@ -164,6 +177,10 @@ export function Sidebar({ expanded }: SidebarProps) {
               }
 
               const active = isAdminMenuPageActive(pathname, entry.route);
+
+              if (!canViewMenuPage(entry)) {
+                return null;
+              }
 
               return (
                 <Link

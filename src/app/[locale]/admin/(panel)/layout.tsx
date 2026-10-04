@@ -1,5 +1,7 @@
 import { AuthGate } from "@/components/admin/AuthGate";
 import { AdminShell } from "@/components/admin/AdminShell";
+import { AdminAccessProvider } from "@/components/admin/access/AdminAccessProvider";
+import { AdminRouteGuard } from "@/components/admin/access/AdminRouteGuard";
 
 type AdminPanelLayoutProps = {
   children: React.ReactNode;
@@ -8,7 +10,11 @@ type AdminPanelLayoutProps = {
 export default function AdminPanelLayout({ children }: AdminPanelLayoutProps) {
   return (
     <AuthGate>
-      <AdminShell>{children}</AdminShell>
+      <AdminAccessProvider>
+        <AdminShell>
+          <AdminRouteGuard>{children}</AdminRouteGuard>
+        </AdminShell>
+      </AdminAccessProvider>
     </AuthGate>
   );
 }

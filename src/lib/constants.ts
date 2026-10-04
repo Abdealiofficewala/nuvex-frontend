@@ -12,9 +12,10 @@ export const ROUTES = {
     users: {
       root: "/admin/users",
       create: "/admin/users/create",
-      details: "/admin/users/details",
-      access: "/admin/users/access",
-      accessCreate: "/admin/users/access/create",
+      profile: "/admin/users/profile",
+      profileEdit: "/admin/users/profile/edit",
+      roles: "/admin/users/roles",
+      rolesCreate: "/admin/users/roles/create",
     },
     theme: {
       root: "/admin/theme",
@@ -54,13 +55,35 @@ export const ROUTES = {
     },
     products: {
       root: "/admin/products",
-      listing: "/admin/products/listing",
-      create: "/admin/products/listing/create",
+      create: "/admin/products/create",
       categories: "/admin/products/categories",
       categoriesCreate: "/admin/products/categories/create",
       types: "/admin/products/types",
       typesCreate: "/admin/products/types/create",
       sizes: "/admin/products/sizes",
+      sizesCreate: "/admin/products/sizes/create",
+      materials: "/admin/products/materials",
+      materialsCreate: "/admin/products/materials/create",
+      grades: "/admin/products/grades",
+      gradesCreate: "/admin/products/grades/create",
+      standards: "/admin/products/standards",
+      standardsCreate: "/admin/products/standards/create",
+      finishes: "/admin/products/finishes",
+      finishesCreate: "/admin/products/finishes/create",
+      threads: "/admin/products/threads",
+      threadsCreate: "/admin/products/threads/create",
+      headTypes: "/admin/products/head-types",
+      headTypesCreate: "/admin/products/head-types/create",
+      driveTypes: "/admin/products/drive-types",
+      driveTypesCreate: "/admin/products/drive-types/create",
+      industries: "/admin/products/industries",
+      industriesCreate: "/admin/products/industries/create",
+      applications: "/admin/products/applications",
+      applicationsCreate: "/admin/products/applications/create",
+      packaging: "/admin/products/packaging",
+      packagingCreate: "/admin/products/packaging/create",
+      attributes: "/admin/products/attributes",
+      attributesCreate: "/admin/products/attributes/create",
     },
   },
 } as const;
@@ -69,12 +92,16 @@ export function adminUserViewHref(id: string) {
   return `${ROUTES.admin.users.root}/${encodeURIComponent(id)}`;
 }
 
-export function adminPageAccessViewHref(userId: string) {
-  return `${ROUTES.admin.users.access}/${encodeURIComponent(userId)}`;
+export function adminUserEditHref(id: string) {
+  return `${ROUTES.admin.users.root}/${encodeURIComponent(id)}/edit`;
 }
 
-export function adminPageAccessEditHref(userId: string) {
-  return `${ROUTES.admin.users.access}/${encodeURIComponent(userId)}/edit`;
+export function adminRoleViewHref(id: string) {
+  return `${ROUTES.admin.users.roles}/${encodeURIComponent(id)}`;
+}
+
+export function adminRoleEditHref(id: string) {
+  return `${ROUTES.admin.users.roles}/${encodeURIComponent(id)}/edit`;
 }
 
 export function teamRoleViewHref(value: string) {
@@ -129,12 +156,22 @@ export function bannerEditHref(id: string) {
   return `${ROUTES.admin.banners.listing}/${encodeURIComponent(id)}/edit`;
 }
 
-export function productViewHref(id: string) {
-  return `${ROUTES.admin.products.listing}/${encodeURIComponent(id)}`;
+export function productCatalogViewHref(id: string) {
+  return `${ROUTES.admin.products.root}/${encodeURIComponent(id)}/view`;
 }
 
+export function productCatalogEditHref(id: string) {
+  return `${ROUTES.admin.products.root}/${encodeURIComponent(id)}/edit`;
+}
+
+/** @deprecated Use productCatalogViewHref */
+export function productViewHref(id: string) {
+  return productCatalogViewHref(id);
+}
+
+/** @deprecated Use productCatalogEditHref */
 export function productEditHref(id: string) {
-  return `${ROUTES.admin.products.listing}/${encodeURIComponent(id)}/edit`;
+  return productCatalogEditHref(id);
 }
 
 export function categoryViewHref(id: string) {
@@ -202,8 +239,11 @@ export const ADMIN_SESSION_KEY = "hakimi.admin";
 export const ADMIN_USER_KEY = "hakimi.admin.user";
 export const ADMIN_SESSION_COOKIE = "hakimi_admin";
 export const ADMIN_USER_COOKIE = "hakimi_admin_user";
+/** Persist until explicit logout (browser cookie lifetime). */
+export const ADMIN_SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 400;
 export const ADMIN_USERS_STORE_KEY = "hakimi.admin.users";
 export const ADMIN_PAGE_ACCESS_KEY = "hakimi.admin.page-access";
+export const ADMIN_ROLES_STORE_KEY = "hakimi.admin.roles";
 export const ADMIN_THEME_STORE_KEY = "hakimi.admin.theme";
 export const ADMIN_SOCIAL_STORE_KEY = "hakimi.admin.social";
 export const ADMIN_CONTACT_STORE_KEY = "hakimi.admin.contact";
@@ -217,10 +257,10 @@ export const CONTENT_UPDATED_EVENT = "hakimi:content-updated";
 
 export const ADMIN_AUTH = {
   demoEmail: "admin@hakimifastners.com",
-  demoPassword: "hakimi2026",
+  demoPassword: "Admin@123",
   minPasswordLength: 6,
   signInDelayMs: 480,
-  mockSignIn: true,
+  mockSignIn: false,
   successRedirectMs: 520,
 } as const;
 

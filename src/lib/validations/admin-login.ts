@@ -1,3 +1,4 @@
+import { verifyStaticAdminCredentials } from "@/data/auth/users";
 import { ADMIN_AUTH } from "@/lib/constants";
 import {
   isFormValid,
@@ -60,12 +61,12 @@ export function isAdminLoginFormValid(errors: AdminLoginFormErrors): boolean {
 }
 
 export function verifyAdminCredentials(values: AdminLoginValues): boolean {
-  if (ADMIN_AUTH.mockSignIn) {
-    return isAdminLoginFormValid(validateAdminLoginForm(values));
+  if (!isAdminLoginFormValid(validateAdminLoginForm(values))) {
+    return false;
   }
 
-  const email = values.email?.trim().toLowerCase() ?? "";
+  const email = values.email?.trim() ?? "";
   const password = values.password ?? "";
 
-  return email === ADMIN_AUTH.demoEmail.toLowerCase() && password === ADMIN_AUTH.demoPassword;
+  return verifyStaticAdminCredentials(email, password) !== null;
 }

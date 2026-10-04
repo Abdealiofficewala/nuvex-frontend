@@ -1,19 +1,61 @@
 import { ADMIN_SESSION_KEY, ADMIN_USER_KEY } from "@/lib/constants";
 
-export function getAdminSession(): boolean {
-  if (typeof window === "undefined") {
-    return false;
-  }
-
-  return window.sessionStorage.getItem(ADMIN_SESSION_KEY) === "1";
-}
-
-export function getAdminUserEmail(): string | null {
+function readPersistedItem(key: string): string | null {
   if (typeof window === "undefined") {
     return null;
   }
 
-  return window.sessionStorage.getItem(ADMIN_USER_KEY);
+  const fromLocal = window.localStorage.getItem(key);
+  if (fromLocal) {
+    return fromLocal;
+  }
+
+  const fromSession = window.sessionStorage.getItem(key);
+  if (!fromSession) {
+    return null;
+  }
+
+  window.localStorage.setItem(key, fromSession);
+  window.sessionStorage.removeItem(key);
+  return fromSession;
+}
+
+function writePersistedItem(key: string, value: string): void {
+  window.localStorage.setItem(key, value);
+  window.sessionStorage.removeItem(key);
+}
+
+function removePersistedItem(key: string): void {
+  window.localStorage.removeItem(key);
+  window.sessionStorage.removeItem(key);
+}
+
+export function getAdminSession(): boolean {
+  return readPersistedItem(ADMIN_SESSION_KEY) === "1";
+}
+
+export function getAdminUserEmail(): string | null {
+  return readPersistedItem(ADMIN_USER_KEY);
+}
+
+export async function fetchAdminSessionFromCookie(): Promise<string | null> {
+  try {
+    const response = await fetch("/api/admin/auth/login", {
+      method: "GET",
+      credentials: "include",
+      cache: "no-store",
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const payload = (await response.json()) as { data?: { email?: string } };
+    const email = payload.data?.email?.trim();
+    return email || null;
+  } catch {
+    return null;
+  }
 }
 
 export async function syncAdminSessionCookie(email?: string): Promise<void> {
@@ -36,19 +78,22 @@ export async function clearAdminSessionCookie(): Promise<void> {
   });
 }
 
-export function setAdminSession(email?: string): void {
-  window.sessionStorage.setItem(ADMIN_SESSION_KEY, "1");
+export function setAdminSessionLocal(email?: string): void {
+  writePersistedItem(ADMIN_SESSION_KEY, "1");
 
   if (email?.trim()) {
-    window.sessionStorage.setItem(ADMIN_USER_KEY, email.trim());
+    writePersistedItem(ADMIN_USER_KEY, email.trim());
   }
+}
 
+export function setAdminSession(email?: string): void {
+  setAdminSessionLocal(email);
   void syncAdminSessionCookie(email);
 }
 
 export function clearAdminSession(): void {
-  window.sessionStorage.removeItem(ADMIN_SESSION_KEY);
-  window.sessionStorage.removeItem(ADMIN_USER_KEY);
+  removePersistedItem(ADMIN_SESSION_KEY);
+  removePersistedItem(ADMIN_USER_KEY);
   void clearAdminSessionCookie();
 }
 

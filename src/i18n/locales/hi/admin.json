@@ -1,8 +1,7 @@
 {
   "login": {
-    "kicker": "सुरक्षित प्रवेश",
-    "title": "एडमिन साइन इन",
-    "body": "साइट सामग्री प्रबंधित करने के लिए अपने एडमिन क्रेडेंशियल से साइन इन करें।",
+    "title": "{company} प्रबंधन",
+    "body": "सामग्री और सेटिंग प्रबंधित करने के लिए कार्य ईमेल से साइन इन करें।",
     "visual": {
       "panelLabel": "{company} स्टाफ पोर्टल",
       "badge": "स्टाफ पोर्टल",
@@ -32,7 +31,7 @@
     "submitting": "साइन इन हो रहा है…",
     "success": {
       "title": "सफलतापूर्वक साइन इन",
-      "body": "आपका एडमिन डैशबोर्ड खुल रहा है।"
+      "body": "आप साइन इन हैं।"
     },
     "showPassword": "पासवर्ड दिखाएँ",
     "hidePassword": "पासवर्ड छिपाएँ",
@@ -55,16 +54,23 @@
   "notFound": {
     "eyebrow": "एडमिन · 404",
     "title": "यह एडमिन पेज मौजूद नहीं है।",
-    "lede": "रूट गलत है या हटा दिया गया है। डैशबोर्ड खोलें या फिर साइन इन करें।",
-    "dashboard": "डैशबोर्ड खोलें",
+    "lede": "रूट गलत है या हटा दिया गया है। लॉगिन पेज से फिर साइन इन करें।",
     "login": "साइन इन"
   },
   "error": {
     "eyebrow": "एडमिन त्रुटि",
-    "title": "पैनल में कुछ गलत हो गया।",
-    "lede": "फिर कोशिश करें। समस्या बनी रहे तो डैशबोर्ड पर लौटें।",
+    "title": "कुछ गलत हो गया।",
+    "lede": "फिर कोशिश करें। समस्या बनी रहे तो लॉगिन पेज पर लौटें।",
     "retry": "फिर कोशिश करें",
-    "dashboard": "डैशबोर्ड खोलें"
+    "login": "साइन इन"
+  },
+  "access": {
+    "unauthorized": {
+      "eyebrow": "पहुँच सीमित",
+      "title": "आपके पास इस पेज को खोलने की अनुमति नहीं है।",
+      "body": "यदि आपको इस मॉड्यूल की ज़रूरत है तो व्यवस्थापक से संपर्क करें।",
+      "action": "डैशबोर्ड पर वापस"
+    }
   },
   "nav": {
     "portal": "स्टाफ पोर्टल",
@@ -95,8 +101,8 @@
     "teamMembersListing": "सदस्य",
     "userManagement": "यूज़र प्रबंधन",
     "users": "यूज़र",
-    "userDetails": "यूज़र विवरण",
-    "pageAccess": "पेज एक्सेस",
+    "myProfile": "मेरा प्रोफ़ाइल",
+    "rolesPermissions": "भूमिकाएँ और अनुमतियाँ",
     "backToSite": "वेबसाइट पर वापस",
     "backToSiteHint": "सार्वजनिक साइट पर लौटें",
     "expandMenu": "मेनू खोलें",
@@ -109,14 +115,25 @@
     "technologies": "तकनीक",
     "messages": "संदेश",
     "settings": "सेटिंग्स",
-    "logout": "साइन आउट"
+    "logout": "साइन आउट",
+    "productMaterials": "सामग्री",
+    "productGrades": "ग्रेड",
+    "productStandards": "मानक",
+    "productFinishes": "फिनिश",
+    "productThreads": "थ्रेड",
+    "productHeadTypes": "हेड प्रकार",
+    "productDriveTypes": "ड्राइव प्रकार",
+    "productIndustries": "उद्योग",
+    "productApplications": "अनुप्रयोग",
+    "productPackaging": "पैकेजिंग",
+    "productAttributes": "उत्पाद विशेषताएँ"
   },
   "header": {
     "eyebrow": "स्टाफ पोर्टल",
     "pages": {
       "dashboard": {
         "title": "डैशबोर्ड",
-        "lede": "एडमिन मॉड्यूल तैयार किए जा रहे हैं।"
+        "lede": "अपने व्यवसाय, उत्पाद कैटलॉग और ग्राहक गतिविधि की निगरानी करें।"
       },
       "theme": {
         "title": "थीम",
@@ -274,25 +291,221 @@
         "title": "यूज़र देखें",
         "lede": "स्टाफ खाते की प्रोफ़ाइल देखें।"
       },
-      "usersDetails": {
-        "title": "यूज़र विवरण",
-        "lede": "अपना खाता प्रोफ़ाइल और भूमिका देखें और अपडेट करें।"
+      "usersListingEdit": {
+        "title": "यूज़र संपादित करें",
+        "lede": "स्टाफ खाता अपडेट करें।"
+      },
+      "usersProfile": {
+        "title": "मेरा प्रोफ़ाइल",
+        "lede": "इस सत्र के लिए आपका खाता विवरण।"
+      },
+      "usersProfileEdit": {
+        "title": "प्रोफ़ाइल संपादित करें",
+        "lede": "अपना खाता विवरण अपडेट करें।"
       },
       "usersAccess": {
-        "title": "पेज एक्सेस",
-        "lede": "नियंत्रित करें कि कौन-से डैशबोर्ड पेज किस यूज़र को खुलें।"
+        "title": "भूमिकाएँ और अनुमतियाँ",
+        "lede": "स्टाफ खातों के लिए भूमिकाएँ और मॉड्यूल अनुमतियाँ परिभाषित करें।"
       },
       "usersAccessCreate": {
-        "title": "पेज एक्सेस असाइन करें",
-        "lede": "यूज़र चुनें और प्रत्येक मॉड्यूल की अनुमतियाँ सक्षम करें।"
+        "title": "भूमिका बनाएँ",
+        "lede": "भूमिका जोड़ें और मॉड्यूल अनुमतियाँ सेट करें।"
       },
       "usersAccessView": {
-        "title": "पेज एक्सेस देखें",
-        "lede": "इस यूज़र को दी गई मॉड्यूल अनुमतियाँ देखें।"
+        "title": "भूमिका देखें",
+        "lede": "इस भूमिका की अनुमतियाँ देखें।"
       },
       "usersAccessEdit": {
-        "title": "पेज एक्सेस संपादित करें",
+        "title": "भूमिका संपादित करें",
         "lede": "चयनित यूज़र की मॉड्यूल अनुमतियाँ अपडेट करें।"
+      },
+      "productSizesCreate": {
+        "title": "Product Sizes Create",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productSizesView": {
+        "title": "Product Sizes View",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productSizesEdit": {
+        "title": "Product Sizes Edit",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productMaterials": {
+        "title": "Product Materials",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productMaterialsCreate": {
+        "title": "Product Materials Create",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productMaterialsView": {
+        "title": "Product Materials View",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productMaterialsEdit": {
+        "title": "Product Materials Edit",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productGrades": {
+        "title": "Product Grades",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productGradesCreate": {
+        "title": "Product Grades Create",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productGradesView": {
+        "title": "Product Grades View",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productGradesEdit": {
+        "title": "Product Grades Edit",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productStandards": {
+        "title": "Product Standards",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productStandardsCreate": {
+        "title": "Product Standards Create",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productStandardsView": {
+        "title": "Product Standards View",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productStandardsEdit": {
+        "title": "Product Standards Edit",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productFinishes": {
+        "title": "Product Finishes",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productFinishesCreate": {
+        "title": "Product Finishes Create",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productFinishesView": {
+        "title": "Product Finishes View",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productFinishesEdit": {
+        "title": "Product Finishes Edit",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productThreads": {
+        "title": "Product Threads",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productThreadsCreate": {
+        "title": "Product Threads Create",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productThreadsView": {
+        "title": "Product Threads View",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productThreadsEdit": {
+        "title": "Product Threads Edit",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productHeadTypes": {
+        "title": "Product Head Types",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productHeadTypesCreate": {
+        "title": "Product Head Types Create",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productHeadTypesView": {
+        "title": "Product Head Types View",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productHeadTypesEdit": {
+        "title": "Product Head Types Edit",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productDriveTypes": {
+        "title": "Product Drive Types",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productDriveTypesCreate": {
+        "title": "Product Drive Types Create",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productDriveTypesView": {
+        "title": "Product Drive Types View",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productDriveTypesEdit": {
+        "title": "Product Drive Types Edit",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productIndustries": {
+        "title": "Product Industries",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productIndustriesCreate": {
+        "title": "Product Industries Create",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productIndustriesView": {
+        "title": "Product Industries View",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productIndustriesEdit": {
+        "title": "Product Industries Edit",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productApplications": {
+        "title": "Product Applications",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productApplicationsCreate": {
+        "title": "Product Applications Create",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productApplicationsView": {
+        "title": "Product Applications View",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productApplicationsEdit": {
+        "title": "Product Applications Edit",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productPackaging": {
+        "title": "Product Packaging",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productPackagingCreate": {
+        "title": "Product Packaging Create",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productPackagingView": {
+        "title": "Product Packaging View",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productPackagingEdit": {
+        "title": "Product Packaging Edit",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productAttributes": {
+        "title": "Product Attributes",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productAttributesCreate": {
+        "title": "Product Attributes Create",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productAttributesView": {
+        "title": "Product Attributes View",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
+      },
+      "productAttributesEdit": {
+        "title": "Product Attributes Edit",
+        "lede": "उत्पाद कैटलॉग मास्टर डेटा प्रबंधित करें।"
       }
     },
     "role": "प्रशासक",
@@ -516,6 +729,9 @@
     },
     "create": {
       "title": "यूज़र जोड़ें",
+      "sections": {
+        "access": "एक्सेस और भूमिका"
+      },
       "fields": {
         "image": "प्रोफ़ाइल फ़ोटो",
         "firstName": "पहला नाम",
@@ -530,8 +746,6 @@
         "city": "शहर",
         "pincode": "पिनकोड",
         "state": "राज्य",
-        "password": "पासवर्ड",
-        "confirmPassword": "पासवर्ड की पुष्टि",
         "active": "सक्रिय खाता"
       },
       "address": {
@@ -549,38 +763,11 @@
         "village": "गाँव दर्ज करें",
         "city": "शहर दर्ज करें",
         "pincode": "पिनकोड दर्ज करें",
-        "state": "राज्य दर्ज करें",
-        "password": "पासवर्ड दर्ज करें",
-        "confirmPassword": "पासवर्ड दोबारा दर्ज करें"
-      },
-      "image": {
-        "drop": "प्रोफ़ाइल फ़ोटो यहाँ छोड़ें",
-        "browse": "फ़ाइलें ब्राउज़ करें",
-        "change": "फ़ोटो बदलें",
-        "remove": "फ़ोटो हटाएँ",
-        "hint": "JPG या PNG, अधिकतम 2 MB"
+        "state": "राज्य दर्ज करें"
       },
       "save": "सहेजें",
       "saving": "सहेजा जा रहा है…",
       "cancelAction": "रद्द करें",
-      "access": {
-        "title": "पेज एक्सेस",
-        "lede": "प्रत्येक मॉड्यूल के लिए view, read, create, edit, delete और write अनुमतियाँ सेट करें।"
-      },
-      "roles": {
-        "admin": {
-          "title": "एडमिन",
-          "body": "सभी मॉड्यूल की पूर्ण पहुँच"
-        },
-        "editor": {
-          "title": "एडिटर",
-          "body": "सामग्री मॉड्यूल अपडेट कर सकता है"
-        },
-        "viewer": {
-          "title": "व्यूअर",
-          "body": "केवल पढ़ने की पहुँच"
-        }
-      },
       "success": {
         "title": "यूज़र बन गया",
         "body": "खाता इस सेशन के लिए स्थानीय रूप से सहेजा गया।"
@@ -592,10 +779,6 @@
         "required": "यह फ़ील्ड आवश्यक है।",
         "invalidEmail": "मान्य ईमेल पता दर्ज करें।",
         "invalidPhone": "मान्य फ़ोन नंबर दर्ज करें।",
-        "passwordRequired": "पासवर्ड दर्ज करें।",
-        "passwordShort": "पासवर्ड कम से कम {min} अक्षर का होना चाहिए।",
-        "confirmRequired": "पासवर्ड की पुष्टि करें।",
-        "confirmMismatch": "पासवर्ड मेल नहीं खाते।",
         "roleRequired": "भूमिका चुनें।"
       }
     },
@@ -791,6 +974,141 @@
     }
   },
   "dashboard": {
+    "overviewHeader": {
+      "kicker": "डैशबोर्ड",
+      "title": "सारांश",
+      "body": "अपने व्यवसाय, उत्पाद कैटलॉग और ग्राहक गतिविधि की निगरानी करें।"
+    },
+    "dateRange": {
+      "label": "तारीख सीमा",
+      "today": "आज",
+      "7d": "7 दिन",
+      "30d": "30 दिन",
+      "12m": "12 महीने"
+    },
+    "businessHighlights": {
+      "label": "व्यवसाय मुख्य बिंदु",
+      "eyebrow": "कंपनी की ताकत",
+      "tagline": "अनुभव, कैटलॉग गहराई और सप्लाई पहुंच।"
+    },
+    "summary": {
+      "label": "व्यवसाय सारांश",
+      "totalUsers": "कुल उपयोगकर्ता",
+      "newUsers": "नए उपयोगकर्ता",
+      "totalProducts": "कुल उत्पाद",
+      "quoteRequests": "कोटेशन अनुरोध",
+      "pendingQuotes": "लंबित कोटेशन",
+      "totalEnquiries": "कुल पूछताछ"
+    },
+    "userGrowth": {
+      "title": "उपयोगकर्ता वृद्धि",
+      "current": "वर्तमान अवधि",
+      "previous": "पिछली अवधि",
+      "chartLabel": "चयनित सप्ताह में प्रतिदिन नए उपयोगकर्ता",
+      "deltaUp": "{count} नए उपयोगकर्ता · पिछली अवधि से +{delta}",
+      "deltaDown": "{count} नए उपयोगकर्ता · पिछली अवधि से −{delta}",
+      "deltaFlat": "{count} नए उपयोगकर्ता · पिछली अवधि के समान"
+    },
+    "quotes": {
+      "title": "कोटेशन अनुरोध",
+      "body": "औद्योगिक ग्राहकों में RFQ पाइपलाइन।",
+      "totalRequests": "कुल अनुरोध",
+      "status": {
+        "pending": "लंबित",
+        "inProgress": "प्रगति में",
+        "quoted": "कोट किया",
+        "completed": "पूर्ण"
+      }
+    },
+    "recentQuotes": {
+      "title": "हाल के कोटेशन अनुरोध",
+      "body": "समीक्षा या फॉलो-अप की प्रतीक्षा में नवीनतम RFQ।",
+      "viewAll": "सभी अनुरोध देखें →",
+      "view": "देखें →",
+      "productCount": "{count} उत्पाद",
+      "columns": {
+        "customer": "ग्राहक",
+        "company": "कंपनी",
+        "products": "उत्पाद",
+        "date": "अनुरोध तिथि",
+        "status": "स्थिति",
+        "action": "कार्रवाई"
+      },
+      "status": {
+        "pending": "लंबित",
+        "reviewed": "समीक्षित",
+        "in_progress": "प्रगति में",
+        "quoted": "कोट किया",
+        "completed": "पूर्ण",
+        "rejected": "अस्वीकृत"
+      }
+    },
+    "productOverview": {
+      "title": "उत्पाद सारांश",
+      "body": "लाइनों, प्रकारों और वेरिएंट में कैटलॉग कवरेज।",
+      "totalProducts": "कुल उत्पाद",
+      "activeProducts": "सक्रिय उत्पाद",
+      "featuredProducts": "फ़ीचर्ड उत्पाद",
+      "productVariants": "उत्पाद वेरिएंट",
+      "categories": "श्रेणियाँ",
+      "productTypes": "उत्पाद प्रकार"
+    },
+    "productDistribution": {
+      "title": "उत्पाद वितरण",
+      "body": "कैटलॉग परिवारों में SKU वितरण।",
+      "byCategory": "श्रेणी के अनुसार उत्पाद",
+      "byType": "प्रकार के अनुसार उत्पाद"
+    },
+    "industries": {
+      "title": "उद्योग सारांश",
+      "body": "हकीमी फास्टनर्स द्वारा आपूर्ति किए जाने वाले प्रमुख क्षेत्र।",
+      "viewAll": "सभी उद्योग देखें →",
+      "view": "देखें",
+      "productCount": "{count} संबंधित उत्पाद"
+    },
+    "enquiries": {
+      "title": "पूछताछ सारांश",
+      "body": "सामान्य संपर्क और तकनीकी पूछताछ।",
+      "total": "कुल पूछताछ",
+      "new": "नई",
+      "inProgress": "प्रगति में",
+      "resolved": "हल",
+      "status": {
+        "new": "नई",
+        "in_progress": "प्रगति में",
+        "resolved": "हल"
+      }
+    },
+    "catalogHealth": {
+      "title": "कैटलॉग स्वास्थ्य",
+      "body": "छवियों, कॉपी, SEO और वेरिएंट की पूर्णता।",
+      "images": "उत्पाद छवियाँ",
+      "descriptions": "विवरण",
+      "seo": "SEO",
+      "variants": "वेरिएंट",
+      "complete": "✓ इस मेट्रिक के लिए कैटलॉग जाँच पास",
+      "review": "समीक्षा →",
+      "gaps": {
+        "images": "⚠ {count} उत्पादों में छवियाँ नहीं",
+        "descriptions": "⚠ {count} उत्पादों में विवरण नहीं",
+        "seo": "⚠ {count} उत्पादों में SEO नहीं",
+        "variants": "⚠ {count} उत्पादों में वेरिएंट नहीं"
+      }
+    },
+    "activity": {
+      "title": "हाल की गतिविधि",
+      "body": "नवीनतम खाता, RFQ, कैटलॉग और पूछताछ घटनाएँ।"
+    },
+    "quickActions": {
+      "label": "त्वरित कार्रवाई",
+      "title": "त्वरित कार्रवाई",
+      "body": "ऑपरेशनल मॉड्यूल पर जाएँ।",
+      "products": "उत्पाद देखें",
+      "quotes": "कोटेशन अनुरोध देखें",
+      "users": "उपयोगकर्ता देखें",
+      "enquiries": "पूछताछ देखें",
+      "industries": "उद्योग देखें"
+    },
     "kicker": "सारांश",
     "title": "ऑपरेशंस डैशबोर्ड",
     "body": "API जुड़ने तक कैटलॉग, पूछताछ और प्रकाशित रिकॉर्ड यहाँ देखें।",
@@ -1542,6 +1860,719 @@
         "notFound": {
           "title": "प्रकार नहीं मिला",
           "body": "यह प्रकार हटाया जा चुका हो सकता है।"
+        }
+      }
+    },
+    "masters": {
+      "common": {
+        "searchLabel": "खोजें",
+        "searchPlaceholder": "नाम, स्लग या कोड से खोजें",
+        "createAction": "बनाएँ",
+        "table": {
+          "caption": "मास्टर रिकॉर्ड",
+          "name": "नाम",
+          "code": "कोड",
+          "display": "प्रदर्शन",
+          "dimension": "आयाम",
+          "valueType": "प्रकार",
+          "configuration": "विनिर्देश / वेरिएंट",
+          "status": "स्थिति",
+          "sortOrder": "क्रम",
+          "updated": "अपडेट",
+          "actions": "कार्रवाई"
+        },
+        "status": {
+          "active": "सक्रिय",
+          "inactive": "निष्क्रिय"
+        },
+        "actions": {
+          "view": "देखें",
+          "edit": "संपादित करें",
+          "delete": "हटाएँ"
+        },
+        "empty": {
+          "title": "अभी कोई रिकॉर्ड नहीं",
+          "body": "पहला रिकॉर्ड बनाएँ।"
+        },
+        "errors": {
+          "title": "अनुरोध पूरा नहीं हो सका",
+          "load": "कुछ समय बाद पुनः प्रयास करें।",
+          "generic": "कुछ गलत हो गया।"
+        },
+        "delete": {
+          "confirm": {
+            "title": "रिकॉर्ड हटाएँ?",
+            "description": "\"{name}\" हटा दिया जाएगा।",
+            "confirm": "हटाएँ"
+          },
+          "success": {
+            "title": "रिकॉर्ड हटाया गया",
+            "body": "रिकॉर्ड हटा दिया गया।"
+          }
+        },
+        "create": {
+          "loading": "लोड हो रहा है…",
+          "fields": {
+            "name": "नाम",
+            "slug": "स्लग",
+            "code": "कोड",
+            "summary": "सारांश",
+            "image": "छवि",
+            "display": "प्रदर्शन",
+            "dimension": "आयाम",
+            "unit": "इकाई",
+            "valueType": "मान प्रकार",
+            "options": "विकल्प",
+            "status": "स्थिति",
+            "sortOrder": "क्रम",
+            "allowedGrades": "अनुमत ग्रेड"
+          },
+          "placeholders": {
+            "name": "नाम दर्ज करें",
+            "slug": "record-slug",
+            "code": "CODE",
+            "summary": "संक्षिप्त सारांश",
+            "options": "प्रति पंक्ति एक विकल्प"
+          },
+          "valueTypes": {
+            "text": "पाठ",
+            "number": "संख्या",
+            "boolean": "बूलियन",
+            "select": "चयन",
+            "multiSelect": "बहु-चयन",
+            "dimension": "आयाम"
+          },
+          "status": {
+            "active": "सक्रिय",
+            "inactive": "निष्क्रिय"
+          },
+          "image": {
+            "drop": "छवि यहाँ छोड़ें",
+            "browse": "ब्राउज़",
+            "change": "छवि बदलें",
+            "remove": "हटाएँ",
+            "hint": "JPG या PNG, अधिकतम 2 MB"
+          },
+          "save": "सहेजें",
+          "saving": "सहेजा जा रहा है…",
+          "cancelAction": "रद्द करें",
+          "success": {
+            "title": "सहेजा गया",
+            "body": "रिकॉर्ड सहेजा गया।"
+          },
+          "errors": {
+            "title": "सहेज नहीं सका",
+            "generic": "पुनः प्रयास करें।",
+            "validation": "चिह्नित फ़ील्ड ठीक करें।",
+            "required": "यह फ़ील्ड आवश्यक है।",
+            "invalidSlug": "छोटे अक्षर, संख्या और हाइफ़न का उपयोग करें।"
+          },
+          "notFound": {
+            "title": "नहीं मिला",
+            "body": "यह रिकॉर्ड हटाया गया हो सकता है।"
+          }
+        },
+        "edit": {
+          "loading": "लोड हो रहा है…",
+          "fields": {
+            "name": "नाम",
+            "slug": "स्लग",
+            "code": "कोड",
+            "summary": "सारांश",
+            "image": "छवि",
+            "display": "प्रदर्शन",
+            "dimension": "आयाम",
+            "unit": "इकाई",
+            "valueType": "मान प्रकार",
+            "options": "विकल्प",
+            "status": "स्थिति",
+            "sortOrder": "क्रम"
+          },
+          "placeholders": {
+            "name": "नाम दर्ज करें",
+            "slug": "record-slug",
+            "code": "CODE",
+            "summary": "संक्षिप्त सारांश",
+            "options": "प्रति पंक्ति एक विकल्प"
+          },
+          "valueTypes": {
+            "text": "पाठ",
+            "number": "संख्या",
+            "boolean": "बूलियन",
+            "select": "चयन",
+            "multiSelect": "बहु-चयन",
+            "dimension": "आयाम"
+          },
+          "status": {
+            "active": "सक्रिय",
+            "inactive": "निष्क्रिय"
+          },
+          "image": {
+            "drop": "छवि यहाँ छोड़ें",
+            "browse": "ब्राउज़",
+            "change": "छवि बदलें",
+            "remove": "हटाएँ",
+            "hint": "JPG या PNG, अधिकतम 2 MB"
+          },
+          "save": "अपडेट",
+          "saving": "अपडेट हो रहा है…",
+          "cancelAction": "रद्द करें",
+          "success": {
+            "title": "सहेजा गया",
+            "body": "रिकॉर्ड सहेजा गया।"
+          },
+          "errors": {
+            "title": "सहेज नहीं सका",
+            "generic": "पुनः प्रयास करें।",
+            "validation": "चिह्नित फ़ील्ड ठीक करें।",
+            "required": "यह फ़ील्ड आवश्यक है।",
+            "invalidSlug": "छोटे अक्षर, संख्या और हाइफ़न का उपयोग करें।"
+          },
+          "notFound": {
+            "title": "नहीं मिला",
+            "body": "यह रिकॉर्ड हटाया गया हो सकता है।"
+          }
+        },
+        "view": {
+          "loading": "लोड हो रहा है…",
+          "noImage": "कोई छवि अपलोड नहीं",
+          "cancelAction": "रद्द करें",
+          "editAction": "संपादित करें",
+          "fields": {
+            "name": "नाम",
+            "slug": "स्लग",
+            "code": "कोड",
+            "summary": "सारांश",
+            "display": "प्रदर्शन",
+            "dimension": "आयाम",
+            "unit": "इकाई",
+            "valueType": "मान प्रकार",
+            "options": "विकल्प",
+            "status": "स्थिति",
+            "sortOrder": "क्रम",
+            "created": "बनाया गया",
+            "updated": "अपडेट"
+          },
+          "notFound": {
+            "title": "नहीं मिला",
+            "body": "यह रिकॉर्ड हटाया गया हो सकता है।"
+          }
+        }
+      },
+      "types": {
+        "create": {
+          "loading": "लोड हो रहा है…",
+          "fields": {
+            "name": "नाम",
+            "slug": "स्लग",
+            "code": "कोड",
+            "summary": "सारांश",
+            "image": "छवि",
+            "display": "प्रदर्शन",
+            "dimension": "आयाम",
+            "unit": "इकाई",
+            "valueType": "मान प्रकार",
+            "options": "विकल्प",
+            "status": "स्थिति",
+            "sortOrder": "क्रम",
+            "allowedGrades": "अनुमत ग्रेड"
+          },
+          "placeholders": {
+            "name": "नाम दर्ज करें",
+            "slug": "record-slug",
+            "code": "CODE",
+            "summary": "संक्षिप्त सारांश",
+            "options": "प्रति पंक्ति एक विकल्प"
+          },
+          "valueTypes": {
+            "text": "पाठ",
+            "number": "संख्या",
+            "boolean": "बूलियन",
+            "select": "चयन",
+            "multiSelect": "बहु-चयन",
+            "dimension": "आयाम"
+          },
+          "status": {
+            "active": "सक्रिय",
+            "inactive": "निष्क्रिय"
+          },
+          "image": {
+            "drop": "छवि यहाँ छोड़ें",
+            "browse": "ब्राउज़",
+            "change": "छवि बदलें",
+            "remove": "हटाएँ",
+            "hint": "JPG या PNG, अधिकतम 2 MB"
+          },
+          "save": "सहेजें",
+          "saving": "सहेजा जा रहा है…",
+          "cancelAction": "रद्द करें",
+          "success": {
+            "title": "सहेजा गया",
+            "body": "रिकॉर्ड सहेजा गया।"
+          },
+          "errors": {
+            "title": "सहेज नहीं सका",
+            "generic": "पुनः प्रयास करें।",
+            "validation": "चिह्नित फ़ील्ड ठीक करें।",
+            "required": "यह फ़ील्ड आवश्यक है।",
+            "invalidSlug": "छोटे अक्षर, संख्या और हाइफ़न का उपयोग करें।"
+          },
+          "notFound": {
+            "title": "नहीं मिला",
+            "body": "यह रिकॉर्ड हटाया गया हो सकता है।"
+          },
+          "configuration": {
+            "specificationsTitle": "विनिर्देश फ़ील्ड",
+            "variantTitle": "वेरिएंट विशेषताएँ",
+            "allowedTitle": "अनुमत मास्टर डेटा",
+            "specFields": {
+              "headType": "हेड प्रकार",
+              "driveType": "ड्राइव प्रकार",
+              "diameter": "व्यास",
+              "length": "लंबाई",
+              "threadPitch": "थ्रेड पिच",
+              "innerDiameter": "आंतरिक व्यास",
+              "outerDiameter": "बाहरी व्यास",
+              "thickness": "मोटाई",
+              "height": "ऊँचाई",
+              "widthAcrossFlats": "फ्लैट्स पर चौड़ाई",
+              "thread": "थ्रेड"
+            },
+            "variantFields": {
+              "size": "आकार",
+              "material": "सामग्री",
+              "grade": "ग्रेड",
+              "standard": "मानक",
+              "finish": "फिनिश",
+              "thread": "थ्रेड",
+              "packaging": "पैकेजिंग"
+            },
+            "allowed": {
+              "allowedSizeIds": "आकार",
+              "allowedMaterialIds": "सामग्री",
+              "allowedGradeIds": "ग्रेड",
+              "allowedStandardIds": "मानक",
+              "allowedFinishIds": "फिनिश",
+              "allowedThreadIds": "थ्रेड",
+              "allowedHeadTypeIds": "हेड प्रकार",
+              "allowedDriveTypeIds": "ड्राइव प्रकार"
+            }
+          }
+        },
+        "edit": {
+          "loading": "लोड हो रहा है…",
+          "fields": {
+            "name": "नाम",
+            "slug": "स्लग",
+            "code": "कोड",
+            "summary": "सारांश",
+            "image": "छवि",
+            "display": "प्रदर्शन",
+            "dimension": "आयाम",
+            "unit": "इकाई",
+            "valueType": "मान प्रकार",
+            "options": "विकल्प",
+            "status": "स्थिति",
+            "sortOrder": "क्रम"
+          },
+          "placeholders": {
+            "name": "नाम दर्ज करें",
+            "slug": "record-slug",
+            "code": "CODE",
+            "summary": "संक्षिप्त सारांश",
+            "options": "प्रति पंक्ति एक विकल्प"
+          },
+          "valueTypes": {
+            "text": "पाठ",
+            "number": "संख्या",
+            "boolean": "बूलियन",
+            "select": "चयन",
+            "multiSelect": "बहु-चयन",
+            "dimension": "आयाम"
+          },
+          "status": {
+            "active": "सक्रिय",
+            "inactive": "निष्क्रिय"
+          },
+          "image": {
+            "drop": "छवि यहाँ छोड़ें",
+            "browse": "ब्राउज़",
+            "change": "छवि बदलें",
+            "remove": "हटाएँ",
+            "hint": "JPG या PNG, अधिकतम 2 MB"
+          },
+          "save": "सहेजें",
+          "saving": "सहेजा जा रहा है…",
+          "cancelAction": "रद्द करें",
+          "success": {
+            "title": "सहेजा गया",
+            "body": "रिकॉर्ड सहेजा गया।"
+          },
+          "errors": {
+            "title": "सहेज नहीं सका",
+            "generic": "पुनः प्रयास करें।",
+            "validation": "चिह्नित फ़ील्ड ठीक करें।",
+            "required": "यह फ़ील्ड आवश्यक है।",
+            "invalidSlug": "छोटे अक्षर, संख्या और हाइफ़न का उपयोग करें।"
+          },
+          "notFound": {
+            "title": "नहीं मिला",
+            "body": "यह रिकॉर्ड हटाया गया हो सकता है।"
+          },
+          "configuration": {
+            "specificationsTitle": "विनिर्देश फ़ील्ड",
+            "variantTitle": "वेरिएंट विशेषताएँ",
+            "allowedTitle": "अनुमत मास्टर डेटा",
+            "specFields": {
+              "headType": "हेड प्रकार",
+              "driveType": "ड्राइव प्रकार",
+              "diameter": "व्यास",
+              "length": "लंबाई",
+              "threadPitch": "थ्रेड पिच",
+              "innerDiameter": "आंतरिक व्यास",
+              "outerDiameter": "बाहरी व्यास",
+              "thickness": "मोटाई",
+              "height": "ऊँचाई",
+              "widthAcrossFlats": "फ्लैट्स पर चौड़ाई",
+              "thread": "थ्रेड"
+            },
+            "variantFields": {
+              "size": "आकार",
+              "material": "सामग्री",
+              "grade": "ग्रेड",
+              "standard": "मानक",
+              "finish": "फिनिश",
+              "thread": "थ्रेड",
+              "packaging": "पैकेजिंग"
+            },
+            "allowed": {
+              "allowedSizeIds": "आकार",
+              "allowedMaterialIds": "सामग्री",
+              "allowedGradeIds": "ग्रेड",
+              "allowedStandardIds": "मानक",
+              "allowedFinishIds": "फिनिश",
+              "allowedThreadIds": "थ्रेड",
+              "allowedHeadTypeIds": "हेड प्रकार",
+              "allowedDriveTypeIds": "ड्राइव प्रकार"
+            }
+          }
+        }
+      }
+    },
+    "catalog": {
+      "listing": {
+        "toolbarTitle": "सभी उत्पाद",
+        "createAction": "उत्पाद बनाएँ",
+        "filters": {
+          "search": "खोजें",
+          "searchPlaceholder": "नाम, कोड, SKU, श्रेणी…",
+          "category": "श्रेणी",
+          "type": "उत्पाद प्रकार",
+          "status": "स्थिति",
+          "featured": "विशेष",
+          "all": "सभी"
+        },
+        "table": {
+          "caption": "कैटलॉग उत्पाद",
+          "image": "छवि",
+          "name": "उत्पाद",
+          "productCode": "उत्पाद कोड",
+          "category": "श्रेणी",
+          "type": "प्रकार",
+          "variants": "वेरिएंट",
+          "status": "स्थिति",
+          "featured": "विशेष",
+          "updated": "अपडेट",
+          "actions": "कार्रवाई"
+        },
+        "status": {
+          "active": "सक्रिय",
+          "draft": "ड्राफ्ट",
+          "archived": "संग्रहीत"
+        },
+        "options": {
+          "yes": "हाँ",
+          "no": "नहीं"
+        },
+        "actions": {
+          "view": "देखें",
+          "edit": "संपादित",
+          "delete": "हटाएँ"
+        },
+        "errors": {
+          "title": "उत्पाद लोड नहीं हो सके",
+          "load": "पुनः प्रयास करें।",
+          "generic": "कुछ गलत हो गया।"
+        },
+        "delete": {
+          "confirm": {
+            "title": "उत्पाद हटाएँ?",
+            "description": "\"{name}\" हटा दिया जाएगा।",
+            "confirm": "हटाएँ"
+          },
+          "success": {
+            "title": "उत्पाद हटाया",
+            "body": "उत्पाद हटा दिया गया।"
+          }
+        }
+      },
+      "create": {
+        "loading": "लोड हो रहा है…",
+        "sections": {
+          "basic": "मूल जानकारी",
+          "content": "उत्पाद सामग्री",
+          "specifications": "विनिर्देश",
+          "variants": "वेरिएंट",
+          "industriesApplications": "उद्योग और अनुप्रयोग",
+          "media": "मीडिया",
+          "documents": "दस्तावेज़",
+          "relationships": "संबंध",
+          "seo": "SEO"
+        },
+        "fields": {
+          "name": "उत्पाद नाम",
+          "productCode": "उत्पाद कोड",
+          "slug": "स्लग",
+          "category": "श्रेणी",
+          "type": "उत्पाद प्रकार",
+          "status": "स्थिति",
+          "featured": "विशेष",
+          "sortOrder": "क्रम",
+          "shortDescription": "संक्षिप्त विवरण",
+          "description": "विवरण",
+          "features": "विशेषताएँ",
+          "sku": "SKU",
+          "partNumber": "पार्ट नंबर",
+          "size": "आकार",
+          "material": "सामग्री",
+          "grade": "ग्रेड",
+          "standard": "मानक",
+          "finish": "फिनिश",
+          "thread": "थ्रेड",
+          "packaging": "पैकेजिंग",
+          "industries": "उद्योग",
+          "applications": "अनुप्रयोग",
+          "thumbnail": "थंबनेल",
+          "galleryImage": "गैलरी छवि",
+          "technicalDrawing": "तकनीकी चित्र",
+          "productAttributes": "उत्पाद विशेषताएँ",
+          "documentType": "दस्तावेज़ प्रकार",
+          "documentTitle": "शीर्षक",
+          "documentUrl": "फ़ाइल URL",
+          "relatedProducts": "संबंधित उत्पाद",
+          "compatibleProducts": "संगत उत्पाद",
+          "accessories": "एक्सेसरीज़",
+          "metaTitle": "मेटा शीर्षक",
+          "metaDescription": "मेटा विवरण",
+          "keywords": "कीवर्ड",
+          "canonical": "कैननिकल URL"
+        },
+        "documentTypes": {
+          "datasheet": "डेटाशीट",
+          "technical-specification": "तकनीकी विनिर्देश",
+          "certificate": "प्रमाणपत्र",
+          "manual": "मैनुअल",
+          "catalog": "कैटलॉग"
+        },
+        "specFields": {
+          "headType": "हेड प्रकार",
+          "driveType": "ड्राइव प्रकार",
+          "diameter": "व्यास",
+          "length": "लंबाई",
+          "threadPitch": "थ्रेड पिच",
+          "innerDiameter": "आंतरिक व्यास",
+          "outerDiameter": "बाहरी व्यास",
+          "thickness": "मोटाई",
+          "height": "ऊँचाई",
+          "widthAcrossFlats": "फ्लैट्स पर चौड़ाई",
+          "thread": "थ्रेड"
+        },
+        "placeholders": {
+          "listLines": "प्रति पंक्ति एक",
+          "select": "चुनें…"
+        },
+        "status": {
+          "active": "सक्रिय",
+          "draft": "ड्राफ्ट",
+          "archived": "संग्रहीत"
+        },
+        "image": {
+          "drop": "छवि यहाँ छोड़ें",
+          "browse": "ब्राउज़",
+          "change": "छवि बदलें",
+          "remove": "हटाएँ",
+          "hint": "JPG या PNG, अधिकतम 2 MB"
+        },
+        "actions": {
+          "addVariant": "वेरिएंट जोड़ें",
+          "removeVariant": "वेरिएंट हटाएँ",
+          "addImage": "छवि जोड़ें",
+          "removeImage": "छवि हटाएँ",
+          "addDrawing": "तकनीकी चित्र जोड़ें",
+          "removeDrawing": "चित्र हटाएँ",
+          "addDocument": "दस्तावेज़ जोड़ें",
+          "removeDocument": "दस्तावेज़ हटाएँ"
+        },
+        "save": "सहेजें",
+        "saving": "सहेजा जा रहा है…",
+        "cancelAction": "रद्द करें",
+        "success": {
+          "title": "उत्पाद सहेजा",
+          "body": "परिवर्तन सहेजे गए।"
+        },
+        "errors": {
+          "title": "सहेज नहीं सका",
+          "generic": "पुनः प्रयास करें।",
+          "validation": "चिह्नित फ़ील्ड ठीक करें।",
+          "required": "आवश्यक।",
+          "invalidSlug": "अमान्य स्लग।",
+          "duplicateVariant": "प्रत्येक वेरिएंट संयोजन अद्वितीय होना चाहिए।"
+        },
+        "notFound": {
+          "title": "नहीं मिला",
+          "body": "उत्पाद हटाया गया हो सकता है।"
+        }
+      },
+      "edit": {
+        "loading": "लोड हो रहा है…",
+        "sections": {
+          "basic": "मूल जानकारी",
+          "content": "उत्पाद सामग्री",
+          "specifications": "विनिर्देश",
+          "variants": "वेरिएंट",
+          "industriesApplications": "उद्योग और अनुप्रयोग",
+          "media": "मीडिया",
+          "documents": "दस्तावेज़",
+          "relationships": "संबंध",
+          "seo": "SEO"
+        },
+        "fields": {
+          "name": "उत्पाद नाम",
+          "productCode": "उत्पाद कोड",
+          "slug": "स्लग",
+          "category": "श्रेणी",
+          "type": "उत्पाद प्रकार",
+          "status": "स्थिति",
+          "featured": "विशेष",
+          "sortOrder": "क्रम",
+          "shortDescription": "संक्षिप्त विवरण",
+          "description": "विवरण",
+          "features": "विशेषताएँ",
+          "sku": "SKU",
+          "partNumber": "पार्ट नंबर",
+          "size": "आकार",
+          "material": "सामग्री",
+          "grade": "ग्रेड",
+          "standard": "मानक",
+          "finish": "फिनिश",
+          "thread": "थ्रेड",
+          "packaging": "पैकेजिंग",
+          "industries": "उद्योग",
+          "applications": "अनुप्रयोग",
+          "thumbnail": "थंबनेल",
+          "galleryImage": "गैलरी छवि",
+          "technicalDrawing": "तकनीकी चित्र",
+          "productAttributes": "उत्पाद विशेषताएँ",
+          "documentType": "दस्तावेज़ प्रकार",
+          "documentTitle": "शीर्षक",
+          "documentUrl": "फ़ाइल URL",
+          "relatedProducts": "संबंधित उत्पाद",
+          "compatibleProducts": "संगत उत्पाद",
+          "accessories": "एक्सेसरीज़",
+          "metaTitle": "मेटा शीर्षक",
+          "metaDescription": "मेटा विवरण",
+          "keywords": "कीवर्ड",
+          "canonical": "कैननिकल URL"
+        },
+        "documentTypes": {
+          "datasheet": "डेटाशीट",
+          "technical-specification": "तकनीकी विनिर्देश",
+          "certificate": "प्रमाणपत्र",
+          "manual": "मैनुअल",
+          "catalog": "कैटलॉग"
+        },
+        "specFields": {
+          "headType": "हेड प्रकार",
+          "driveType": "ड्राइव प्रकार",
+          "diameter": "व्यास",
+          "length": "लंबाई",
+          "threadPitch": "थ्रेड पिच",
+          "innerDiameter": "आंतरिक व्यास",
+          "outerDiameter": "बाहरी व्यास",
+          "thickness": "मोटाई",
+          "height": "ऊँचाई",
+          "widthAcrossFlats": "फ्लैट्स पर चौड़ाई",
+          "thread": "थ्रेड"
+        },
+        "placeholders": {
+          "listLines": "प्रति पंक्ति एक",
+          "select": "चुनें…"
+        },
+        "status": {
+          "active": "सक्रिय",
+          "draft": "ड्राफ्ट",
+          "archived": "संग्रहीत"
+        },
+        "image": {
+          "drop": "छवि यहाँ छोड़ें",
+          "browse": "ब्राउज़",
+          "change": "छवि बदलें",
+          "remove": "हटाएँ",
+          "hint": "JPG या PNG, अधिकतम 2 MB"
+        },
+        "actions": {
+          "addVariant": "वेरिएंट जोड़ें",
+          "removeVariant": "वेरिएंट हटाएँ",
+          "addImage": "छवि जोड़ें",
+          "removeImage": "छवि हटाएँ",
+          "addDrawing": "तकनीकी चित्र जोड़ें",
+          "removeDrawing": "चित्र हटाएँ",
+          "addDocument": "दस्तावेज़ जोड़ें",
+          "removeDocument": "दस्तावेज़ हटाएँ"
+        },
+        "save": "अपडेट",
+        "saving": "अपडेट हो रहा है…",
+        "cancelAction": "रद्द करें",
+        "success": {
+          "title": "उत्पाद सहेजा",
+          "body": "परिवर्तन सहेजे गए।"
+        },
+        "errors": {
+          "title": "सहेज नहीं सका",
+          "generic": "पुनः प्रयास करें।",
+          "validation": "चिह्नित फ़ील्ड ठीक करें।",
+          "required": "आवश्यक।",
+          "invalidSlug": "अमान्य स्लग।",
+          "duplicateVariant": "प्रत्येक वेरिएंट संयोजन अद्वितीय होना चाहिए।"
+        },
+        "notFound": {
+          "title": "नहीं मिला",
+          "body": "उत्पाद हटाया गया हो सकता है।"
+        }
+      },
+      "view": {
+        "cancelAction": "रद्द करें",
+        "editAction": "उत्पाद संपादित करें",
+        "noImage": "कोई छवि नहीं",
+        "options": {
+          "yes": "हाँ",
+          "no": "नहीं"
+        },
+        "fields": {
+          "productCode": "उत्पाद कोड",
+          "slug": "स्लग",
+          "category": "श्रेणी",
+          "type": "प्रकार",
+          "status": "स्थिति",
+          "featured": "विशेष",
+          "variants": "वेरिएंट",
+          "description": "विवरण",
+          "created": "बनाया",
+          "updated": "अपडेट"
+        },
+        "notFound": {
+          "title": "नहीं मिला",
+          "body": "उत्पाद हटाया गया हो सकता है।"
         }
       }
     }

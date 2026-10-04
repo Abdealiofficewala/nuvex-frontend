@@ -2,7 +2,21 @@ import { mockHomepage } from "@/data/mock/homepage";
 import { axiosClient, withMockFallback } from "@/services/api/axios-client";
 import { endpoints } from "@/services/api/endpoints";
 import { asRecord, pickString } from "@/services/api/unwrap";
-import type { HomepageContent } from "@/types/homepage";
+import type { HomepageContent, HomepageStat } from "@/types/homepage";
+
+function normalizeStat(stat: HomepageStat): HomepageStat {
+  if (stat.title && stat.description) {
+    return stat;
+  }
+  if (stat.label) {
+    return {
+      ...stat,
+      title: stat.title || stat.label,
+      description: stat.description || "",
+    };
+  }
+  return stat;
+}
 
 function normalizeHomepage(data?: Partial<HomepageContent> | null): HomepageContent {
   const record = asRecord(data);
@@ -19,7 +33,7 @@ function normalizeHomepage(data?: Partial<HomepageContent> | null): HomepageCont
     },
     featuredProductId,
     featuredProductSlug: data?.featuredProductSlug,
-    stats: data?.stats?.length ? data.stats : mockHomepage.stats,
+    stats: data?.stats?.length ? data.stats.map(normalizeStat) : mockHomepage.stats,
     benefits: data?.benefits?.length ? data.benefits : mockHomepage.benefits,
     infrastructure: {
       ...mockHomepage.infrastructure,

@@ -3,8 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AdminFormSelect, type AdminFormSelectOption } from "@/components/admin/common/AdminFormSelect";
+import { AdminListingFilterModalFooter } from "@/components/admin/common/AdminListingFilterModalFooter";
 import { AdminModal } from "@/components/admin/common/AdminModal";
-import { Button } from "@/components/ui/buttons";
 import {
   buildDefaultListingFilterValues,
   countActiveListingFilters,
@@ -74,25 +74,19 @@ export function AdminListingFilterModal({
       title={title}
       description={description}
       icon="filter"
+      simple
       dialogClassName="is-filters"
       onClose={onClose}
       footer={
-        <>
-          <Button
-            type="button"
-            variant="secondary"
-            disabled={draftActiveCount === 0}
-            onClick={handleClear}
-          >
-            {clearLabel ?? t("clear")}
-          </Button>
-          <Button type="button" variant="secondary" onClick={onClose}>
-            {cancelLabel ?? t("cancel")}
-          </Button>
-          <Button type="button" variant="accent" onClick={handleApply}>
-            {applyLabel ?? t("apply")}
-          </Button>
-        </>
+        <AdminListingFilterModalFooter
+          resetLabel={clearLabel ?? t("clear")}
+          cancelLabel={cancelLabel ?? t("cancel")}
+          applyLabel={applyLabel ?? t("apply")}
+          resetDisabled={draftActiveCount === 0}
+          onReset={handleClear}
+          onCancel={onClose}
+          onApply={handleApply}
+        />
       }
     >
       <div className="admin-listing-filter-modal__fields">

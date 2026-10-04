@@ -20,7 +20,7 @@ export default function AdminError({ reset }: AdminErrorProps) {
       lede={t("lede")}
       actions={[
         { label: t("retry"), onClick: reset, variant: "primary" },
-        { href: ROUTES.admin.dashboard, label: t("dashboard"), variant: "secondary" },
+        { href: ROUTES.admin.login, label: t("login"), variant: "secondary" },
       ]}
     />
   );

@@ -26,7 +26,7 @@ export type AdminImageUploadLabels = {
   types?: string;
 };
 
-export type AdminImageUploadVariant = "default" | "logo" | "icon" | "banner";
+export type AdminImageUploadVariant = "default" | "logo" | "icon" | "banner" | "profile";
 
 export type AdminImageUploadSize = "default" | "compact";
 
@@ -45,6 +45,8 @@ export type AdminImageUploadProps = {
   uploadErrorMessages?: Partial<Record<ImageUploadValidationError, string>>;
   variant?: AdminImageUploadVariant;
   size?: AdminImageUploadSize;
+  /** Shown in the empty `profile` preview when no image is set. */
+  placeholderInitials?: string;
   className?: string;
 };
 
@@ -72,6 +74,20 @@ function UploadIcon() {
   );
 }
 
+function ProfilePlaceholderIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="8.5" r="3.25" stroke="currentColor" strokeWidth="1.6" />
+      <path
+        d="M5.5 19.5c.9-3.1 3.2-5 6.5-5s5.6 1.9 6.5 5"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 export function AdminImageUpload({
   id,
   label,
@@ -87,6 +103,7 @@ export function AdminImageUpload({
   uploadErrorMessages,
   variant = "default",
   size = "default",
+  placeholderInitials,
   className,
 }: AdminImageUploadProps) {
   const generatedId = useId();
@@ -105,7 +122,9 @@ export function AdminImageUpload({
   const resolvedFieldMessage = fieldError ? getErrorMessage?.(fieldError) ?? null : null;
   const resolvedMessage = uploadError ?? resolvedFieldMessage;
   const hasImage = hasValue(value);
-  const objectFit = variant === "default" || variant === "banner" ? "cover" : "contain";
+  const objectFit =
+    variant === "default" || variant === "banner" || variant === "profile" ? "cover" : "contain";
+  const emptyInitials = placeholderInitials?.trim().slice(0, 2).toUpperCase();
 
   function openPicker() {
     if (!disabled) {
@@ -249,8 +268,19 @@ export function AdminImageUpload({
                 />
               )
             ) : (
-              <span className="admin-image-upload__compact-placeholder">
-                <UploadIcon />
+              <span
+                className={cn(
+                  "admin-image-upload__compact-placeholder",
+                  variant === "profile" && "admin-image-upload__compact-placeholder--profile",
+                )}
+              >
+                {variant === "profile" && emptyInitials ? (
+                  <span className="admin-image-upload__compact-initials">{emptyInitials}</span>
+                ) : variant === "profile" ? (
+                  <ProfilePlaceholderIcon />
+                ) : (
+                  <UploadIcon />
+                )}
               </span>
             )}
           </button>

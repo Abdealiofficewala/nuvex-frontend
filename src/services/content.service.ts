@@ -2,13 +2,10 @@ import { CONTENT_UPDATED_EVENT } from "@/lib/constants";
 import type {
   BannerInput,
   BannerRecord,
-  CategoryInput,
-  CategoryRecord,
   IndustryInput,
   IndustryRecord,
-  ProductInput,
   ProductRecord,
-  ProductTypeInput,
+  CategoryRecord,
   ProductTypeRecord,
   SectorInput,
   SectorRecord,
@@ -86,128 +83,6 @@ export const contentService = {
     return request<{ ok: true }>(`${adminResourceBase("banners")}/${encodeURIComponent(id)}`, {
       method: "DELETE",
     }).then((result) => {
-      notifyContentUpdated();
-      return result;
-    });
-  },
-
-  listProducts() {
-    return request<ProductRecord[]>(adminResourceBase("products"));
-  },
-
-  getProduct(id: string) {
-    return request<ProductRecord>(`${adminResourceBase("products")}/${encodeURIComponent(id)}`);
-  },
-
-  createProduct(input: ProductInput) {
-    return request<ProductRecord>(adminResourceBase("products"), {
-      method: "POST",
-      body: JSON.stringify(input),
-    }).then((result) => {
-      notifyContentUpdated();
-      return result;
-    });
-  },
-
-  updateProduct(id: string, input: Partial<ProductInput>) {
-    return request<ProductRecord>(`${adminResourceBase("products")}/${encodeURIComponent(id)}`, {
-      method: "PATCH",
-      body: JSON.stringify(input),
-    }).then((result) => {
-      notifyContentUpdated();
-      return result;
-    });
-  },
-
-  deleteProduct(id: string) {
-    return request<{ ok: true }>(`${adminResourceBase("products")}/${encodeURIComponent(id)}`, {
-      method: "DELETE",
-    }).then((result) => {
-      notifyContentUpdated();
-      return result;
-    });
-  },
-
-  listCategories() {
-    return request<CategoryRecord[]>(adminResourceBase("categories"));
-  },
-
-  getCategory(id: string) {
-    return request<CategoryRecord>(`${adminResourceBase("categories")}/${encodeURIComponent(id)}`);
-  },
-
-  createCategory(input: CategoryInput) {
-    return request<CategoryRecord>(adminResourceBase("categories"), {
-      method: "POST",
-      body: JSON.stringify(input),
-    }).then((result) => {
-      notifyContentUpdated();
-      return result;
-    });
-  },
-
-  updateCategory(id: string, input: Partial<CategoryInput>) {
-    return request<CategoryRecord>(`${adminResourceBase("categories")}/${encodeURIComponent(id)}`, {
-      method: "PATCH",
-      body: JSON.stringify(input),
-    }).then((result) => {
-      notifyContentUpdated();
-      return result;
-    });
-  },
-
-  deleteCategory(id: string) {
-    return request<{ ok: true }>(`${adminResourceBase("categories")}/${encodeURIComponent(id)}`, {
-      method: "DELETE",
-    }).then((result) => {
-      notifyContentUpdated();
-      return result;
-    });
-  },
-
-  listProductTypes(params?: { categorySlug?: string }) {
-    const search = params?.categorySlug
-      ? `?categorySlug=${encodeURIComponent(params.categorySlug)}`
-      : "";
-    return request<ProductTypeRecord[]>(`${adminResourceBase("product-types")}${search}`);
-  },
-
-  getProductType(id: string) {
-    return request<ProductTypeRecord>(
-      `${adminResourceBase("product-types")}/${encodeURIComponent(id)}`,
-    );
-  },
-
-  createProductType(input: ProductTypeInput) {
-    return request<ProductTypeRecord>(adminResourceBase("product-types"), {
-      method: "POST",
-      body: JSON.stringify(input),
-    }).then((result) => {
-      notifyContentUpdated();
-      return result;
-    });
-  },
-
-  updateProductType(id: string, input: Partial<ProductTypeInput>) {
-    return request<ProductTypeRecord>(
-      `${adminResourceBase("product-types")}/${encodeURIComponent(id)}`,
-      {
-        method: "PATCH",
-        body: JSON.stringify(input),
-      },
-    ).then((result) => {
-      notifyContentUpdated();
-      return result;
-    });
-  },
-
-  deleteProductType(id: string) {
-    return request<{ ok: true }>(
-      `${adminResourceBase("product-types")}/${encodeURIComponent(id)}`,
-      {
-        method: "DELETE",
-      },
-    ).then((result) => {
       notifyContentUpdated();
       return result;
     });

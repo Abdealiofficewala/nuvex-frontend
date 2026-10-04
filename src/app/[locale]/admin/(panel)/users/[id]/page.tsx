@@ -10,7 +10,7 @@ export default async function AdminUserViewPage({ params }: AdminUserViewPagePro
 
   return (
     <AdminPage pageKey="usersListingView" wide hideDescription>
-      <ViewAdminUserDetail id={decodeURIComponent(id)} />
+      <ViewAdminUserDetail id={id} />
     </AdminPage>
   );
 }

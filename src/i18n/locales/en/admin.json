@@ -1,8 +1,7 @@
 {
   "login": {
-    "kicker": "Secure access",
-    "title": "Admin sign in",
-    "body": "Sign in with your admin credentials to manage site content.",
+    "title": "{company} Management",
+    "body": "Sign in with your work email to manage content and settings.",
     "visual": {
       "panelLabel": "{company} staff portal",
       "badge": "Staff portal",
@@ -32,7 +31,7 @@
     "submitting": "Signing in…",
     "success": {
       "title": "Signed in successfully",
-      "body": "Opening your admin dashboard."
+      "body": "You are signed in."
     },
     "showPassword": "Show password",
     "hidePassword": "Hide password",
@@ -55,16 +54,23 @@
   "notFound": {
     "eyebrow": "Admin · 404",
     "title": "This admin page does not exist.",
-    "lede": "The route is wrong or has been removed. Open the dashboard or sign in again.",
-    "dashboard": "Open dashboard",
+    "lede": "The route is wrong or has been removed. Sign in again from the login page.",
     "login": "Sign in"
   },
   "error": {
     "eyebrow": "Admin error",
-    "title": "Something went wrong in the panel.",
-    "lede": "Try again. If the problem continues, return to the dashboard.",
+    "title": "Something went wrong.",
+    "lede": "Try again. If the problem continues, return to the login page.",
     "retry": "Try again",
-    "dashboard": "Open dashboard"
+    "login": "Sign in"
+  },
+  "access": {
+    "unauthorized": {
+      "eyebrow": "Access restricted",
+      "title": "You do not have permission to open this page.",
+      "body": "Contact an administrator if you need access to this module.",
+      "action": "Back to dashboard"
+    }
   },
   "nav": {
     "portal": "Staff portal",
@@ -95,8 +101,8 @@
     "teamMembersListing": "Members",
     "userManagement": "User management",
     "users": "Users",
-    "userDetails": "User details",
-    "pageAccess": "Page access",
+    "myProfile": "My profile",
+    "rolesPermissions": "Roles & permissions",
     "backToSite": "Back to website",
     "backToSiteHint": "Return to the public site",
     "expandMenu": "Expand menu",
@@ -109,14 +115,25 @@
     "technologies": "Technologies",
     "messages": "Messages",
     "settings": "Settings",
-    "logout": "Sign out"
+    "logout": "Sign out",
+    "productMaterials": "Materials",
+    "productGrades": "Grades",
+    "productStandards": "Standards",
+    "productFinishes": "Finishes",
+    "productThreads": "Threads",
+    "productHeadTypes": "Head types",
+    "productDriveTypes": "Drive types",
+    "productIndustries": "Industries",
+    "productApplications": "Applications",
+    "productPackaging": "Packaging",
+    "productAttributes": "Product attributes"
   },
   "header": {
     "eyebrow": "Staff portal",
     "pages": {
       "dashboard": {
         "title": "Dashboard",
-        "lede": "Admin modules are being prepared."
+        "lede": "Monitor your business, product catalog and customer activity."
       },
       "theme": {
         "title": "Theme",
@@ -298,24 +315,32 @@
         "title": "View user",
         "lede": "Review the staff account profile."
       },
-      "usersDetails": {
-        "title": "User details",
-        "lede": "View and update your account profile and role."
+      "usersListingEdit": {
+        "title": "Edit user",
+        "lede": "Update the staff account profile."
+      },
+      "usersProfile": {
+        "title": "My profile",
+        "lede": "Your account details for this session."
+      },
+      "usersProfileEdit": {
+        "title": "Edit profile",
+        "lede": "Update your account details."
       },
       "usersAccess": {
-        "title": "Page access",
-        "lede": "Control which dashboard pages each user can open."
+        "title": "Roles & permissions",
+        "lede": "Define roles and module permissions for staff accounts."
       },
       "usersAccessCreate": {
-        "title": "Assign page access",
-        "lede": "Select a user and enable permissions for each module."
+        "title": "Create role",
+        "lede": "Add a role and set module permissions."
       },
       "usersAccessView": {
-        "title": "View page access",
-        "lede": "Review module permissions assigned to this user."
+        "title": "View role",
+        "lede": "Review permissions assigned to this role."
       },
       "usersAccessEdit": {
-        "title": "Edit page access",
+        "title": "Edit role",
         "lede": "Update module permissions for the selected user."
       },
       "themeCreate": {
@@ -357,6 +382,194 @@
       "themeColorsEdit": {
         "title": "Edit color",
         "lede": "Update color tokens."
+      },
+      "productSizesCreate": {
+        "title": "Product Sizes Create",
+        "lede": "Manage product catalogue master data."
+      },
+      "productSizesView": {
+        "title": "Product Sizes View",
+        "lede": "Manage product catalogue master data."
+      },
+      "productSizesEdit": {
+        "title": "Product Sizes Edit",
+        "lede": "Manage product catalogue master data."
+      },
+      "productMaterials": {
+        "title": "Product Materials",
+        "lede": "Manage product catalogue master data."
+      },
+      "productMaterialsCreate": {
+        "title": "Product Materials Create",
+        "lede": "Manage product catalogue master data."
+      },
+      "productMaterialsView": {
+        "title": "Product Materials View",
+        "lede": "Manage product catalogue master data."
+      },
+      "productMaterialsEdit": {
+        "title": "Product Materials Edit",
+        "lede": "Manage product catalogue master data."
+      },
+      "productGrades": {
+        "title": "Product Grades",
+        "lede": "Manage product catalogue master data."
+      },
+      "productGradesCreate": {
+        "title": "Product Grades Create",
+        "lede": "Manage product catalogue master data."
+      },
+      "productGradesView": {
+        "title": "Product Grades View",
+        "lede": "Manage product catalogue master data."
+      },
+      "productGradesEdit": {
+        "title": "Product Grades Edit",
+        "lede": "Manage product catalogue master data."
+      },
+      "productStandards": {
+        "title": "Product Standards",
+        "lede": "Manage product catalogue master data."
+      },
+      "productStandardsCreate": {
+        "title": "Product Standards Create",
+        "lede": "Manage product catalogue master data."
+      },
+      "productStandardsView": {
+        "title": "Product Standards View",
+        "lede": "Manage product catalogue master data."
+      },
+      "productStandardsEdit": {
+        "title": "Product Standards Edit",
+        "lede": "Manage product catalogue master data."
+      },
+      "productFinishes": {
+        "title": "Product Finishes",
+        "lede": "Manage product catalogue master data."
+      },
+      "productFinishesCreate": {
+        "title": "Product Finishes Create",
+        "lede": "Manage product catalogue master data."
+      },
+      "productFinishesView": {
+        "title": "Product Finishes View",
+        "lede": "Manage product catalogue master data."
+      },
+      "productFinishesEdit": {
+        "title": "Product Finishes Edit",
+        "lede": "Manage product catalogue master data."
+      },
+      "productThreads": {
+        "title": "Product Threads",
+        "lede": "Manage product catalogue master data."
+      },
+      "productThreadsCreate": {
+        "title": "Product Threads Create",
+        "lede": "Manage product catalogue master data."
+      },
+      "productThreadsView": {
+        "title": "Product Threads View",
+        "lede": "Manage product catalogue master data."
+      },
+      "productThreadsEdit": {
+        "title": "Product Threads Edit",
+        "lede": "Manage product catalogue master data."
+      },
+      "productHeadTypes": {
+        "title": "Product Head Types",
+        "lede": "Manage product catalogue master data."
+      },
+      "productHeadTypesCreate": {
+        "title": "Product Head Types Create",
+        "lede": "Manage product catalogue master data."
+      },
+      "productHeadTypesView": {
+        "title": "Product Head Types View",
+        "lede": "Manage product catalogue master data."
+      },
+      "productHeadTypesEdit": {
+        "title": "Product Head Types Edit",
+        "lede": "Manage product catalogue master data."
+      },
+      "productDriveTypes": {
+        "title": "Product Drive Types",
+        "lede": "Manage product catalogue master data."
+      },
+      "productDriveTypesCreate": {
+        "title": "Product Drive Types Create",
+        "lede": "Manage product catalogue master data."
+      },
+      "productDriveTypesView": {
+        "title": "Product Drive Types View",
+        "lede": "Manage product catalogue master data."
+      },
+      "productDriveTypesEdit": {
+        "title": "Product Drive Types Edit",
+        "lede": "Manage product catalogue master data."
+      },
+      "productIndustries": {
+        "title": "Product Industries",
+        "lede": "Manage product catalogue master data."
+      },
+      "productIndustriesCreate": {
+        "title": "Product Industries Create",
+        "lede": "Manage product catalogue master data."
+      },
+      "productIndustriesView": {
+        "title": "Product Industries View",
+        "lede": "Manage product catalogue master data."
+      },
+      "productIndustriesEdit": {
+        "title": "Product Industries Edit",
+        "lede": "Manage product catalogue master data."
+      },
+      "productApplications": {
+        "title": "Product Applications",
+        "lede": "Manage product catalogue master data."
+      },
+      "productApplicationsCreate": {
+        "title": "Product Applications Create",
+        "lede": "Manage product catalogue master data."
+      },
+      "productApplicationsView": {
+        "title": "Product Applications View",
+        "lede": "Manage product catalogue master data."
+      },
+      "productApplicationsEdit": {
+        "title": "Product Applications Edit",
+        "lede": "Manage product catalogue master data."
+      },
+      "productPackaging": {
+        "title": "Product Packaging",
+        "lede": "Manage product catalogue master data."
+      },
+      "productPackagingCreate": {
+        "title": "Product Packaging Create",
+        "lede": "Manage product catalogue master data."
+      },
+      "productPackagingView": {
+        "title": "Product Packaging View",
+        "lede": "Manage product catalogue master data."
+      },
+      "productPackagingEdit": {
+        "title": "Product Packaging Edit",
+        "lede": "Manage product catalogue master data."
+      },
+      "productAttributes": {
+        "title": "Product Attributes",
+        "lede": "Manage product catalogue master data."
+      },
+      "productAttributesCreate": {
+        "title": "Product Attributes Create",
+        "lede": "Manage product catalogue master data."
+      },
+      "productAttributesView": {
+        "title": "Product Attributes View",
+        "lede": "Manage product catalogue master data."
+      },
+      "productAttributesEdit": {
+        "title": "Product Attributes Edit",
+        "lede": "Manage product catalogue master data."
       }
     },
     "role": "Administrator",
@@ -502,7 +715,45 @@
           "generic": "Try again in a moment."
         }
       },
-      "toolbarTitle": "Users"
+      "toolbarTitle": "Users",
+      "stats": {
+        "total": "Total users",
+        "active": "Active",
+        "inactive": "Inactive",
+        "roles": "Roles in use"
+      },
+      "statsMeta": {
+        "catalogue": "Staff accounts in the panel",
+        "activeRate": "{percent}% can sign in",
+        "inactiveHint": "Review disabled accounts",
+        "inactiveClear": "All accounts active",
+        "rolesHint": "Distinct roles assigned"
+      },
+      "search": {
+        "label": "Search",
+        "placeholder": "Search by name, email, or role",
+        "clear": "Clear"
+      },
+      "results": "{count, plural, =0 {No users} one {# user} other {# users}}",
+      "sort": {
+        "label": "Sort by",
+        "name": "Name",
+        "email": "Email",
+        "role": "Role",
+        "createdAt": "Recently added"
+      },
+      "filters": {
+        "open": "Open filters",
+        "title": "Filter by",
+        "role": "Role",
+        "status": "Status",
+        "anyRole": "Any role",
+        "anyStatus": "Any status",
+        "createdFrom": "Created from",
+        "createdTo": "Created to",
+        "apply": "Apply filters",
+        "reset": "Reset"
+      }
     },
     "details": {
       "fallbackName": "Your profile",
@@ -574,13 +825,82 @@
     "view": {
       "title": "View user",
       "cancelAction": "Back to users",
+      "editAction": "Edit user",
       "notFound": {
         "title": "User not found",
         "body": "This account may have been removed. Return to the users list."
       }
     },
-    "create": {
-      "title": "Add user",
+    "profile": {
+      "eyebrow": "Signed-in account",
+      "lede": "Review your account details and keep your contact information up to date.",
+      "editAction": "Edit profile",
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "sections": {
+        "contact": "Contact",
+        "account": "Account & photo",
+        "activity": "Account activity",
+        "personal": "Personal information",
+        "personalLede": "How you are identified across the admin panel.",
+        "address": "Address",
+        "addressLede": "Your registered location details."
+      },
+      "fields": {
+        "firstName": "First name",
+        "lastName": "Last name",
+        "email": "Email",
+        "phone": "Phone",
+        "username": "Username",
+        "addressLine1": "Address line 1",
+        "addressLine2": "Address line 2",
+        "village": "Village",
+        "city": "City",
+        "pincode": "Pincode",
+        "state": "State",
+        "lastLogin": "Last sign-in",
+        "lastLoginNever": "Not recorded yet",
+        "memberSince": "Member since"
+      },
+      "notFound": {
+        "title": "Profile not found",
+        "body": "We could not load your account for this session."
+      },
+      "edit": {
+        "fields": {
+          "image": "Profile photo",
+          "firstName": "First name",
+          "lastName": "Last name",
+          "email": "Email",
+          "phone": "Phone number",
+          "designation": "Company designation",
+          "addressLine1": "Address line 1",
+          "addressLine2": "Address line 2",
+          "village": "Village",
+          "city": "City",
+          "pincode": "Pincode",
+          "state": "State"
+        },
+        "cancelAction": "Cancel",
+        "update": "Update",
+        "saving": "Updating…",
+        "success": {
+          "title": "Profile updated",
+          "body": "Your account details were saved."
+        },
+        "errors": {
+          "title": "Could not save profile",
+          "generic": "Try again in a moment.",
+          "validation": "Fix the highlighted fields before saving.",
+          "required": "This field is required.",
+          "invalidEmail": "Enter a valid email address.",
+          "invalidPhone": "Enter a valid phone number."
+        }
+      }
+    },
+    "edit": {
       "fields": {
         "image": "Profile photo",
         "firstName": "First name",
@@ -595,8 +915,199 @@
         "city": "City",
         "pincode": "Pincode",
         "state": "State",
-        "password": "Password",
-        "confirmPassword": "Confirm password",
+        "active": "Active account"
+      },
+      "cancelAction": "Cancel",
+      "update": "Update",
+      "saving": "Updating…",
+      "success": {
+        "title": "User updated",
+        "body": "The account was saved for this session."
+      },
+      "errors": {
+        "title": "Could not save user",
+        "generic": "Try again in a moment.",
+        "validation": "Fix the highlighted fields before saving.",
+        "required": "This field is required.",
+        "invalidEmail": "Enter a valid email address.",
+        "invalidPhone": "Enter a valid phone number."
+      }
+    },
+    "roles": {
+      "listing": {
+        "toolbarTitle": "Roles",
+        "addAction": "Add role",
+        "stats": {
+          "total": "Total roles",
+          "active": "Active",
+          "inactive": "Inactive",
+          "assigned": "Users assigned"
+        },
+        "statsMeta": {
+          "catalogue": "In your role catalogue",
+          "activeRate": "{percent}% of roles enabled",
+          "inactiveHint": "Review disabled roles",
+          "inactiveClear": "No disabled roles",
+          "assignedHint": "Staff accounts linked"
+        },
+        "search": {
+          "label": "Search",
+          "placeholder": "Search by role name or description",
+          "clear": "Clear"
+        },
+        "results": "{count, plural, =0 {No roles} one {# role} other {# roles}}",
+        "filters": {
+          "open": "Open filters",
+          "title": "Filter by",
+          "status": "Role status",
+          "anyStatus": "All roles",
+          "apply": "Apply filters",
+          "reset": "Reset"
+        },
+        "sort": {
+          "label": "Sort by",
+          "name": "Name",
+          "users": "Users assigned",
+          "coverage": "Module access",
+          "updatedAt": "Recently updated"
+        },
+        "coverageLabel": "{enabled} of {total} modules",
+        "table": {
+          "name": "Role",
+          "description": "Description",
+          "coverage": "Access",
+          "users": "Users",
+          "status": "Status",
+          "actions": "Actions"
+        },
+        "status": {
+          "active": "Active",
+          "inactive": "Inactive"
+        },
+        "actions": {
+          "view": "View",
+          "edit": "Edit",
+          "delete": "Delete"
+        },
+        "delete": {
+          "confirm": {
+            "title": "Delete role?",
+            "description": "Remove {name} from the roles list.",
+            "confirm": "Delete"
+          },
+          "success": {
+            "title": "Role deleted",
+            "body": "The role was removed for this session."
+          },
+          "errors": {
+            "title": "Could not delete role",
+            "generic": "Try again in a moment.",
+            "protected": "Built-in roles cannot be deleted.",
+            "inUse": "Reassign users before deleting this role."
+          }
+        }
+      },
+      "create": {
+        "sections": {
+          "role": "Role information",
+          "roleLede": "Name the role, add a short description, and set whether it is active.",
+          "permissions": "Menu & permissions",
+          "permissionsLede": "Choose which admin modules this role can view, create, edit, or delete."
+        },
+        "fields": {
+          "name": "Role name",
+          "description": "Description",
+          "active": "Active role"
+        },
+        "placeholders": {
+          "name": "Enter a role name",
+          "description": "Describe what this role can do"
+        },
+        "permissionsTitle": "Module permissions",
+        "save": "Save",
+        "saving": "Saving…",
+        "update": "Update",
+        "cancelAction": "Cancel",
+        "success": {
+          "title": "Role saved",
+          "body": "Permissions were stored for this session."
+        },
+        "errors": {
+          "title": "Could not save role",
+          "generic": "Try again in a moment.",
+          "validation": "Fix the highlighted fields before saving.",
+          "required": "This field is required."
+        }
+      },
+      "edit": {
+        "sections": {
+          "role": "Role information",
+          "roleLede": "Name the role, add a short description, and set whether it is active.",
+          "permissions": "Menu & permissions",
+          "permissionsLede": "Choose which admin modules this role can view, create, edit, or delete."
+        },
+        "fields": {
+          "name": "Role name",
+          "description": "Description",
+          "active": "Active role"
+        },
+        "placeholders": {
+          "name": "Enter a role name",
+          "description": "Describe what this role can do"
+        },
+        "permissionsTitle": "Module permissions",
+        "save": "Save",
+        "saving": "Saving…",
+        "update": "Update",
+        "cancelAction": "Cancel",
+        "success": {
+          "title": "Role updated",
+          "body": "Permissions were stored for this session."
+        },
+        "errors": {
+          "title": "Could not save role",
+          "generic": "Try again in a moment.",
+          "validation": "Fix the highlighted fields before saving.",
+          "required": "This field is required."
+        }
+      },
+      "view": {
+        "cancelAction": "Back to roles",
+        "editAction": "Edit role",
+        "meta": {
+          "users": "Users",
+          "coverage": "Module coverage",
+          "updated": "Last updated"
+        },
+        "status": {
+          "active": "Active",
+          "inactive": "Inactive"
+        },
+        "notFound": {
+          "title": "Role not found",
+          "body": "This role may have been removed."
+        }
+      }
+    },
+    "create": {
+      "title": "Add user",
+      "sections": {
+        "access": "Access & role"
+      },
+      "fields": {
+        "image": "Profile photo",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "email": "Email",
+        "phone": "Phone number",
+        "designation": "Company designation",
+        "role": "Role",
+        "addressLine1": "Address line 1",
+        "addressLine2": "Address line 2",
+        "village": "Village",
+        "city": "City",
+        "pincode": "Pincode",
+        "state": "State",
         "active": "Active account"
       },
       "address": {
@@ -614,38 +1125,11 @@
         "village": "Enter a village",
         "city": "Enter a city",
         "pincode": "Enter a pincode",
-        "state": "Enter a state",
-        "password": "Enter a password",
-        "confirmPassword": "Enter the password again"
-      },
-      "image": {
-        "drop": "Drop a profile photo here",
-        "browse": "Browse files",
-        "change": "Change photo",
-        "remove": "Remove photo",
-        "hint": "JPG or PNG up to 2 MB"
+        "state": "Enter a state"
       },
       "save": "Save",
       "saving": "Saving…",
       "cancelAction": "Cancel",
-      "access": {
-        "title": "Page access",
-        "lede": "Set permissions for each main menu module when creating this user."
-      },
-      "roles": {
-        "admin": {
-          "title": "Admin",
-          "body": "Full access to all modules"
-        },
-        "editor": {
-          "title": "Editor",
-          "body": "Can update content modules"
-        },
-        "viewer": {
-          "title": "Viewer",
-          "body": "Read-only access"
-        }
-      },
       "success": {
         "title": "User created",
         "body": "The account was saved locally for this session."
@@ -657,10 +1141,6 @@
         "required": "This field is required.",
         "invalidEmail": "Enter a valid email address.",
         "invalidPhone": "Enter a valid phone number.",
-        "passwordRequired": "Enter a password.",
-        "passwordShort": "Password must be at least {min} characters.",
-        "confirmRequired": "Confirm the password.",
-        "confirmMismatch": "Passwords do not match.",
         "roleRequired": "Select a role."
       }
     },
@@ -696,6 +1176,30 @@
         "delete": "Delete",
         "write": "Write"
       },
+      "enableModule": "Enable all",
+      "enableAll": "Enable all modules",
+      "clearModule": "Clear",
+      "clearAll": "Clear all",
+      "readOnlyPreset": "Read-only",
+      "fullPreset": "Full access",
+      "matrixSummary": {
+        "title": "Permission coverage",
+        "modules": "{enabled} of {total} modules with view access",
+        "fullAccess": "{count} of {total} with full access (view, create, edit, delete)",
+        "ringAria": "{percent}% view coverage — {enabled} of {total} modules"
+      },
+      "searchModules": {
+        "label": "Filter modules",
+        "placeholder": "Search modules…",
+        "empty": "No modules match your search."
+      },
+      "columnActions": {
+        "label": "Grant permission to all modules",
+        "all": "All {permission}"
+      },
+      "rowActions": {
+        "label": "Actions"
+      },
       "pages": {
         "dashboard": "Dashboard",
         "themeListing": "Themes",
@@ -716,8 +1220,8 @@
         "teamRoles": "Roles",
         "teamsListing": "Members",
         "users": "Users",
-        "usersDetails": "User details",
-        "usersAccess": "Page access"
+        "usersProfile": "My profile",
+        "usersAccess": "Roles & permissions"
       },
       "pagesHint": {
         "dashboard": "Overview and coming-soon modules",
@@ -857,6 +1361,141 @@
     }
   },
   "dashboard": {
+    "overviewHeader": {
+      "kicker": "Dashboard",
+      "title": "Overview",
+      "body": "Monitor your business, product catalog and customer activity."
+    },
+    "dateRange": {
+      "label": "Date range",
+      "today": "Today",
+      "7d": "7 Days",
+      "30d": "30 Days",
+      "12m": "12 Months"
+    },
+    "businessHighlights": {
+      "label": "Business highlights",
+      "eyebrow": "Company strength",
+      "tagline": "Experience, catalogue depth, and supply reach."
+    },
+    "summary": {
+      "label": "Business summary",
+      "totalUsers": "Total Users",
+      "newUsers": "New Users",
+      "totalProducts": "Total Products",
+      "quoteRequests": "Request a Quote",
+      "pendingQuotes": "Pending Quotes",
+      "totalEnquiries": "Total Enquiries"
+    },
+    "userGrowth": {
+      "title": "User Growth",
+      "current": "Current period",
+      "previous": "Previous period",
+      "chartLabel": "New users per day for the selected week",
+      "deltaUp": "{count} new users · +{delta} vs previous period",
+      "deltaDown": "{count} new users · −{delta} vs previous period",
+      "deltaFlat": "{count} new users · flat vs previous period"
+    },
+    "quotes": {
+      "title": "Request a Quote",
+      "body": "RFQ pipeline across your industrial customer base.",
+      "totalRequests": "Total Requests",
+      "status": {
+        "pending": "Pending",
+        "inProgress": "In Progress",
+        "quoted": "Quoted",
+        "completed": "Completed"
+      }
+    },
+    "recentQuotes": {
+      "title": "Recent Quote Requests",
+      "body": "Latest RFQs awaiting review or follow-up.",
+      "viewAll": "View All Requests →",
+      "view": "View →",
+      "productCount": "{count} Products",
+      "columns": {
+        "customer": "Customer",
+        "company": "Company",
+        "products": "Products",
+        "date": "Request Date",
+        "status": "Status",
+        "action": "Action"
+      },
+      "status": {
+        "pending": "Pending",
+        "reviewed": "Reviewed",
+        "in_progress": "In Progress",
+        "quoted": "Quoted",
+        "completed": "Completed",
+        "rejected": "Rejected"
+      }
+    },
+    "productOverview": {
+      "title": "Product Overview",
+      "body": "Catalog coverage across lines, types, and variants.",
+      "totalProducts": "Total Products",
+      "activeProducts": "Active Products",
+      "featuredProducts": "Featured Products",
+      "productVariants": "Product Variants",
+      "categories": "Categories",
+      "productTypes": "Product Types"
+    },
+    "productDistribution": {
+      "title": "Product Distribution",
+      "body": "How SKUs are spread across catalogue families.",
+      "byCategory": "Products by Category",
+      "byType": "Products by Product Type"
+    },
+    "industries": {
+      "title": "Industries Overview",
+      "body": "Key sectors supplied by Hakimi Fastners.",
+      "viewAll": "View All Industries →",
+      "view": "View",
+      "productCount": "{count} related products"
+    },
+    "enquiries": {
+      "title": "Enquiry Overview",
+      "body": "General contact and technical enquiries.",
+      "total": "Total Enquiries",
+      "new": "New",
+      "inProgress": "In Progress",
+      "resolved": "Resolved",
+      "status": {
+        "new": "New",
+        "in_progress": "In Progress",
+        "resolved": "Resolved"
+      }
+    },
+    "catalogHealth": {
+      "title": "Catalog Health",
+      "body": "Completeness signals for images, copy, SEO, and variants.",
+      "images": "Product Images",
+      "descriptions": "Descriptions",
+      "seo": "SEO",
+      "variants": "Variants",
+      "complete": "✓ Catalogue health checks passing for this metric",
+      "review": "Review →",
+      "gaps": {
+        "images": "⚠ {count} products missing images",
+        "descriptions": "⚠ {count} products missing descriptions",
+        "seo": "⚠ {count} products missing SEO",
+        "variants": "⚠ {count} products missing variants"
+      }
+    },
+    "activity": {
+      "title": "Recent Activity",
+      "body": "Latest account, RFQ, catalogue, and enquiry events."
+    },
+    "quickActions": {
+      "label": "Quick actions",
+      "title": "Quick Actions",
+      "body": "Navigate to operational modules.",
+      "products": "View Products",
+      "quotes": "View Quote Requests",
+      "users": "View Users",
+      "enquiries": "View Enquiries",
+      "industries": "View Industries"
+    },
     "kicker": "Overview",
     "title": "Operations dashboard",
     "body": "Track catalogue content, enquiries, and published records while the API layer is being connected.",
@@ -2637,6 +3276,719 @@
         "notFound": {
           "title": "Category not found",
           "body": "This category may have been removed."
+        }
+      }
+    },
+    "masters": {
+      "common": {
+        "searchLabel": "Search",
+        "searchPlaceholder": "Search by name, slug, or code",
+        "createAction": "Create",
+        "table": {
+          "caption": "Master records",
+          "name": "Name",
+          "code": "Code",
+          "display": "Display",
+          "dimension": "Dimension",
+          "valueType": "Type",
+          "configuration": "Specs / Variants",
+          "status": "Status",
+          "sortOrder": "Sort order",
+          "updated": "Updated",
+          "actions": "Actions"
+        },
+        "status": {
+          "active": "Active",
+          "inactive": "Inactive"
+        },
+        "actions": {
+          "view": "View",
+          "edit": "Edit",
+          "delete": "Delete"
+        },
+        "empty": {
+          "title": "No records yet",
+          "body": "Create the first record."
+        },
+        "errors": {
+          "title": "Could not complete request",
+          "load": "Try again in a moment.",
+          "generic": "Something went wrong."
+        },
+        "delete": {
+          "confirm": {
+            "title": "Delete record?",
+            "description": "\"{name}\" will be removed.",
+            "confirm": "Delete"
+          },
+          "success": {
+            "title": "Record deleted",
+            "body": "The record was removed."
+          }
+        },
+        "create": {
+          "loading": "Loading…",
+          "fields": {
+            "name": "Name",
+            "slug": "Slug",
+            "code": "Code",
+            "summary": "Summary",
+            "image": "Image",
+            "display": "Display",
+            "dimension": "Dimension",
+            "unit": "Unit",
+            "valueType": "Value type",
+            "options": "Options",
+            "status": "Status",
+            "sortOrder": "Sort order",
+            "allowedGrades": "Allowed grades"
+          },
+          "placeholders": {
+            "name": "Enter a name",
+            "slug": "record-slug",
+            "code": "CODE",
+            "summary": "Short summary",
+            "options": "One option per line"
+          },
+          "valueTypes": {
+            "text": "Text",
+            "number": "Number",
+            "boolean": "Boolean",
+            "select": "Select",
+            "multiSelect": "Multi-select",
+            "dimension": "Dimension"
+          },
+          "status": {
+            "active": "Active",
+            "inactive": "Inactive"
+          },
+          "image": {
+            "drop": "Drop image here",
+            "browse": "Browse",
+            "change": "Change image",
+            "remove": "Remove",
+            "hint": "JPG or PNG, up to 2 MB"
+          },
+          "save": "Save",
+          "saving": "Saving…",
+          "cancelAction": "Cancel",
+          "success": {
+            "title": "Saved",
+            "body": "The record was saved."
+          },
+          "errors": {
+            "title": "Could not save",
+            "generic": "Try again.",
+            "validation": "Fix highlighted fields.",
+            "required": "This field is required.",
+            "invalidSlug": "Use lowercase letters, numbers, and hyphens."
+          },
+          "notFound": {
+            "title": "Not found",
+            "body": "This record may have been removed."
+          }
+        },
+        "edit": {
+          "loading": "Loading…",
+          "fields": {
+            "name": "Name",
+            "slug": "Slug",
+            "code": "Code",
+            "summary": "Summary",
+            "image": "Image",
+            "display": "Display",
+            "dimension": "Dimension",
+            "unit": "Unit",
+            "valueType": "Value type",
+            "options": "Options",
+            "status": "Status",
+            "sortOrder": "Sort order",
+            "allowedGrades": "Allowed grades"
+          },
+          "placeholders": {
+            "name": "Enter a name",
+            "slug": "record-slug",
+            "code": "CODE",
+            "summary": "Short summary",
+            "options": "One option per line"
+          },
+          "valueTypes": {
+            "text": "Text",
+            "number": "Number",
+            "boolean": "Boolean",
+            "select": "Select",
+            "multiSelect": "Multi-select",
+            "dimension": "Dimension"
+          },
+          "status": {
+            "active": "Active",
+            "inactive": "Inactive"
+          },
+          "image": {
+            "drop": "Drop image here",
+            "browse": "Browse",
+            "change": "Change image",
+            "remove": "Remove",
+            "hint": "JPG or PNG, up to 2 MB"
+          },
+          "save": "Update",
+          "saving": "Updating…",
+          "cancelAction": "Cancel",
+          "success": {
+            "title": "Saved",
+            "body": "The record was saved."
+          },
+          "errors": {
+            "title": "Could not save",
+            "generic": "Try again.",
+            "validation": "Fix highlighted fields.",
+            "required": "This field is required.",
+            "invalidSlug": "Use lowercase letters, numbers, and hyphens."
+          },
+          "notFound": {
+            "title": "Not found",
+            "body": "This record may have been removed."
+          }
+        },
+        "view": {
+          "loading": "Loading…",
+          "noImage": "No image uploaded",
+          "cancelAction": "Cancel",
+          "editAction": "Edit",
+          "fields": {
+            "name": "Name",
+            "slug": "Slug",
+            "code": "Code",
+            "summary": "Summary",
+            "display": "Display",
+            "dimension": "Dimension",
+            "unit": "Unit",
+            "valueType": "Value type",
+            "options": "Options",
+            "status": "Status",
+            "sortOrder": "Sort order",
+            "created": "Created",
+            "updated": "Updated"
+          },
+          "notFound": {
+            "title": "Not found",
+            "body": "This record may have been removed."
+          }
+        }
+      },
+      "types": {
+        "create": {
+          "loading": "Loading…",
+          "fields": {
+            "name": "Name",
+            "slug": "Slug",
+            "code": "Code",
+            "summary": "Summary",
+            "image": "Image",
+            "display": "Display",
+            "dimension": "Dimension",
+            "unit": "Unit",
+            "valueType": "Value type",
+            "options": "Options",
+            "status": "Status",
+            "sortOrder": "Sort order"
+          },
+          "placeholders": {
+            "name": "Enter a name",
+            "slug": "record-slug",
+            "code": "CODE",
+            "summary": "Short summary",
+            "options": "One option per line"
+          },
+          "valueTypes": {
+            "text": "Text",
+            "number": "Number",
+            "boolean": "Boolean",
+            "select": "Select",
+            "multiSelect": "Multi-select",
+            "dimension": "Dimension"
+          },
+          "status": {
+            "active": "Active",
+            "inactive": "Inactive"
+          },
+          "image": {
+            "drop": "Drop image here",
+            "browse": "Browse",
+            "change": "Change image",
+            "remove": "Remove",
+            "hint": "JPG or PNG, up to 2 MB"
+          },
+          "save": "Save",
+          "saving": "Saving…",
+          "cancelAction": "Cancel",
+          "success": {
+            "title": "Saved",
+            "body": "The record was saved."
+          },
+          "errors": {
+            "title": "Could not save",
+            "generic": "Try again.",
+            "validation": "Fix highlighted fields.",
+            "required": "This field is required.",
+            "invalidSlug": "Use lowercase letters, numbers, and hyphens."
+          },
+          "notFound": {
+            "title": "Not found",
+            "body": "This record may have been removed."
+          },
+          "configuration": {
+            "specificationsTitle": "Specification fields",
+            "variantTitle": "Variant attributes",
+            "allowedTitle": "Allowed master data",
+            "specFields": {
+              "headType": "Head type",
+              "driveType": "Drive type",
+              "diameter": "Diameter",
+              "length": "Length",
+              "threadPitch": "Thread pitch",
+              "innerDiameter": "Inner diameter",
+              "outerDiameter": "Outer diameter",
+              "thickness": "Thickness",
+              "height": "Height",
+              "widthAcrossFlats": "Width across flats",
+              "thread": "Thread"
+            },
+            "variantFields": {
+              "size": "Size",
+              "material": "Material",
+              "grade": "Grade",
+              "standard": "Standard",
+              "finish": "Finish",
+              "thread": "Thread",
+              "packaging": "Packaging"
+            },
+            "allowed": {
+              "allowedSizeIds": "Sizes",
+              "allowedMaterialIds": "Materials",
+              "allowedGradeIds": "Grades",
+              "allowedStandardIds": "Standards",
+              "allowedFinishIds": "Finishes",
+              "allowedThreadIds": "Threads",
+              "allowedHeadTypeIds": "Head types",
+              "allowedDriveTypeIds": "Drive types"
+            }
+          }
+        },
+        "edit": {
+          "loading": "Loading…",
+          "fields": {
+            "name": "Name",
+            "slug": "Slug",
+            "code": "Code",
+            "summary": "Summary",
+            "image": "Image",
+            "display": "Display",
+            "dimension": "Dimension",
+            "unit": "Unit",
+            "valueType": "Value type",
+            "options": "Options",
+            "status": "Status",
+            "sortOrder": "Sort order"
+          },
+          "placeholders": {
+            "name": "Enter a name",
+            "slug": "record-slug",
+            "code": "CODE",
+            "summary": "Short summary",
+            "options": "One option per line"
+          },
+          "valueTypes": {
+            "text": "Text",
+            "number": "Number",
+            "boolean": "Boolean",
+            "select": "Select",
+            "multiSelect": "Multi-select",
+            "dimension": "Dimension"
+          },
+          "status": {
+            "active": "Active",
+            "inactive": "Inactive"
+          },
+          "image": {
+            "drop": "Drop image here",
+            "browse": "Browse",
+            "change": "Change image",
+            "remove": "Remove",
+            "hint": "JPG or PNG, up to 2 MB"
+          },
+          "save": "Save",
+          "saving": "Saving…",
+          "cancelAction": "Cancel",
+          "success": {
+            "title": "Saved",
+            "body": "The record was saved."
+          },
+          "errors": {
+            "title": "Could not save",
+            "generic": "Try again.",
+            "validation": "Fix highlighted fields.",
+            "required": "This field is required.",
+            "invalidSlug": "Use lowercase letters, numbers, and hyphens."
+          },
+          "notFound": {
+            "title": "Not found",
+            "body": "This record may have been removed."
+          },
+          "configuration": {
+            "specificationsTitle": "Specification fields",
+            "variantTitle": "Variant attributes",
+            "allowedTitle": "Allowed master data",
+            "specFields": {
+              "headType": "Head type",
+              "driveType": "Drive type",
+              "diameter": "Diameter",
+              "length": "Length",
+              "threadPitch": "Thread pitch",
+              "innerDiameter": "Inner diameter",
+              "outerDiameter": "Outer diameter",
+              "thickness": "Thickness",
+              "height": "Height",
+              "widthAcrossFlats": "Width across flats",
+              "thread": "Thread"
+            },
+            "variantFields": {
+              "size": "Size",
+              "material": "Material",
+              "grade": "Grade",
+              "standard": "Standard",
+              "finish": "Finish",
+              "thread": "Thread",
+              "packaging": "Packaging"
+            },
+            "allowed": {
+              "allowedSizeIds": "Sizes",
+              "allowedMaterialIds": "Materials",
+              "allowedGradeIds": "Grades",
+              "allowedStandardIds": "Standards",
+              "allowedFinishIds": "Finishes",
+              "allowedThreadIds": "Threads",
+              "allowedHeadTypeIds": "Head types",
+              "allowedDriveTypeIds": "Drive types"
+            }
+          }
+        }
+      }
+    },
+    "catalog": {
+      "listing": {
+        "toolbarTitle": "All products",
+        "createAction": "Create product",
+        "filters": {
+          "search": "Search",
+          "searchPlaceholder": "Name, code, SKU, category…",
+          "category": "Category",
+          "type": "Product type",
+          "status": "Status",
+          "featured": "Featured",
+          "all": "All"
+        },
+        "table": {
+          "caption": "Catalogue products",
+          "image": "Image",
+          "name": "Product",
+          "productCode": "Product code",
+          "category": "Category",
+          "type": "Type",
+          "variants": "Variants",
+          "status": "Status",
+          "featured": "Featured",
+          "updated": "Updated",
+          "actions": "Actions"
+        },
+        "status": {
+          "active": "Active",
+          "draft": "Draft",
+          "archived": "Archived"
+        },
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        },
+        "actions": {
+          "view": "View",
+          "edit": "Edit",
+          "delete": "Delete"
+        },
+        "errors": {
+          "title": "Could not load products",
+          "load": "Try again.",
+          "generic": "Something went wrong."
+        },
+        "delete": {
+          "confirm": {
+            "title": "Delete product?",
+            "description": "\"{name}\" will be removed.",
+            "confirm": "Delete"
+          },
+          "success": {
+            "title": "Product deleted",
+            "body": "The product was removed."
+          }
+        }
+      },
+      "create": {
+        "loading": "Loading…",
+        "sections": {
+          "basic": "Basic information",
+          "content": "Product content",
+          "specifications": "Specifications",
+          "variants": "Variants",
+          "industriesApplications": "Industries & applications",
+          "media": "Media",
+          "documents": "Documents",
+          "relationships": "Relationships",
+          "seo": "SEO"
+        },
+        "fields": {
+          "name": "Product name",
+          "productCode": "Product code",
+          "slug": "Slug",
+          "category": "Category",
+          "type": "Product type",
+          "status": "Status",
+          "featured": "Featured",
+          "sortOrder": "Sort order",
+          "shortDescription": "Short description",
+          "description": "Description",
+          "features": "Features",
+          "sku": "SKU",
+          "partNumber": "Part number",
+          "size": "Size",
+          "material": "Material",
+          "grade": "Grade",
+          "standard": "Standard",
+          "finish": "Finish",
+          "thread": "Thread",
+          "packaging": "Packaging",
+          "industries": "Industries",
+          "applications": "Applications",
+          "thumbnail": "Thumbnail",
+          "galleryImage": "Gallery image",
+          "technicalDrawing": "Technical drawing",
+          "productAttributes": "Product attributes",
+          "documentType": "Document type",
+          "documentTitle": "Title",
+          "documentUrl": "File URL",
+          "relatedProducts": "Related products",
+          "compatibleProducts": "Compatible products",
+          "accessories": "Accessories",
+          "metaTitle": "Meta title",
+          "metaDescription": "Meta description",
+          "keywords": "Keywords",
+          "canonical": "Canonical URL"
+        },
+        "documentTypes": {
+          "datasheet": "Datasheet",
+          "technical-specification": "Technical specification",
+          "certificate": "Certificate",
+          "manual": "Manual",
+          "catalog": "Catalog"
+        },
+        "specFields": {
+          "headType": "Head type",
+          "driveType": "Drive type",
+          "diameter": "Diameter",
+          "length": "Length",
+          "threadPitch": "Thread pitch",
+          "innerDiameter": "Inner diameter",
+          "outerDiameter": "Outer diameter",
+          "thickness": "Thickness",
+          "height": "Height",
+          "widthAcrossFlats": "Width across flats",
+          "thread": "Thread"
+        },
+        "placeholders": {
+          "listLines": "One item per line",
+          "select": "Select…"
+        },
+        "status": {
+          "active": "Active",
+          "draft": "Draft",
+          "archived": "Archived"
+        },
+        "image": {
+          "drop": "Drop image here",
+          "browse": "Browse",
+          "change": "Change image",
+          "remove": "Remove",
+          "hint": "JPG or PNG, up to 2 MB"
+        },
+        "actions": {
+          "addVariant": "Add variant",
+          "removeVariant": "Remove variant",
+          "addImage": "Add image",
+          "removeImage": "Remove image",
+          "addDrawing": "Add technical drawing",
+          "removeDrawing": "Remove drawing",
+          "addDocument": "Add document",
+          "removeDocument": "Remove document"
+        },
+        "save": "Save",
+        "saving": "Saving…",
+        "cancelAction": "Cancel",
+        "success": {
+          "title": "Product saved",
+          "body": "Changes were saved."
+        },
+        "errors": {
+          "title": "Could not save",
+          "generic": "Try again.",
+          "validation": "Fix highlighted fields.",
+          "required": "Required.",
+          "invalidSlug": "Invalid slug.",
+          "duplicateVariant": "Each variant combination must be unique."
+        },
+        "notFound": {
+          "title": "Not found",
+          "body": "Product may have been removed."
+        }
+      },
+      "edit": {
+        "loading": "Loading…",
+        "sections": {
+          "basic": "Basic information",
+          "content": "Product content",
+          "specifications": "Specifications",
+          "variants": "Variants",
+          "industriesApplications": "Industries & applications",
+          "media": "Media",
+          "documents": "Documents",
+          "relationships": "Relationships",
+          "seo": "SEO"
+        },
+        "fields": {
+          "name": "Product name",
+          "productCode": "Product code",
+          "slug": "Slug",
+          "category": "Category",
+          "type": "Product type",
+          "status": "Status",
+          "featured": "Featured",
+          "sortOrder": "Sort order",
+          "shortDescription": "Short description",
+          "description": "Description",
+          "features": "Features",
+          "sku": "SKU",
+          "partNumber": "Part number",
+          "size": "Size",
+          "material": "Material",
+          "grade": "Grade",
+          "standard": "Standard",
+          "finish": "Finish",
+          "thread": "Thread",
+          "packaging": "Packaging",
+          "industries": "Industries",
+          "applications": "Applications",
+          "thumbnail": "Thumbnail",
+          "galleryImage": "Gallery image",
+          "technicalDrawing": "Technical drawing",
+          "productAttributes": "Product attributes",
+          "documentType": "Document type",
+          "documentTitle": "Title",
+          "documentUrl": "File URL",
+          "relatedProducts": "Related products",
+          "compatibleProducts": "Compatible products",
+          "accessories": "Accessories",
+          "metaTitle": "Meta title",
+          "metaDescription": "Meta description",
+          "keywords": "Keywords",
+          "canonical": "Canonical URL"
+        },
+        "documentTypes": {
+          "datasheet": "Datasheet",
+          "technical-specification": "Technical specification",
+          "certificate": "Certificate",
+          "manual": "Manual",
+          "catalog": "Catalog"
+        },
+        "specFields": {
+          "headType": "Head type",
+          "driveType": "Drive type",
+          "diameter": "Diameter",
+          "length": "Length",
+          "threadPitch": "Thread pitch",
+          "innerDiameter": "Inner diameter",
+          "outerDiameter": "Outer diameter",
+          "thickness": "Thickness",
+          "height": "Height",
+          "widthAcrossFlats": "Width across flats",
+          "thread": "Thread"
+        },
+        "placeholders": {
+          "listLines": "One item per line",
+          "select": "Select…"
+        },
+        "status": {
+          "active": "Active",
+          "draft": "Draft",
+          "archived": "Archived"
+        },
+        "image": {
+          "drop": "Drop image here",
+          "browse": "Browse",
+          "change": "Change image",
+          "remove": "Remove",
+          "hint": "JPG or PNG, up to 2 MB"
+        },
+        "actions": {
+          "addVariant": "Add variant",
+          "removeVariant": "Remove variant",
+          "addImage": "Add image",
+          "removeImage": "Remove image",
+          "addDrawing": "Add technical drawing",
+          "removeDrawing": "Remove drawing",
+          "addDocument": "Add document",
+          "removeDocument": "Remove document"
+        },
+        "save": "Update",
+        "saving": "Updating…",
+        "cancelAction": "Cancel",
+        "success": {
+          "title": "Product saved",
+          "body": "Changes were saved."
+        },
+        "errors": {
+          "title": "Could not save",
+          "generic": "Try again.",
+          "validation": "Fix highlighted fields.",
+          "required": "Required.",
+          "invalidSlug": "Invalid slug.",
+          "duplicateVariant": "Each variant combination must be unique."
+        },
+        "notFound": {
+          "title": "Not found",
+          "body": "Product may have been removed."
+        }
+      },
+      "view": {
+        "cancelAction": "Cancel",
+        "editAction": "Edit product",
+        "noImage": "No image",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        },
+        "fields": {
+          "productCode": "Product code",
+          "slug": "Slug",
+          "category": "Category",
+          "type": "Type",
+          "status": "Status",
+          "featured": "Featured",
+          "variants": "Variants",
+          "description": "Description",
+          "created": "Created",
+          "updated": "Updated"
+        },
+        "notFound": {
+          "title": "Not found",
+          "body": "Product may have been removed."
         }
       }
     }

@@ -8,7 +8,7 @@ import {
   AdminFormSelect,
   AdminFormTextarea,
   AdminPhoneField,
-  AdminFormImageUpload,
+  AdminProfilePhotoUpload,
 } from "@/components/admin/common";
 import { TEAM_MEMBER_IMAGE_UPLOAD_CONSTRAINTS } from "@/lib/image-upload.config";
 import { Button, ButtonLink } from "@/components/ui/buttons";
@@ -22,6 +22,7 @@ import {
   updateTeamMember,
 } from "@/lib/team-members";
 import { getTeamRolesState, TEAM_ROLES_UPDATED_EVENT } from "@/lib/team-roles";
+import { initials } from "@/lib/utils";
 import {
   isTeamMemberFormValid,
   validateTeamMemberForm,
@@ -253,12 +254,12 @@ export function TeamMemberForm({ editId }: TeamMemberFormProps) {
           <section className="admin-member-form__section admin-member-form__section--profile">
             <div className="admin-member-form__profile">
               <div className="admin-member-form__media">
-                <AdminFormImageUpload
+                <AdminProfilePhotoUpload
                   id={imageId}
                   label={t("fields.image")}
                   required
-                  variant="icon"
                   constraints={TEAM_MEMBER_IMAGE_UPLOAD_CONSTRAINTS}
+                  placeholderInitials={initials(values.name)}
                   value={values.image}
                   onChange={(nextImage) => updateField("image", nextImage, "image")}
                   onBlur={() => touchField("image")}

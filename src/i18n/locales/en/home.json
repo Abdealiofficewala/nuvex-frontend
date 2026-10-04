@@ -91,6 +91,27 @@
     "title": "Threading, finishing, and despatch under one roof.",
     "body": "Bolts are headed and rolled, nuts are tapped, nails are drawn, and orders leave counted."
   },
+  "strength": {
+    "eyebrow": "Why Hakimi",
+    "title": "Built on quality. Trusted worldwide.",
+    "lede": "Experience, catalogue depth, and supply reach — measured the way your site orders.",
+    "years": {
+      "title": "Years",
+      "description": "Supplying Fasteners"
+    },
+    "products": {
+      "title": "SKUs",
+      "description": "Bolts, Nuts, Screws & Nails"
+    },
+    "applications": {
+      "title": "Product Lines",
+      "description": "Industrial catalogue families"
+    },
+    "countries": {
+      "title": "States & Export Markets",
+      "description": "Pan-India and overseas supply"
+    }
+  },
   "testimonials": {
     "eyebrow": "From the floor",
     "title": "What arrived, and what it did."

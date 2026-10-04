@@ -10,7 +10,12 @@ export type HomepageHero = {
 export type HomepageStat = {
   key: string;
   value: string;
-  label: string;
+  title: string;
+  description: string;
+  /** Legacy combined label from older homepage payloads */
+  label?: string;
+  image?: string;
+  imageAlt?: string;
 };
 
 export type HomepageBenefit = {

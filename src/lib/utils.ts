@@ -19,6 +19,16 @@ export function hasValue(value: string | undefined | null): boolean {
   return Boolean(value?.trim());
 }
 
+/** Title-style casing for names, places, and similar profile text. */
+export function capitalizeFieldText(value: string): string {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return trimmed;
+  }
+
+  return trimmed.replace(/\b\w/g, (character) => character.toUpperCase());
+}
+
 export function initials(name?: string | null): string {
   if (!name?.trim()) {
     return "";

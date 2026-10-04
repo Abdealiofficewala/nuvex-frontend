@@ -1,13 +1,10 @@
-import { getTranslations } from "next-intl/server";
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { CreateUserForm } from "@/components/admin/users/CreateUserForm";
+import { UserForm } from "@/components/admin/user-management/UserForm";
 
-export default async function AdminUsersCreatePage() {
-  const t = await getTranslations("admin.users.create");
-
+export default function AdminUsersCreatePage() {
   return (
-    <AdminPage pageKey="users" wide title={t("title")} hideDescription>
-      <CreateUserForm />
+    <AdminPage pageKey="users" wide hideDescription>
+      <UserForm />
     </AdminPage>
   );
 }
