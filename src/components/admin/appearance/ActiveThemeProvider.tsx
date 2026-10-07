@@ -96,3 +96,7 @@ export function useActiveTheme() {
 
   return context;
 }
+
+export function useActiveThemeOptional() {
+  return useContext(ActiveThemeContext);
+}

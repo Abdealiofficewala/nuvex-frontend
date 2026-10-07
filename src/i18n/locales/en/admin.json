@@ -77,10 +77,14 @@
     "mainMenu": "Main menu",
     "overview": "Overview",
     "theme": "Theme",
-    "themeListing": "Themes",
-    "themeLogos": "Logos",
+    "settings": "Settings",
+    "themeListing": "All themes",
+    "themeBrandIdentity": "Brand identity",
+    "themeLogos": "Brand identity",
     "themeColors": "Colors",
     "themeTypography": "Typography",
+    "themeShape": "Shape",
+    "themeAppearance": "Appearance",
     "hero": "Hero",
     "banners": "Banners",
     "industries": "Industries",
@@ -153,7 +157,15 @@
       },
       "themeTypography": {
         "title": "Typography",
-        "lede": "Manage fonts and corner radius scale."
+        "lede": "Heading and body fonts, scale, and font library."
+      },
+      "themeShape": {
+        "title": "Shape",
+        "lede": "Border radius and button corner tokens."
+      },
+      "themeAppearance": {
+        "title": "Appearance",
+        "lede": "Light, dark, system defaults and visitor theme switching."
       },
       "banners": {
         "title": "Banners",
@@ -2196,6 +2208,10 @@
         "slug": "Slug",
         "palette": "Colors",
         "status": "Status",
+        "font": "Font",
+        "mode": "Mode",
+        "schedule": "Schedule",
+        "priority": "Priority",
         "updated": "Updated",
         "actions": "Actions",
         "actionsViewTheme": "View theme",
@@ -2204,6 +2220,24 @@
       "status": {
         "active": "Active",
         "inactive": "Inactive"
+      },
+      "lifecycle": {
+        "draft": "Draft",
+        "scheduled": "Scheduled",
+        "active": "Active",
+        "expired": "Expired",
+        "disabled": "Disabled"
+      },
+      "modes": {
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+      },
+      "schedule": {
+        "manual": "Manual",
+        "always": "Always active",
+        "scheduled": "Scheduled",
+        "fallback": "Fallback"
       },
       "actions": {
         "view": "View",
@@ -2343,6 +2377,70 @@
       "back": "Back",
       "edit": "Edit"
     },
+    "typographySettings": {
+      "fields": {
+        "headingFont": "Heading font",
+        "bodyFont": "Body font",
+        "scale": "Base font size"
+      },
+      "library": {
+        "title": "Font library"
+      },
+      "save": "Save",
+      "saving": "Saving…",
+      "success": {
+        "title": "Typography updated",
+        "body": "Font selections were saved."
+      },
+      "errors": {
+        "title": "Typography update failed",
+        "load": "Could not load typography settings.",
+        "save": "Could not save typography settings."
+      }
+    },
+    "shapeSettings": {
+      "fields": {
+        "borderRadius": "Border radius",
+        "buttonRadius": "Button radius"
+      },
+      "save": "Save",
+      "saving": "Saving…",
+      "success": {
+        "title": "Shape updated",
+        "body": "Radius tokens were saved."
+      },
+      "errors": {
+        "title": "Shape update failed",
+        "load": "Could not load shape settings.",
+        "save": "Could not save shape settings."
+      }
+    },
+    "globalAppearance": {
+      "fields": {
+        "defaultMode": "Default appearance",
+        "allowUserThemeSwitch": "Allow visitors to switch theme"
+      },
+      "modes": {
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+      },
+      "options": {
+        "yes": "Yes",
+        "no": "No"
+      },
+      "save": "Save",
+      "saving": "Saving…",
+      "success": {
+        "title": "Appearance updated",
+        "body": "Global appearance settings were saved."
+      },
+      "errors": {
+        "title": "Appearance update failed",
+        "load": "Could not load appearance settings.",
+        "save": "Could not save appearance settings."
+      }
+    },
     "colors": {
       "toolbarTitle": "Colors",
       "createAction": "Create color",
@@ -2464,21 +2562,37 @@
       "fields": {
         "name": "Name",
         "branding": "Brand",
-        "colors": "Colors"
+        "colors": "Colors",
+        "typography": "Typography",
+        "appearance": "Appearance mode"
+      },
+      "appearance": {
+        "modes": {
+          "light": "Light",
+          "dark": "Dark",
+          "system": "System"
+        }
       },
       "schedule": {
-        "modeLabel": "Schedule",
+        "modeLabel": "Activation",
         "modes": {
-          "manual": "Manual",
+          "manual": "Activate manually",
+          "always": "Always active",
+          "scheduled": "Scheduled",
           "interval": "Date range",
           "from_date": "From date"
         },
         "startDate": "Start date",
         "endDate": "End date",
-        "fallbackTheme": "Fallback theme",
+        "startTime": "Start time",
+        "endTime": "End time",
+        "timezone": "Timezone",
+        "priority": "Priority",
+        "fallbackTheme": "Fallback theme (optional)",
+        "fallbackDefault": "Use site fallback theme",
         "noFallbackThemes": "Add another theme to use as fallback."
       },
-      "missingResources": "Create at least one brand and color palette first.",
+      "missingResources": "Create at least one brand, color palette, and typography preset first.",
       "previewAction": "Preview",
       "save": "Save",
       "update": "Update",

@@ -17,6 +17,7 @@ import {
 import { AdminTooltip } from "@/components/admin/common/AdminTooltip";
 import { useToast } from "@/components/ui/toast";
 import { APPEARANCE_UPDATED_EVENT, ROUTES, themeViewHref } from "@/lib/constants";
+import { computeThemeLifecycleStatus } from "@/lib/theme/status";
 import { appearanceService } from "@/services/appearance.service";
 import type { ResolvedTheme, ThemeRecord } from "@/types/appearance";
 
@@ -157,11 +158,6 @@ export function ThemesListing() {
         render: (row) => <strong>{row.name}</strong>,
       },
       {
-        key: "slug",
-        header: t("table.slug"),
-        render: (row) => row.slug,
-      },
-      {
         key: "palette",
         header: t("table.palette"),
         render: (row) => (
@@ -175,11 +171,48 @@ export function ThemesListing() {
       {
         key: "status",
         header: t("table.status"),
-        render: (row) => (
-          <span className={row.isActive ? "appearance-status is-active" : "appearance-status"}>
-            {row.isActive ? t("status.active") : t("status.inactive")}
-          </span>
-        ),
+        render: (row) => {
+          const status = computeThemeLifecycleStatus(row);
+          return (
+            <span className={status === "active" ? "appearance-status is-active" : "appearance-status"}>
+              {t(`lifecycle.${status}` as "lifecycle.active")}
+            </span>
+          );
+        },
+      },
+      {
+        key: "font",
+        header: t("table.font"),
+        render: (row) => row.resolved.typography.headingFont.split(",")[0]?.replace(/"/g, "") ?? "—",
+      },
+      {
+        key: "mode",
+        header: t("table.mode"),
+        render: (row) => t(`modes.${row.appearance?.colorScheme ?? "light"}`),
+      },
+      {
+        key: "schedule",
+        header: t("table.schedule"),
+        render: (row) => {
+          if (row.schedule.mode === "scheduled" && row.schedule.startDate && row.schedule.endDate) {
+            return `${row.schedule.startDate} → ${row.schedule.endDate}`;
+          }
+
+          if (row.isFallback) {
+            return t("schedule.fallback");
+          }
+
+          if (row.schedule.mode === "interval" || row.schedule.mode === "from_date") {
+            return t("schedule.scheduled");
+          }
+
+          return t(`schedule.${row.schedule.mode}` as "schedule.manual");
+        },
+      },
+      {
+        key: "priority",
+        header: t("table.priority"),
+        render: (row) => row.schedule.priority ?? 0,
       },
       {
         key: "updated",

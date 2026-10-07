@@ -1,11 +1,15 @@
 import type { CSSProperties } from "react";
+import { mapSemanticColorVars } from "@/lib/theme/token-mapper";
 import type { ResolvedTheme } from "@/types/appearance";
 
 export function resolvedThemeToCssVars(resolved: ResolvedTheme): CSSProperties {
   const { colors, typography, design, branding } = resolved;
   const spacingScale = design.spacing.scale;
+  const scheme = resolved.theme.appearance?.colorScheme ?? "light";
 
   return {
+    ...mapSemanticColorVars(colors),
+    colorScheme: scheme === "system" ? "light dark" : scheme,
     "--color-primary": colors.primary,
     "--color-primary-dark": colors.primaryDark,
     "--color-secondary": colors.secondary,

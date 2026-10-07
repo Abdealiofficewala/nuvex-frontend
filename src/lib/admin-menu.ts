@@ -6,6 +6,9 @@ export const ADMIN_MENU_ICONS = [
   "themeListing",
   "themeLogos",
   "themeColors",
+  "themeTypography",
+  "themeShape",
+  "themeAppearance",
   "companyDetails",
   "topBar",
   "contactDetails",
@@ -45,9 +48,17 @@ export type AdminMenuIcon = (typeof ADMIN_MENU_ICONS)[number];
 export type AdminMenuNavLabelKey =
   | "overview"
   | "theme"
+  | "settings"
   | "themeListing"
   | "themeLogos"
+  | "themeBrandIdentity"
   | "themeColors"
+  | "themeTypography"
+  | "themeShape"
+  | "themeAppearance"
+  | "themeTypography"
+  | "themeShape"
+  | "themeAppearance"
   | "companyDetails"
   | "topBar"
   | "contactDetails"
@@ -84,7 +95,7 @@ export type AdminMenuNavLabelKey =
 
 export type AdminMenuGroupLabelKey = Extract<
   AdminMenuNavLabelKey,
-  "userManagement" | "theme" | "companyDetails" | "teamMembers" | "hero" | "industries" | "products"
+  "userManagement" | "theme" | "settings" | "companyDetails" | "teamMembers" | "hero" | "industries" | "products"
 >;
 
 export type AdminMenuHeaderKey =
@@ -102,6 +113,9 @@ export type AdminMenuHeaderKey =
   | "themeColorsCreate"
   | "themeColorsView"
   | "themeColorsEdit"
+  | "themeTypography"
+  | "themeShape"
+  | "themeAppearance"
   | "topBar"
   | "contactDetails"
   | "socialMediaLinks"
@@ -202,6 +216,9 @@ export type AdminMenuAccessId =
   | "themeListing"
   | "themeLogos"
   | "themeColors"
+  | "themeTypography"
+  | "themeShape"
+  | "themeAppearance"
   | "topBar"
   | "contactDetails"
   | "socialMediaLinks"
@@ -299,23 +316,14 @@ export const ADMIN_MENU: readonly AdminMenuEntry[] = [
     kind: "group",
     key: "theme",
     icon: "theme",
-    navLabelKey: "theme",
+    navLabelKey: "settings",
     children: [
-      {
-        kind: "page",
-        key: "themeListing",
-        route: ROUTES.admin.theme.listing,
-        icon: "themeListing",
-        navLabelKey: "themeListing",
-        headerKey: "themeListing",
-        accessId: "themeListing",
-      },
       {
         kind: "page",
         key: "themeLogos",
         route: ROUTES.admin.theme.logos,
         icon: "themeLogos",
-        navLabelKey: "themeLogos",
+        navLabelKey: "themeBrandIdentity",
         headerKey: "themeLogos",
         accessId: "themeLogos",
       },
@@ -327,6 +335,42 @@ export const ADMIN_MENU: readonly AdminMenuEntry[] = [
         navLabelKey: "themeColors",
         headerKey: "themeColors",
         accessId: "themeColors",
+      },
+      {
+        kind: "page",
+        key: "themeTypography",
+        route: ROUTES.admin.theme.typography,
+        icon: "themeTypography",
+        navLabelKey: "themeTypography",
+        headerKey: "themeTypography",
+        accessId: "themeTypography",
+      },
+      {
+        kind: "page",
+        key: "themeShape",
+        route: ROUTES.admin.theme.shape,
+        icon: "themeShape",
+        navLabelKey: "themeShape",
+        headerKey: "themeShape",
+        accessId: "themeShape",
+      },
+      {
+        kind: "page",
+        key: "themeAppearance",
+        route: ROUTES.admin.theme.appearance,
+        icon: "themeAppearance",
+        navLabelKey: "themeAppearance",
+        headerKey: "themeAppearance",
+        accessId: "themeAppearance",
+      },
+      {
+        kind: "page",
+        key: "themeListing",
+        route: ROUTES.admin.theme.listing,
+        icon: "themeListing",
+        navLabelKey: "themeListing",
+        headerKey: "themeListing",
+        accessId: "themeListing",
       },
     ],
   },
@@ -661,6 +705,18 @@ const ADMIN_HEADER_ROUTE_RULES: readonly AdminHeaderRouteRule[] = [
       const suffix = pathname.slice(base.length);
       return suffix.length > 0 && !suffix.includes("/");
     },
+  },
+  {
+    headerKey: "themeTypography",
+    test: (pathname) => pathname === ROUTES.admin.theme.typography,
+  },
+  {
+    headerKey: "themeShape",
+    test: (pathname) => pathname === ROUTES.admin.theme.shape,
+  },
+  {
+    headerKey: "themeAppearance",
+    test: (pathname) => pathname === ROUTES.admin.theme.appearance,
   },
   {
     headerKey: "bannersCreate",

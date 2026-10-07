@@ -29,9 +29,9 @@
 }
 
 .ui-button--accent {
-  border-color: #a8662e;
-  background: #c17a3a;
-  color: #fff;
+  border-color: color-mix(in srgb, var(--color-accent) 80%, #000 20%);
+  background: var(--color-accent);
+  color: var(--color-accent-foreground, #fff);
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: none;

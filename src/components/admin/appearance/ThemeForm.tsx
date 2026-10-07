@@ -8,10 +8,11 @@ import { AdminFormField } from "@/components/admin/common/AdminFormField";
 import { AdminFormSelect } from "@/components/admin/common/AdminFormSelect";
 import { Button } from "@/components/ui/buttons";
 import { useToast } from "@/components/ui/toast";
-import { DEFAULT_DESIGN } from "@/lib/appearance/defaults";
+import { DEFAULT_DESIGN, DEFAULT_THEME_APPEARANCE } from "@/lib/appearance/defaults";
 import { resolveThemeDraft } from "@/lib/appearance/resolve-theme";
 import { normalizeThemeSchedule } from "@/lib/appearance/schedule";
 import { normalizeSlug } from "@/lib/appearance/slug";
+import { THEME_SCHEDULE_TIMEZONES } from "@/lib/appearance/timezones";
 import { useAppearanceResources } from "@/lib/appearance/use-appearance-resources";
 import { ROUTES } from "@/lib/constants";
 import { appearanceService } from "@/services/appearance.service";
@@ -19,6 +20,7 @@ import type {
   AppearanceStore,
   ThemeActivationMode,
   ThemeActivationSchedule,
+  ThemeAppearanceSettings,
   ThemeInput,
   ThemeRecord,
 } from "@/types/appearance";
@@ -32,6 +34,8 @@ type ThemeFormState = {
   name: string;
   brandingId: string | null;
   colorPaletteId: string | null;
+  typographyId: string | null;
+  appearance: ThemeAppearanceSettings;
   schedule: ThemeActivationSchedule;
 };
 
@@ -50,35 +54,56 @@ function PreviewIcon() {
   );
 }
 
+function isScheduledMode(mode: ThemeActivationMode) {
+  return mode === "scheduled" || mode === "interval";
+}
+
 function isScheduleComplete(schedule: ThemeActivationSchedule) {
-  if (schedule.mode === "manual") {
+  if (schedule.mode === "manual" || schedule.mode === "always") {
     return true;
   }
 
-  if (!schedule.startDate?.trim()) {
-    return false;
-  }
+  if (isScheduledMode(schedule.mode) || schedule.mode === "from_date") {
+    if (!schedule.startDate?.trim()) {
+      return false;
+    }
 
-  if (schedule.mode === "from_date") {
+    if (isScheduledMode(schedule.mode)) {
+      return Boolean(schedule.endDate?.trim());
+    }
+
     return true;
   }
 
-  return Boolean(schedule.endDate?.trim() && schedule.fallbackThemeId);
+  return true;
 }
 
 function buildStore(
   branding: AppearanceStore["branding"],
   colorPalettes: AppearanceStore["colorPalettes"],
+  typographyPresets: AppearanceStore["typographyPresets"],
   themes: ThemeRecord[],
 ): AppearanceStore {
-  return { branding, colorPalettes, themes };
+  return {
+    branding,
+    colorPalettes,
+    typographyPresets,
+    themes,
+    fonts: [],
+    settings: { allowUserThemeSwitch: true, defaultColorScheme: "system" },
+  };
 }
 
 export function ThemeForm({ mode, initialTheme }: ThemeFormProps) {
   const t = useTranslations("admin.appearance.themeForm");
   const toast = useToast();
   const router = useRouter();
-  const { branding, colorPalettes, loading: resourcesLoading } = useAppearanceResources();
+  const {
+    branding,
+    colorPalettes,
+    typographyPresets,
+    loading: resourcesLoading,
+  } = useAppearanceResources();
   const [existingThemes, setExistingThemes] = useState<ThemeRecord[]>([]);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -86,6 +111,8 @@ export function ThemeForm({ mode, initialTheme }: ThemeFormProps) {
     name: initialTheme?.name ?? "",
     brandingId: initialTheme?.brandingId ?? null,
     colorPaletteId: initialTheme?.colorPaletteId ?? null,
+    typographyId: initialTheme?.typographyId ?? null,
+    appearance: initialTheme?.appearance ?? { ...DEFAULT_THEME_APPEARANCE },
     schedule: normalizeThemeSchedule(initialTheme?.schedule),
   }));
 
@@ -103,13 +130,14 @@ export function ThemeForm({ mode, initialTheme }: ThemeFormProps) {
       ...form,
       brandingId: form.brandingId ?? branding[0]?.id ?? null,
       colorPaletteId: form.colorPaletteId ?? colorPalettes[0]?.id ?? null,
+      typographyId: form.typographyId ?? typographyPresets[0]?.id ?? null,
     }),
-    [form, branding, colorPalettes],
+    [form, branding, colorPalettes, typographyPresets],
   );
 
   const store = useMemo(
-    () => buildStore(branding, colorPalettes, existingThemes),
-    [branding, colorPalettes, existingThemes],
+    () => buildStore(branding, colorPalettes, typographyPresets, existingThemes),
+    [branding, colorPalettes, typographyPresets, existingThemes],
   );
 
   const previewResolved = useMemo(
@@ -122,19 +150,34 @@ export function ThemeForm({ mode, initialTheme }: ThemeFormProps) {
           name: effectiveForm.name || t("draftName"),
           slug: normalizeSlug(effectiveForm.name || "draft"),
           schedule: form.schedule,
+          appearance: form.appearance,
         },
         initialTheme,
       ),
-    [store, effectiveForm, form.schedule, initialTheme, t],
+    [store, effectiveForm, form.schedule, form.appearance, initialTheme, t],
   );
 
   const activationModeOptions = useMemo(
     () =>
-      (["manual", "interval", "from_date"] as ThemeActivationMode[]).map((value) => ({
+      (["manual", "always", "scheduled"] as ThemeActivationMode[]).map((value) => ({
         label: t(`schedule.modes.${value}`),
         value,
       })),
     [t],
+  );
+
+  const appearanceOptions = useMemo(
+    () =>
+      (["light", "dark", "system"] as const).map((value) => ({
+        label: t(`appearance.modes.${value}`),
+        value,
+      })),
+    [t],
+  );
+
+  const timezoneOptions = useMemo(
+    () => THEME_SCHEDULE_TIMEZONES.map((zone) => ({ label: zone, value: zone })),
+    [],
   );
 
   const fallbackThemeOptions = useMemo(
@@ -152,13 +195,26 @@ export function ThemeForm({ mode, initialTheme }: ThemeFormProps) {
     }));
   }
 
-  function onActivationModeChange(mode: string) {
-    const nextMode = mode as ThemeActivationMode;
+  function onActivationModeChange(modeValue: string) {
+    const nextMode = modeValue as ThemeActivationMode;
+
+    if (nextMode === "manual" || nextMode === "always") {
+      updateSchedule({
+        mode: nextMode,
+        startDate: null,
+        endDate: null,
+        startTime: null,
+        endTime: null,
+        fallbackThemeId: null,
+      });
+      return;
+    }
+
     updateSchedule({
-      mode: nextMode,
-      startDate: nextMode === "manual" ? null : form.schedule.startDate,
-      endDate: nextMode === "interval" ? form.schedule.endDate : null,
-      fallbackThemeId: nextMode === "interval" ? form.schedule.fallbackThemeId : null,
+      mode: "scheduled",
+      startTime: form.schedule.startTime ?? "00:00",
+      endTime: form.schedule.endTime ?? "23:59",
+      timezone: form.schedule.timezone ?? "Asia/Kolkata",
     });
   }
 
@@ -172,6 +228,9 @@ export function ThemeForm({ mode, initialTheme }: ThemeFormProps) {
       description: initialTheme?.description ?? "",
       brandingId: effectiveForm.brandingId,
       colorPaletteId: effectiveForm.colorPaletteId,
+      typographyId: effectiveForm.typographyId,
+      appearance: form.appearance,
+      disabled: initialTheme?.disabled ?? false,
       schedule: normalizeThemeSchedule(form.schedule),
       design: initialTheme?.design ?? structuredClone(DEFAULT_DESIGN),
     };
@@ -201,17 +260,25 @@ export function ThemeForm({ mode, initialTheme }: ThemeFormProps) {
 
   const brandingOptions = branding.map((item) => ({ label: item.name, value: item.id }));
   const paletteOptions = colorPalettes.map((item) => ({ label: item.name, value: item.id }));
-  const missingResources = !resourcesLoading && (branding.length === 0 || colorPalettes.length === 0);
+  const typographyOptions = typographyPresets.map((item) => ({ label: item.name, value: item.id }));
+  const missingResources =
+    !resourcesLoading &&
+    (branding.length === 0 || colorPalettes.length === 0 || typographyPresets.length === 0);
   const scheduleMode = form.schedule.mode;
-  const needsFallback = scheduleMode === "interval" && fallbackThemeOptions.length === 0;
+  const showScheduleWindow = scheduleMode !== "manual" && scheduleMode !== "always";
   const submitDisabled =
-    saving || resourcesLoading || missingResources || needsFallback || !effectiveForm.name.trim();
+    saving ||
+    resourcesLoading ||
+    missingResources ||
+    !effectiveForm.name.trim() ||
+    !isScheduleComplete(form.schedule);
   const previewReady =
     !resourcesLoading &&
     !missingResources &&
     Boolean(form.name.trim()) &&
     Boolean(form.brandingId) &&
     Boolean(form.colorPaletteId) &&
+    Boolean(form.typographyId) &&
     isScheduleComplete(form.schedule);
   const previewDisabled = !previewReady;
 
@@ -248,53 +315,109 @@ export function ThemeForm({ mode, initialTheme }: ThemeFormProps) {
             disabled={saving || resourcesLoading}
           />
           <AdminFormSelect
+            id="theme-typography"
+            label={t("fields.typography")}
+            required
+            value={form.typographyId ?? ""}
+            options={typographyOptions}
+            onChange={(value) => setForm((current) => ({ ...current, typographyId: value }))}
+            disabled={saving || resourcesLoading}
+          />
+          <AdminFormSelect
+            id="theme-appearance-mode"
+            label={t("fields.appearance")}
+            required
+            value={form.appearance.colorScheme}
+            options={appearanceOptions}
+            onChange={(value) =>
+              setForm((current) => ({
+                ...current,
+                appearance: {
+                  ...current.appearance,
+                  colorScheme: value as ThemeAppearanceSettings["colorScheme"],
+                },
+              }))
+            }
+            disabled={saving}
+          />
+          <AdminFormSelect
             id="theme-activation-mode"
             label={t("schedule.modeLabel")}
             required
-            value={form.schedule.mode}
+            value={scheduleMode === "interval" ? "scheduled" : scheduleMode}
             options={activationModeOptions}
             onChange={onActivationModeChange}
             disabled={saving}
           />
-          {scheduleMode !== "manual" ? (
-            <AdminFormField
-              id="theme-start-date"
-              type="date"
-              label={t("schedule.startDate")}
-              required
-              value={form.schedule.startDate ?? ""}
-              onChange={(event) => updateSchedule({ startDate: event.target.value || null })}
-              disabled={saving}
-            />
-          ) : null}
-          {scheduleMode === "interval" ? (
+          {showScheduleWindow ? (
             <>
+              <AdminFormField
+                id="theme-start-date"
+                type="date"
+                label={t("schedule.startDate")}
+                required
+                value={form.schedule.startDate ?? ""}
+                onChange={(event) => updateSchedule({ startDate: event.target.value || null })}
+                disabled={saving}
+              />
               <AdminFormField
                 id="theme-end-date"
                 type="date"
                 label={t("schedule.endDate")}
-                required
+                required={isScheduledMode(scheduleMode)}
                 value={form.schedule.endDate ?? ""}
                 onChange={(event) => updateSchedule({ endDate: event.target.value || null })}
+                disabled={saving}
+              />
+              <AdminFormField
+                id="theme-start-time"
+                type="time"
+                label={t("schedule.startTime")}
+                value={form.schedule.startTime ?? "00:00"}
+                onChange={(event) => updateSchedule({ startTime: event.target.value || null })}
+                disabled={saving}
+              />
+              <AdminFormField
+                id="theme-end-time"
+                type="time"
+                label={t("schedule.endTime")}
+                value={form.schedule.endTime ?? "23:59"}
+                onChange={(event) => updateSchedule({ endTime: event.target.value || null })}
+                disabled={saving}
+              />
+              <AdminFormSelect
+                id="theme-timezone"
+                label={t("schedule.timezone")}
+                required
+                value={form.schedule.timezone}
+                options={timezoneOptions}
+                onChange={(value) => updateSchedule({ timezone: value })}
+                disabled={saving}
+              />
+              <AdminFormField
+                id="theme-priority"
+                type="number"
+                label={t("schedule.priority")}
+                min={0}
+                value={String(form.schedule.priority ?? 0)}
+                onChange={(event) =>
+                  updateSchedule({ priority: Number.parseInt(event.target.value, 10) || 0 })
+                }
                 disabled={saving}
               />
               <AdminFormSelect
                 id="theme-fallback"
                 label={t("schedule.fallbackTheme")}
-                required
                 value={form.schedule.fallbackThemeId ?? ""}
-                options={fallbackThemeOptions}
+                options={[{ label: t("schedule.fallbackDefault"), value: "" }, ...fallbackThemeOptions]}
                 onChange={(value) => updateSchedule({ fallbackThemeId: value || null })}
-                disabled={saving || needsFallback}
+                disabled={saving}
               />
             </>
           ) : null}
         </div>
         {missingResources ? (
           <p className="appearance-static-note appearance-static-note--warning">{t("missingResources")}</p>
-        ) : null}
-        {scheduleMode === "interval" && needsFallback ? (
-          <p className="appearance-static-note appearance-static-note--warning">{t("schedule.noFallbackThemes")}</p>
         ) : null}
 
         <div className="appearance-theme-form__actions appearance-theme-form__actions--split">

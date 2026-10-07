@@ -3,11 +3,12 @@
 import { useCallback, useEffect, useState } from "react";
 import { APPEARANCE_UPDATED_EVENT } from "@/lib/constants";
 import { appearanceService } from "@/services/appearance.service";
-import type { BrandingRecord, ColorPaletteRecord } from "@/types/appearance";
+import type { BrandingRecord, ColorPaletteRecord, TypographyPresetRecord } from "@/types/appearance";
 
 export function useAppearanceResources() {
   const [branding, setBranding] = useState<BrandingRecord[]>([]);
   const [colorPalettes, setColorPalettes] = useState<ColorPaletteRecord[]>([]);
+  const [typographyPresets, setTypographyPresets] = useState<TypographyPresetRecord[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -16,13 +17,15 @@ export function useAppearanceResources() {
     setError(null);
 
     try {
-      const [brandingItems, paletteItems] = await Promise.all([
+      const [brandingItems, paletteItems, typographyItems] = await Promise.all([
         appearanceService.listBranding(),
         appearanceService.listColorPalettes(),
+        appearanceService.listTypographyPresets(),
       ]);
 
       setBranding(brandingItems);
       setColorPalettes(paletteItems);
+      setTypographyPresets(typographyItems);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Failed to load appearance resources");
     } finally {
@@ -49,6 +52,7 @@ export function useAppearanceResources() {
   return {
     branding,
     colorPalettes,
+    typographyPresets,
     loading,
     error,
     refresh,

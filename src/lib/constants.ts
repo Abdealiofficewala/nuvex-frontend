@@ -26,6 +26,8 @@ export const ROUTES = {
       colors: "/admin/theme/colors",
       colorsCreate: "/admin/theme/colors/create",
       typography: "/admin/theme/typography",
+      shape: "/admin/theme/shape",
+      appearance: "/admin/theme/appearance",
     },
     company: {
       root: "/admin/company",

@@ -8,6 +8,26 @@
   --color-steel: #7b8490;
   --color-graphite: #0d1117;
   --font-sans: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+
+}
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --color-background: var(--color-background);
+  --color-surface: var(--color-surface);
+  --color-foreground: var(--color-foreground);
+  --color-muted-foreground: var(--color-muted-foreground);
+  --color-border: var(--color-border);
+  --color-input: var(--color-input);
+  --color-ring: var(--color-ring);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-danger: var(--color-danger);
+  --color-info: var(--color-info);
+  --radius-button: var(--radius-button);
 }
 
 :root {
@@ -25,6 +45,15 @@
   --color-line: #d4cfc4;
   --color-danger: #b42318;
   --color-success: #067647;
+  --color-foreground: #141a22;
+  --color-muted-foreground: #5c6570;
+  --color-border: #d4cfc4;
+  --color-input: #ffffff;
+  --color-ring: #1e3a5f;
+  --color-primary-foreground: #ffffff;
+  --color-info: #175cd3;
+  --color-warning: #b54708;
+  --radius-button: var(--radius-md);
   --font-sans: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
 
   --space-1: 4px;

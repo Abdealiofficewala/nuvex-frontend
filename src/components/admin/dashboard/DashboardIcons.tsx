@@ -407,6 +407,8 @@ const navIcons = {
   themeLogos: ThemeLogosIcon,
   themeColors: ThemeColorsIcon,
   themeTypography: ThemeTypographyIcon,
+  themeShape: ThemeIcon,
+  themeAppearance: SettingsIcon,
   companyDetails: CompanyIcon,
   topBar: TopBarIcon,
   contactDetails: ContactDetailsIcon,
