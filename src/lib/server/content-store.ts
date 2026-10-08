@@ -97,7 +97,7 @@ function createSeedStore(): ContentStore {
         id: "banner-hero-default",
         slug: "hero-default",
         title: "Precision fasteners for every build",
-        eyebrow: "Hakimi Fastners",
+        eyebrow: "Hakimi Industries",
         body: "Bolts, nuts, screws, and nails packed and counted the way your site actually orders.",
         image: "/images/hero/hero-assembly.jpg",
         pageRoute: ROUTES.home,

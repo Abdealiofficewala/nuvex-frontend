@@ -302,7 +302,7 @@ export const PROCESS_STEP_IMAGES = [
   },
   {
     src: "/images/infrastructure/workshop.jpg",
-    alt: "Packed fastener crates leaving the Hakimi Fastners workshop bay",
+    alt: "Packed fastener crates leaving the Hakimi Industries workshop bay",
   },
 ] as const;
 

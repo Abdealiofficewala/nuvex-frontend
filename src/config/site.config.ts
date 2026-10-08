@@ -2,11 +2,11 @@ import type { NavItem } from "@/types/navigation";
 
 export const siteConfig = {
   company: {
-    name: "Hakimi Fastners",
+    name: "Hakimi Industries",
     shortName: "Hakimi",
     tagline: "Nuts, bolts, screws, and nails for site and store.",
     description:
-      "Hakimi Fastners supplies nuts, bolts, screws, and nails for fabrication, construction, and maintenance. Standard sizes, marked grades, and packing you can issue from a bin.",
+      "Hakimi Industries supplies nuts, bolts, screws, and nails for fabrication, construction, and maintenance. Standard sizes, marked grades, and packing you can issue from a bin.",
     foundedYear: 2026,
   },
 
@@ -79,11 +79,11 @@ export const siteConfig = {
   },
 
   seo: {
-    title: "Hakimi Fastners | Nuts, Bolts, Screws & Nails",
+    title: "Hakimi Industries | Nuts, Bolts, Screws & Nails",
     description:
       "Hex bolts, nuts, screws, and nails for fabrication, construction, electrical work, and plant stores. Grade-marked lots, counted packing.",
     keywords: [
-      "Hakimi Fastners",
+      "Hakimi Industries",
       "hex bolts",
       "nuts and bolts",
       "screws",

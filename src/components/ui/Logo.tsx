@@ -84,6 +84,7 @@ export function Logo({ variant = "primary", className, width = 140, height = 40,
       width={width}
       height={height}
       className={cn("ui-logo", className)}
+      style={{ objectFit: "contain" }}
       priority={priority}
       unoptimized
     />

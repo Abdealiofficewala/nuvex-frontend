@@ -11,7 +11,7 @@ export type CompanyStrengthVisual = {
 export const COMPANY_STRENGTH_VISUALS: Record<string, CompanyStrengthVisual> = {
   years: {
     image: "/images/infrastructure/workshop.jpg",
-    imageAlt: "Hakimi Fastners workshop with threading, finishing, and dispatch under one roof",
+    imageAlt: "Hakimi Industries workshop with threading, finishing, and dispatch under one roof",
     layout: "backdrop",
   },
   products: {
@@ -21,7 +21,7 @@ export const COMPANY_STRENGTH_VISUALS: Record<string, CompanyStrengthVisual> = {
   },
   applications: {
     image: "/images/categories/bolts.jpg",
-    imageAlt: "Industrial bolt line from Hakimi Fastners catalogue families",
+    imageAlt: "Industrial bolt line from Hakimi Industries catalogue families",
     layout: "split",
   },
   countries: {

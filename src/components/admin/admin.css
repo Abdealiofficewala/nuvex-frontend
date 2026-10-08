@@ -1169,6 +1169,52 @@
   border-bottom: 1px solid rgb(255 255 255 / 0.08);
 }
 
+.admin-sidebar.is-expanded .admin-sidebar__header {
+  justify-content: flex-start;
+  padding-inline: 14px;
+}
+
+.admin-sidebar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  min-width: 0;
+  max-width: 100%;
+  text-decoration: none;
+  color: #f3f1ec;
+}
+
+.admin-sidebar__brand.is-expanded {
+  gap: 10px;
+}
+
+.admin-sidebar__brand-mark {
+  flex: 0 0 30px;
+  width: 30px !important;
+  height: 30px !important;
+  object-fit: contain;
+}
+
+.admin-sidebar__brand-name {
+  overflow: hidden;
+  max-width: 0;
+  opacity: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition:
+    max-width 0.22s ease,
+    opacity 0.18s ease;
+}
+
+.admin-sidebar__brand.is-expanded .admin-sidebar__brand-name {
+  max-width: 200px;
+  opacity: 1;
+}
+
 .admin-sidebar__body {
   position: relative;
   z-index: 1;

@@ -34,7 +34,7 @@ export function createSeedAppearanceStore(): AppearanceStore {
         mobileLogo: siteConfig.branding.mobileLogo,
         favicon: siteConfig.branding.favicon,
         applicationName: siteConfig.company.name,
-        brandName: siteConfig.company.shortName,
+        brandName: siteConfig.company.name,
         createdAt: NOW,
         updatedAt: NOW,
       },

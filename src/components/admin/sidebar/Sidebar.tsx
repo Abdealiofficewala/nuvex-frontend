@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { BackToWebsiteIcon } from "@/components/admin/header/AdminMenuIcons";
 import { AdminNavIcon } from "@/components/admin/dashboard/DashboardIcons";
-import { BrandLogo } from "@/components/website/common/BrandLogo";
+import { AdminSidebarBrand } from "@/components/admin/sidebar/AdminSidebarBrand";
 import { Link, usePathname, useRouter } from "@/i18n/routing";
 import { useAdminAccess } from "@/components/admin/access/AdminAccessProvider";
 import {
@@ -88,11 +88,7 @@ export function Sidebar({ expanded }: SidebarProps) {
       <div className="admin-sidebar__glow" aria-hidden="true" />
 
       <header className="admin-sidebar__header">
-        <BrandLogo
-          variant="light"
-          layout={expanded ? "horizontal" : "symbol-only"}
-          height={expanded ? 36 : 30}
-        />
+        <AdminSidebarBrand expanded={expanded} />
       </header>
 
       <div className="admin-sidebar__body">
