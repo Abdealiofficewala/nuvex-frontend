@@ -1,10 +1,10 @@
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { TypeForm } from "@/components/admin/product-types/TypeForm";
+import { TypeMasterForm } from "@/components/admin/products/master/TypeMasterForm";
 
-export default function CreateProductTypePage() {
+export default function Page() {
   return (
     <AdminPage pageKey="productTypesCreate" wide hideDescription>
-      <TypeForm />
+      <TypeMasterForm />
     </AdminPage>
   );
 }

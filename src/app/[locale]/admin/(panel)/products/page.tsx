@@ -1,6 +1,10 @@
-import { redirect } from "next/navigation";
-import { ROUTES } from "@/lib/constants";
+import { AdminPage } from "@/components/admin/common/AdminPage";
+import { ProductCatalogListing } from "@/components/admin/products/catalog/ProductCatalogListing";
 
-export default function AdminProductsIndexPage() {
-  redirect(ROUTES.admin.products.listing);
+export default function Page() {
+  return (
+    <AdminPage pageKey="productsListing" wide>
+      <ProductCatalogListing />
+    </AdminPage>
+  );
 }

@@ -1,0 +1,55 @@
+import type { FontRecord } from "@/types/appearance";
+
+/** Static font library — replace with API later without changing consumers. */
+export const FONT_LIBRARY: FontRecord[] = [
+  {
+    id: "font-system-ui",
+    name: "System UI",
+    family: 'ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif',
+    source: "system",
+    files: {},
+    weights: [400, 500, 600, 700],
+    style: "normal",
+    status: "active",
+  },
+  {
+    id: "font-inter",
+    name: "Inter",
+    family: '"Inter", ui-sans-serif, sans-serif',
+    source: "google",
+    files: {},
+    weights: [400, 500, 600, 700],
+    style: "normal",
+    status: "active",
+  },
+  {
+    id: "font-roboto",
+    name: "Roboto",
+    family: '"Roboto", ui-sans-serif, sans-serif',
+    source: "google",
+    files: {},
+    weights: [400, 500, 700],
+    style: "normal",
+    status: "active",
+  },
+  {
+    id: "font-open-sans",
+    name: "Open Sans",
+    family: '"Open Sans", ui-sans-serif, sans-serif',
+    source: "google",
+    files: {},
+    weights: [400, 600, 700],
+    style: "normal",
+    status: "active",
+  },
+  {
+    id: "font-poppins",
+    name: "Poppins",
+    family: '"Poppins", ui-sans-serif, sans-serif',
+    source: "google",
+    files: {},
+    weights: [500, 600, 700],
+    style: "normal",
+    status: "active",
+  },
+];

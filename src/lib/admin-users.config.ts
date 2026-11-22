@@ -21,6 +21,7 @@ export const ADMIN_USER_ADDRESS_FIELDS: AdminUserAddressField[] = [
 
 export type AdminUserRecord = {
   id: string;
+  username?: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -35,8 +36,11 @@ export type AdminUserRecord = {
   pincode: string;
   state: string;
   role: AdminUserRole;
+  roleId?: string;
   active: boolean;
   createdAt: string;
+  updatedAt?: string;
+  lastLoginAt?: string;
 };
 
 export type AdminUserInput = Omit<AdminUserRecord, "id" | "createdAt">;

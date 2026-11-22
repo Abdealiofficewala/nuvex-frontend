@@ -1,8 +1,6 @@
-import { ADMIN_AUTH } from "@/lib/constants";
 import {
   assignFieldError,
   isFormValid,
-  validateMinLength,
   validateRequiredEmail,
   validateRequiredPhone,
   validateRequiredText,
@@ -73,27 +71,14 @@ export function isAdminUserProfileFormValid(errors: AdminUserProfileFormErrors) 
   return isFormValid(errors);
 }
 
-export type CreateUserField =
-  | AdminUserProfileField
-  | "password"
-  | "confirmPassword"
-  | "role"
-  | "active";
+export type CreateUserField = AdminUserProfileField | "roleId" | "active";
 
 export type CreateUserValues = AdminUserProfileValues & {
-  password: string;
-  confirmPassword: string;
-  role: "" | "admin" | "editor" | "viewer";
+  roleId: string;
   active: boolean;
 };
 
-export type CreateUserErrorKey =
-  | AdminUserProfileErrorKey
-  | "roleRequired"
-  | "passwordRequired"
-  | "passwordShort"
-  | "confirmRequired"
-  | "confirmMismatch";
+export type CreateUserErrorKey = AdminUserProfileErrorKey | "roleRequired";
 
 export type CreateUserFormErrors = Partial<Record<CreateUserField, CreateUserErrorKey>>;
 
@@ -102,20 +87,8 @@ export function validateCreateUserForm(values: CreateUserValues): CreateUserForm
     ...validateAdminUserProfileForm(values),
   };
 
-  if (validateRequiredText(values.password)) {
-    errors.password = "passwordRequired";
-  } else if (validateMinLength(values.password, ADMIN_AUTH.minPasswordLength)) {
-    errors.password = "passwordShort";
-  }
-
-  if (validateRequiredText(values.confirmPassword)) {
-    errors.confirmPassword = "confirmRequired";
-  } else if (values.confirmPassword !== values.password) {
-    errors.confirmPassword = "confirmMismatch";
-  }
-
-  if (!values.role) {
-    errors.role = "roleRequired";
+  if (!values.roleId.trim()) {
+    errors.roleId = "roleRequired";
   }
 
   return errors;

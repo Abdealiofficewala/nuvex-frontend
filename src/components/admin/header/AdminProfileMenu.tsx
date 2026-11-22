@@ -62,7 +62,7 @@ export function AdminProfileMenu() {
             <span className="admin-menu__avatar admin-menu__avatar--lg">{initials}</span>
             <div className="admin-menu__user-meta">
               <Link
-                href={ROUTES.admin.users.details}
+                href={ROUTES.admin.users.profile}
                 className="admin-menu__user-profile"
                 onClick={close}
               >

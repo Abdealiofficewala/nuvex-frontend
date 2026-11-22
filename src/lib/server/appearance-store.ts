@@ -1,7 +1,13 @@
 import { randomUUID } from "crypto";
 import { mkdir, readFile, writeFile } from "fs/promises";
 import path from "path";
-import { DEFAULT_DESIGN, DEFAULT_THEME_SCHEDULE } from "@/lib/appearance/defaults";
+import { createSeedAppearanceStore } from "@/data/theme/seed";
+import {
+  DEFAULT_DESIGN,
+  DEFAULT_GLOBAL_APPEARANCE_SETTINGS,
+  DEFAULT_THEME_APPEARANCE,
+  DEFAULT_THEME_SCHEDULE,
+} from "@/lib/appearance/defaults";
 import { normalizeThemeSchedule } from "@/lib/appearance/schedule";
 import { getActiveTheme, resolveTheme } from "@/lib/appearance/resolve-theme";
 import { normalizeSlug, uniqueSlug } from "@/lib/appearance/slug";
@@ -18,6 +24,7 @@ import type {
   ColorPaletteInput,
   ColorPaletteRecord,
   ResolvedTheme,
+  ThemeDesignConfig,
   ThemeInput,
   ThemeRecord,
 } from "@/types/appearance";
@@ -32,28 +39,33 @@ function nowIso() {
 }
 
 function createEmptyStore(): AppearanceStore {
-  return {
-    branding: [],
-    colorPalettes: [],
-    themes: [],
-  };
+  return createSeedAppearanceStore();
 }
 
-function normalizeStore(parsed: AppearanceStore & { typography?: unknown }): AppearanceStore {
-  const { typography: _typography, ...store } = parsed;
+function normalizeStore(parsed: Partial<AppearanceStore> & { typography?: unknown }): AppearanceStore {
+  const seed = createSeedAppearanceStore();
+  const { typography: _typography, ...rest } = parsed;
+
+  const themes = (rest.themes ?? seed.themes).map((theme) => {
+    const record = theme as ThemeRecord;
+
+    return {
+      ...record,
+      isFallback: record.isFallback ?? false,
+      disabled: record.disabled ?? false,
+      typographyId: record.typographyId ?? seed.typographyPresets[0]?.id ?? null,
+      appearance: record.appearance ?? { ...DEFAULT_THEME_APPEARANCE },
+      schedule: normalizeThemeSchedule(record.schedule),
+    };
+  });
 
   return {
-    ...store,
-    themes: store.themes.map((theme) => {
-      const { typographyId: _typographyId, ...rest } = theme as ThemeRecord & {
-        typographyId?: string | null;
-      };
-
-      return {
-        ...rest,
-        schedule: normalizeThemeSchedule(rest.schedule),
-      };
-    }),
+    themes,
+    branding: rest.branding?.length ? rest.branding : seed.branding,
+    colorPalettes: rest.colorPalettes?.length ? rest.colorPalettes : seed.colorPalettes,
+    typographyPresets: rest.typographyPresets?.length ? rest.typographyPresets : seed.typographyPresets,
+    fonts: rest.fonts?.length ? rest.fonts : seed.fonts,
+    settings: rest.settings ?? seed.settings ?? { ...DEFAULT_GLOBAL_APPEARANCE_SETTINGS },
   };
 }
 
@@ -62,13 +74,16 @@ function isValidStore(parsed: AppearanceStore | null | undefined): parsed is App
     parsed &&
       Array.isArray(parsed.themes) &&
       Array.isArray(parsed.branding) &&
-      Array.isArray(parsed.colorPalettes),
+      Array.isArray(parsed.colorPalettes) &&
+      Array.isArray(parsed.typographyPresets) &&
+      Array.isArray(parsed.fonts),
   );
 }
 
 async function bootstrapSeedStore(): Promise<AppearanceStore> {
   if (!seedBootstrapPromise) {
-    seedBootstrapPromise = Promise.resolve(createEmptyStore());
+    const seed = createSeedAppearanceStore();
+    seedBootstrapPromise = writeStoreFile(seed).then(() => seed);
   }
 
   return seedBootstrapPromise;
@@ -191,6 +206,11 @@ export async function createTheme(input: ThemeInput, createdBy?: string | null) 
       throw new Error("validation");
     }
 
+    const typographyId = input.typographyId ?? store.typographyPresets[0]?.id ?? null;
+    if (typographyId && !store.typographyPresets.some((item) => item.id === typographyId)) {
+      throw new Error("validation");
+    }
+
     const timestamp = nowIso();
     const theme: ThemeRecord = {
       id: randomUUID(),
@@ -198,9 +218,13 @@ export async function createTheme(input: ThemeInput, createdBy?: string | null) 
       slug,
       description: input.description?.trim() ?? "",
       isActive: false,
+      isFallback: false,
+      disabled: input.disabled ?? false,
       brandingId: input.brandingId,
       colorPaletteId: input.colorPaletteId,
+      typographyId: input.typographyId ?? store.typographyPresets[0]?.id ?? null,
       schedule: normalizeThemeSchedule(input.schedule),
+      appearance: input.appearance ?? { ...DEFAULT_THEME_APPEARANCE },
       design: input.design ?? structuredClone(DEFAULT_DESIGN),
       createdBy: createdBy ?? null,
       createdAt: timestamp,
@@ -230,7 +254,10 @@ export async function updateTheme(id: string, input: Partial<ThemeInput>) {
       description: input.description?.trim() ?? current.description,
       brandingId: input.brandingId ?? current.brandingId,
       colorPaletteId: input.colorPaletteId ?? current.colorPaletteId,
+      typographyId: input.typographyId ?? current.typographyId,
       schedule: normalizeThemeSchedule(input.schedule ?? current.schedule),
+      appearance: input.appearance ?? current.appearance,
+      disabled: input.disabled ?? current.disabled,
       design: input.design ?? current.design,
     };
 
@@ -548,6 +575,133 @@ export async function deleteColorPalette(id: string) {
       },
       result: true,
     };
+  });
+}
+
+export async function disableTheme(id: string) {
+  return withStoreWrite((store) => {
+    const index = store.themes.findIndex((item) => item.id === id);
+    if (index < 0) {
+      throw new Error("not-found");
+    }
+
+    const current = store.themes[index]!;
+    if (current.isFallback) {
+      throw new Error("validation");
+    }
+
+    const updated: ThemeRecord = {
+      ...current,
+      disabled: true,
+      isActive: false,
+      updatedAt: nowIso(),
+    };
+
+    const themes = [...store.themes];
+    themes[index] = updated;
+
+    return { store: { ...store, themes }, result: updated };
+  });
+}
+
+export async function listFonts() {
+  const store = await getAppearanceStore();
+  return store.fonts;
+}
+
+export async function listTypographyPresets() {
+  const store = await getAppearanceStore();
+  return store.typographyPresets;
+}
+
+export async function getAppearanceSettings() {
+  const store = await getAppearanceStore();
+  return store.settings;
+}
+
+export async function updateAppearanceSettings(
+  input: Partial<AppearanceStore["settings"]>,
+) {
+  return withStoreWrite((store) => {
+    const settings = {
+      ...store.settings,
+      ...input,
+    };
+
+    return {
+      store: { ...store, settings },
+      result: settings,
+    };
+  });
+}
+
+export async function updateTypographyPreset(
+  id: string,
+  input: Partial<AppearanceStore["typographyPresets"][number]>,
+) {
+  return withStoreWrite((store) => {
+    const index = store.typographyPresets.findIndex((item) => item.id === id);
+    if (index < 0) {
+      throw new Error("not-found");
+    }
+
+    const current = store.typographyPresets[index]!;
+    const updated = {
+      ...current,
+      ...input,
+      tokens: input.tokens ?? current.tokens,
+      updatedAt: nowIso(),
+    };
+
+    const typographyPresets = [...store.typographyPresets];
+    typographyPresets[index] = updated;
+
+    return { store: { ...store, typographyPresets }, result: updated };
+  });
+}
+
+export type ThemeDesignPatch = {
+  radius?: Partial<ThemeDesignConfig["radius"]>;
+  components?: {
+    button?: Partial<ThemeDesignConfig["components"]["button"]>;
+  };
+};
+
+export async function updateDefaultThemeDesign(input: ThemeDesignPatch) {
+  return withStoreWrite((store) => {
+    const fallback =
+      store.themes.find((theme) => theme.isFallback) ?? store.themes.find((theme) => theme.isActive);
+
+    if (!fallback) {
+      throw new Error("not-found");
+    }
+
+    const index = store.themes.findIndex((theme) => theme.id === fallback.id);
+    const current = store.themes[index]!;
+    const design = {
+      ...current.design,
+      ...input,
+      radius: { ...current.design.radius, ...input.radius },
+      components: {
+        ...current.design.components,
+        ...input.components,
+        button: {
+          ...current.design.components.button,
+          ...input.components?.button,
+        },
+      },
+    };
+
+    const updated: ThemeRecord = {
+      ...current,
+      design,
+      updatedAt: nowIso(),
+    };
+
+    const themes = [...store.themes];
+    themes[index] = updated;
+
+    return { store: { ...store, themes }, result: updated };
   });
 }
 

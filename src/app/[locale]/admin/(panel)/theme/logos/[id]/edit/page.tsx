@@ -1,24 +1,16 @@
-import { notFound } from "next/navigation";
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { BrandingForm } from "@/components/admin/appearance/BrandingForm";
-import { getBrandingById } from "@/lib/server/appearance-store";
+import { BrandingEditLoader } from "@/components/admin/appearance/BrandingEditLoader";
 
-type EditBrandingPageProps = {
+type AdminBrandingEditPageProps = {
   params: Promise<{ id: string }>;
 };
 
-export default async function EditBrandingPage({ params }: EditBrandingPageProps) {
+export default async function AdminBrandingEditPage({ params }: AdminBrandingEditPageProps) {
   const { id } = await params;
 
-  try {
-    const branding = await getBrandingById(id);
-
-    return (
-      <AdminPage pageKey="themeLogosEdit" wide hideDescription>
-        <BrandingForm mode="edit" initial={branding} />
-      </AdminPage>
-    );
-  } catch {
-    notFound();
-  }
+  return (
+    <AdminPage pageKey="themeLogosEdit" wide hideDescription>
+      <BrandingEditLoader id={id} />
+    </AdminPage>
+  );
 }

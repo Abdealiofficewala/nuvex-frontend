@@ -20,6 +20,7 @@ export type AdminFormImageUploadProps = Omit<
 > & {
   constraints?: Partial<ImageUploadConstraints>;
   size?: AdminImageUploadProps["size"];
+  placeholderInitials?: AdminImageUploadProps["placeholderInitials"];
 };
 
 export function AdminFormImageUpload({

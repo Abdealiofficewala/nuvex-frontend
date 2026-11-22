@@ -1,23 +1,15 @@
-import { requireAppearancePermission } from "@/lib/server/admin-auth";
+import { NextRequest } from "next/server";
+import { withAppearanceHandler } from "@/lib/server/appearance-api";
 import { createColorPalette, listColorPalettes } from "@/lib/server/appearance-store";
-import { handleApiError, jsonOk } from "@/lib/server/api-response";
 import type { ColorPaletteInput } from "@/types/appearance";
 
-export async function GET() {
-  try {
-    await requireAppearancePermission("view");
-    return jsonOk(await listColorPalettes());
-  } catch (error) {
-    return handleApiError(error);
-  }
+export async function GET(request: NextRequest) {
+  return withAppearanceHandler(request, "view", () => listColorPalettes());
 }
 
-export async function POST(request: Request) {
-  try {
-    await requireAppearancePermission("create");
+export async function POST(request: NextRequest) {
+  return withAppearanceHandler(request, "create", async () => {
     const body = (await request.json()) as ColorPaletteInput;
-    return jsonOk(await createColorPalette(body), 201);
-  } catch (error) {
-    return handleApiError(error);
-  }
+    return createColorPalette(body);
+  });
 }

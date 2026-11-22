@@ -1,24 +1,16 @@
-import { notFound } from "next/navigation";
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { BrandingViewDetail } from "@/components/admin/appearance/BrandingViewDetail";
-import { getBrandingById } from "@/lib/server/appearance-store";
+import { BrandingViewLoader } from "@/components/admin/appearance/BrandingViewLoader";
 
-type ViewBrandingPageProps = {
+type AdminBrandingViewPageProps = {
   params: Promise<{ id: string }>;
 };
 
-export default async function ViewBrandingPage({ params }: ViewBrandingPageProps) {
+export default async function AdminBrandingViewPage({ params }: AdminBrandingViewPageProps) {
   const { id } = await params;
 
-  try {
-    const branding = await getBrandingById(id);
-
-    return (
-      <AdminPage pageKey="themeLogosView" wide hideDescription>
-        <BrandingViewDetail branding={branding} />
-      </AdminPage>
-    );
-  } catch {
-    notFound();
-  }
+  return (
+    <AdminPage pageKey="themeLogosView" wide hideDescription>
+      <BrandingViewLoader id={id} />
+    </AdminPage>
+  );
 }

@@ -7,8 +7,10 @@ import { env } from "@/config/env";
 import { siteConfig } from "@/config/site.config";
 import { routing } from "@/i18n/routing";
 import { SiteSplash } from "@/components/website/common/SiteSplash";
+import { ThemeFontFaces } from "@/components/theme/ThemeFontFaces";
 import { resolvedThemeToCssVars, resolvedThemeToLegacyTokens } from "@/lib/appearance/css-vars";
-import { getActiveResolvedTheme } from "@/lib/server/appearance-store";
+import { getActiveResolvedTheme, getAppearanceSettings } from "@/lib/server/appearance-store";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 import { themeToCssVars } from "@/lib/theme";
 import { themeService } from "@/services/theme.service";
 import { StoreProvider } from "@/store/provider";
@@ -92,6 +94,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   }
 
   const activeResolved = await getActiveResolvedTheme();
+  const appearanceSettings = await getAppearanceSettings();
   const theme = activeResolved
     ? resolvedThemeToLegacyTokens(activeResolved)
     : await themeService.getTheme();
@@ -106,11 +109,14 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       className={`${inter.variable} ${poppins.variable} ${notoDevanagari.variable}`}
     >
       <body style={bodyThemeStyle}>
+        <ThemeFontFaces />
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <StoreProvider>
-            <SiteSplash />
-            {children}
-          </StoreProvider>
+          <ThemeProvider initialResolved={activeResolved} initialSettings={appearanceSettings}>
+            <StoreProvider>
+              <SiteSplash />
+              {children}
+            </StoreProvider>
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -1,23 +1,15 @@
-import { requireAppearancePermission } from "@/lib/server/admin-auth";
+import { NextRequest } from "next/server";
+import { withAppearanceHandler } from "@/lib/server/appearance-api";
 import { createBranding, listBranding } from "@/lib/server/appearance-store";
-import { handleApiError, jsonOk } from "@/lib/server/api-response";
 import type { BrandingInput } from "@/types/appearance";
 
-export async function GET() {
-  try {
-    await requireAppearancePermission("view");
-    return jsonOk(await listBranding());
-  } catch (error) {
-    return handleApiError(error);
-  }
+export async function GET(request: NextRequest) {
+  return withAppearanceHandler(request, "view", () => listBranding());
 }
 
-export async function POST(request: Request) {
-  try {
-    await requireAppearancePermission("create");
+export async function POST(request: NextRequest) {
+  return withAppearanceHandler(request, "create", async () => {
     const body = (await request.json()) as BrandingInput;
-    return jsonOk(await createBranding(body), 201);
-  } catch (error) {
-    return handleApiError(error);
-  }
+    return createBranding(body);
+  });
 }

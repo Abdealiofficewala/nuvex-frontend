@@ -1,42 +1,27 @@
-import { requireAppearancePermission } from "@/lib/server/admin-auth";
+import { NextRequest } from "next/server";
+import { withAppearanceHandler } from "@/lib/server/appearance-api";
 import { deleteTheme, getThemeById, updateTheme } from "@/lib/server/appearance-store";
-import { handleApiError, jsonOk } from "@/lib/server/api-response";
 import type { ThemeInput } from "@/types/appearance";
 
-type RouteContext = {
-  params: Promise<{ id: string }>;
-};
+type RouteContext = { params: Promise<{ id: string }> };
 
-export async function GET(_request: Request, context: RouteContext) {
-  try {
-    await requireAppearancePermission("view");
-    const { id } = await context.params;
-    const result = await getThemeById(id);
-    return jsonOk(result);
-  } catch (error) {
-    return handleApiError(error);
-  }
+export async function GET(request: NextRequest, context: RouteContext) {
+  const { id } = await context.params;
+  return withAppearanceHandler(request, "view", () => getThemeById(id));
 }
 
-export async function PATCH(request: Request, context: RouteContext) {
-  try {
-    await requireAppearancePermission("edit");
-    const { id } = await context.params;
+export async function PATCH(request: NextRequest, context: RouteContext) {
+  const { id } = await context.params;
+  return withAppearanceHandler(request, "edit", async () => {
     const body = (await request.json()) as Partial<ThemeInput>;
-    const theme = await updateTheme(id, body);
-    return jsonOk(theme);
-  } catch (error) {
-    return handleApiError(error);
-  }
+    return updateTheme(id, body);
+  });
 }
 
-export async function DELETE(_request: Request, context: RouteContext) {
-  try {
-    await requireAppearancePermission("delete");
-    const { id } = await context.params;
+export async function DELETE(request: NextRequest, context: RouteContext) {
+  const { id } = await context.params;
+  return withAppearanceHandler(request, "delete", async () => {
     await deleteTheme(id);
-    return jsonOk({ ok: true });
-  } catch (error) {
-    return handleApiError(error);
-  }
+    return { ok: true };
+  });
 }

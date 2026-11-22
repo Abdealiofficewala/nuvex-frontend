@@ -115,16 +115,65 @@ export type AppearanceComponentTokens = {
   };
 };
 
-export type ThemeActivationMode = "manual" | "interval" | "from_date";
+export type ThemeActivationMode = "manual" | "always" | "scheduled" | "interval" | "from_date";
 
 export type ThemeActivationSchedule = {
   mode: ThemeActivationMode;
   /** ISO date YYYY-MM-DD */
   startDate: string | null;
-  /** ISO date YYYY-MM-DD — interval mode only */
+  /** ISO date YYYY-MM-DD — scheduled / interval */
   endDate: string | null;
-  /** Theme used outside the interval window */
+  /** Local time HH:mm (24h) */
+  startTime: string | null;
+  endTime: string | null;
+  /** IANA timezone, e.g. Asia/Kolkata */
+  timezone: string;
+  /** Higher priority wins when schedules overlap */
+  priority: number;
+  /** Theme used outside the scheduled window */
   fallbackThemeId: string | null;
+};
+
+export type ThemeAppearanceMode = "light" | "dark" | "system";
+
+export type ThemeLifecycleStatus =
+  | "draft"
+  | "scheduled"
+  | "active"
+  | "expired"
+  | "disabled";
+
+export type ThemeAppearanceSettings = {
+  colorScheme: ThemeAppearanceMode;
+};
+
+export type FontSource = "system" | "google" | "custom";
+
+export type FontRecord = {
+  id: string;
+  name: string;
+  family: string;
+  source: FontSource;
+  files: Record<string, string>;
+  weights: number[];
+  style: "normal" | "italic";
+  status: "active" | "disabled";
+};
+
+export type TypographyPresetRecord = {
+  id: string;
+  name: string;
+  slug: string;
+  headingFontId: string;
+  bodyFontId: string;
+  tokens: AppearanceTypographyTokens;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type GlobalAppearanceSettings = {
+  allowUserThemeSwitch: boolean;
+  defaultColorScheme: ThemeAppearanceMode;
 };
 
 export type ThemeDesignConfig = {
@@ -168,9 +217,13 @@ export type ThemeRecord = {
   slug: string;
   description: string;
   isActive: boolean;
+  isFallback: boolean;
+  disabled: boolean;
   brandingId: string | null;
   colorPaletteId: string | null;
+  typographyId: string | null;
   schedule: ThemeActivationSchedule;
+  appearance: ThemeAppearanceSettings;
   design: ThemeDesignConfig;
   createdBy: string | null;
   createdAt: string;
@@ -189,11 +242,23 @@ export type AppearanceStore = {
   themes: ThemeRecord[];
   branding: BrandingRecord[];
   colorPalettes: ColorPaletteRecord[];
+  typographyPresets: TypographyPresetRecord[];
+  fonts: FontRecord[];
+  settings: GlobalAppearanceSettings;
 };
 
 export type ThemeInput = Pick<
   ThemeRecord,
-  "name" | "slug" | "description" | "brandingId" | "colorPaletteId" | "schedule" | "design"
+  | "name"
+  | "slug"
+  | "description"
+  | "brandingId"
+  | "colorPaletteId"
+  | "typographyId"
+  | "schedule"
+  | "appearance"
+  | "design"
+  | "disabled"
 >;
 
 export type BrandingInput = Pick<

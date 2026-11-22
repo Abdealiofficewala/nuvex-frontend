@@ -1,10 +1,10 @@
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { UsersListing } from "@/components/admin/users/UsersListing";
+import { UserListing } from "@/components/admin/user-management/UserListing";
 
 export default function AdminUsersPage() {
   return (
-    <AdminPage pageKey="users" wide>
-      <UsersListing />
+    <AdminPage pageKey="users" wide hideDescription>
+      <UserListing />
     </AdminPage>
   );
 }

@@ -1,24 +1,16 @@
-import { notFound } from "next/navigation";
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { ColorPaletteForm } from "@/components/admin/appearance/ColorPaletteForm";
-import { getColorPaletteById } from "@/lib/server/appearance-store";
+import { ColorPaletteEditLoader } from "@/components/admin/appearance/ColorPaletteEditLoader";
 
-type EditColorPalettePageProps = {
+type AdminColorPaletteEditPageProps = {
   params: Promise<{ id: string }>;
 };
 
-export default async function EditColorPalettePage({ params }: EditColorPalettePageProps) {
+export default async function AdminColorPaletteEditPage({ params }: AdminColorPaletteEditPageProps) {
   const { id } = await params;
 
-  try {
-    const palette = await getColorPaletteById(id);
-
-    return (
-      <AdminPage pageKey="themeColorsEdit" wide hideDescription>
-        <ColorPaletteForm mode="edit" initial={palette} />
-      </AdminPage>
-    );
-  } catch {
-    notFound();
-  }
+  return (
+    <AdminPage pageKey="themeColorsEdit" wide hideDescription>
+      <ColorPaletteEditLoader id={id} />
+    </AdminPage>
+  );
 }

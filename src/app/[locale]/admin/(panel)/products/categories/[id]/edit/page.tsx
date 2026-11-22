@@ -1,16 +1,16 @@
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { CategoryForm } from "@/components/admin/categories/CategoryForm";
+import { MasterEntityForm } from "@/components/admin/products/master/MasterEntityForm";
 
 type PageProps = {
   params: Promise<{ id: string }>;
 };
 
-export default async function EditCategoryPage({ params }: PageProps) {
+export default async function Page({ params }: PageProps) {
   const { id } = await params;
 
   return (
     <AdminPage pageKey="productCategoriesEdit" wide hideDescription>
-      <CategoryForm editId={id} />
+      <MasterEntityForm masterKey="categories" editId={id} />
     </AdminPage>
   );
 }

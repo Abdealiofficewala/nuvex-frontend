@@ -1,10 +1,10 @@
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { ProductSizesPanel } from "@/components/admin/products/ProductSizesPanel";
+import { MasterEntityListing } from "@/components/admin/products/master/MasterEntityListing";
 
-export default function AdminProductSizesPage() {
+export default function Page() {
   return (
     <AdminPage pageKey="productSizes" wide>
-      <ProductSizesPanel />
+      <MasterEntityListing masterKey="sizes" />
     </AdminPage>
   );
 }

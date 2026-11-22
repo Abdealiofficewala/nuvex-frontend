@@ -1,24 +1,16 @@
-import { notFound } from "next/navigation";
-import { ThemeForm } from "@/components/admin/appearance/ThemeForm";
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { getThemeById } from "@/lib/server/appearance-store";
+import { ThemeEditLoader } from "@/components/admin/appearance/ThemeEditLoader";
 
-type EditThemePageProps = {
+type AdminThemeEditPageProps = {
   params: Promise<{ id: string }>;
 };
 
-export default async function EditThemePage({ params }: EditThemePageProps) {
+export default async function AdminThemeEditPage({ params }: AdminThemeEditPageProps) {
   const { id } = await params;
 
-  try {
-    const { theme } = await getThemeById(id);
-
-    return (
-      <AdminPage pageKey="themeEdit" hideDescription>
-        <ThemeForm mode="edit" initialTheme={theme} />
-      </AdminPage>
-    );
-  } catch {
-    notFound();
-  }
+  return (
+    <AdminPage pageKey="themeEdit" wide hideDescription>
+      <ThemeEditLoader id={id} />
+    </AdminPage>
+  );
 }

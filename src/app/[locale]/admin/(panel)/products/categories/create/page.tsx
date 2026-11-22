@@ -1,10 +1,10 @@
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { CategoryForm } from "@/components/admin/categories/CategoryForm";
+import { MasterEntityForm } from "@/components/admin/products/master/MasterEntityForm";
 
-export default function CreateCategoryPage() {
+export default function Page() {
   return (
     <AdminPage pageKey="productCategoriesCreate" wide hideDescription>
-      <CategoryForm />
+      <MasterEntityForm masterKey="categories" />
     </AdminPage>
   );
 }

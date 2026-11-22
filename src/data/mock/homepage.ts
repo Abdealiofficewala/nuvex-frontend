@@ -15,7 +15,8 @@ export const mockHomepage: HomepageContent = {
   stats: siteConfig.business.stats.map((stat) => ({
     key: stat.key,
     value: stat.value,
-    label: stat.label,
+    title: stat.title,
+    description: stat.description,
   })),
   benefits: [
     {

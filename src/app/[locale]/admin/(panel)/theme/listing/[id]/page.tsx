@@ -1,23 +1,16 @@
-import { notFound } from "next/navigation";
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { ThemeViewDetail } from "@/components/admin/appearance/ThemeViewDetail";
-import { getThemeById } from "@/lib/server/appearance-store";
+import { ThemeViewLoader } from "@/components/admin/appearance/ThemeViewLoader";
 
-type ViewThemePageProps = {
+type AdminThemeViewPageProps = {
   params: Promise<{ id: string }>;
 };
 
-export default async function ViewThemePage({ params }: ViewThemePageProps) {
+export default async function AdminThemeViewPage({ params }: AdminThemeViewPageProps) {
   const { id } = await params;
 
-  try {
-    const result = await getThemeById(id);
-    return (
-      <AdminPage pageKey="themeView" wide hideDescription>
-        <ThemeViewDetail theme={result.theme} resolved={result.resolved} />
-      </AdminPage>
-    );
-  } catch {
-    notFound();
-  }
+  return (
+    <AdminPage pageKey="themeView" wide hideDescription>
+      <ThemeViewLoader id={id} />
+    </AdminPage>
+  );
 }

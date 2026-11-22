@@ -1,16 +1,16 @@
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { TypeForm } from "@/components/admin/product-types/TypeForm";
+import { TypeMasterForm } from "@/components/admin/products/master/TypeMasterForm";
 
-type EditProductTypePageProps = {
+type PageProps = {
   params: Promise<{ id: string }>;
 };
 
-export default async function EditProductTypePage({ params }: EditProductTypePageProps) {
+export default async function Page({ params }: PageProps) {
   const { id } = await params;
 
   return (
     <AdminPage pageKey="productTypesEdit" wide hideDescription>
-      <TypeForm editId={id} />
+      <TypeMasterForm editId={id} />
     </AdminPage>
   );
 }

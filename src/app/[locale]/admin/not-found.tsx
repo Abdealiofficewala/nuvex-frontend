@@ -12,10 +12,7 @@ export default async function AdminNotFound() {
       eyebrow={t("eyebrow")}
       title={t("title")}
       lede={t("lede")}
-      actions={[
-        { href: ROUTES.admin.dashboard, label: t("dashboard"), variant: "primary" },
-        { href: ROUTES.admin.login, label: t("login"), variant: "secondary" },
-      ]}
+      actions={[{ href: ROUTES.admin.login, label: t("login"), variant: "primary" }]}
     />
   );
 }

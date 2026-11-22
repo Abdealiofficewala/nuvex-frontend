@@ -182,4 +182,74 @@ export const appearanceService = {
       return result;
     });
   },
+
+  disableTheme(id: string) {
+    return request<ThemeRecord>(`/api/admin/appearance/themes/${encodeURIComponent(id)}/disable`, {
+      method: "POST",
+    }).then((result) => {
+      notifyAppearanceUpdated();
+      return result;
+    });
+  },
+
+  listFonts() {
+    return request<import("@/types/appearance").FontRecord[]>("/api/admin/appearance/fonts");
+  },
+
+  listTypographyPresets() {
+    return request<import("@/types/appearance").TypographyPresetRecord[]>(
+      "/api/admin/appearance/typography",
+    );
+  },
+
+  getAppearanceSettings() {
+    return request<import("@/types/appearance").GlobalAppearanceSettings>(
+      "/api/admin/appearance/settings",
+    );
+  },
+
+  updateAppearanceSettings(input: Partial<import("@/types/appearance").GlobalAppearanceSettings>) {
+    return request<import("@/types/appearance").GlobalAppearanceSettings>(
+      "/api/admin/appearance/settings",
+      {
+        method: "PATCH",
+        body: JSON.stringify(input),
+      },
+    ).then((result) => {
+      notifyAppearanceUpdated();
+      return result;
+    });
+  },
+
+  getTypographyPreset(id: string) {
+    return request<import("@/types/appearance").TypographyPresetRecord>(
+      `/api/admin/appearance/typography/${encodeURIComponent(id)}`,
+    );
+  },
+
+  updateTypographyPreset(
+    id: string,
+    input: Partial<import("@/types/appearance").TypographyPresetRecord>,
+  ) {
+    return request<import("@/types/appearance").TypographyPresetRecord>(
+      `/api/admin/appearance/typography/${encodeURIComponent(id)}`,
+      {
+        method: "PATCH",
+        body: JSON.stringify(input),
+      },
+    ).then((result) => {
+      notifyAppearanceUpdated();
+      return result;
+    });
+  },
+
+  updateShape(input: import("@/lib/server/appearance-store").ThemeDesignPatch) {
+    return request<import("@/types/appearance").ThemeRecord>("/api/admin/appearance/shape", {
+      method: "PATCH",
+      body: JSON.stringify(input),
+    }).then((result) => {
+      notifyAppearanceUpdated();
+      return result;
+    });
+  },
 };

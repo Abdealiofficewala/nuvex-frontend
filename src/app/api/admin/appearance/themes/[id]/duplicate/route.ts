@@ -1,27 +1,14 @@
-import { requireAppearancePermission } from "@/lib/server/admin-auth";
+import { NextRequest } from "next/server";
+import { withAppearanceHandler } from "@/lib/server/appearance-api";
 import { duplicateTheme } from "@/lib/server/appearance-store";
-import { handleApiError, jsonOk } from "@/lib/server/api-response";
 
-type DuplicateThemeBody = {
-  name?: string;
-  slug?: string;
-};
+type RouteContext = { params: Promise<{ id: string }> };
 
-type RouteContext = {
-  params: Promise<{ id: string }>;
-};
+export async function POST(request: NextRequest, context: RouteContext) {
+  const { id } = await context.params;
 
-export async function POST(request: Request, context: RouteContext) {
-  try {
-    const session = await requireAppearancePermission("create");
-    const { id } = await context.params;
-    const body = (await request.json().catch(() => ({}))) as DuplicateThemeBody;
-    const theme = await duplicateTheme(id, session.email, {
-      name: body.name,
-      slug: body.slug,
-    });
-    return jsonOk(theme, 201);
-  } catch (error) {
-    return handleApiError(error);
-  }
+  return withAppearanceHandler(request, "create", async () => {
+    const body = (await request.json().catch(() => ({}))) as { name?: string; slug?: string };
+    return duplicateTheme(id, null, body);
+  });
 }

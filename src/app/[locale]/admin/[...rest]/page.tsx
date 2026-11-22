@@ -1,5 +1,6 @@
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
+import { ROUTES } from "@/lib/constants";
 
 export default function AdminCatchAllPage() {
-  notFound();
+  redirect(ROUTES.admin.login);
 }

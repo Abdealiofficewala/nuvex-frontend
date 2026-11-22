@@ -9,7 +9,9 @@ import type {
   AppearanceSpacingTokens,
   AppearanceTypographyTokens,
   BrandingRecord,
+  GlobalAppearanceSettings,
   ThemeActivationSchedule,
+  ThemeAppearanceSettings,
   ThemeDesignConfig,
 } from "@/types/appearance";
 
@@ -17,7 +19,20 @@ export const DEFAULT_THEME_SCHEDULE: ThemeActivationSchedule = {
   mode: "manual",
   startDate: null,
   endDate: null,
+  startTime: null,
+  endTime: null,
+  timezone: "Asia/Kolkata",
+  priority: 0,
   fallbackThemeId: null,
+};
+
+export const DEFAULT_THEME_APPEARANCE: ThemeAppearanceSettings = {
+  colorScheme: "light",
+};
+
+export const DEFAULT_GLOBAL_APPEARANCE_SETTINGS: GlobalAppearanceSettings = {
+  allowUserThemeSwitch: true,
+  defaultColorScheme: "system",
 };
 
 /** Neutral placeholders for new palette forms — not tied to site config. */

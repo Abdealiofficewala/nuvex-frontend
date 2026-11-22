@@ -1,24 +1,16 @@
-import { notFound } from "next/navigation";
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { ColorPaletteViewDetail } from "@/components/admin/appearance/ColorPaletteViewDetail";
-import { getColorPaletteById } from "@/lib/server/appearance-store";
+import { ColorPaletteViewLoader } from "@/components/admin/appearance/ColorPaletteViewLoader";
 
-type ViewColorPalettePageProps = {
+type AdminColorPaletteViewPageProps = {
   params: Promise<{ id: string }>;
 };
 
-export default async function ViewColorPalettePage({ params }: ViewColorPalettePageProps) {
+export default async function AdminColorPaletteViewPage({ params }: AdminColorPaletteViewPageProps) {
   const { id } = await params;
 
-  try {
-    const palette = await getColorPaletteById(id);
-
-    return (
-      <AdminPage pageKey="themeColorsView" wide hideDescription>
-        <ColorPaletteViewDetail palette={palette} />
-      </AdminPage>
-    );
-  } catch {
-    notFound();
-  }
+  return (
+    <AdminPage pageKey="themeColorsView" wide hideDescription>
+      <ColorPaletteViewLoader id={id} />
+    </AdminPage>
+  );
 }

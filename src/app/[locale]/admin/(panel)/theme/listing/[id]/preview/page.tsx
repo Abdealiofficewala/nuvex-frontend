@@ -1,16 +1,16 @@
 import { AdminPage } from "@/components/admin/common/AdminPage";
-import { ThemePreviewPanel } from "@/components/admin/appearance/ThemePreviewPanel";
+import { ThemePreviewLoader } from "@/components/admin/appearance/ThemePreviewLoader";
 
-type ThemePreviewPageProps = {
+type AdminThemePreviewPageProps = {
   params: Promise<{ id: string }>;
 };
 
-export default async function ThemePreviewPage({ params }: ThemePreviewPageProps) {
+export default async function AdminThemePreviewPage({ params }: AdminThemePreviewPageProps) {
   const { id } = await params;
 
   return (
-    <AdminPage pageKey="themePreview" wide>
-      <ThemePreviewPanel themeId={id} />
+    <AdminPage pageKey="themePreview" wide hideDescription>
+      <ThemePreviewLoader id={id} />
     </AdminPage>
   );
 }
